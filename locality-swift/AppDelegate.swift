@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import FBSDKLoginKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //Status bar set
+        UIApplication.shared.statusBarStyle = .lightContent
+        
+        //Initialization
+        FabricManager.initFabric()
+        FacebookManager.initFacebookWith(app: application, options: launchOptions)
+        FirebaseManager.initFirebase()
         return true
     }
 
@@ -43,7 +52,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
     }
-
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        
+        let handled:Bool = FBSDKApplicationDelegate.sharedInstance().application(application, open:url, sourceApplication:sourceApplication, annotation:annotation)
+        
+        // Add any custom logic here.
+        return handled
+    }
+    
     // MARK: - Core Data stack
 
     lazy var persistentContainer: NSPersistentContainer = {
