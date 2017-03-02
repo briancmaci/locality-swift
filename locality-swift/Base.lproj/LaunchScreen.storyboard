@@ -34,30 +34,18 @@
                                     <constraint firstAttribute="width" constant="167" id="OEK-fR-aiG"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="©2017 Locality. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zXR-kF-dai">
-                                <rect key="frame" x="40" y="636" width="295" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="6aq-nq-YZ1"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="QBk-6W-tG3" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="GC8-02-IOe"/>
                             <constraint firstItem="Web-EU-Nf9" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="Ht1-uc-Cw7"/>
                             <constraint firstItem="52P-6U-GbH" firstAttribute="centerY" secondItem="QBk-6W-tG3" secondAttribute="centerY" constant="-40" id="LNa-Hr-0DN"/>
-                            <constraint firstItem="zXR-kF-dai" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="40" id="RG1-18-acL"/>
                             <constraint firstAttribute="trailing" secondItem="Web-EU-Nf9" secondAttribute="trailing" id="XdM-Lq-6si"/>
                             <constraint firstItem="QBk-6W-tG3" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="ZXa-N1-xuo"/>
                             <constraint firstAttribute="trailing" secondItem="QBk-6W-tG3" secondAttribute="trailing" id="hYl-qE-2uF"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="QBk-6W-tG3" secondAttribute="bottom" id="hzf-oO-vfA"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Web-EU-Nf9" secondAttribute="bottom" id="kv1-cx-XAq"/>
                             <constraint firstItem="52P-6U-GbH" firstAttribute="centerX" secondItem="QBk-6W-tG3" secondAttribute="centerX" id="rag-Xd-DcB"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="zXR-kF-dai" secondAttribute="bottom" constant="10" id="rlL-1G-xCW"/>
-                            <constraint firstAttribute="trailing" secondItem="zXR-kF-dai" secondAttribute="trailing" constant="40" id="y2G-Em-YO5"/>
                             <constraint firstItem="Web-EU-Nf9" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="yfW-l1-CmK"/>
                         </constraints>
                     </view>

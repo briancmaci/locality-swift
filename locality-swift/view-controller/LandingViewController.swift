@@ -13,12 +13,31 @@ class LandingViewController: LocalityBaseViewController, AngledButtonPairDelegat
     @IBOutlet weak var exploreButton : RoundedRectangleButton!
     @IBOutlet weak var joinLoginButtonPairView : AngledButtonPairView!
     
+    //Used for button animation
+    @IBOutlet weak var joinLoginBottom : NSLayoutConstraint!
+    @IBOutlet weak var exploreBottom : NSLayoutConstraint!
+    
+    var joinLoginY0 : CGFloat!
+    var joinLoginY1 : CGFloat!
+    var exploreY0 : CGFloat!
+    var exploreY1 : CGFloat!
+    
+    let buttonGap : CGFloat = 10
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
         initButtons()
+        initButtonAnimation()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        animateButtonsIn()
         
     }
 
@@ -48,6 +67,39 @@ class LandingViewController: LocalityBaseViewController, AngledButtonPairDelegat
         joinLoginButtonPairView.delegate = self
     }
     
+    func initButtonAnimation() {
+    
+        //init animate-in values
+        exploreY0 = -joinLoginButtonPairView.frame.size.height
+        exploreY1 = exploreBottom.constant
+        
+        joinLoginY0 = (exploreY0 * 2) - buttonGap
+        joinLoginY1 = joinLoginBottom.constant
+        
+        exploreBottom.constant = exploreY0
+        joinLoginBottom.constant = joinLoginY0
+        
+        view.layoutIfNeeded()
+    }
+    
+    func animateButtonsIn() {
+    
+        exploreBottom.constant = exploreY1
+        UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseOut], animations: {
+            self.view.layoutIfNeeded()
+        }) { (finished) in
+            print("Explore button in")
+        }
+        
+        joinLoginBottom.constant = joinLoginY1
+        UIView.animate(withDuration: 0.55, delay: 0.1, options: [.curveEaseOut], animations: {
+            self.view.layoutIfNeeded()
+        }) { (finished) in
+            print("Join/Login buttons in")
+        }
+    }
+    
+    //CTAs
     func exploreButtonDidTouch(sender:RoundedRectangleButton) {
         print("Explore button touched")
     }

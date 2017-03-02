@@ -106,15 +106,17 @@
                             <constraint firstItem="aev-QW-AXi" firstAttribute="centerY" secondItem="6hh-6Q-MZH" secondAttribute="centerY" constant="-40" id="WLh-rB-wZU"/>
                             <constraint firstItem="6hh-6Q-MZH" firstAttribute="top" secondItem="DHN-JS-VWU" secondAttribute="top" id="ddf-oc-9cF"/>
                             <constraint firstItem="ONo-3D-3pY" firstAttribute="centerX" secondItem="6hh-6Q-MZH" secondAttribute="centerX" id="f8e-cp-dj1"/>
-                            <constraint firstItem="ONo-3D-3pY" firstAttribute="top" secondItem="y79-CA-kj1" secondAttribute="bottom" constant="10" id="g7U-h6-ACm"/>
                             <constraint firstItem="aev-QW-AXi" firstAttribute="centerX" secondItem="6hh-6Q-MZH" secondAttribute="centerX" id="pTl-H1-YFB"/>
                             <constraint firstItem="y79-CA-kj1" firstAttribute="centerX" secondItem="6hh-6Q-MZH" secondAttribute="centerX" id="peL-aB-h1i"/>
+                            <constraint firstItem="XD7-yV-3sq" firstAttribute="top" secondItem="y79-CA-kj1" secondAttribute="bottom" constant="79" id="xHD-Vu-GOb"/>
                             <constraint firstItem="6hh-6Q-MZH" firstAttribute="leading" secondItem="DHN-JS-VWU" secondAttribute="leading" id="zlO-BH-N3l"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="E3u-MJ-64t"/>
                     <connections>
+                        <outlet property="exploreBottom" destination="xHD-Vu-GOb" id="Qze-bV-iUg"/>
                         <outlet property="exploreButton" destination="y79-CA-kj1" id="Aaw-8b-ZWo"/>
+                        <outlet property="joinLoginBottom" destination="D4o-AS-d22" id="w7S-s3-eww"/>
                         <outlet property="joinLoginButtonPairView" destination="ONo-3D-3pY" id="dgO-fK-XP6"/>
                     </connections>
                 </viewController>
@@ -127,7 +129,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Qd3-wx-0My" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2qF-2R-zkD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2qF-2R-zkD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
