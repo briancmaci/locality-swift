@@ -53,7 +53,7 @@ struct K {
     }
     
     struct FontName {
-        static let InterstateLightCondensed = "Interstate-LightCond"
+        static let InterstateLightCondensed = "Interstate-LightCondensed"
     }
     
     //Icons
@@ -62,6 +62,7 @@ struct K {
     }
     
     struct Image {
+        static let DefaultAvatarProfile = "DefaultAvatarProfile"
     }
     
     //Storyboard IDs
@@ -89,8 +90,17 @@ struct K {
     }
     
     //Strings
-    struct StringFormat {
+    struct String {
         static let CopyrightVersion = "©%d Locality v%@.%@. All rights reserved."
+        
+        //UserStatus
+        struct UserStatus {
+            static let NewUser = "User"
+            static let Contributor = "Contributor"
+            static let Reporter = "Reporter"
+            static let Columnist = "Columnist";
+            static let TrustedSource = "Trusted Source"
+        }
     }
     
     //Constant numerical values
