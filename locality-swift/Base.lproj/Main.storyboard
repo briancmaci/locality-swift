@@ -135,8 +135,148 @@
                     <view key="view" contentMode="scaleToFill" id="pfk-yA-7hv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VdU-eR-IRj" userLabel="RegisterView">
+                                <rect key="frame" x="48" y="137" width="280" height="346"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Email" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="qQh-Mg-5K4">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="lnD-l6-H00"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.15877681970596313" green="0.24939492344856262" blue="0.31995546817779541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" keyboardAppearance="light" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Password" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="cRK-eG-xdQ">
+                                        <rect key="frame" x="0.0" y="54" width="280" height="30"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="oBS-Sl-FP8"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.15877681969999999" green="0.2493949234" blue="0.31995546819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="light" returnKeyType="next" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ebg-79-JPv">
+                                        <rect key="frame" x="0.0" y="86" width="280" height="30"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Miq-Tk-mfC"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.15877681969999999" green="0.2493949234" blue="0.31995546819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="light" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q9d-ds-j4P">
+                                        <rect key="frame" x="0.0" y="140" width="280" height="54"/>
+                                        <color key="backgroundColor" red="0.15877681969999999" green="0.2493949234" blue="0.31995546819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="54" id="wx1-ca-aH3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="16"/>
+                                        <state key="normal" title="REGISTER VIA EMAIL">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- OR -" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6NV-zi-71F">
+                                        <rect key="frame" x="119" y="229" width="42" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="42" id="bsV-1c-uIX"/>
+                                            <constraint firstAttribute="height" constant="21" id="iuU-7s-de4"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="16"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OdM-Zn-VxT">
+                                        <rect key="frame" x="0.0" y="290" width="280" height="54"/>
+                                        <color key="backgroundColor" red="0.16078431372549018" green="0.25098039215686274" blue="0.32156862745098036" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="54" id="n5h-nL-ypv"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="16"/>
+                                        <state key="normal" title="REGISTER VIA FACEBOOK">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rww-eo-mxv">
+                                        <rect key="frame" x="2" y="32" width="276" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="14" id="HXl-96-9yM"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="12"/>
+                                        <color key="textColor" red="0.71522049492385786" green="0.013390152051839022" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZr-Qp-oeK">
+                                        <rect key="frame" x="2" y="118" width="276" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="14" id="SRQ-IO-ws5"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="12"/>
+                                        <color key="textColor" red="0.71522049489999995" green="0.01339015205" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="6NV-zi-71F" firstAttribute="top" secondItem="Q9d-ds-j4P" secondAttribute="bottom" constant="35" id="2Q6-pC-baC"/>
+                                    <constraint firstAttribute="width" constant="280" id="3OK-Sy-sF2"/>
+                                    <constraint firstAttribute="height" constant="346" id="3XD-IS-ZtW"/>
+                                    <constraint firstItem="ebg-79-JPv" firstAttribute="leading" secondItem="VdU-eR-IRj" secondAttribute="leading" id="4Zb-lh-sc0"/>
+                                    <constraint firstAttribute="trailing" secondItem="OdM-Zn-VxT" secondAttribute="trailing" id="5cB-Pn-DYQ"/>
+                                    <constraint firstItem="rZr-Qp-oeK" firstAttribute="leading" secondItem="VdU-eR-IRj" secondAttribute="leading" constant="2" id="6SY-A0-T5o"/>
+                                    <constraint firstItem="6NV-zi-71F" firstAttribute="centerX" secondItem="VdU-eR-IRj" secondAttribute="centerX" id="9wl-QP-naT"/>
+                                    <constraint firstItem="Q9d-ds-j4P" firstAttribute="top" secondItem="ebg-79-JPv" secondAttribute="bottom" constant="24" id="APF-Yl-EmZ"/>
+                                    <constraint firstItem="cRK-eG-xdQ" firstAttribute="leading" secondItem="VdU-eR-IRj" secondAttribute="leading" id="ATp-gq-9CA"/>
+                                    <constraint firstAttribute="trailing" secondItem="ebg-79-JPv" secondAttribute="trailing" id="BPf-OB-EvQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="rww-eo-mxv" secondAttribute="trailing" constant="2" id="Cgr-sW-mfA"/>
+                                    <constraint firstItem="OdM-Zn-VxT" firstAttribute="top" secondItem="6NV-zi-71F" secondAttribute="bottom" constant="40" id="K72-P3-oX2"/>
+                                    <constraint firstItem="ebg-79-JPv" firstAttribute="top" secondItem="cRK-eG-xdQ" secondAttribute="bottom" constant="2" id="K9r-Av-c2q"/>
+                                    <constraint firstItem="cRK-eG-xdQ" firstAttribute="top" secondItem="qQh-Mg-5K4" secondAttribute="bottom" constant="24" id="NJA-qE-SKT"/>
+                                    <constraint firstAttribute="trailing" secondItem="rZr-Qp-oeK" secondAttribute="trailing" constant="2" id="SlH-PB-ExI"/>
+                                    <constraint firstItem="rww-eo-mxv" firstAttribute="top" secondItem="qQh-Mg-5K4" secondAttribute="bottom" constant="2" id="Yhx-Be-pef"/>
+                                    <constraint firstAttribute="trailing" secondItem="Q9d-ds-j4P" secondAttribute="trailing" id="Z15-yD-Mg5"/>
+                                    <constraint firstItem="OdM-Zn-VxT" firstAttribute="leading" secondItem="VdU-eR-IRj" secondAttribute="leading" id="ayl-yO-M1O"/>
+                                    <constraint firstItem="Q9d-ds-j4P" firstAttribute="leading" secondItem="VdU-eR-IRj" secondAttribute="leading" id="idk-Dh-NRA"/>
+                                    <constraint firstItem="rww-eo-mxv" firstAttribute="leading" secondItem="VdU-eR-IRj" secondAttribute="leading" constant="2" id="mkU-qO-Anw"/>
+                                    <constraint firstItem="rZr-Qp-oeK" firstAttribute="top" secondItem="ebg-79-JPv" secondAttribute="bottom" constant="2" id="qoK-PV-lSi"/>
+                                    <constraint firstAttribute="trailing" secondItem="qQh-Mg-5K4" secondAttribute="trailing" id="tVW-N2-emo"/>
+                                    <constraint firstAttribute="trailing" secondItem="cRK-eG-xdQ" secondAttribute="trailing" id="vTc-2I-sa8"/>
+                                    <constraint firstItem="qQh-Mg-5K4" firstAttribute="leading" secondItem="VdU-eR-IRj" secondAttribute="leading" id="wsE-IG-FWH"/>
+                                    <constraint firstItem="qQh-Mg-5K4" firstAttribute="top" secondItem="VdU-eR-IRj" secondAttribute="top" id="xqQ-UP-QO4"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JOIN LOCALITY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7im-iE-GkN">
+                                <rect key="frame" x="60" y="45" width="255" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="62V-1t-GgJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="0.55633491277694702" green="0.54850691556930542" blue="0.58769077062606812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="VdU-eR-IRj" firstAttribute="top" secondItem="7im-iE-GkN" secondAttribute="bottom" constant="68" id="5wr-sY-v7K"/>
+                            <constraint firstAttribute="trailing" secondItem="7im-iE-GkN" secondAttribute="trailing" constant="60" id="WTY-YR-u5F"/>
+                            <constraint firstItem="7im-iE-GkN" firstAttribute="leading" secondItem="pfk-yA-7hv" secondAttribute="leading" constant="60" id="bO2-hY-fxx"/>
+                            <constraint firstItem="7im-iE-GkN" firstAttribute="top" secondItem="bKe-9Z-Zqx" secondAttribute="bottom" constant="25" id="hYb-VB-6bU"/>
+                            <constraint firstItem="VdU-eR-IRj" firstAttribute="centerX" secondItem="pfk-yA-7hv" secondAttribute="centerX" id="m0E-pS-UtA"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="confirmField" destination="ebg-79-JPv" id="S3y-5f-x26"/>
+                        <outlet property="emailError" destination="rww-eo-mxv" id="sd8-4m-Hzd"/>
+                        <outlet property="emailField" destination="qQh-Mg-5K4" id="1ji-6W-0Dr"/>
+                        <outlet property="passwordError" destination="rZr-Qp-oeK" id="RZ5-iE-SXE"/>
+                        <outlet property="passwordField" destination="cRK-eG-xdQ" id="s1H-dF-z5d"/>
+                        <outlet property="registerEmailButton" destination="Q9d-ds-j4P" id="5OV-k4-pv5"/>
+                        <outlet property="registerFacebookButton" destination="OdM-Zn-VxT" id="9qk-9D-cen"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="og1-k3-vCc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -147,7 +287,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Qd3-wx-0My" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2qF-2R-zkD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2qF-2R-zkD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -159,6 +299,172 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x7s-rE-Udb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="-568.06596701649175"/>
+        </scene>
+        <!--Join Validate View Controller-->
+        <scene sceneID="wgJ-8W-Eff">
+            <objects>
+                <viewController storyboardIdentifier="joinValidateVC" id="i4K-3O-ifJ" customClass="JoinValidateViewController" customModule="locality_swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mr5-mm-e3A"/>
+                        <viewControllerLayoutGuide type="bottom" id="Mcp-3F-6OS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pOP-vg-3vb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GREAT!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MpA-DH-q9N">
+                                <rect key="frame" x="60" y="45" width="255" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="SQH-zw-IzQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SMv-4w-txu">
+                                <rect key="frame" x="48" y="430" width="280" height="54"/>
+                                <color key="backgroundColor" red="0.16078431369999999" green="0.25098039220000001" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="e84-X6-8PP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="16"/>
+                                <state key="normal" title="LOGIN">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxf-GY-WDf">
+                                <rect key="frame" x="48" y="485" width="296" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="14" id="XzG-3T-9bi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="12"/>
+                                <color key="textColor" red="0.71522049489999995" green="0.01339015205" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now just click the link in the email we sent you to login and experience Locality." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVi-Ev-jk5">
+                                <rect key="frame" x="40" y="104" width="295" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="j3u-zm-hJo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="18"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.55633491280000003" green="0.54850691559999998" blue="0.58769077059999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="fxf-GY-WDf" firstAttribute="leading" secondItem="pOP-vg-3vb" secondAttribute="leading" constant="48" id="6MS-Kk-Qxx"/>
+                            <constraint firstItem="fxf-GY-WDf" firstAttribute="top" secondItem="SMv-4w-txu" secondAttribute="bottom" constant="1" id="7vK-iP-17H"/>
+                            <constraint firstAttribute="trailing" secondItem="DVi-Ev-jk5" secondAttribute="trailing" constant="40" id="D1x-nd-2IL"/>
+                            <constraint firstItem="Mcp-3F-6OS" firstAttribute="top" secondItem="fxf-GY-WDf" secondAttribute="bottom" constant="168" id="F5P-jB-YTB"/>
+                            <constraint firstItem="SMv-4w-txu" firstAttribute="leading" secondItem="pOP-vg-3vb" secondAttribute="leading" constant="48" id="LoG-H4-5gb"/>
+                            <constraint firstItem="DVi-Ev-jk5" firstAttribute="top" secondItem="MpA-DH-q9N" secondAttribute="bottom" constant="35" id="NNS-rb-UIa"/>
+                            <constraint firstAttribute="trailing" secondItem="SMv-4w-txu" secondAttribute="trailing" constant="47" id="XKQ-AX-9oB"/>
+                            <constraint firstItem="MpA-DH-q9N" firstAttribute="top" secondItem="mr5-mm-e3A" secondAttribute="bottom" constant="25" id="and-2E-yaF"/>
+                            <constraint firstAttribute="trailing" secondItem="MpA-DH-q9N" secondAttribute="trailing" constant="60" id="bCn-i4-Ehh"/>
+                            <constraint firstItem="MpA-DH-q9N" firstAttribute="leading" secondItem="pOP-vg-3vb" secondAttribute="leading" constant="60" id="ckr-Nk-goS"/>
+                            <constraint firstItem="DVi-Ev-jk5" firstAttribute="leading" secondItem="pOP-vg-3vb" secondAttribute="leading" constant="40" id="h1Z-YX-7xB"/>
+                            <constraint firstAttribute="trailing" secondItem="fxf-GY-WDf" secondAttribute="trailing" constant="31" id="mUf-7b-EUg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loginButton" destination="SMv-4w-txu" id="mPl-3g-8OL"/>
+                        <outlet property="loginError" destination="fxf-GY-WDf" id="87f-je-ruf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1uF-Rb-wfB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3049" y="-568"/>
+        </scene>
+        <!--Join Username View Controller-->
+        <scene sceneID="x10-QM-PXX">
+            <objects>
+                <viewController storyboardIdentifier="joinUsernameVC" id="fV9-ws-VmR" customClass="JoinUsernameViewController" customModule="locality_swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="x0x-8G-z14"/>
+                        <viewControllerLayoutGuide type="bottom" id="ehY-1i-PW1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QAH-Qu-olz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALMOST THERE!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hz7-5a-GyI">
+                                <rect key="frame" x="60" y="45" width="255" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="LBB-5y-YtG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LXY-4J-cie">
+                                <rect key="frame" x="48" y="429" width="280" height="54"/>
+                                <color key="backgroundColor" red="0.16078431369999999" green="0.25098039220000001" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="7Dv-sw-OhC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="16"/>
+                                <state key="normal" title="CONTINUE">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhY-f9-2Zn">
+                                <rect key="frame" x="33" y="228" width="310" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="14" id="x0X-Cv-2Sj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="12"/>
+                                <color key="textColor" red="0.71522049489999995" green="0.01339015205" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please choose a username." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f22-wU-eLX">
+                                <rect key="frame" x="40" y="104" width="295" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="lDw-e8-Dlg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="18"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Username" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="I9k-ki-S5f">
+                                <rect key="frame" x="32" y="197" width="311" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="v1d-qZ-N62"/>
+                                </constraints>
+                                <color key="textColor" red="0.15877681969999999" green="0.2493949234" blue="0.31995546819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="light" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.55633491280000003" green="0.54850691559999998" blue="0.58769077059999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="LXY-4J-cie" firstAttribute="leading" secondItem="QAH-Qu-olz" secondAttribute="leading" constant="48" id="9Sm-U7-uSG"/>
+                            <constraint firstAttribute="trailing" secondItem="I9k-ki-S5f" secondAttribute="trailing" constant="32" id="Bdi-Ia-acE"/>
+                            <constraint firstItem="ehY-1i-PW1" firstAttribute="top" secondItem="LXY-4J-cie" secondAttribute="bottom" constant="184" id="Bdl-3P-RD3"/>
+                            <constraint firstAttribute="trailing" secondItem="f22-wU-eLX" secondAttribute="trailing" constant="40" id="GNg-s6-HyN"/>
+                            <constraint firstItem="hz7-5a-GyI" firstAttribute="top" secondItem="x0x-8G-z14" secondAttribute="bottom" constant="25" id="GhI-6n-2I5"/>
+                            <constraint firstItem="hz7-5a-GyI" firstAttribute="leading" secondItem="QAH-Qu-olz" secondAttribute="leading" constant="60" id="IzY-90-EkE"/>
+                            <constraint firstItem="mhY-f9-2Zn" firstAttribute="top" secondItem="I9k-ki-S5f" secondAttribute="bottom" constant="1" id="MR4-Tl-d4r"/>
+                            <constraint firstItem="I9k-ki-S5f" firstAttribute="leading" secondItem="QAH-Qu-olz" secondAttribute="leading" constant="32" id="T3r-zx-eiB"/>
+                            <constraint firstItem="f22-wU-eLX" firstAttribute="top" secondItem="hz7-5a-GyI" secondAttribute="bottom" constant="35" id="UQO-SU-jF5"/>
+                            <constraint firstAttribute="trailing" secondItem="mhY-f9-2Zn" secondAttribute="trailing" constant="32" id="ZcN-KY-8mN"/>
+                            <constraint firstItem="mhY-f9-2Zn" firstAttribute="leading" secondItem="QAH-Qu-olz" secondAttribute="leading" constant="33" id="jTF-So-Iru"/>
+                            <constraint firstItem="I9k-ki-S5f" firstAttribute="top" secondItem="f22-wU-eLX" secondAttribute="bottom" constant="8" id="qkj-GZ-qqJ"/>
+                            <constraint firstItem="f22-wU-eLX" firstAttribute="leading" secondItem="QAH-Qu-olz" secondAttribute="leading" constant="40" id="suq-Z1-hbf"/>
+                            <constraint firstAttribute="trailing" secondItem="hz7-5a-GyI" secondAttribute="trailing" constant="60" id="ts3-fp-1aX"/>
+                            <constraint firstAttribute="trailing" secondItem="LXY-4J-cie" secondAttribute="trailing" constant="47" id="wQi-gR-wNN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="continueButton" destination="LXY-4J-cie" id="lHR-M0-0cc"/>
+                        <outlet property="usernameError" destination="mhY-f9-2Zn" id="ckw-j1-RT8"/>
+                        <outlet property="usernameField" destination="I9k-ki-S5f" id="G6d-fA-0Mf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g0V-GI-NlV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2383" y="-568"/>
         </scene>
     </scenes>
     <resources>

@@ -75,6 +75,9 @@ struct K {
         struct ID {
             static let Landing = "landingVC"
             static let Login = "loginVC"
+            static let Join = "joinVC"
+            static let JoinUser = "joinUsernameVC"
+            static let JoinValidate = "joinValidateVC"
         }
     }
     
@@ -100,6 +103,16 @@ struct K {
             static let Reporter = "Reporter"
             static let Columnist = "Columnist";
             static let TrustedSource = "Trusted Source"
+        }
+        
+        struct Error {
+            static let EmailDuplicate = "This email is already registered"
+            static let EmailInvalid = "This email is invalid"
+            static let EmailEmpty = "You must enter an email"
+            static let PasswordMismatch = "These passwords do not match"
+            static let PasswordEmpty = "You must enter a password"
+            static let PasswordTooShort = "Your password must be six characters long"
+            static let PasswordTooWeak = "Your password is too weak"
         }
     }
     

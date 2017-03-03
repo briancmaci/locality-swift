@@ -1,28 +1,22 @@
 //
-//  LocalityBaseViewController.swift
+//  JoinValidateViewController.swift
 //  locality-swift
 //
-//  Created by Chelsea Power on 3/2/17.
+//  Created by Chelsea Power on 3/3/17.
 //  Copyright © 2017 Brian Maci. All rights reserved.
 //
 
 import UIKit
 
-class LocalityBaseViewController: UIViewController {
-    
-    override var prefersStatusBarHidden: Bool {
-        return false
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
+class JoinValidateViewController: LocalityBaseViewController {
 
+    @IBOutlet weak var loginButton:UIButton!
+    @IBOutlet weak var loginError:UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        hideKeyboardOnTouchedOut()
     }
 
     override func didReceiveMemoryWarning() {

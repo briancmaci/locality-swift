@@ -106,7 +106,9 @@ class LandingViewController: LocalityBaseViewController, AngledButtonPairDelegat
     
     //MARK - AngledButtonPairDelegate
     func leftButtonDidTouch() {
-        print("Join button touched")
+        let newVC : JoinViewController = AppUtilities.getViewControllerFromStoryboard(id: K.Storyboard.ID.Join) as! JoinViewController
+        
+        navigationController?.pushViewController(newVC, animated: true)
     }
     
     func rightButtonDidTouch() {
