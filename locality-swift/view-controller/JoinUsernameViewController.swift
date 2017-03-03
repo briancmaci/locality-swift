@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class JoinUsernameViewController: LocalityBaseViewController, UITextFieldDelegate {
     
@@ -41,17 +42,53 @@ class JoinUsernameViewController: LocalityBaseViewController, UITextFieldDelegat
     }
     
     func initButtons() {
-    
+        continueButton.addTarget(self, action: #selector(continueDidTouch), for: .touchUpInside)
     }
     
     // CTAs
-    func usernameDidTouch(sender:UIButton) {
+    func continueDidTouch(sender:UIButton) {
         //check for unique username
         
-        //if unique then...
-        FIRAuth.auth()?.currentUser?.sendEmailVerification(completion: { (error) in
-            if error == nil {
-                print("Email verification sent")
+        let usersRef = FIRDatabase.database().reference(withPath:"users")
+        
+        usersRef.observeSingleEvent(of: .value, with: { snapshot in
+            var usernamesMatched = false
+            
+            if snapshot.value is NSNull {
+                usernamesMatched = false
+
+            } else {
+                let usersArray = snapshot.value as! [String:AnyObject]
+                for user in usersArray {
+                    let thisUsername = user.value["username"] as! String
+                    
+                    //case sensitivity
+                    if thisUsername.lowercased() == self.usernameField.text!.lowercased() {
+                        usernamesMatched = true
+                        
+                    }
+                }
+                
+            }
+            
+            if usernamesMatched == false {
+                
+                //unique username!
+                FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).setValue(["username": self.usernameField.text])
+                
+                FIRAuth.auth()?.currentUser?.sendEmailVerification(completion: { (error) in
+                    if error == nil {
+                        //email verification sent
+                        let newVC:JoinValidateViewController = AppUtilities.getViewControllerFromStoryboard(id: K.Storyboard.ID.JoinValidate) as! JoinValidateViewController
+                        
+                        self.navigationController?.pushViewController(newVC, animated: true)
+                    }
+                })
+            }
+            
+            else {
+                //username match
+                self.usernameError.text = K.String.Error.UsernameTaken
             }
         })
     }

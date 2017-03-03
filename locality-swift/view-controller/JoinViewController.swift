@@ -70,10 +70,23 @@ class JoinViewController: LocalityBaseViewController, UITextFieldDelegate {
                                             //fill shared currentUser
                                             //CurrentUser.shared.email = self.emailField.text!
                                             
-                                            //move to username
-                                            let newVC:JoinUsernameViewController = AppUtilities.getViewControllerFromStoryboard(id: K.Storyboard.ID.JoinUser) as! JoinUsernameViewController
-                                            
-                                            self.navigationController?.pushViewController(newVC, animated: true)
+                                            //let's auth now 
+                                            FIRAuth.auth()?.signIn(withEmail: self.emailField.text!,
+                                                                   password: self.passwordField.text!,
+                                                                   completion: { (user, error) in
+                                                                    if error == nil {
+                                                                        
+                                                                        print("Logged in user: \(user)")
+                                                                        //move to username
+                                                                        let newVC:JoinUsernameViewController = AppUtilities.getViewControllerFromStoryboard(id: K.Storyboard.ID.JoinUser) as! JoinUsernameViewController
+                                                                        
+                                                                        self.navigationController?.pushViewController(newVC, animated: true)
+                                                                    }
+                                                                    
+                                                                    else {
+                                                                        print("Login Error: \(error?.localizedDescription)")
+                                                                    }
+                                            })
                                         }
                                     
                                         else {

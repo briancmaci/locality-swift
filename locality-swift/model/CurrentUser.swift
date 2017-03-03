@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class CurrentUser: NSObject {
 
     static let shared = CurrentUser()
     
+    var uid:String = ""
     var email:String = ""
     var username:String = ""
 

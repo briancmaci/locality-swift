@@ -17,6 +17,7 @@ pod 'Mapbox-iOS-SDK'
 #Firebase
 pod 'Firebase'
 pod 'FirebaseAuth'
+pod 'Firebase/Database'
 
 #Auth Pods
 pod 'FBSDKLoginKit'

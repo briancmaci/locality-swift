@@ -17,6 +17,8 @@ class JoinValidateViewController: LocalityBaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        initErrorFields()
+        initButtons()
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,7 +26,17 @@ class JoinValidateViewController: LocalityBaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    func initErrorFields() {
+        loginError.text?.removeAll()
+    }
+    
+    func initButtons() {
+        loginButton.addTarget(self, action: #selector(loginDidTouch), for: .touchUpInside)
+    }
+    
+    func loginDidTouch(sender:UIButton) {
+        print("Check validation and enter Locality")
+    }
     /*
     // MARK: - Navigation
 

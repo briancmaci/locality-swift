@@ -113,6 +113,7 @@ struct K {
             static let PasswordEmpty = "You must enter a password"
             static let PasswordTooShort = "Your password must be six characters long"
             static let PasswordTooWeak = "Your password is too weak"
+            static let UsernameTaken = "This username is already taken"
         }
     }
     
