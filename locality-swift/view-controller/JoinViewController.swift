@@ -126,16 +126,6 @@ class JoinViewController: LocalityBaseViewController, UITextFieldDelegate {
             hasErrors = true
         }
         
-        //Test for valid, unique email
-//        else if emailField.text?.isValidEmail() != true {
-//            emailError.text = K.String.Error.EmailInvalid
-//            hasErrors = true
-//        }
-//        
-//        else {
-//            //check duplicate
-//        }
-        
         //Test for password consistency
         if passwordField.text == "" && confirmField.text == "" {
             passwordError.text = K.String.Error.PasswordEmpty

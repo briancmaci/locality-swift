@@ -74,10 +74,14 @@ struct K {
         
         struct ID {
             static let Landing = "landingVC"
+            
             static let Login = "loginVC"
+            
             static let Join = "joinVC"
             static let JoinUser = "joinUsernameVC"
             static let JoinValidate = "joinValidateVC"
+            
+            static let CurrentFeedInit = "currentFeedInitVC"
         }
     }
     
@@ -106,14 +110,18 @@ struct K {
         }
         
         struct Error {
-            static let EmailDuplicate = "This email is already registered"
-            static let EmailInvalid = "This email is invalid"
-            static let EmailEmpty = "You must enter an email"
-            static let PasswordMismatch = "These passwords do not match"
-            static let PasswordEmpty = "You must enter a password"
-            static let PasswordTooShort = "Your password must be six characters long"
-            static let PasswordTooWeak = "Your password is too weak"
-            static let UsernameTaken = "This username is already taken"
+            static let EmailDuplicate = "This email is already registered."
+            static let EmailInUseEmail = "This email is already in use. Try authenticating via Facebook."
+            static let EmailInUseFacebook = "This email is already in use. Try authenticating via email."
+            static let EmailInvalid = "This email is invalid."
+            static let EmailEmpty = "You must enter an email."
+            static let PasswordMismatch = "These passwords do not match."
+            static let PasswordEmpty = "You must enter a password."
+            static let PasswordTooShort = "Your password must be six characters long."
+            static let PasswordTooWeak = "Your password is too weak."
+            static let PasswordWrong = "You have entered an incorrect password."
+            static let UserDisabled = "I'm sorry, your account is disabled."
+            static let UsernameTaken = "This username is already taken."
         }
     }
     

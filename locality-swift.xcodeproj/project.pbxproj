@@ -37,6 +37,7 @@
 		72B882121E68F19D00EB3B2E /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B882111E68F19D00EB3B2E /* UIViewControllerExtension.swift */; };
 		72B882141E693C0500EB3B2E /* JoinValidateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B882131E693C0500EB3B2E /* JoinValidateViewController.swift */; };
 		72B882161E69434000EB3B2E /* JoinUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B882151E69434000EB3B2E /* JoinUsernameViewController.swift */; };
+		72B882191E6A8BE800EB3B2E /* CurrentFeedInitializeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B882181E6A8BE800EB3B2E /* CurrentFeedInitializeViewController.swift */; };
 		A4BE9DA43AD7D9F572693B60 /* Pods_locality_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB91C8D02C0D325EDFD2826E /* Pods_locality_swift.framework */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +96,7 @@
 		72B882111E68F19D00EB3B2E /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewControllerExtension.swift; path = extension/UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		72B882131E693C0500EB3B2E /* JoinValidateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinValidateViewController.swift; path = "view-controller/JoinValidateViewController.swift"; sourceTree = "<group>"; };
 		72B882151E69434000EB3B2E /* JoinUsernameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinUsernameViewController.swift; path = "view-controller/JoinUsernameViewController.swift"; sourceTree = "<group>"; };
+		72B882181E6A8BE800EB3B2E /* CurrentFeedInitializeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrentFeedInitializeViewController.swift; path = "view-controller/CurrentFeedInitializeViewController.swift"; sourceTree = "<group>"; };
 		84886BD7BF3AE7DEF44AC1B8 /* Pods-locality-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-locality-swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-locality-swift/Pods-locality-swift.release.xcconfig"; sourceTree = "<group>"; };
 		B0C073B846F1D9C61B783347 /* Pods-locality-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-locality-swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-locality-swift/Pods-locality-swift.debug.xcconfig"; sourceTree = "<group>"; };
 		DB91C8D02C0D325EDFD2826E /* Pods_locality_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_locality_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -227,11 +229,8 @@
 			isa = PBXGroup;
 			children = (
 				72B881FF1E67E44700EB3B2E /* base */,
-				72B8820B1E68B8D100EB3B2E /* JoinViewController.swift */,
-				72B882151E69434000EB3B2E /* JoinUsernameViewController.swift */,
-				72B882131E693C0500EB3B2E /* JoinValidateViewController.swift */,
-				72B881EB1E676D8A00EB3B2E /* LandingViewController.swift */,
-				72B882001E67E79700EB3B2E /* LoginViewController.swift */,
+				72B8821A1E6A8BEF00EB3B2E /* current-feed */,
+				72B882171E6A8BB700EB3B2E /* join-login */,
 			);
 			name = "view-controller";
 			sourceTree = "<group>";
@@ -297,6 +296,26 @@
 				72B8820F1E68EAE200EB3B2E /* StringExtension.swift */,
 			);
 			name = extension;
+			sourceTree = "<group>";
+		};
+		72B882171E6A8BB700EB3B2E /* join-login */ = {
+			isa = PBXGroup;
+			children = (
+				72B8820B1E68B8D100EB3B2E /* JoinViewController.swift */,
+				72B882151E69434000EB3B2E /* JoinUsernameViewController.swift */,
+				72B882131E693C0500EB3B2E /* JoinValidateViewController.swift */,
+				72B881EB1E676D8A00EB3B2E /* LandingViewController.swift */,
+				72B882001E67E79700EB3B2E /* LoginViewController.swift */,
+			);
+			name = "join-login";
+			sourceTree = "<group>";
+		};
+		72B8821A1E6A8BEF00EB3B2E /* current-feed */ = {
+			isa = PBXGroup;
+			children = (
+				72B882181E6A8BE800EB3B2E /* CurrentFeedInitializeViewController.swift */,
+			);
+			name = "current-feed";
 			sourceTree = "<group>";
 		};
 		A140867697BC340ACB5B7282 /* Pods */ = {
@@ -532,6 +551,7 @@
 				72B882061E67E81900EB3B2E /* UIViewExtension.swift in Sources */,
 				72B881EC1E676D8A00EB3B2E /* LandingViewController.swift in Sources */,
 				72B881F91E67961E00EB3B2E /* AngledPairButton.swift in Sources */,
+				72B882191E6A8BE800EB3B2E /* CurrentFeedInitializeViewController.swift in Sources */,
 				72B881D31E65F5E200EB3B2E /* FabricManager.swift in Sources */,
 				72B881D91E665F3A00EB3B2E /* Config.swift in Sources */,
 				72B882101E68EAE200EB3B2E /* StringExtension.swift in Sources */,

@@ -19,6 +19,9 @@ pod 'Firebase'
 pod 'FirebaseAuth'
 pod 'Firebase/Database'
 
+#GoogleMaps
+#pod 'GoogleMaps', '~> 2.2'
+
 #Auth Pods
 pod 'FBSDKLoginKit'
 
