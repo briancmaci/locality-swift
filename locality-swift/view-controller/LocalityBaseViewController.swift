@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LocalityBaseViewController: UIViewController {
     
@@ -28,6 +29,34 @@ class LocalityBaseViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func alertEmailValidate() {
+        
+        let alert = UIAlertController(title: "You must verify your email.",
+                                      message: "We sent a verification link upon joining Locality. Please click the link in your email to continue.",
+                                      preferredStyle: UIAlertControllerStyle.alert)
+        
+        let confirmAction = UIAlertAction(title: "Resend verification", style: .default) { (action) in
+            
+            FIRAuth.auth()?.currentUser?.sendEmailVerification(completion: { (error) in
+                if error == nil {
+                    //Email validation resent
+                    alert.dismiss(animated: true, completion: {
+                        //alert gone
+                    })
+                }
+            })
+        }
+        
+        
+        let cancelAction = UIAlertAction(title: "OK",
+                                         style: .cancel, handler: nil)
+        
+        alert.addAction(confirmAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
 

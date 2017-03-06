@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Interstate-LightCondensed.otf">
+        <array key="Interstate-LightCondensed.ttf">
             <string>Interstate-LightCondensed</string>
         </array>
     </customFonts>
@@ -38,7 +38,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gEB-ef-DJI" userLabel="LoginView">
-                                <rect key="frame" x="47" y="178" width="280" height="311"/>
+                                <rect key="frame" x="47" y="172.5" width="280" height="322"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Email" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="mKW-FK-hso">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
@@ -73,6 +73,16 @@
                                         <rect key="frame" x="2" y="85" width="276" height="14"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="14" id="5kR-7R-K44"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="12"/>
+                                        <color key="textColor" red="0.71522049489999995" green="0.01339015205" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4i-Fl-w98">
+                                        <rect key="frame" x="2" y="310" width="276" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="14" id="S7F-mn-e2P"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="14" id="zFQ-xg-UAC"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="12"/>
                                         <color key="textColor" red="0.71522049489999995" green="0.01339015205" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -126,17 +136,20 @@
                                     <constraint firstAttribute="trailing" secondItem="Axy-4l-rb1" secondAttribute="trailing" constant="2" id="CJ3-sr-H7U"/>
                                     <constraint firstAttribute="trailing" secondItem="Pdn-bb-aHa" secondAttribute="trailing" id="KWg-zq-bcF"/>
                                     <constraint firstAttribute="trailing" secondItem="c9g-Ix-Kcv" secondAttribute="trailing" constant="2" id="LZG-um-YNs"/>
-                                    <constraint firstAttribute="height" constant="311" id="Mqh-2m-d1D"/>
+                                    <constraint firstAttribute="height" constant="322" id="Mqh-2m-d1D"/>
                                     <constraint firstItem="QfM-mO-b1R" firstAttribute="centerX" secondItem="gEB-ef-DJI" secondAttribute="centerX" id="Ncb-fP-sjb"/>
                                     <constraint firstItem="QfM-mO-b1R" firstAttribute="top" secondItem="Pdn-bb-aHa" secondAttribute="bottom" constant="35" id="UrJ-Sx-f5X"/>
                                     <constraint firstItem="mKW-FK-hso" firstAttribute="top" secondItem="gEB-ef-DJI" secondAttribute="top" id="Wbk-sz-Hy2"/>
                                     <constraint firstItem="BIu-7q-5iX" firstAttribute="leading" secondItem="gEB-ef-DJI" secondAttribute="leading" id="XLp-Y0-g7e"/>
                                     <constraint firstAttribute="trailing" secondItem="mKW-FK-hso" secondAttribute="trailing" id="YM6-Wi-u6Q"/>
                                     <constraint firstItem="Axy-4l-rb1" firstAttribute="top" secondItem="mKW-FK-hso" secondAttribute="bottom" constant="2" id="ZCh-Rp-Vag"/>
+                                    <constraint firstItem="V4i-Fl-w98" firstAttribute="leading" secondItem="gEB-ef-DJI" secondAttribute="leading" constant="2" id="Zyt-ya-c2e"/>
                                     <constraint firstItem="c9g-Ix-Kcv" firstAttribute="leading" secondItem="gEB-ef-DJI" secondAttribute="leading" constant="2" id="f73-JW-UsF"/>
                                     <constraint firstItem="BIu-7q-5iX" firstAttribute="top" secondItem="Axy-4l-rb1" secondAttribute="bottom" constant="8" id="kxb-rv-q6n"/>
                                     <constraint firstAttribute="trailing" secondItem="BIu-7q-5iX" secondAttribute="trailing" id="mTh-kZ-3Nk"/>
                                     <constraint firstItem="qSl-kX-Kpg" firstAttribute="centerX" secondItem="gEB-ef-DJI" secondAttribute="centerX" id="pzF-5D-dUV"/>
+                                    <constraint firstItem="V4i-Fl-w98" firstAttribute="top" secondItem="qSl-kX-Kpg" secondAttribute="bottom" constant="1" id="pzY-SP-ROd"/>
+                                    <constraint firstAttribute="trailing" secondItem="V4i-Fl-w98" secondAttribute="trailing" constant="2" id="vIN-lm-Tla"/>
                                     <constraint firstItem="Pdn-bb-aHa" firstAttribute="top" secondItem="c9g-Ix-Kcv" secondAttribute="bottom" constant="6" id="wAE-ep-llb"/>
                                 </constraints>
                             </view>
@@ -153,6 +166,7 @@
                     <connections>
                         <outlet property="emailError" destination="Axy-4l-rb1" id="oeX-GE-PNK"/>
                         <outlet property="emailField" destination="mKW-FK-hso" id="dQO-3s-sYr"/>
+                        <outlet property="facebookError" destination="V4i-Fl-w98" id="iTx-q4-vcE"/>
                         <outlet property="loginEmailButton" destination="Pdn-bb-aHa" id="Cd2-Y1-1O1"/>
                         <outlet property="passwordError" destination="c9g-Ix-Kcv" id="CAb-b7-Lz1"/>
                         <outlet property="passwordField" destination="BIu-7q-5iX" id="se0-0c-Xnh"/>
@@ -491,7 +505,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Qd3-wx-0My" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2qF-2R-zkD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2qF-2R-zkD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

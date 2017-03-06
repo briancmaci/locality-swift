@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class JoinValidateViewController: LocalityBaseViewController {
 
@@ -35,8 +36,23 @@ class JoinValidateViewController: LocalityBaseViewController {
     }
     
     func loginDidTouch(sender:UIButton) {
-        print("Check validation and enter Locality")
+        
+        if FIRAuth.auth()?.currentUser?.isEmailVerified == false {
+            
+            alertEmailValidate()
+            return
+            
+        }
+        
+        else {
+            print("SET ISFIRSTTIME SOMEWHERE!!!!!")
+            
+            let newVC:CurrentFeedInitializeViewController = AppUtilities.getViewControllerFromStoryboard(id: K.Storyboard.ID.CurrentFeedInit) as! CurrentFeedInitializeViewController
+            
+            navigationController?.pushViewController(newVC, animated: true)
+        }
     }
+    
     /*
     // MARK: - Navigation
 

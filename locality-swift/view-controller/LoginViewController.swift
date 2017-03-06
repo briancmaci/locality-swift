@@ -21,6 +21,7 @@ class LoginViewController: LocalityBaseViewController, FBSDKLoginButtonDelegate,
     
     @IBOutlet weak var emailError:UILabel!
     @IBOutlet weak var passwordError:UILabel!
+    @IBOutlet weak var facebookError:UILabel!
 
     @IBAction func loginDidTouch(sender:UIButton) {
     
@@ -60,6 +61,7 @@ class LoginViewController: LocalityBaseViewController, FBSDKLoginButtonDelegate,
     func initErrorFields() {
         emailError.text?.removeAll()
         passwordError.text?.removeAll()
+        facebookError.text?.removeAll()
     }
     
     func initTextFields() {
@@ -108,8 +110,13 @@ class LoginViewController: LocalityBaseViewController, FBSDKLoginButtonDelegate,
                 passwordError.text = K.String.Error.PasswordWrong.localized
                 
             case .errorCodeEmailAlreadyInUse:
-                emailError.text = forEmail == true ? K.String.Error.EmailInUseEmail.localized :
-                                                     K.String.Error.EmailInUseFacebook.localized
+                if forEmail == true {
+                    emailError.text = K.String.Error.EmailInUseEmail.localized
+                }
+                
+                else {
+                    facebookError.text = K.String.Error.EmailInUseFacebook.localized
+                }
                 
             default:break
             }
@@ -117,7 +124,13 @@ class LoginViewController: LocalityBaseViewController, FBSDKLoginButtonDelegate,
     }
     
     func moveToCurrentFeedView() {
+        
+        
         print("!!!We need to test isFirstTime, username, validation!!!")
+        if FIRAuth.auth()?.currentUser?.isEmailVerified == false {
+            alertEmailValidate()
+            return
+        }
         
         let newVC:CurrentFeedInitializeViewController = AppUtilities.getViewControllerFromStoryboard(id: K.Storyboard.ID.CurrentFeedInit) as! CurrentFeedInitializeViewController
         
@@ -135,8 +148,12 @@ class LoginViewController: LocalityBaseViewController, FBSDKLoginButtonDelegate,
             emailError.text?.removeAll()
         }
             
-        else {
+        else if sender == passwordField {
             passwordError.text?.removeAll()
+        }
+        
+        else {
+            facebookError.text?.removeAll()
         }
     }
     
@@ -159,6 +176,10 @@ class LoginViewController: LocalityBaseViewController, FBSDKLoginButtonDelegate,
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error?) {
         if let error = error {
             print(error.localizedDescription)
+            return
+        }
+        
+        if result.isCancelled == true {
             return
         }
         
