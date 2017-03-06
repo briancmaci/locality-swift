@@ -70,7 +70,7 @@ class AngledButtonPairView: UIView {
                              for: .touchUpInside)
     }
     
-    // MARK - Left/Right Button Actions
+    // MARK: - Left/Right Button Actions
     
     func pairButtonDidTouch(sender:AngledPairButton) {
         

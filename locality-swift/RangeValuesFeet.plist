@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Steps</key>
+	<array>
+		<dict>
+			<key>label</key>
+			<string>500</string>
+			<key>distance</key>
+			<integer>500</integer>
+			<key>unit</key>
+			<string>feet</string>
+		</dict>
+        
+        <dict>
+            <key>label</key>
+            <string>750</string>
+            <key>distance</key>
+            <integer>750</integer>
+            <key>unit</key>
+            <string>feet</string>
+        </dict>
+        
+        <dict>
+            <key>label</key>
+            <string>1000</string>
+            <key>distance</key>
+            <integer>1000</integer>
+            <key>unit</key>
+            <string>feet</string>
+        </dict>
+        
+        <dict>
+            <key>label</key>
+            <string>0.25</string>
+            <key>distance</key>
+            <integer>1320</integer>
+            <key>unit</key>
+            <string>miles</string>
+        </dict>
+        
+        <dict>
+            <key>label</key>
+            <string>0.5</string>
+            <key>distance</key>
+            <integer>2640</integer>
+            <key>unit</key>
+            <string>miles</string>
+        </dict>
+        
+        <dict>
+            <key>label</key>
+            <string>1</string>
+            <key>distance</key>
+            <integer>5280</integer>
+            <key>unit</key>
+            <string>mile</string>
+        </dict>
+        
+        <dict>
+            <key>label</key>
+            <string>2</string>
+            <key>distance</key>
+            <integer>10560</integer>
+            <key>unit</key>
+            <string>miles</string>
+        </dict>
+        
+        <dict>
+            <key>label</key>
+            <string>5</string>
+            <key>distance</key>
+            <integer>26400</integer>
+            <key>unit</key>
+            <string>miles</string>
+        </dict>
+        
+        <dict>
+            <key>label</key>
+            <string>10</string>
+            <key>distance</key>
+            <integer>52800</integer>
+            <key>unit</key>
+            <string>miles</string>
+        </dict>
+        
+        
+	</array>
+</dict>
+</plist>

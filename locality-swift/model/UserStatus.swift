@@ -19,19 +19,19 @@ class UserStatus: NSObject {
         switch type {
         
         case .newUser:
-            return K.String.UserStatus.NewUser
+            return K.String.UserStatus.NewUser.localized
             
         case .contributor:
-            return K.String.UserStatus.Contributor
+            return K.String.UserStatus.Contributor.localized
             
         case .reporter:
-            return K.String.UserStatus.Reporter
+            return K.String.UserStatus.Reporter.localized
             
         case .columnist:
-            return K.String.UserStatus.Columnist
+            return K.String.UserStatus.Columnist.localized
             
         case .trustedSource:
-            return K.String.UserStatus.TrustedSource
+            return K.String.UserStatus.TrustedSource.localized
         
         }
     }
@@ -40,19 +40,19 @@ class UserStatus: NSObject {
         
         switch string {
         
-        case K.String.UserStatus.NewUser:
+        case K.String.UserStatus.NewUser.localized:
             return .newUser
             
-        case K.String.UserStatus.Contributor:
+        case K.String.UserStatus.Contributor.localized:
             return .contributor
             
-        case K.String.UserStatus.Reporter:
+        case K.String.UserStatus.Reporter.localized:
             return .reporter
             
-        case K.String.UserStatus.Columnist:
+        case K.String.UserStatus.Columnist.localized:
             return .columnist
             
-        case K.String.UserStatus.TrustedSource:
+        case K.String.UserStatus.TrustedSource.localized:
             return .trustedSource
             
         default:

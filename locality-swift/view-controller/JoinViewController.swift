@@ -102,13 +102,13 @@ class JoinViewController: LocalityBaseViewController, UITextFieldDelegate {
         
             switch errorCode {
             case .errorCodeInvalidEmail:
-            emailError.text = K.String.Error.EmailInvalid
+            emailError.text = K.String.Error.EmailInvalid.localized
                 
             case .errorCodeEmailAlreadyInUse:
-            emailError.text = K.String.Error.EmailDuplicate
+            emailError.text = K.String.Error.EmailDuplicate.localized
                 
             case .errorCodeWeakPassword:
-                passwordError.text = K.String.Error.PasswordTooWeak
+                passwordError.text = K.String.Error.PasswordTooWeak.localized
                 
             default:break
             }
@@ -122,18 +122,18 @@ class JoinViewController: LocalityBaseViewController, UITextFieldDelegate {
         
         //Test empty email
         if emailField.text == "" {
-            emailError.text = K.String.Error.EmailEmpty
+            emailError.text = K.String.Error.EmailEmpty.localized
             hasErrors = true
         }
         
         //Test for password consistency
         if passwordField.text == "" && confirmField.text == "" {
-            passwordError.text = K.String.Error.PasswordEmpty
+            passwordError.text = K.String.Error.PasswordEmpty.localized
             hasErrors = true
         }
         
         else if passwordField.text != confirmField.text {
-            passwordError.text = K.String.Error.PasswordMismatch
+            passwordError.text = K.String.Error.PasswordMismatch.localized
             hasErrors = true
         }
         
@@ -156,7 +156,7 @@ class JoinViewController: LocalityBaseViewController, UITextFieldDelegate {
         }
     }
     
-    // MARK - UITextFieldDelegate
+    // MARK: - UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         

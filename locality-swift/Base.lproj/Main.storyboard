@@ -174,31 +174,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6T-18-qj9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6T-18-qj9">
                                 <rect key="frame" x="0.0" y="28" width="375" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="OXq-Hc-hXg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="12"/>
+                                <color key="textColor" red="0.15877681969999999" green="0.2493949234" blue="0.31995546819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFa-kL-dtJ">
+                                <rect key="frame" x="0.0" y="44" width="375" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="j0G-Fn-kH1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="16"/>
                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e4H-wo-6Dj" customClass="MGLMapView">
-                                <rect key="frame" x="0.0" y="62" width="375" height="284"/>
+                                <rect key="frame" x="0.0" y="80" width="375" height="284"/>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="e4H-wo-6Dj" secondAttribute="height" multiplier="375:284" id="gaG-Xl-vZo"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="28z-ix-glH" userLabel="PinTop">
-                                <rect key="frame" x="0.0" y="61" width="375" height="1"/>
+                                <rect key="frame" x="0.0" y="79" width="375" height="1"/>
                                 <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="znJ-Ft-GhY"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8gD-tD-3ZL" userLabel="PinBottom">
-                                <rect key="frame" x="0.0" y="346" width="375" height="1"/>
+                                <rect key="frame" x="0.0" y="364" width="375" height="1"/>
                                 <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="uQP-eB-kM7"/>
@@ -210,11 +219,14 @@
                             <constraint firstItem="p6T-18-qj9" firstAttribute="top" secondItem="OIl-OL-ARc" secondAttribute="bottom" constant="8" id="2NS-1H-5Iu"/>
                             <constraint firstItem="p6T-18-qj9" firstAttribute="leading" secondItem="fA4-ez-JSM" secondAttribute="leading" id="4Wd-c0-6ge"/>
                             <constraint firstAttribute="trailing" secondItem="28z-ix-glH" secondAttribute="trailing" id="7B9-Fd-sLU"/>
+                            <constraint firstItem="aFa-kL-dtJ" firstAttribute="top" secondItem="OIl-OL-ARc" secondAttribute="bottom" constant="24" id="Jz6-hF-Nbz"/>
                             <constraint firstItem="e4H-wo-6Dj" firstAttribute="leading" secondItem="fA4-ez-JSM" secondAttribute="leading" id="M64-DA-c0G"/>
                             <constraint firstItem="8gD-tD-3ZL" firstAttribute="leading" secondItem="fA4-ez-JSM" secondAttribute="leading" id="PKk-9x-K9q"/>
+                            <constraint firstItem="aFa-kL-dtJ" firstAttribute="leading" secondItem="fA4-ez-JSM" secondAttribute="leading" id="T0f-LY-y0Z"/>
                             <constraint firstAttribute="trailing" secondItem="e4H-wo-6Dj" secondAttribute="trailing" id="bVH-qj-n50"/>
+                            <constraint firstAttribute="trailing" secondItem="aFa-kL-dtJ" secondAttribute="trailing" id="f8X-1n-jUb"/>
                             <constraint firstItem="e4H-wo-6Dj" firstAttribute="top" secondItem="28z-ix-glH" secondAttribute="bottom" id="fC5-1U-ra4"/>
-                            <constraint firstItem="e4H-wo-6Dj" firstAttribute="top" secondItem="fA4-ez-JSM" secondAttribute="top" constant="62" id="fMs-pJ-9nO"/>
+                            <constraint firstItem="e4H-wo-6Dj" firstAttribute="top" secondItem="fA4-ez-JSM" secondAttribute="top" constant="80" id="fMs-pJ-9nO"/>
                             <constraint firstAttribute="trailing" secondItem="8gD-tD-3ZL" secondAttribute="trailing" id="huB-Zl-AF5"/>
                             <constraint firstItem="28z-ix-glH" firstAttribute="leading" secondItem="fA4-ez-JSM" secondAttribute="leading" id="pxu-Rg-8IL"/>
                             <constraint firstAttribute="trailing" secondItem="p6T-18-qj9" secondAttribute="trailing" id="sIX-ix-us5"/>
@@ -222,7 +234,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="locationLabel" destination="p6T-18-qj9" id="Ea5-xi-zqf"/>
+                        <outlet property="locationHeaderLabel" destination="p6T-18-qj9" id="YQx-zD-8Yg"/>
+                        <outlet property="locationLabel" destination="aFa-kL-dtJ" id="WCo-XT-23K"/>
                         <outlet property="map" destination="e4H-wo-6Dj" id="6t8-yr-Mi5"/>
                     </connections>
                 </viewController>

@@ -9,6 +9,6 @@
 #ifndef Locality_Bridging_Header_h
 #define Locality_Bridging_Header_h
 
-//#import<Firebase/Firebase.h>
+#import "AFNetworking/AFNetworking.h"
 
 #endif /* Locality_Bridging_Header_h */

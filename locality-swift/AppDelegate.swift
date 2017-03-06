@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FabricManager.initFabric()
         FacebookManager.initFacebookWith(app: application, options: launchOptions)
         FirebaseManager.initFirebase()
+        MapboxManager.initMapbox()
         return true
     }
 

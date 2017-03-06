@@ -99,17 +99,17 @@ class LoginViewController: LocalityBaseViewController, FBSDKLoginButtonDelegate,
             
             switch errorCode {
             case .errorCodeInvalidEmail:
-                emailError.text = K.String.Error.EmailInvalid
+                emailError.text = K.String.Error.EmailInvalid.localized
                 
             case .errorCodeUserDisabled:
-                emailError.text = K.String.Error.UserDisabled
+                emailError.text = K.String.Error.UserDisabled.localized
                 
             case .errorCodeWrongPassword:
-                passwordError.text = K.String.Error.PasswordWrong
+                passwordError.text = K.String.Error.PasswordWrong.localized
                 
             case .errorCodeEmailAlreadyInUse:
-                emailError.text = forEmail == true ? K.String.Error.EmailInUseEmail :
-                                                     K.String.Error.EmailInUseFacebook
+                emailError.text = forEmail == true ? K.String.Error.EmailInUseEmail.localized :
+                                                     K.String.Error.EmailInUseFacebook.localized
                 
             default:break
             }
@@ -140,7 +140,7 @@ class LoginViewController: LocalityBaseViewController, FBSDKLoginButtonDelegate,
         }
     }
     
-    // MARK - UITextFieldDelegate
+    // MARK: - UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
@@ -155,7 +155,7 @@ class LoginViewController: LocalityBaseViewController, FBSDKLoginButtonDelegate,
         return true
     }
     
-    // MARK - FBSDKLoginButtonDelegate Methods
+    // MARK: - FBSDKLoginButtonDelegate Methods
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error?) {
         if let error = error {
             print(error.localizedDescription)

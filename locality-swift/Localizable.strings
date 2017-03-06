@@ -1,0 +1,44 @@
+/* 
+  Localizable.strings
+  locality-swift
+
+  Created by Brian Maci on 3/5/17.
+  Copyright © 2017 Brian Maci. All rights reserved.
+*/
+
+//All app text for future localization support.
+
+//Landing
+explore-button-label = "EXPLORE LOCALITY";
+join-button-label = "JOIN LOCALITY";
+login-button-label = "LOGIN";
+
+//Join
+
+
+//Current Location
+current-map-header = "YOU ARE CURRENTLY IN";
+
+//UserStatus
+new-user = "User";
+contributor = "Contributor";
+reporter = "Reporter";
+columnist = "Columnist";
+trusted-source = "Trusted Source";
+
+//Errors
+email-duplicate = "This email is already registered.";
+in-use-email = "This email is already in use. Try authenticating via Facebook.";
+in-use-facebook = "This email is already in use. Try authenticating via email.";
+email-invalid = "This email is invalid.";
+email-empty = "You must enter an email.";
+password-mismatch = "These passwords do not match.";
+password-empty = "You must enter a password.";
+password-too-short = "Your password must be six characters long.";
+password-too-weak = "Your password is too weak.";
+password-wrong = "You have entered an incorrect password.";
+user-disabled = "I'm sorry, your account is disabled.";
+username-taken = "This username is already taken.";
+
+//Copyright
+copyright-version-format = "©%d Locality v%@.%@. All rights reserved.";

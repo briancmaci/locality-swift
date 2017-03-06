@@ -13,12 +13,12 @@ struct K {
     
     //API Keys
     struct APIKey {
-        
+        static let Mapbox = "MapboxAPIKey"
     }
     
     //Back End URLs
     struct BackEndURL {
-        
+        static let ReverseGeocodeFormat = "https://api.mapbox.com/geocoding/v5/mapbox.places/%.8f,%.8f.json?types=place&access_token=%@"
     }
     
     //Back End Params
@@ -36,20 +36,8 @@ struct K {
         static let landingButtonGray = UIColor(red: 153/255, green: 153/255, blue: 153/255, alpha: 1)
         static let localityBlue = UIColor(red: 41/255, green: 64/255, blue: 82/255, alpha: 1)
         static let localityLightBlue = UIColor(red: 199/255, green: 221/255, blue: 237/255, alpha: 1)
+        static let localityMapAccent = UIColor(red: 1, green: 125/255, blue: 108/255, alpha: 1)
         
-    }
-    
-    //All app titles
-    struct Title {
-        struct Button {
-            static let LandingExplore = "EXPLORE LOCALITY"
-            static let LandingJoin = "JOIN LOCALITY"
-            static let LandingLogin = "LOGIN"
-        }
-        
-        struct ViewController {
-            
-        }
     }
     
     struct FontName {
@@ -58,7 +46,7 @@ struct K {
     
     //Icons
     struct Icon {
-        //static let HeaderBarLogo = "HeaderBarLogo"
+        //static let MarkerRange = "MarkerRange"
     }
     
     struct Image {
@@ -85,6 +73,12 @@ struct K {
         }
     }
     
+    struct PList {
+        static let Keys = "Keys"
+        static let Main = "Main"
+        static let RangeValuesFeet = "RangeValuesFeet"
+    }
+    
     //NIB Names
     struct NIBName {
         //static let BottomNavigation = "BottomNavigation"
@@ -98,30 +92,46 @@ struct K {
     
     //Strings
     struct String {
-        static let CopyrightVersion = "©%d Locality v%@.%@. All rights reserved."
+        static let CopyrightVersionFormat = "copyright-version-format"
+        
+        struct Title {
+            struct ViewController {
+                
+            }
+        }
+        
+        //Buttons
+        struct Button {
+            static let LandingExplore = "explore-button-label"
+            static let LandingJoin = "join-button-label"
+            static let LandingLogin = "login-button-label"
+        }
         
         //UserStatus
         struct UserStatus {
-            static let NewUser = "User"
-            static let Contributor = "Contributor"
-            static let Reporter = "Reporter"
-            static let Columnist = "Columnist";
-            static let TrustedSource = "Trusted Source"
+            static let NewUser = "new-user"
+            static let Contributor = "contributor"
+            static let Reporter = "reporter"
+            static let Columnist = "columnist"
+            static let TrustedSource = "trusted-source"
         }
         
+        struct Mapbox {
+            static let CurrentLocationHeader = "current-map-header"
+        }
         struct Error {
-            static let EmailDuplicate = "This email is already registered."
-            static let EmailInUseEmail = "This email is already in use. Try authenticating via Facebook."
-            static let EmailInUseFacebook = "This email is already in use. Try authenticating via email."
-            static let EmailInvalid = "This email is invalid."
-            static let EmailEmpty = "You must enter an email."
-            static let PasswordMismatch = "These passwords do not match."
-            static let PasswordEmpty = "You must enter a password."
-            static let PasswordTooShort = "Your password must be six characters long."
-            static let PasswordTooWeak = "Your password is too weak."
-            static let PasswordWrong = "You have entered an incorrect password."
-            static let UserDisabled = "I'm sorry, your account is disabled."
-            static let UsernameTaken = "This username is already taken."
+            static let EmailDuplicate = "email-duplicate"
+            static let EmailInUseEmail = "in-use-email"
+            static let EmailInUseFacebook = "in-use-facebook"
+            static let EmailInvalid = "email-invalid"
+            static let EmailEmpty = "email-empty"
+            static let PasswordMismatch = "password-mismatch"
+            static let PasswordEmpty = "password-empty"
+            static let PasswordTooShort = "password-too-short"
+            static let PasswordTooWeak = "password-too-weak"
+            static let PasswordWrong = "password-wrong"
+            static let UserDisabled = "user-disabled"
+            static let UsernameTaken = "username-taken"
         }
     }
     
@@ -132,5 +142,27 @@ struct K {
         //Buttons
         static let RoundedButtonCornerRadius : CGFloat = 5
         static let RoundedButtonAngleWidth : CGFloat = 14
+        
+        struct Map {
+            static let EarthRadius = 6371000.0
+            static let DefaultRange = 500.0
+        }
+    }
+    
+    //Mapbox Constants
+    struct Mapbox {
+        static let MapStyle = "mapbox://styles/briancmaci/cizuyqi10001a2so2gpt7i09b"
+        
+        struct Marker {
+            
+            struct Image {
+                static let Range = "MarkerRange"
+            }
+            
+            struct `Type` {
+                static let Range = "Range"
+                
+            }
+        }
     }
 }

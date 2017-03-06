@@ -88,7 +88,7 @@ class JoinUsernameViewController: LocalityBaseViewController, UITextFieldDelegat
             
             else {
                 //username match
-                self.usernameError.text = K.String.Error.UsernameTaken
+                self.usernameError.text = K.String.Error.UsernameTaken.localized
             }
         })
     }
@@ -97,7 +97,7 @@ class JoinUsernameViewController: LocalityBaseViewController, UITextFieldDelegat
         usernameError.text?.removeAll()
     }
     
-    // MARK - UITextFieldDelegate Methods
+    // MARK: - UITextFieldDelegate Methods
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

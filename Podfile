@@ -3,7 +3,7 @@
 use_frameworks!
 platform :ios, '9.0'
 
-#pod 'AFNetworking', '~> 3.1'
+pod 'AFNetworking', '~> 3.1'
 pod 'SDWebImage', '~> 4.0'
 #pod 'Koloda', '~> 4.0'
 #pod 'SWTableViewCell', '~> 0.3'
@@ -20,7 +20,7 @@ pod 'FirebaseAuth'
 pod 'Firebase/Database'
 
 #GoogleMaps
-#pod 'GoogleMaps', '~> 2.2'
+pod 'GoogleMaps', '~> 2.2'
 
 #Auth Pods
 pod 'FBSDKLoginKit'

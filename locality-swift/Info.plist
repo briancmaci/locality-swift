@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>Locality</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -70,6 +72,8 @@
 	<false/>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Your location will be shown on the map and your map usage will anonymously improve the map.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>YES</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>

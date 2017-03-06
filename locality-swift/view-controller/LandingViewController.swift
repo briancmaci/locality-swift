@@ -49,19 +49,21 @@ class LandingViewController: LocalityBaseViewController, AngledButtonPairDelegat
     func initButtons() {
         
         //AppUtilities.printFonts()
-        
-        exploreButton.setAttributes(title:K.Title.Button.LandingExplore,
+        exploreButton.setAttributes(title:K.String.Button.LandingExplore.localized,
                                     titleColor:K.Color.landingButtonGray,
                                     backgroundColor:.white)
+        
         exploreButton.addTarget(self, action: #selector(exploreButtonDidTouch), for: .touchUpInside)
         
-        let leftAttributes:AngledButtonAttributes = AngledButtonAttributes(title:K.Title.Button.LandingJoin,
-                                                                           titleColor:.white,
-                                                                           backgroundColor:K.Color.localityBlue)
+        let leftAttributes:AngledButtonAttributes =
+            AngledButtonAttributes(title:K.String.Button.LandingJoin.localized,
+                                   titleColor:.white,
+                                   backgroundColor:K.Color.localityBlue)
         
-        let rightAttributes:AngledButtonAttributes = AngledButtonAttributes(title:K.Title.Button.LandingLogin,
-                                                                            titleColor:K.Color.localityBlue,
-                                                                            backgroundColor:K.Color.localityLightBlue)
+        let rightAttributes:AngledButtonAttributes =
+            AngledButtonAttributes(title:K.String.Button.LandingLogin.localized,
+                                   titleColor:K.Color.localityBlue,
+                                   backgroundColor:K.Color.localityLightBlue)
         
         joinLoginButtonPairView.setAttributesAndBuild(left: leftAttributes, right: rightAttributes)
         joinLoginButtonPairView.delegate = self
@@ -85,18 +87,18 @@ class LandingViewController: LocalityBaseViewController, AngledButtonPairDelegat
     func animateButtonsIn() {
     
         exploreBottom.constant = exploreY1
-        UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseOut], animations: {
-            self.view.layoutIfNeeded()
-        }) { (finished) in
-            print("Explore button in")
-        }
+        UIView.animate(withDuration: 0.3,
+                       delay: 0,
+                       options: [.curveEaseOut],
+                       animations: { self.view.layoutIfNeeded() },
+                       completion:nil)
         
         joinLoginBottom.constant = joinLoginY1
-        UIView.animate(withDuration: 0.55, delay: 0.1, options: [.curveEaseOut], animations: {
-            self.view.layoutIfNeeded()
-        }) { (finished) in
-            print("Join/Login buttons in")
-        }
+        UIView.animate(withDuration: 0.55,
+                       delay: 0.1,
+                       options: [.curveEaseOut],
+                       animations: { self.view.layoutIfNeeded() },
+                       completion:nil)
     }
     
     //CTAs
@@ -104,7 +106,7 @@ class LandingViewController: LocalityBaseViewController, AngledButtonPairDelegat
         print("Explore button touched")
     }
     
-    //MARK - AngledButtonPairDelegate
+    //MARK: - AngledButtonPairDelegate
     func leftButtonDidTouch() {
         let newVC : JoinViewController = AppUtilities.getViewControllerFromStoryboard(id: K.Storyboard.ID.Join) as! JoinViewController
         

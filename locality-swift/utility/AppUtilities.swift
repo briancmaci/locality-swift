@@ -24,4 +24,26 @@ class AppUtilities: NSObject {
         let storyboard = UIStoryboard(name: K.Storyboard.Name.Main, bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: id) as! LocalityBaseViewController
     }
+    
+    class func getPListDictionary(name:String) -> [String: AnyObject] {
+        
+        if let path = Bundle.main.path(forResource: name, ofType: "plist"),
+            let dict = NSDictionary(contentsOfFile: path) as? [String: AnyObject] {
+            
+            return dict
+        }
+            
+        else {
+            
+            return [:]
+        }
+    }
+    
+    class func metersToFeet(meters:CGFloat) -> CGFloat {
+        return meters * 3.28084
+    }
+    
+    class func feetToMeters(feet:CGFloat) -> CGFloat {
+        return feet * 0.3408
+    }
 }
