@@ -39,6 +39,30 @@ class AppUtilities: NSObject {
         }
     }
     
+    //Location Slider Utility
+    class func makeAttributedRangeString(value:String, unit:String) -> NSMutableAttributedString {
+        
+        let rawString = NSString(format: "%@%@", value, unit)
+        let attrString:NSMutableAttributedString = NSMutableAttributedString(string: rawString as String)
+        
+        let font = UIFont(name: K.FontName.InterstateLightCondensed, size: 19)
+        let smallFont = UIFont(name: K.FontName.InterstateLightCondensed, size: 13)
+        
+        attrString.beginEditing()
+        attrString.addAttribute(NSFontAttributeName,
+                                value: font!,
+                                range: NSMakeRange(0, value.characters.count))
+        attrString.addAttribute(NSFontAttributeName,
+                                value: smallFont!,
+                                range: NSMakeRange(value.characters.count, unit.characters.count))
+        attrString.addAttribute(NSBaselineOffsetAttributeName,
+                                value: 4,
+                                range: NSMakeRange(value.characters.count, unit.characters.count))
+        attrString.endEditing()
+        
+        return attrString
+    }
+    
     class func metersToFeet(meters:CGFloat) -> CGFloat {
         return meters * 3.28084
     }

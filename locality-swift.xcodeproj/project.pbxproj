@@ -47,6 +47,8 @@
 		72DC48801E6C9BCE00486535 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 72DC487F1E6C9BCE00486535 /* Localizable.strings */; };
 		72DC48841E6CC8BC00486535 /* RangeValuesFeet.plist in Resources */ = {isa = PBXBuildFile; fileRef = 72DC48831E6CC8BC00486535 /* RangeValuesFeet.plist */; };
 		72DC48861E6CD0B500486535 /* RangeStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DC48851E6CD0B500486535 /* RangeStep.swift */; };
+		72DC48891E6DA0F000486535 /* LocationSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DC48881E6DA0F000486535 /* LocationSlider.swift */; };
+		72DC488B1E6DA11000486535 /* LocationSlider.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC488A1E6DA11000486535 /* LocationSlider.xib */; };
 		A4BE9DA43AD7D9F572693B60 /* Pods_locality_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB91C8D02C0D325EDFD2826E /* Pods_locality_swift.framework */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +117,8 @@
 		72DC487F1E6C9BCE00486535 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		72DC48831E6CC8BC00486535 /* RangeValuesFeet.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RangeValuesFeet.plist; sourceTree = "<group>"; };
 		72DC48851E6CD0B500486535 /* RangeStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RangeStep.swift; path = model/RangeStep.swift; sourceTree = "<group>"; };
+		72DC48881E6DA0F000486535 /* LocationSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationSlider.swift; path = "custom-ui/LocationSlider.swift"; sourceTree = "<group>"; };
+		72DC488A1E6DA11000486535 /* LocationSlider.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LocationSlider.xib; path = "custom-ui/LocationSlider.xib"; sourceTree = "<group>"; };
 		84886BD7BF3AE7DEF44AC1B8 /* Pods-locality-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-locality-swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-locality-swift/Pods-locality-swift.release.xcconfig"; sourceTree = "<group>"; };
 		B0C073B846F1D9C61B783347 /* Pods-locality-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-locality-swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-locality-swift/Pods-locality-swift.debug.xcconfig"; sourceTree = "<group>"; };
 		DB91C8D02C0D325EDFD2826E /* Pods_locality_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_locality_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -270,6 +274,7 @@
 		72B881ED1E67788B00EB3B2E /* custom-ui */ = {
 			isa = PBXGroup;
 			children = (
+				72DC48871E6D9C0200486535 /* location-slider */,
 				72DC48761E6B4A5200486535 /* mapbox */,
 				72B881EE1E67797100EB3B2E /* RoundedRectangleButton.swift */,
 				72B881F31E678D2900EB3B2E /* AngledButtonPairView.swift */,
@@ -351,6 +356,15 @@
 				72DC48771E6B4A7D00486535 /* CustomPointAnnotation.swift */,
 			);
 			name = mapbox;
+			sourceTree = "<group>";
+		};
+		72DC48871E6D9C0200486535 /* location-slider */ = {
+			isa = PBXGroup;
+			children = (
+				72DC48881E6DA0F000486535 /* LocationSlider.swift */,
+				72DC488A1E6DA11000486535 /* LocationSlider.xib */,
+			);
+			name = "location-slider";
 			sourceTree = "<group>";
 		};
 		A140867697BC340ACB5B7282 /* Pods */ = {
@@ -485,6 +499,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				72DC48841E6CC8BC00486535 /* RangeValuesFeet.plist in Resources */,
+				72DC488B1E6DA11000486535 /* LocationSlider.xib in Resources */,
 				72B8821E1E6AA54800EB3B2E /* Keys.plist in Resources */,
 				72B881AE1E65EE5000EB3B2E /* LaunchScreen.storyboard in Resources */,
 				72B881E01E66AFEF00EB3B2E /* GoogleService-Info.plist in Resources */,
@@ -587,6 +602,7 @@
 				72B881E21E66B02F00EB3B2E /* FirebaseManager.swift in Sources */,
 				72B882051E67E81900EB3B2E /* BundleExtension.swift in Sources */,
 				72B8821C1E6AA4C200EB3B2E /* MapboxManager.swift in Sources */,
+				72DC48891E6DA0F000486535 /* LocationSlider.swift in Sources */,
 				72B882141E693C0500EB3B2E /* JoinValidateViewController.swift in Sources */,
 				72B882061E67E81900EB3B2E /* UIViewExtension.swift in Sources */,
 				72B881EC1E676D8A00EB3B2E /* LandingViewController.swift in Sources */,

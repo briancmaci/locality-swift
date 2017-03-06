@@ -9,16 +9,20 @@
 import UIKit
 import Mapbox
 
-class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapViewDelegate, CLLocationManagerDelegate {
+class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapViewDelegate, CLLocationManagerDelegate, LocationSliderDelegate {
 
     @IBOutlet weak var map : MGLMapView!
     @IBOutlet weak var locationHeaderLabel : UILabel!
     @IBOutlet weak var locationLabel : UILabel!
     
+    @IBOutlet weak var sliderContainer : UIView!
+    
+    var slider:LocationSlider!
+    
     var locationManager:CLLocationManager!
     var currentLocation:CLLocationCoordinate2D!
     
-    var currentRadiusIndex:Int!
+    var currentRangeIndex:Int!
     var sliderSteps:[RangeStep]!
     
     override func viewDidLoad() {
@@ -46,10 +50,17 @@ class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapVie
                                            label:stepsArray[i]["label"] as! String,
                                            unit:stepsArray[i]["unit"] as! String)
             
-            print("STEP MADE! \(step.distance, step.label, step.unit)")
-            
             sliderSteps.append(step)
         }
+        
+        //add slider to view
+        slider = UIView.instanceFromNib(name: K.NIBName.LocationSlider) as! LocationSlider
+        slider.initSliderWith(range: sliderSteps)
+        slider.delegate = self
+        sliderContainer.addSubview(slider)
+        
+        //set currentIndex to default of slider
+        currentRangeIndex = slider.currentStep
     }
     
     func initMap() {
@@ -74,19 +85,27 @@ class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapVie
         map.delegate = self
     }
     
-    func initMapRange() {
+    func updateMapRange() {
+        
+        //remove all annotations first
+        if let annotations = map.annotations {
+            for ann in annotations {
+                    map.removeAnnotation(ann)
+            }
+        }
         
         map.centerCoordinate = currentLocation
+        let currentRadius:Double = Double(sliderSteps[currentRangeIndex].distance/2)
         
-        let rangePointSW:CLLocationCoordinate2D = MapboxManager.metersToDegrees(coord: map.centerCoordinate, metersLat: -500, metersLong: -500)
+        let rangePointSW:CLLocationCoordinate2D = MapboxManager.metersToDegrees(coord: map.centerCoordinate, metersLat: -currentRadius, metersLong: -currentRadius)
         
-        let rangePointNE:CLLocationCoordinate2D = MapboxManager.metersToDegrees(coord: map.centerCoordinate, metersLat: 500, metersLong: 500)
+        let rangePointNE:CLLocationCoordinate2D = MapboxManager.metersToDegrees(coord: map.centerCoordinate, metersLat: currentRadius, metersLong: currentRadius)
         
         let bounds = MGLCoordinateBoundsMake(rangePointSW, rangePointNE)
-        map.setVisibleCoordinateBounds(bounds, edgePadding: UIEdgeInsets.zero, animated: false)
+        map.setVisibleCoordinateBounds(bounds, edgePadding: UIEdgeInsets.init(top: 20, left: 20, bottom: 20, right: 20), animated: false)
         
         let rangeCircle = MapboxManager.polygonCircleForCoordinate(coordinate: map.centerCoordinate,
-                                                                   meterRadius: 500.0)
+                                                                   meterRadius: currentRadius)
         map.add(rangeCircle)
         
         let rangeMarker = CustomPointAnnotation()
@@ -104,7 +123,7 @@ class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapVie
         
         DispatchQueue.once {
             updateMapLocation()
-            initMapRange()
+            updateMapRange()
         }
         
     }
@@ -164,6 +183,12 @@ class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapVie
         default:
             return MGLAnnotationImage(image: UIImage(), reuseIdentifier: "")
         }
+    }
+    
+    //MARK: - LocationSliderDelegate
+    func sliderValueChanged(step: Int) {
+        currentRangeIndex = step
+        updateMapRange()
     }
 
     /*

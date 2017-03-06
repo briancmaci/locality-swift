@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Interstate-LightCondensed.ttf">
+        <array key="Interstate-LightCondensed.otf">
             <string>Interstate-LightCondensed</string>
         </array>
     </customFonts>
@@ -213,6 +213,13 @@
                                     <constraint firstAttribute="height" constant="1" id="uQP-eB-kM7"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K72-iw-aNh">
+                                <rect key="frame" x="0.0" y="365" width="375" height="84"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="BwO-dv-FBR"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -220,6 +227,7 @@
                             <constraint firstItem="p6T-18-qj9" firstAttribute="leading" secondItem="fA4-ez-JSM" secondAttribute="leading" id="4Wd-c0-6ge"/>
                             <constraint firstAttribute="trailing" secondItem="28z-ix-glH" secondAttribute="trailing" id="7B9-Fd-sLU"/>
                             <constraint firstItem="aFa-kL-dtJ" firstAttribute="top" secondItem="OIl-OL-ARc" secondAttribute="bottom" constant="24" id="Jz6-hF-Nbz"/>
+                            <constraint firstItem="K72-iw-aNh" firstAttribute="leading" secondItem="fA4-ez-JSM" secondAttribute="leading" id="LQU-Oi-EDb"/>
                             <constraint firstItem="e4H-wo-6Dj" firstAttribute="leading" secondItem="fA4-ez-JSM" secondAttribute="leading" id="M64-DA-c0G"/>
                             <constraint firstItem="8gD-tD-3ZL" firstAttribute="leading" secondItem="fA4-ez-JSM" secondAttribute="leading" id="PKk-9x-K9q"/>
                             <constraint firstItem="aFa-kL-dtJ" firstAttribute="leading" secondItem="fA4-ez-JSM" secondAttribute="leading" id="T0f-LY-y0Z"/>
@@ -228,7 +236,9 @@
                             <constraint firstItem="e4H-wo-6Dj" firstAttribute="top" secondItem="28z-ix-glH" secondAttribute="bottom" id="fC5-1U-ra4"/>
                             <constraint firstItem="e4H-wo-6Dj" firstAttribute="top" secondItem="fA4-ez-JSM" secondAttribute="top" constant="80" id="fMs-pJ-9nO"/>
                             <constraint firstAttribute="trailing" secondItem="8gD-tD-3ZL" secondAttribute="trailing" id="huB-Zl-AF5"/>
+                            <constraint firstItem="K72-iw-aNh" firstAttribute="top" secondItem="8gD-tD-3ZL" secondAttribute="bottom" id="kjS-CJ-yJb"/>
                             <constraint firstItem="28z-ix-glH" firstAttribute="leading" secondItem="fA4-ez-JSM" secondAttribute="leading" id="pxu-Rg-8IL"/>
+                            <constraint firstAttribute="trailing" secondItem="K72-iw-aNh" secondAttribute="trailing" id="qd6-bS-QiL"/>
                             <constraint firstAttribute="trailing" secondItem="p6T-18-qj9" secondAttribute="trailing" id="sIX-ix-us5"/>
                             <constraint firstItem="8gD-tD-3ZL" firstAttribute="top" secondItem="e4H-wo-6Dj" secondAttribute="bottom" id="w08-JD-ae0"/>
                         </constraints>
@@ -237,6 +247,7 @@
                         <outlet property="locationHeaderLabel" destination="p6T-18-qj9" id="YQx-zD-8Yg"/>
                         <outlet property="locationLabel" destination="aFa-kL-dtJ" id="WCo-XT-23K"/>
                         <outlet property="map" destination="e4H-wo-6Dj" id="6t8-yr-Mi5"/>
+                        <outlet property="sliderContainer" destination="K72-iw-aNh" id="NAy-GF-JP7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FhF-RC-xrg" userLabel="First Responder" sceneMemberID="firstResponder"/>

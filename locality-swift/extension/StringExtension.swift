@@ -20,4 +20,5 @@ extension String {
         let result = emailTest.evaluate(with: self)
         return result
     }
+    
 }

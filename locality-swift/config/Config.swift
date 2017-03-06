@@ -51,6 +51,11 @@ struct K {
     
     struct Image {
         static let DefaultAvatarProfile = "DefaultAvatarProfile"
+        
+        //Location Range Slider
+        static let SliderBackground = "SliderBackground"
+        static let SliderTickMark = "SliderTickMark"
+        static let SliderKnob = "SliderKnob"
     }
     
     //Storyboard IDs
@@ -81,8 +86,7 @@ struct K {
     
     //NIB Names
     struct NIBName {
-        //static let BottomNavigation = "BottomNavigation"
-        
+        static let LocationSlider = "LocationSlider"
     }
     
     //UITableViewCell reuseIdentifiers
