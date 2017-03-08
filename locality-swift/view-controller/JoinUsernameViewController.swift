@@ -55,7 +55,7 @@ class JoinUsernameViewController: LocalityBaseViewController, UITextFieldDelegat
             } else {
                 let usersArray = snapshot.value as! [String:AnyObject]
                 for user in usersArray {
-                    let thisUsername = user.value["username"] as? String
+                    let thisUsername = user.value[K.DB.Var.Username] as? String
                     
                     if thisUsername?.lowercased() == self.usernameField.text!.lowercased() {
                         usernameIsUnique = false

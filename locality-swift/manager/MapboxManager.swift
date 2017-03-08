@@ -11,8 +11,6 @@ import Mapbox
 
 class MapboxManager: NSObject {
     
-    
-    
     class func initMapbox() {
         let accessToken = Util.getPList(name:K.PList.Keys)[K.APIKey.Mapbox] as! String
         MGLAccountManager.setAccessToken(accessToken)

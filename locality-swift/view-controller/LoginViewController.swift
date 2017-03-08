@@ -163,7 +163,7 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
                     
                     else {
                         
-                        FirebaseManager.getCurrentUserRef().child("username").observeSingleEvent(of: .value, with: { (snapshot) in
+                        FirebaseManager.getCurrentUserRef().child(K.DB.Var.Username).observeSingleEvent(of: .value, with: { (snapshot) in
                             
                             //let thisUsername = snapshot.value as! String
                             if !snapshot.exists() {

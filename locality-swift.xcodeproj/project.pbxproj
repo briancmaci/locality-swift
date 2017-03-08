@@ -49,6 +49,7 @@
 		72DC48891E6DA0F000486535 /* LocationSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DC48881E6DA0F000486535 /* LocationSlider.swift */; };
 		72DC488B1E6DA11000486535 /* LocationSlider.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC488A1E6DA11000486535 /* LocationSlider.xib */; };
 		72F24BA11E704FEC00CA7702 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BA01E704FEC00CA7702 /* Util.swift */; };
+		72F24BA31E706AD700CA7702 /* FeedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BA21E706AD700CA7702 /* FeedLocation.swift */; };
 		A4BE9DA43AD7D9F572693B60 /* Pods_locality_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB91C8D02C0D325EDFD2826E /* Pods_locality_swift.framework */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +120,7 @@
 		72DC48881E6DA0F000486535 /* LocationSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationSlider.swift; path = "custom-ui/LocationSlider.swift"; sourceTree = "<group>"; };
 		72DC488A1E6DA11000486535 /* LocationSlider.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LocationSlider.xib; path = "custom-ui/LocationSlider.xib"; sourceTree = "<group>"; };
 		72F24BA01E704FEC00CA7702 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = utility/Util.swift; sourceTree = "<group>"; };
+		72F24BA21E706AD700CA7702 /* FeedLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedLocation.swift; path = model/FeedLocation.swift; sourceTree = "<group>"; };
 		84886BD7BF3AE7DEF44AC1B8 /* Pods-locality-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-locality-swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-locality-swift/Pods-locality-swift.release.xcconfig"; sourceTree = "<group>"; };
 		B0C073B846F1D9C61B783347 /* Pods-locality-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-locality-swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-locality-swift/Pods-locality-swift.debug.xcconfig"; sourceTree = "<group>"; };
 		DB91C8D02C0D325EDFD2826E /* Pods_locality_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_locality_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -296,6 +298,7 @@
 			children = (
 				72B881F61E67919400EB3B2E /* AngledButtonAttributes.swift */,
 				72B882071E688AB300EB3B2E /* CurrentUser.swift */,
+				72F24BA21E706AD700CA7702 /* FeedLocation.swift */,
 				72DC48851E6CD0B500486535 /* RangeStep.swift */,
 				72B882091E6894BE00EB3B2E /* UserStatus.swift */,
 			);
@@ -618,6 +621,7 @@
 				72DC487C1E6BCA7700486535 /* DIspatchQueueExtension.swift in Sources */,
 				72B881F41E678D2900EB3B2E /* AngledButtonPairView.swift in Sources */,
 				72B8820C1E68B8D100EB3B2E /* JoinViewController.swift in Sources */,
+				72F24BA31E706AD700CA7702 /* FeedLocation.swift in Sources */,
 				72B881A11E65EE5000EB3B2E /* AppDelegate.swift in Sources */,
 				72DC48861E6CD0B500486535 /* RangeStep.swift in Sources */,
 				72F24BA11E704FEC00CA7702 /* Util.swift in Sources */,

@@ -18,44 +18,13 @@ class FirebaseManager: NSObject {
     class func authenticateFacebook() {
     }
     
-//    class func getErrorString(error:Error) -> String{
-//        if let errorCode = FIRAuthErrorCode(rawValue: (error._code)){
-//            
-//            switch errorCode {
-//            case .errorCodeInvalidEmail:
-//                return K.String.Error.EmailInvalid.localized
-//                
-//            case .errorCodeEmailAlreadyInUse:
-//                return K.String.Error.EmailDuplicate.localized
-//                
-//            case .errorCodeWeakPassword:
-//                return K.String.Error.PasswordTooWeak.localized
-//                
-//            case .errorCodeUserDisabled:
-//                return K.String.Error.UserDisabled.localized
-//                
-//            case .errorCodeWrongPassword:
-//                return K.String.Error.PasswordWrong.localized
-//                
-//            default:
-//                return ""
-//            }
-//        }
-//        
-//        else {
-//            print("FirebaseManager:Error code not retrieved")
-//            return ""
-//        }
-//    }
-    
-    
     class func loadCurrentUserModel() {
         FirebaseManager.getCurrentUserRef().observeSingleEvent(of: .value, with: { (snapshot) in
             
             let userDic = snapshot.value as? NSDictionary
-            CurrentUser.shared.username = userDic?["username"] as! String
-            CurrentUser.shared.isFirstVisit = userDic?["isFirstVisit"] as! Bool
-            CurrentUser.shared.profileImageUrl = userDic?["profileImageUrl"] as! String
+            CurrentUser.shared.username = userDic?[K.DB.Var.Username] as! String
+            CurrentUser.shared.isFirstVisit = userDic?[K.DB.Var.IsFirstVisit] as! Bool
+            CurrentUser.shared.profileImageUrl = userDic?[K.DB.Var.ProfileImageURL] as! String
             
             print("Login:username? \(CurrentUser.shared.username)")
             print("Login:IsFirstTime? \(CurrentUser.shared.isFirstVisit )")
@@ -63,7 +32,7 @@ class FirebaseManager: NSObject {
     }
     
     class func getUsersRef() -> FIRDatabaseReference {
-        return FIRDatabase.database().reference(withPath:"users")
+        return FIRDatabase.database().reference(withPath:K.DB.Table.Users)
     }
     
     class func getCurrentUserRef() -> FIRDatabaseReference {

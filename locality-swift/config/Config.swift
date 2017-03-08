@@ -21,6 +21,36 @@ struct K {
         static let ReverseGeocodeFormat = "https://api.mapbox.com/geocoding/v5/mapbox.places/%.8f,%.8f.json?types=place&access_token=%@"
     }
     
+    struct DB {
+        struct Table {
+            static let Users = "users"
+            static let Posts = "posts"
+        }
+        
+        struct Var {
+            
+            //User
+            static let IsFirstVisit = "isFirstVisit"
+            static let ProfileImageURL = "profileImageUrl"
+            static let Status = "status"
+            static let Username = "username"
+            static let PinnedLocation = "pinnedLocation"
+            static let Locations = "locations"
+            
+            //Location
+            static let Name = "name"
+            static let Location = "location"
+            static let FeedImgURL = "feedImgUrl"
+            static let Lat = "lat"
+            static let Lon = "lon"
+            static let Range = "range"
+            static let IsCurrentLocation = "isCurrentLocation"
+            static let PromitionsEnabled = "promotionsEnabled"
+            static let PushEnabled = "pushEnabled"
+            static let ImportantEnabled = "importantEnabled"
+        }
+    }
+    
     //Back End Params
     struct Param {
         
@@ -51,6 +81,9 @@ struct K {
     
     struct Image {
         static let DefaultAvatarProfile = "DefaultAvatarProfile"
+        
+        //Feed
+        static let DefaultFeedHero = "DefaultFeedHero"
         
         //Location Range Slider
         static let SliderBackground = "SliderBackground"

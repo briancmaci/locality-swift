@@ -21,12 +21,15 @@ class CurrentUser: NSObject {
     var isFirstVisit:Bool = true
     var status:UserStatusType = .newUser
     
+    var currentLocation:FeedLocation!
+    var pinnedLocations:[FeedLocation]!
+    
     func extraAttributesToFirebase() -> [String:Any] {
         
-        return ["isFirstVisit" : isFirstVisit,
-                "status" : status.rawValue,
-                "username" : username,
-                "profileImageUrl" : profileImageUrl]
+        return [K.DB.Var.IsFirstVisit : isFirstVisit,
+                K.DB.Var.Status : status.rawValue,
+                K.DB.Var.Username : username,
+                K.DB.Var.ProfileImageURL : profileImageUrl]
     }
     
 
