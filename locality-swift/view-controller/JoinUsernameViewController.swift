@@ -19,8 +19,6 @@ class JoinUsernameViewController: LocalityBaseViewController, UITextFieldDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        
         initErrorFields()
         initTextFields()
         initButtons()
@@ -28,7 +26,6 @@ class JoinUsernameViewController: LocalityBaseViewController, UITextFieldDelegat
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func initErrorFields() {
@@ -47,43 +44,33 @@ class JoinUsernameViewController: LocalityBaseViewController, UITextFieldDelegat
     
     // CTAs
     func continueDidTouch(sender:UIButton) {
+        
         //check for unique username
-        
-        let usersRef = FIRDatabase.database().reference(withPath:"users")
-        
-        usersRef.observeSingleEvent(of: .value, with: { snapshot in
-            var usernamesMatched = false
+        FirebaseManager.getUsersRef().observeSingleEvent(of: .value, with: { snapshot in
+            var usernameIsUnique = true
             
             if snapshot.value is NSNull {
-                usernamesMatched = false
+                usernameIsUnique = true
 
             } else {
                 let usersArray = snapshot.value as! [String:AnyObject]
                 for user in usersArray {
-                    let thisUsername = user.value["username"] as! String
+                    let thisUsername = user.value["username"] as? String
                     
-                    //case sensitivity
-                    if thisUsername.lowercased() == self.usernameField.text!.lowercased() {
-                        usernamesMatched = true
+                    if thisUsername?.lowercased() == self.usernameField.text!.lowercased() {
+                        usernameIsUnique = false
                         
                     }
                 }
-                
             }
             
-            if usernamesMatched == false {
+            if usernameIsUnique == true {
                 
-                //unique username!
-                FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).setValue(["username": self.usernameField.text])
+                self.onboardCurrentUserModel()
                 
-                FIRAuth.auth()?.currentUser?.sendEmailVerification(completion: { (error) in
-                    if error == nil {
-                        //email verification sent
-                        let newVC:JoinValidateViewController = AppUtilities.getViewControllerFromStoryboard(id: K.Storyboard.ID.JoinValidate) as! JoinValidateViewController
-                        
-                        self.navigationController?.pushViewController(newVC, animated: true)
-                    }
-                })
+                let newVC:JoinValidateViewController = AppUtilities.getViewControllerFromStoryboard(id: K.Storyboard.ID.JoinValidate) as! JoinValidateViewController
+                
+                self.navigationController?.pushViewController(newVC, animated: true)
             }
             
             else {
@@ -91,6 +78,34 @@ class JoinUsernameViewController: LocalityBaseViewController, UITextFieldDelegat
                 self.usernameError.text = K.String.Error.UsernameTaken.localized
             }
         })
+    }
+    
+    func onboardCurrentUserModel() {
+        
+        //let changeRequest = FirebaseManager.getCurrentUser().profileChangeRequest()
+        
+        CurrentUser.shared.email = FirebaseManager.getCurrentUser().email!
+        CurrentUser.shared.uid = FirebaseManager.getCurrentUser().uid
+        CurrentUser.shared.username = self.usernameField.text!
+        
+//        changeRequest.displayName = CurrentUser.shared.displayName
+//        changeRequest.photoURL = URL(string:CurrentUser.shared.profileImageUrl)
+//        changeRequest.commitChanges { error in
+//            if error != nil {
+//                print("Change request failed: \(error?.localizedDescription)")
+//            } else {
+//                print("Profile updated")
+//                print(FirebaseManager.getCurrentUser().displayName)
+//            }
+//        }
+        
+        FirebaseManager.getCurrentUserRef().updateChildValues(CurrentUser.shared.extraAttributesToFirebase()) { (error, ref) in
+            if error != nil {
+                print("Extra Attributes update failed: \(error?.localizedDescription)")
+            } else {
+                print("Extra Attributes updated")
+            }
+        }
     }
     
     func textFieldDidChange(sender:UITextField) {
@@ -106,15 +121,4 @@ class JoinUsernameViewController: LocalityBaseViewController, UITextFieldDelegat
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         return true
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

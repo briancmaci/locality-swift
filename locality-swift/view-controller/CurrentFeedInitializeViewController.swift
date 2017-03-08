@@ -14,6 +14,7 @@ class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapVie
     @IBOutlet weak var map : MGLMapView!
     @IBOutlet weak var locationHeaderLabel : UILabel!
     @IBOutlet weak var locationLabel : UILabel!
+    @IBOutlet weak var setRangeButton : UIButton!
     
     @IBOutlet weak var sliderContainer : UIView!
     
@@ -29,6 +30,7 @@ class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapVie
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        initButtons()
         initRangeSlider()
         initMap()
     }
@@ -36,6 +38,10 @@ class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapVie
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func initButtons() {
+        setRangeButton.addTarget(self, action: #selector(setRangeDidTouch), for: .touchUpInside)
     }
     
     func initRangeSlider() {
@@ -142,6 +148,11 @@ class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapVie
                 print("REVERSE GEOCODE ERROR: \(error?.localizedDescription)")
             }
         }
+    }
+    
+    //CTA
+    func setRangeDidTouch(sender:UIButton) {
+        print("Current range? \(sliderSteps[currentRangeIndex].distance)")
     }
     
     // MARK: - MGLMapViewDelegate

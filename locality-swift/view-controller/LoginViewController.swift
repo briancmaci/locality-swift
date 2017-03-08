@@ -12,31 +12,25 @@ import FBSDKLoginKit
 import Firebase
 import FirebaseAuth
 
-class LoginViewController: LocalityBaseViewController, FBSDKLoginButtonDelegate, UITextFieldDelegate {
+class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegate, */UITextFieldDelegate {
     
     @IBOutlet weak var emailField:UITextField!
     @IBOutlet weak var passwordField:UITextField!
     
     @IBOutlet weak var loginEmailButton:UIButton!
+    @IBOutlet weak var loginFacebookButton:UIButton!
     
     @IBOutlet weak var emailError:UILabel!
     @IBOutlet weak var passwordError:UILabel!
     @IBOutlet weak var facebookError:UILabel!
-
-    @IBAction func loginDidTouch(sender:UIButton) {
-    
-        loginButton.sendActions(for: .touchUpInside)
-    }
-    
-    var loginButton:FBSDKLoginButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         if FBSDKAccessToken.current() != nil {
         
             // User is logged in, do work such as go to next view controller.
+            print("Facebook already authenticated")
         }
         
         initButtons()
@@ -52,10 +46,8 @@ class LoginViewController: LocalityBaseViewController, FBSDKLoginButtonDelegate,
     
     func initButtons() {
         loginEmailButton.addTarget(self, action: #selector(emailDidTouch), for: .touchUpInside)
-        
-        loginButton = FBSDKLoginButton()
-        loginButton.readPermissions = ["email"]
-        loginButton.delegate = self
+        loginFacebookButton.addTarget(self, action: #selector(facebookDidTouch), for: .touchUpInside)
+
     }
     
     func initErrorFields() {
@@ -82,55 +74,35 @@ class LoginViewController: LocalityBaseViewController, FBSDKLoginButtonDelegate,
                                    password: passwordField.text!,
                                    completion: { (user, error) in
                                     if error == nil {
-                                        
-                                        print("Logged in user: \(user)")
-                                        
                                         self.moveToCurrentFeedView()
                                     }
                                             
                                     else {
-                                        print("Login Error: \(error?.localizedDescription)")
                                         self.displayFirebaseError(error: error!, forEmail: true)
                                     }
                                     
         })
     }
     
-    func displayFirebaseError(error:Error, forEmail:Bool) {
-        if let errorCode = FIRAuthErrorCode(rawValue: (error._code)){
-            
-            switch errorCode {
-            case .errorCodeInvalidEmail:
-                emailError.text = K.String.Error.EmailInvalid.localized
-                
-            case .errorCodeUserDisabled:
-                emailError.text = K.String.Error.UserDisabled.localized
-                
-            case .errorCodeWrongPassword:
-                passwordError.text = K.String.Error.PasswordWrong.localized
-                
-            case .errorCodeEmailAlreadyInUse:
-                if forEmail == true {
-                    emailError.text = K.String.Error.EmailInUseEmail.localized
-                }
-                
-                else {
-                    facebookError.text = K.String.Error.EmailInUseFacebook.localized
-                }
-                
-            default:break
-            }
-        }
-    }
-    
     func moveToCurrentFeedView() {
         
-        
         print("!!!We need to test isFirstTime, username, validation!!!")
-        if FIRAuth.auth()?.currentUser?.isEmailVerified == false {
-            alertEmailValidate()
+        
+        if FirebaseManager.getCurrentUser().isEmailVerified == false {
+            
+            //alertEmailValidate() -- REMOVED FOR NOW
+            let newVC:JoinValidateViewController = AppUtilities.getViewControllerFromStoryboard(id: K.Storyboard.ID.JoinValidate) as! JoinValidateViewController
+            
+            navigationController?.pushViewController(newVC, animated: true)
             return
         }
+        
+        //FInd out if this is the first time
+        FirebaseManager.getCurrentUserRef().child("isFirstVisit").observeSingleEvent(of: .value,
+                                                                                     with: { (snapshot) in
+            let isFirstVisit = snapshot.value as! Bool
+            print("Login:IsFirstTime? \(isFirstVisit )")
+        })
         
         let newVC:CurrentFeedInitializeViewController = AppUtilities.getViewControllerFromStoryboard(id: K.Storyboard.ID.CurrentFeedInit) as! CurrentFeedInitializeViewController
         
@@ -141,6 +113,10 @@ class LoginViewController: LocalityBaseViewController, FBSDKLoginButtonDelegate,
     func emailDidTouch(sender:UIButton) {
         
         loginViaEmail()
+    }
+    
+    func facebookDidTouch(sender:UIButton) {
+        loginViaFacebook()
     }
     
     func textFieldDidChange(sender:UITextField) {
@@ -173,41 +149,100 @@ class LoginViewController: LocalityBaseViewController, FBSDKLoginButtonDelegate,
     }
     
     // MARK: - FBSDKLoginButtonDelegate Methods
-    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error?) {
-        if let error = error {
-            print(error.localizedDescription)
-            return
-        }
+    func loginViaFacebook() {
+        let login = FBSDKLoginManager()
         
-        if result.isCancelled == true {
-            return
-        }
         
-        //success! Get token for Firebase authentication
-        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-        
-        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
-            // user logged into Firebase
-            if error == nil {
-                self.moveToCurrentFeedView()
-            }
+        login.logIn(withReadPermissions: ["public_profile"], from: self, handler: { (result, error) in
             
-            else {
-                // user login error
-                print("User login error: \(error?.localizedDescription)")
-                self.displayFirebaseError(error: error!, forEmail: false)
-                return
+            
+            if (error != nil || (result?.isCancelled)!) {
+                print("Facebook Login Error \(error?.localizedDescription)")
+            } else {
+                
+                // Log in to Firebase via Facebook
+                let credential = FIRFacebookAuthProvider.credential(withAccessToken: (result?.token.tokenString)!)
+                FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+                    
+                    if (error != nil) {
+                        print("Facebook Firebase Login Error \(error?.localizedDescription)")
+                    }
+                    
+                    else {
+                        
+                        FirebaseManager.getCurrentUserRef().child("username").observeSingleEvent(of: .value, with: { (snapshot) in
+                            
+                            //let thisUsername = snapshot.value as! String
+                            if !snapshot.exists() {
+                                let newVC:JoinUsernameViewController = AppUtilities.getViewControllerFromStoryboard(id: K.Storyboard.ID.JoinUser) as! JoinUsernameViewController
+                                
+                                self.navigationController?.pushViewController(newVC, animated: true)
+                            }
+                            
+                            else {
+                                //self.onboardCurrentUserModel()
+                                self.moveToCurrentFeedView()
+                            }
+                        })
+                        
+                    }
+                }
+            }
+        })
+    }
+    
+    func onboardCurrentUserModel() {
+        
+        CurrentUser.shared.email = (FIRAuth.auth()?.currentUser?.email)!
+        CurrentUser.shared.uid = (FIRAuth.auth()?.currentUser?.uid)!
+        
+        FirebaseManager.getCurrentUserRef().observeSingleEvent(of: .value, with: { (snapshot) in
+            let userDic = snapshot.value as? NSDictionary
+            
+            //grab extra attributes and write to model
+            CurrentUser.shared.username = userDic?["username"] as! String
+            CurrentUser.shared.isFirstVisit = userDic?["isFirstVisit"] as! Bool
+            CurrentUser.shared.profileImageUrl = userDic?["profileImageUrl"] as! String
+            print("Current User populated in onboardCurrentUserModel")
+            
+            print("USER DICTIONARY >>>>>>>>>>>>>>>>>>>>> \(userDic)")
+        })
+        
+        print("extra? \(CurrentUser.shared.extraAttributesToFirebase())")
+        FirebaseManager.getCurrentUserRef().updateChildValues(CurrentUser.shared.extraAttributesToFirebase()) { (error, ref) in
+            if error == nil {
+                print("FB Extra Attributes update failed: \(error?.localizedDescription)")
+            } else {
+                print("FB Extra Attributes updated")
             }
         }
     }
     
-    /**
-     Sent to the delegate when the button was used to logout.
-     - Parameter loginButton: The button that was clicked.
-     */
-    public func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        print("Facebook logged out")
+    func displayFirebaseError(error:Error, forEmail:Bool) {
+        if let errorCode = FIRAuthErrorCode(rawValue: (error._code)){
+            
+            switch errorCode {
+            case .errorCodeInvalidEmail:
+                emailError.text = K.String.Error.EmailInvalid.localized
+                
+            case .errorCodeUserDisabled:
+                emailError.text = K.String.Error.UserDisabled.localized
+                
+            case .errorCodeWrongPassword:
+                passwordError.text = K.String.Error.PasswordWrong.localized
+                
+            case .errorCodeEmailAlreadyInUse:
+                if forEmail == true {
+                    emailError.text = K.String.Error.EmailInUseEmail.localized
+                }
+                    
+                else {
+                    facebookError.text = K.String.Error.EmailInUseFacebook.localized
+                }
+                
+            default:break
+            }
+        }
     }
-    
 }
 

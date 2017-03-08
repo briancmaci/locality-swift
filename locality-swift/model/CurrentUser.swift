@@ -15,9 +15,19 @@ class CurrentUser: NSObject {
     
     var uid:String = ""
     var email:String = ""
+    
     var username:String = ""
-
     var profileImageUrl:String = K.Image.DefaultAvatarProfile
     var isFirstVisit:Bool = true
     var status:UserStatusType = .newUser
+    
+    func extraAttributesToFirebase() -> [String:Any] {
+        
+        return ["isFirstVisit" : isFirstVisit,
+                "status" : status.rawValue,
+                "username" : username,
+                "profileImageUrl" : profileImageUrl]
+    }
+    
+
 }

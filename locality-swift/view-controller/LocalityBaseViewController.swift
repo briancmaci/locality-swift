@@ -33,18 +33,17 @@ class LocalityBaseViewController: UIViewController {
     
     func alertEmailValidate() {
         
-        let alert = UIAlertController(title: "You must verify your email.",
-                                      message: "We sent a verification link upon joining Locality. Please click the link in your email to continue.",
+        let alert = UIAlertController(title: K.String.Alert.VerifyTitle.localized,
+                                      message: K.String.Alert.VerifyMessage.localized,
                                       preferredStyle: UIAlertControllerStyle.alert)
         
-        let confirmAction = UIAlertAction(title: "Resend verification", style: .default) { (action) in
+        let confirmAction = UIAlertAction(title: K.String.Alert.VerifyButton0.localized,
+                                          style: .default) { (action) in
             
             FIRAuth.auth()?.currentUser?.sendEmailVerification(completion: { (error) in
                 if error == nil {
                     //Email validation resent
-                    alert.dismiss(animated: true, completion: {
-                        //alert gone
-                    })
+                    alert.dismiss(animated: true, completion: nil)
                 }
             })
         }

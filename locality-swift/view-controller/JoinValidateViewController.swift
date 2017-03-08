@@ -20,6 +20,8 @@ class JoinValidateViewController: LocalityBaseViewController {
         // Do any additional setup after loading the view.
         initErrorFields()
         initButtons()
+        
+        sendEmailVerification()
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,7 +39,13 @@ class JoinValidateViewController: LocalityBaseViewController {
     
     func loginDidTouch(sender:UIButton) {
         
-        if FIRAuth.auth()?.currentUser?.isEmailVerified == false {
+        FirebaseManager.getCurrentUserRef().observeSingleEvent(of: .value, with: { (snapshot) in
+            print("single event observed? \(snapshot)")
+        })
+        FirebaseManager.getCurrentUserRef().observe(.childChanged) { (snapshot) in
+            print("CHILD CHANGED? \(snapshot.value)")
+        }
+        if FirebaseManager.getCurrentUser().isEmailVerified == false {
             
             alertEmailValidate()
             return
@@ -53,14 +61,12 @@ class JoinValidateViewController: LocalityBaseViewController {
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func sendEmailVerification() {
+        FirebaseManager.getCurrentUser().sendEmailVerification(completion: { (error) in
+            if error == nil {
+//                let newVC:JoinValidateViewController = AppUtilities.getViewControllerFromStoryboard(id: K.Storyboard.ID.JoinValidate) as! JoinValidateViewController
+//                self.navigationController?.pushViewController(newVC, animated: true)
+            }
+        })
     }
-    */
-
 }

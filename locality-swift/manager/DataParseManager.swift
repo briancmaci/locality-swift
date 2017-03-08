@@ -18,8 +18,6 @@ class DataParseManager: NSObject {
         let dataDictionary = data as! Dictionary<String, AnyObject>
         let results = dataDictionary["features"] as! [AnyObject]
         
-        print("results? \(results)")
-        
         if let rawPlaceName = results[0].object(forKey: "place_name") as? String {
             
             //remove United States

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 import FirebaseAuth
 
 class JoinViewController: LocalityBaseViewController, UITextFieldDelegate {
@@ -14,12 +15,13 @@ class JoinViewController: LocalityBaseViewController, UITextFieldDelegate {
     @IBOutlet weak var emailField:UITextField!
     @IBOutlet weak var passwordField:UITextField!
     @IBOutlet weak var confirmField:UITextField!
-    
+
     @IBOutlet weak var registerEmailButton:UIButton!
     @IBOutlet weak var registerFacebookButton:UIButton!
     
     @IBOutlet weak var emailError:UILabel!
     @IBOutlet weak var passwordError:UILabel!
+    @IBOutlet weak var facebookError:UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +45,7 @@ class JoinViewController: LocalityBaseViewController, UITextFieldDelegate {
     func initErrorFields() {
         emailError.text?.removeAll()
         passwordError.text?.removeAll()
+        facebookError.text?.removeAll()
     }
     
     func initTextFields() {
@@ -61,39 +64,40 @@ class JoinViewController: LocalityBaseViewController, UITextFieldDelegate {
     }
     
     //Firebase Sign Up
-    func signUpViaEmail() {
+    func registerViaEmail() {
         FIRAuth.auth()?.createUser(withEmail: emailField.text!,
                                    password: passwordField.text!,
                                    completion: { (user, error) in
                                         if error == nil {
                                             
-                                            //fill shared currentUser
-                                            //CurrentUser.shared.email = self.emailField.text!
-                                            
-                                            //let's auth now 
-                                            FIRAuth.auth()?.signIn(withEmail: self.emailField.text!,
-                                                                   password: self.passwordField.text!,
-                                                                   completion: { (user, error) in
-                                                                    if error == nil {
-                                                                        
-                                                                        print("Logged in user: \(user)")
-                                                                        //move to username
-                                                                        let newVC:JoinUsernameViewController = AppUtilities.getViewControllerFromStoryboard(id: K.Storyboard.ID.JoinUser) as! JoinUsernameViewController
-                                                                        
-                                                                        self.navigationController?.pushViewController(newVC, animated: true)
-                                                                    }
-                                                                    
-                                                                    else {
-                                                                        print("Login Error: \(error?.localizedDescription)")
-                                                                    }
-                                            })
-                                        }
+            //fill shared currentUser
+            //CurrentUser.shared.email = self.emailField.text!
+            
+            //let's auth now 
+            FIRAuth.auth()?.signIn(withEmail: self.emailField.text!,
+                                   password: self.passwordField.text!,
+                                   completion: { (user, error) in
+                                    if error == nil {
+                                        
+                                        print("Logged in user: \(user)")
+                                        //move to username
+                                        let newVC:JoinUsernameViewController = AppUtilities.getViewControllerFromStoryboard(id: K.Storyboard.ID.JoinUser) as! JoinUsernameViewController
+                                        
+                                        self.navigationController?.pushViewController(newVC, animated: true)
+                                    }
                                     
-                                        else {
-                                            //Print error message from Firebase
-                                            self.displayFirebaseError(error: error!)
-                                            print("Error Code: \(error?._code)")
-                                        }
+                                    else {
+                                        //Print error message from Firebase
+                                        self.displayFirebaseError(error: error!)
+                                    }
+                })
+            }
+        
+            else {
+                //Print error message from Firebase
+                self.displayFirebaseError(error: error!)
+                print("Error Code: \(error?._code)")
+            }
         })
     }
     
@@ -138,12 +142,44 @@ class JoinViewController: LocalityBaseViewController, UITextFieldDelegate {
         }
         
         if hasErrors == false {
-            signUpViaEmail()
+            registerViaEmail()
         }
     }
     
     func facebookDidTouch(sender:UIButton) {
-        print("Register via Facebook")
+        registerViaFacebook()
+    }
+    
+    func registerViaFacebook() {
+        let login = FBSDKLoginManager()
+        
+        
+        login.logIn(withReadPermissions: ["public_profile"], from: self, handler: { (result, error) in
+            
+            
+            if (error != nil || (result?.isCancelled)!) {
+                print("Facebook Login Error \(error?.localizedDescription)")
+            } else {
+                
+                // Log in to Firebase via Facebook
+                let credential = FIRFacebookAuthProvider.credential(withAccessToken: (result?.token.tokenString)!)
+                FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+                    
+                    if (error != nil) {
+                        //Print error message from Firebase
+                        self.displayFirebaseError(error: error!)
+                    }
+                        
+                    else {
+                        print("Logged in FB user: \(user)")
+                        //move to username
+                        let newVC:JoinUsernameViewController = AppUtilities.getViewControllerFromStoryboard(id: K.Storyboard.ID.JoinUser) as! JoinUsernameViewController
+                        
+                        self.navigationController?.pushViewController(newVC, animated: true)
+                    }
+                }
+            }
+        })
     }
     
     func textFieldDidChange(sender:UITextField) {
@@ -151,8 +187,12 @@ class JoinViewController: LocalityBaseViewController, UITextFieldDelegate {
             emailError.text?.removeAll()
         }
 
-        else {
+        else if sender == passwordField {
             passwordError.text?.removeAll()
+        }
+        
+        else {
+            facebookError.text?.removeAll()
         }
     }
     
@@ -174,15 +214,4 @@ class JoinViewController: LocalityBaseViewController, UITextFieldDelegate {
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         return true
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

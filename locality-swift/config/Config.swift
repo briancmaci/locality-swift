@@ -123,6 +123,13 @@ struct K {
         struct Mapbox {
             static let CurrentLocationHeader = "current-map-header"
         }
+        
+        struct Alert {
+            static let VerifyTitle = "alert-verify-title"
+            static let VerifyMessage = "alert-verify-message"
+            static let VerifyButton0 = "alert-verify-button0"
+        }
+        
         struct Error {
             static let EmailDuplicate = "email-duplicate"
             static let EmailInUseEmail = "in-use-email"

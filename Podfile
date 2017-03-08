@@ -25,5 +25,8 @@ pod 'GoogleMaps', '~> 2.2'
 #Auth Pods
 pod 'FBSDKLoginKit'
 
+#SlideMenu
+pod 'SlideMenuControllerSwift', '~> 3.0'
+
 target 'locality-swift' do
 end
