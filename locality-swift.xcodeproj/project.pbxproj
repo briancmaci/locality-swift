@@ -24,7 +24,6 @@
 		72B881F41E678D2900EB3B2E /* AngledButtonPairView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B881F31E678D2900EB3B2E /* AngledButtonPairView.swift */; };
 		72B881F71E67919400EB3B2E /* AngledButtonAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B881F61E67919400EB3B2E /* AngledButtonAttributes.swift */; };
 		72B881F91E67961E00EB3B2E /* AngledPairButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B881F81E67961E00EB3B2E /* AngledPairButton.swift */; };
-		72B881FC1E67B5A700EB3B2E /* AppUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B881FB1E67B5A700EB3B2E /* AppUtilities.swift */; };
 		72B881FE1E67DFB100EB3B2E /* LocalityBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B881FD1E67DFB100EB3B2E /* LocalityBaseViewController.swift */; };
 		72B882011E67E79700EB3B2E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B882001E67E79700EB3B2E /* LoginViewController.swift */; };
 		72B882051E67E81900EB3B2E /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B882031E67E81900EB3B2E /* BundleExtension.swift */; };
@@ -49,6 +48,7 @@
 		72DC48861E6CD0B500486535 /* RangeStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DC48851E6CD0B500486535 /* RangeStep.swift */; };
 		72DC48891E6DA0F000486535 /* LocationSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DC48881E6DA0F000486535 /* LocationSlider.swift */; };
 		72DC488B1E6DA11000486535 /* LocationSlider.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC488A1E6DA11000486535 /* LocationSlider.xib */; };
+		72F24BA11E704FEC00CA7702 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BA01E704FEC00CA7702 /* Util.swift */; };
 		A4BE9DA43AD7D9F572693B60 /* Pods_locality_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB91C8D02C0D325EDFD2826E /* Pods_locality_swift.framework */; };
 /* End PBXBuildFile section */
 
@@ -94,7 +94,6 @@
 		72B881F31E678D2900EB3B2E /* AngledButtonPairView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AngledButtonPairView.swift; path = "custom-ui/AngledButtonPairView.swift"; sourceTree = "<group>"; };
 		72B881F61E67919400EB3B2E /* AngledButtonAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AngledButtonAttributes.swift; path = model/AngledButtonAttributes.swift; sourceTree = "<group>"; };
 		72B881F81E67961E00EB3B2E /* AngledPairButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AngledPairButton.swift; path = "custom-ui/AngledPairButton.swift"; sourceTree = "<group>"; };
-		72B881FB1E67B5A700EB3B2E /* AppUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppUtilities.swift; path = utility/AppUtilities.swift; sourceTree = "<group>"; };
 		72B881FD1E67DFB100EB3B2E /* LocalityBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalityBaseViewController.swift; path = "view-controller/LocalityBaseViewController.swift"; sourceTree = "<group>"; };
 		72B882001E67E79700EB3B2E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "view-controller/LoginViewController.swift"; sourceTree = "<group>"; };
 		72B882031E67E81900EB3B2E /* BundleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BundleExtension.swift; path = extension/BundleExtension.swift; sourceTree = "<group>"; };
@@ -119,6 +118,7 @@
 		72DC48851E6CD0B500486535 /* RangeStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RangeStep.swift; path = model/RangeStep.swift; sourceTree = "<group>"; };
 		72DC48881E6DA0F000486535 /* LocationSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationSlider.swift; path = "custom-ui/LocationSlider.swift"; sourceTree = "<group>"; };
 		72DC488A1E6DA11000486535 /* LocationSlider.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LocationSlider.xib; path = "custom-ui/LocationSlider.xib"; sourceTree = "<group>"; };
+		72F24BA01E704FEC00CA7702 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = utility/Util.swift; sourceTree = "<group>"; };
 		84886BD7BF3AE7DEF44AC1B8 /* Pods-locality-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-locality-swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-locality-swift/Pods-locality-swift.release.xcconfig"; sourceTree = "<group>"; };
 		B0C073B846F1D9C61B783347 /* Pods-locality-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-locality-swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-locality-swift/Pods-locality-swift.debug.xcconfig"; sourceTree = "<group>"; };
 		DB91C8D02C0D325EDFD2826E /* Pods_locality_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_locality_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -305,7 +305,7 @@
 		72B881FA1E67B59000EB3B2E /* utility */ = {
 			isa = PBXGroup;
 			children = (
-				72B881FB1E67B5A700EB3B2E /* AppUtilities.swift */,
+				72F24BA01E704FEC00CA7702 /* Util.swift */,
 			);
 			name = utility;
 			sourceTree = "<group>";
@@ -616,11 +616,11 @@
 				72B882081E688AB300EB3B2E /* CurrentUser.swift in Sources */,
 				72B881F71E67919400EB3B2E /* AngledButtonAttributes.swift in Sources */,
 				72DC487C1E6BCA7700486535 /* DIspatchQueueExtension.swift in Sources */,
-				72B881FC1E67B5A700EB3B2E /* AppUtilities.swift in Sources */,
 				72B881F41E678D2900EB3B2E /* AngledButtonPairView.swift in Sources */,
 				72B8820C1E68B8D100EB3B2E /* JoinViewController.swift in Sources */,
 				72B881A11E65EE5000EB3B2E /* AppDelegate.swift in Sources */,
 				72DC48861E6CD0B500486535 /* RangeStep.swift in Sources */,
+				72F24BA11E704FEC00CA7702 /* Util.swift in Sources */,
 				72B882161E69434000EB3B2E /* JoinUsernameViewController.swift in Sources */,
 				72B881A91E65EE5000EB3B2E /* locality_swift.xcdatamodeld in Sources */,
 			);

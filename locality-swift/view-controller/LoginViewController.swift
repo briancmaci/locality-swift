@@ -86,25 +86,18 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
     
     func moveToCurrentFeedView() {
         
-        print("!!!We need to test isFirstTime, username, validation!!!")
-        
+        //check email verification
         if FirebaseManager.getCurrentUser().isEmailVerified == false {
-            
-            //alertEmailValidate() -- REMOVED FOR NOW
-            let newVC:JoinValidateViewController = AppUtilities.getViewControllerFromStoryboard(id: K.Storyboard.ID.JoinValidate) as! JoinValidateViewController
+            let newVC:JoinValidateViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.JoinValidate) as! JoinValidateViewController
             
             navigationController?.pushViewController(newVC, animated: true)
             return
         }
         
         //FInd out if this is the first time
-        FirebaseManager.getCurrentUserRef().child("isFirstVisit").observeSingleEvent(of: .value,
-                                                                                     with: { (snapshot) in
-            let isFirstVisit = snapshot.value as! Bool
-            print("Login:IsFirstTime? \(isFirstVisit )")
-        })
+        FirebaseManager.loadCurrentUserModel()
         
-        let newVC:CurrentFeedInitializeViewController = AppUtilities.getViewControllerFromStoryboard(id: K.Storyboard.ID.CurrentFeedInit) as! CurrentFeedInitializeViewController
+        let newVC:CurrentFeedInitializeViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.CurrentFeedInit) as! CurrentFeedInitializeViewController
         
         navigationController?.pushViewController(newVC, animated: true)
     }
@@ -174,7 +167,7 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
                             
                             //let thisUsername = snapshot.value as! String
                             if !snapshot.exists() {
-                                let newVC:JoinUsernameViewController = AppUtilities.getViewControllerFromStoryboard(id: K.Storyboard.ID.JoinUser) as! JoinUsernameViewController
+                                let newVC:JoinUsernameViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.JoinUser) as! JoinUsernameViewController
                                 
                                 self.navigationController?.pushViewController(newVC, animated: true)
                             }
@@ -191,32 +184,32 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
         })
     }
     
-    func onboardCurrentUserModel() {
-        
-        CurrentUser.shared.email = (FIRAuth.auth()?.currentUser?.email)!
-        CurrentUser.shared.uid = (FIRAuth.auth()?.currentUser?.uid)!
-        
-        FirebaseManager.getCurrentUserRef().observeSingleEvent(of: .value, with: { (snapshot) in
-            let userDic = snapshot.value as? NSDictionary
-            
-            //grab extra attributes and write to model
-            CurrentUser.shared.username = userDic?["username"] as! String
-            CurrentUser.shared.isFirstVisit = userDic?["isFirstVisit"] as! Bool
-            CurrentUser.shared.profileImageUrl = userDic?["profileImageUrl"] as! String
-            print("Current User populated in onboardCurrentUserModel")
-            
-            print("USER DICTIONARY >>>>>>>>>>>>>>>>>>>>> \(userDic)")
-        })
-        
-        print("extra? \(CurrentUser.shared.extraAttributesToFirebase())")
-        FirebaseManager.getCurrentUserRef().updateChildValues(CurrentUser.shared.extraAttributesToFirebase()) { (error, ref) in
-            if error == nil {
-                print("FB Extra Attributes update failed: \(error?.localizedDescription)")
-            } else {
-                print("FB Extra Attributes updated")
-            }
-        }
-    }
+//    func onboardCurrentUserModel() {
+//        
+//        CurrentUser.shared.email = (FIRAuth.auth()?.currentUser?.email)!
+//        CurrentUser.shared.uid = (FIRAuth.auth()?.currentUser?.uid)!
+//        
+//        FirebaseManager.getCurrentUserRef().observeSingleEvent(of: .value, with: { (snapshot) in
+//            let userDic = snapshot.value as? NSDictionary
+//            
+//            //grab extra attributes and write to model
+//            CurrentUser.shared.username = userDic?["username"] as! String
+//            CurrentUser.shared.isFirstVisit = userDic?["isFirstVisit"] as! Bool
+//            CurrentUser.shared.profileImageUrl = userDic?["profileImageUrl"] as! String
+//            print("Current User populated in onboardCurrentUserModel")
+//            
+//            print("USER DICTIONARY >>>>>>>>>>>>>>>>>>>>> \(userDic)")
+//        })
+//        
+//        print("extra? \(CurrentUser.shared.extraAttributesToFirebase())")
+//        FirebaseManager.getCurrentUserRef().updateChildValues(CurrentUser.shared.extraAttributesToFirebase()) { (error, ref) in
+//            if error == nil {
+//                print("FB Extra Attributes update failed: \(error?.localizedDescription)")
+//            } else {
+//                print("FB Extra Attributes updated")
+//            }
+//        }
+//    }
     
     func displayFirebaseError(error:Error, forEmail:Bool) {
         if let errorCode = FIRAuthErrorCode(rawValue: (error._code)){

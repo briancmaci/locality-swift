@@ -49,6 +49,18 @@ class FirebaseManager: NSObject {
 //    }
     
     
+    class func loadCurrentUserModel() {
+        FirebaseManager.getCurrentUserRef().observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            let userDic = snapshot.value as? NSDictionary
+            CurrentUser.shared.username = userDic?["username"] as! String
+            CurrentUser.shared.isFirstVisit = userDic?["isFirstVisit"] as! Bool
+            CurrentUser.shared.profileImageUrl = userDic?["profileImageUrl"] as! String
+            
+            print("Login:username? \(CurrentUser.shared.username)")
+            print("Login:IsFirstTime? \(CurrentUser.shared.isFirstVisit )")
+        })
+    }
     
     class func getUsersRef() -> FIRDatabaseReference {
         return FIRDatabase.database().reference(withPath:"users")

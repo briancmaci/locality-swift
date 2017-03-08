@@ -68,7 +68,7 @@ class JoinUsernameViewController: LocalityBaseViewController, UITextFieldDelegat
                 
                 self.onboardCurrentUserModel()
                 
-                let newVC:JoinValidateViewController = AppUtilities.getViewControllerFromStoryboard(id: K.Storyboard.ID.JoinValidate) as! JoinValidateViewController
+                let newVC:JoinValidateViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.JoinValidate) as! JoinValidateViewController
                 
                 self.navigationController?.pushViewController(newVC, animated: true)
             }

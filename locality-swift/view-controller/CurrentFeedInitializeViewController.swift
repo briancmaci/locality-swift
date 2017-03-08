@@ -48,7 +48,7 @@ class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapVie
         
         sliderSteps = [RangeStep]()
         
-        let stepsArray = AppUtilities.getPListDictionary(name: K.PList.RangeValuesFeet)["Steps"] as! [AnyObject]
+        let stepsArray = Util.getPList(name: K.PList.RangeValuesFeet)["Steps"] as! [AnyObject]
         
         for i in 0...stepsArray.count-1 {
             

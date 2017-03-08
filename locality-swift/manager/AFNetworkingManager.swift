@@ -21,7 +21,7 @@ class AFNetworkingManager: NSObject {
         
         manager.responseSerializer.acceptableContentTypes = Set(["application/vnd.geo+json", "application/json"])
         
-        let apiKey = AppUtilities.getPListDictionary(name: K.PList.Keys)[K.APIKey.Mapbox] as! String
+        let apiKey = Util.getPList(name: K.PList.Keys)[K.APIKey.Mapbox] as! String
         let rawURLString = String(format:K.BackEndURL.ReverseGeocodeFormat, coordinate.longitude, coordinate.latitude, apiKey)
         
         let encodedString = rawURLString.addingPercentEncoding( withAllowedCharacters: NSCharacterSet.urlQueryAllowed)

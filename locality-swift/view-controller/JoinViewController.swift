@@ -81,7 +81,7 @@ class JoinViewController: LocalityBaseViewController, UITextFieldDelegate {
                                         
                                         print("Logged in user: \(user)")
                                         //move to username
-                                        let newVC:JoinUsernameViewController = AppUtilities.getViewControllerFromStoryboard(id: K.Storyboard.ID.JoinUser) as! JoinUsernameViewController
+                                        let newVC:JoinUsernameViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.JoinUser) as! JoinUsernameViewController
                                         
                                         self.navigationController?.pushViewController(newVC, animated: true)
                                     }
@@ -173,7 +173,7 @@ class JoinViewController: LocalityBaseViewController, UITextFieldDelegate {
                     else {
                         print("Logged in FB user: \(user)")
                         //move to username
-                        let newVC:JoinUsernameViewController = AppUtilities.getViewControllerFromStoryboard(id: K.Storyboard.ID.JoinUser) as! JoinUsernameViewController
+                        let newVC:JoinUsernameViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.JoinUser) as! JoinUsernameViewController
                         
                         self.navigationController?.pushViewController(newVC, animated: true)
                     }

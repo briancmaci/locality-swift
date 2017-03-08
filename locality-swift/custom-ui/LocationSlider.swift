@@ -48,7 +48,7 @@ class LocationSlider: UIView {
         let step:String = sliderRange[Int(slider.value)].label
         let unit:String = sliderRange[Int(slider.value)].unit
         
-        stepLabel.attributedText = AppUtilities.makeAttributedRangeString(value: step, unit: unit.uppercased())
+        stepLabel.attributedText = Util.attributedRangeString(value: step, unit: unit.uppercased())
     }
     
     func sliderValueDidUpdate(sender:UISlider) {

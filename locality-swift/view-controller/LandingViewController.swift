@@ -121,13 +121,13 @@ class LandingViewController: LocalityBaseViewController, AngledButtonPairDelegat
     
     //MARK: - AngledButtonPairDelegate
     func leftButtonDidTouch() {
-        let newVC : JoinViewController = AppUtilities.getViewControllerFromStoryboard(id: K.Storyboard.ID.Join) as! JoinViewController
+        let newVC : JoinViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.Join) as! JoinViewController
         
         navigationController?.pushViewController(newVC, animated: true)
     }
     
     func rightButtonDidTouch() {
-        let newVC : LoginViewController = AppUtilities.getViewControllerFromStoryboard(id: K.Storyboard.ID.Login) as! LoginViewController
+        let newVC : LoginViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.Login) as! LoginViewController
         
         navigationController?.pushViewController(newVC, animated: true)
     }

@@ -1,5 +1,5 @@
 //
-//  AppUtilities.swift
+//  Util.swift
 //  locality-swift
 //
 //  Created by Chelsea Power on 3/1/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppUtilities: NSObject {
+class Util: NSObject {
 
     class func printFonts() {
         let fontFamilyNames = UIFont.familyNames
@@ -20,12 +20,12 @@ class AppUtilities: NSObject {
         }
     }
     
-    class func getViewControllerFromStoryboard( id:String ) -> LocalityBaseViewController {
+    class func controllerFromStoryboard( id:String ) -> LocalityBaseViewController {
         let storyboard = UIStoryboard(name: K.Storyboard.Name.Main, bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: id) as! LocalityBaseViewController
     }
     
-    class func getPListDictionary(name:String) -> [String: AnyObject] {
+    class func getPList(name:String) -> [String: AnyObject] {
         
         if let path = Bundle.main.path(forResource: name, ofType: "plist"),
             let dict = NSDictionary(contentsOfFile: path) as? [String: AnyObject] {
@@ -40,7 +40,7 @@ class AppUtilities: NSObject {
     }
     
     //Location Slider Utility
-    class func makeAttributedRangeString(value:String, unit:String) -> NSMutableAttributedString {
+    class func attributedRangeString(value:String, unit:String) -> NSMutableAttributedString {
         
         let rawString = NSString(format: "%@%@", value, unit)
         let attrString:NSMutableAttributedString = NSMutableAttributedString(string: rawString as String)
