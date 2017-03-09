@@ -63,6 +63,10 @@ class Util: NSObject {
         return attrString
     }
     
+    class func generateUUID() -> String {
+        return UUID().uuidString
+    }
+    
     class func metersToFeet(meters:CGFloat) -> CGFloat {
         return meters * 3.28084
     }

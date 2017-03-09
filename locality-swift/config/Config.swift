@@ -45,7 +45,7 @@ struct K {
             static let Lon = "lon"
             static let Range = "range"
             static let IsCurrentLocation = "isCurrentLocation"
-            static let PromitionsEnabled = "promotionsEnabled"
+            static let PromotionsEnabled = "promotionsEnabled"
             static let PushEnabled = "pushEnabled"
             static let ImportantEnabled = "importantEnabled"
         }
@@ -88,6 +88,7 @@ struct K {
     
     struct Image {
         static let DefaultAvatarProfile = "DefaultAvatarProfile"
+        static let DefaultAvatarProfilePost = "DefaultAvatarProfilePost"
         
         //Feed
         static let DefaultFeedHero = "DefaultFeedHero"
@@ -131,11 +132,12 @@ struct K {
     struct NIBName {
         static let LocationSlider = "LocationSlider"
         static let FlexibleFeedHeaderView = "FlexibleFeedHeaderView"
+        static let PostFeedCellView = "PostFeedCellView"
     }
     
     //UITableViewCell reuseIdentifiers
     struct ReuseID {
-        
+        static let PostFeedCell = "postFeedCell"
     }
     
     //Strings
@@ -155,6 +157,14 @@ struct K {
             static let LandingExplore = "explore-button-label"
             static let LandingJoin = "join-button-label"
             static let LandingLogin = "login-button-label"
+        }
+        
+        struct Header {
+            static let CurrentLocationTitle = "current-location-title"
+        }
+        
+        struct User {
+            static let Anonymous = "username-anonymous"
         }
         
         //UserStatus
@@ -214,6 +224,10 @@ struct K {
             static let TitleHeight:CGFloat = 20.0
             static let FontSize:CGFloat = 18.0
             static let ButtonIndent:CGFloat = 8.0
+        }
+        
+        struct Post {
+            static let ImageRatio:CGFloat = 0.5
         }
     }
     

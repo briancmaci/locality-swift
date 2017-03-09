@@ -58,6 +58,19 @@
 		72F24BB21E70ECDF00CA7702 /* FeedHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BB11E70ECDF00CA7702 /* FeedHeaderView.swift */; };
 		72F24BB61E70F2E400CA7702 /* HeaderIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BB51E70F2E400CA7702 /* HeaderIcon.swift */; };
 		72F24BB91E70F84300CA7702 /* HeaderIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BB81E70F84300CA7702 /* HeaderIconButton.swift */; };
+		72F24BBB1E71A1B300CA7702 /* SortBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BBA1E71A1B300CA7702 /* SortBy.swift */; };
+		72F24BC21E71AB1900CA7702 /* PostUserInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72F24BC11E71AB1900CA7702 /* PostUserInfoView.xib */; };
+		72F24BC41E71ABEB00CA7702 /* PostUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BC31E71ABEB00CA7702 /* PostUserInfoView.swift */; };
+		72F24BC61E71AD3D00CA7702 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BC51E71AD3D00CA7702 /* UIImageViewExtension.swift */; };
+		72F24BC81E71B93C00CA7702 /* PostFeedCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BC71E71B93C00CA7702 /* PostFeedCellView.swift */; };
+		72F24BCA1E71BAA700CA7702 /* LikePostButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BC91E71BAA700CA7702 /* LikePostButton.swift */; };
+		72F24BCC1E71BAB300CA7702 /* CommentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BCB1E71BAB300CA7702 /* CommentButton.swift */; };
+		72F24BCF1E71BBFF00CA7702 /* UserPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BCE1E71BBFF00CA7702 /* UserPost.swift */; };
+		72F24BD11E71BD1B00CA7702 /* BaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BD01E71BD1B00CA7702 /* BaseUser.swift */; };
+		72F24BD41E71C2E600CA7702 /* PostFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BD31E71C2E600CA7702 /* PostFilterView.swift */; };
+		72F24BD71E71D0F200CA7702 /* PostFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BD51E71D0F200CA7702 /* PostFeedCell.swift */; };
+		72F24BD81E71D0F200CA7702 /* PostFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72F24BD61E71D0F200CA7702 /* PostFeedCell.xib */; };
+		72F24BDA1E71E8FD00CA7702 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BD91E71E8FD00CA7702 /* UILabelExtension.swift */; };
 		A4BE9DA43AD7D9F572693B60 /* Pods_locality_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB91C8D02C0D325EDFD2826E /* Pods_locality_swift.framework */; };
 /* End PBXBuildFile section */
 
@@ -137,6 +150,19 @@
 		72F24BB11E70ECDF00CA7702 /* FeedHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedHeaderView.swift; path = "custom-ui/FeedHeaderView.swift"; sourceTree = "<group>"; };
 		72F24BB51E70F2E400CA7702 /* HeaderIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderIcon.swift; path = model/HeaderIcon.swift; sourceTree = "<group>"; };
 		72F24BB81E70F84300CA7702 /* HeaderIconButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderIconButton.swift; path = "custom-ui/HeaderIconButton.swift"; sourceTree = "<group>"; };
+		72F24BBA1E71A1B300CA7702 /* SortBy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SortBy.swift; path = model/SortBy.swift; sourceTree = "<group>"; };
+		72F24BC11E71AB1900CA7702 /* PostUserInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PostUserInfoView.xib; path = "custom-ui/PostUserInfoView.xib"; sourceTree = "<group>"; };
+		72F24BC31E71ABEB00CA7702 /* PostUserInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostUserInfoView.swift; path = "custom-ui/PostUserInfoView.swift"; sourceTree = "<group>"; };
+		72F24BC51E71AD3D00CA7702 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageViewExtension.swift; path = extension/UIImageViewExtension.swift; sourceTree = "<group>"; };
+		72F24BC71E71B93C00CA7702 /* PostFeedCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostFeedCellView.swift; path = "custom-ui/PostFeedCellView.swift"; sourceTree = "<group>"; };
+		72F24BC91E71BAA700CA7702 /* LikePostButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LikePostButton.swift; path = "custom-ui/LikePostButton.swift"; sourceTree = "<group>"; };
+		72F24BCB1E71BAB300CA7702 /* CommentButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentButton.swift; path = "custom-ui/CommentButton.swift"; sourceTree = "<group>"; };
+		72F24BCE1E71BBFF00CA7702 /* UserPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserPost.swift; path = model/UserPost.swift; sourceTree = "<group>"; };
+		72F24BD01E71BD1B00CA7702 /* BaseUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseUser.swift; path = model/BaseUser.swift; sourceTree = "<group>"; };
+		72F24BD31E71C2E600CA7702 /* PostFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostFilterView.swift; path = "custom-ui/PostFilterView.swift"; sourceTree = "<group>"; };
+		72F24BD51E71D0F200CA7702 /* PostFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostFeedCell.swift; path = "custom-ui/PostFeedCell.swift"; sourceTree = "<group>"; };
+		72F24BD61E71D0F200CA7702 /* PostFeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PostFeedCell.xib; path = "custom-ui/PostFeedCell.xib"; sourceTree = "<group>"; };
+		72F24BD91E71E8FD00CA7702 /* UILabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UILabelExtension.swift; path = extension/UILabelExtension.swift; sourceTree = "<group>"; };
 		84886BD7BF3AE7DEF44AC1B8 /* Pods-locality-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-locality-swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-locality-swift/Pods-locality-swift.release.xcconfig"; sourceTree = "<group>"; };
 		B0C073B846F1D9C61B783347 /* Pods-locality-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-locality-swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-locality-swift/Pods-locality-swift.debug.xcconfig"; sourceTree = "<group>"; };
 		DB91C8D02C0D325EDFD2826E /* Pods_locality_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_locality_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -298,9 +324,9 @@
 				72F24BAC1E70E99900CA7702 /* feed-header */,
 				72DC48871E6D9C0200486535 /* location-slider */,
 				72DC48761E6B4A5200486535 /* mapbox */,
-				72B881EE1E67797100EB3B2E /* RoundedRectangleButton.swift */,
-				72B881F31E678D2900EB3B2E /* AngledButtonPairView.swift */,
-				72B881F81E67961E00EB3B2E /* AngledPairButton.swift */,
+				72F24BD21E71C2CA00CA7702 /* post-filter */,
+				72F24BC01E71AAEA00CA7702 /* post-user-info */,
+				72F24BBC1E71A41C00CA7702 /* tableviewcells */,
 			);
 			name = "custom-ui";
 			sourceTree = "<group>";
@@ -318,9 +344,11 @@
 			children = (
 				72F24BB41E70F2B000CA7702 /* util */,
 				72B881F61E67919400EB3B2E /* AngledButtonAttributes.swift */,
+				72F24BD01E71BD1B00CA7702 /* BaseUser.swift */,
 				72B882071E688AB300EB3B2E /* CurrentUser.swift */,
 				72F24BA21E706AD700CA7702 /* FeedLocation.swift */,
 				72DC48851E6CD0B500486535 /* RangeStep.swift */,
+				72F24BCE1E71BBFF00CA7702 /* UserPost.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -347,6 +375,8 @@
 				72B882031E67E81900EB3B2E /* BundleExtension.swift */,
 				72DC487B1E6BCA7700486535 /* DIspatchQueueExtension.swift */,
 				72B8820F1E68EAE200EB3B2E /* StringExtension.swift */,
+				72F24BC51E71AD3D00CA7702 /* UIImageViewExtension.swift */,
+				72F24BD91E71E8FD00CA7702 /* UILabelExtension.swift */,
 				72B882041E67E81900EB3B2E /* UIViewExtension.swift */,
 				72B882111E68F19D00EB3B2E /* UIViewControllerExtension.swift */,
 			);
@@ -429,6 +459,7 @@
 			isa = PBXGroup;
 			children = (
 				72F24BB51E70F2E400CA7702 /* HeaderIcon.swift */,
+				72F24BBA1E71A1B300CA7702 /* SortBy.swift */,
 				72B882091E6894BE00EB3B2E /* UserStatus.swift */,
 			);
 			name = util;
@@ -437,9 +468,57 @@
 		72F24BB71E70F80200CA7702 /* buttons */ = {
 			isa = PBXGroup;
 			children = (
+				72F24BCD1E71BAC600CA7702 /* post */,
+				72B881F31E678D2900EB3B2E /* AngledButtonPairView.swift */,
+				72B881F81E67961E00EB3B2E /* AngledPairButton.swift */,
 				72F24BB81E70F84300CA7702 /* HeaderIconButton.swift */,
+				72B881EE1E67797100EB3B2E /* RoundedRectangleButton.swift */,
 			);
 			name = buttons;
+			sourceTree = "<group>";
+		};
+		72F24BBC1E71A41C00CA7702 /* tableviewcells */ = {
+			isa = PBXGroup;
+			children = (
+				72F24BBD1E71A42800CA7702 /* post-feed-cell */,
+			);
+			name = tableviewcells;
+			sourceTree = "<group>";
+		};
+		72F24BBD1E71A42800CA7702 /* post-feed-cell */ = {
+			isa = PBXGroup;
+			children = (
+				72F24BD51E71D0F200CA7702 /* PostFeedCell.swift */,
+				72F24BD61E71D0F200CA7702 /* PostFeedCell.xib */,
+				72F24BC71E71B93C00CA7702 /* PostFeedCellView.swift */,
+			);
+			name = "post-feed-cell";
+			sourceTree = "<group>";
+		};
+		72F24BC01E71AAEA00CA7702 /* post-user-info */ = {
+			isa = PBXGroup;
+			children = (
+				72F24BC11E71AB1900CA7702 /* PostUserInfoView.xib */,
+				72F24BC31E71ABEB00CA7702 /* PostUserInfoView.swift */,
+			);
+			name = "post-user-info";
+			sourceTree = "<group>";
+		};
+		72F24BCD1E71BAC600CA7702 /* post */ = {
+			isa = PBXGroup;
+			children = (
+				72F24BCB1E71BAB300CA7702 /* CommentButton.swift */,
+				72F24BC91E71BAA700CA7702 /* LikePostButton.swift */,
+			);
+			name = post;
+			sourceTree = "<group>";
+		};
+		72F24BD21E71C2CA00CA7702 /* post-filter */ = {
+			isa = PBXGroup;
+			children = (
+				72F24BD31E71C2E600CA7702 /* PostFilterView.swift */,
+			);
+			name = "post-filter";
 			sourceTree = "<group>";
 		};
 		A140867697BC340ACB5B7282 /* Pods */ = {
@@ -576,7 +655,9 @@
 				72F24BB01E70E9DC00CA7702 /* FlexibleFeedHeaderView.xib in Resources */,
 				72DC48841E6CC8BC00486535 /* RangeValuesFeet.plist in Resources */,
 				72DC488B1E6DA11000486535 /* LocationSlider.xib in Resources */,
+				72F24BC21E71AB1900CA7702 /* PostUserInfoView.xib in Resources */,
 				72F24BA81E70D7F800CA7702 /* MenuOptions.plist in Resources */,
+				72F24BD81E71D0F200CA7702 /* PostFeedCell.xib in Resources */,
 				72B8821E1E6AA54800EB3B2E /* Keys.plist in Resources */,
 				72B881AE1E65EE5000EB3B2E /* LaunchScreen.storyboard in Resources */,
 				72B881E01E66AFEF00EB3B2E /* GoogleService-Info.plist in Resources */,
@@ -674,14 +755,20 @@
 				72B882011E67E79700EB3B2E /* LoginViewController.swift in Sources */,
 				72B881FE1E67DFB100EB3B2E /* LocalityBaseViewController.swift in Sources */,
 				72B881E61E66B65700EB3B2E /* FacebookManager.swift in Sources */,
+				72F24BCC1E71BAB300CA7702 /* CommentButton.swift in Sources */,
 				72B881EF1E67797100EB3B2E /* RoundedRectangleButton.swift in Sources */,
+				72F24BD71E71D0F200CA7702 /* PostFeedCell.swift in Sources */,
 				72B8820A1E6894BE00EB3B2E /* UserStatus.swift in Sources */,
 				72DC487E1E6C502400486535 /* DataParseManager.swift in Sources */,
+				72F24BCA1E71BAA700CA7702 /* LikePostButton.swift in Sources */,
 				72F24BB21E70ECDF00CA7702 /* FeedHeaderView.swift in Sources */,
 				72B882121E68F19D00EB3B2E /* UIViewControllerExtension.swift in Sources */,
 				72B881E21E66B02F00EB3B2E /* FirebaseManager.swift in Sources */,
 				72B882051E67E81900EB3B2E /* BundleExtension.swift in Sources */,
+				72F24BCF1E71BBFF00CA7702 /* UserPost.swift in Sources */,
 				72B8821C1E6AA4C200EB3B2E /* MapboxManager.swift in Sources */,
+				72F24BC41E71ABEB00CA7702 /* PostUserInfoView.swift in Sources */,
+				72F24BDA1E71E8FD00CA7702 /* UILabelExtension.swift in Sources */,
 				72DC48891E6DA0F000486535 /* LocationSlider.swift in Sources */,
 				72B882141E693C0500EB3B2E /* JoinValidateViewController.swift in Sources */,
 				72B882061E67E81900EB3B2E /* UIViewExtension.swift in Sources */,
@@ -689,10 +776,15 @@
 				72DC487A1E6B792200486535 /* AFNetworkingManager.swift in Sources */,
 				72DC48781E6B4A7D00486535 /* CustomPointAnnotation.swift in Sources */,
 				72B881F91E67961E00EB3B2E /* AngledPairButton.swift in Sources */,
+				72F24BC61E71AD3D00CA7702 /* UIImageViewExtension.swift in Sources */,
 				72B882191E6A8BE800EB3B2E /* CurrentFeedInitializeViewController.swift in Sources */,
 				72B881D31E65F5E200EB3B2E /* FabricManager.swift in Sources */,
+				72F24BD11E71BD1B00CA7702 /* BaseUser.swift in Sources */,
 				72B881D91E665F3A00EB3B2E /* Config.swift in Sources */,
+				72F24BD41E71C2E600CA7702 /* PostFilterView.swift in Sources */,
 				72B882101E68EAE200EB3B2E /* StringExtension.swift in Sources */,
+				72F24BC81E71B93C00CA7702 /* PostFeedCellView.swift in Sources */,
+				72F24BBB1E71A1B300CA7702 /* SortBy.swift in Sources */,
 				72B882081E688AB300EB3B2E /* CurrentUser.swift in Sources */,
 				72B881F71E67919400EB3B2E /* AngledButtonAttributes.swift in Sources */,
 				72DC487C1E6BCA7700486535 /* DIspatchQueueExtension.swift in Sources */,

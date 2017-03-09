@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseAuth
 
-class LocalityBaseViewController: UIViewController {
+class LocalityBaseViewController: UIViewController, LocalityHeaderViewDelegate {
     
     override var prefersStatusBarHidden: Bool {
         return false
@@ -56,6 +56,11 @@ class LocalityBaseViewController: UIViewController {
         alert.addAction(cancelAction)
         
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: - LocalityHeaderDelegate
+    func iconClicked(btn: HeaderIconButton) {
+        print("Icon Clicked: \(btn.iconType)")
     }
     
 

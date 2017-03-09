@@ -27,6 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FacebookManager.initFacebookWith(app: application, options: launchOptions)
         FirebaseManager.initFirebase()
         MapboxManager.initMapbox()
+        
+        //Setting metric or not in CurrentUser
+        initDefaultUnitSystem()
         return true
     }
 
@@ -60,6 +63,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Add any custom logic here.
         return handled
+    }
+    
+    func initDefaultUnitSystem() {
+        let locale:NSLocale = NSLocale.current as NSLocale
+        
+        CurrentUser.shared.isMetric = locale.object(forKey: .usesMetricSystem) as! Bool
+        print("IsMetric? \(CurrentUser.shared.isMetric)")
     }
     
     // MARK: - Core Data stack

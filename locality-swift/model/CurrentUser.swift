@@ -9,17 +9,14 @@
 import UIKit
 import FirebaseAuth
 
-class CurrentUser: NSObject {
+class CurrentUser: BaseUser {
 
     static let shared = CurrentUser()
     
-    var uid:String = ""
-    var email:String = ""
+    var isMetric:Bool = false
     
-    var username:String = ""
-    var profileImageUrl:String = K.Image.DefaultAvatarProfile
+    var email:String = ""
     var isFirstVisit:Bool = true
-    var status:UserStatusType = .newUser
     
     var currentLocation:FeedLocation!
     var pinnedLocations:[FeedLocation]!

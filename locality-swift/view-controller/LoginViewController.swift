@@ -74,7 +74,7 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
                                    password: passwordField.text!,
                                    completion: { (user, error) in
                                     if error == nil {
-                                        self.moveToCurrentFeedView()
+                                        self.loadCurrentUserVars()
                                     }
                                             
                                     else {
@@ -84,7 +84,7 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
         })
     }
     
-    func moveToCurrentFeedView() {
+    func loadCurrentUserVars() {
         
         //check email verification
         if FirebaseManager.getCurrentUser().isEmailVerified == false {
@@ -95,16 +95,27 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
         }
         
         //FInd out if this is the first time
-        FirebaseManager.loadCurrentUserModel()
+        FirebaseManager.loadCurrentUserModel { (success, error) in
+            
+            if success == true {
+                self.moveToNextView()
+            }
+        }
         
-        if CurrentUser.shared.isFirstVisit == false {
+        
+    }
+    
+    func moveToNextView() {
+        if CurrentUser.shared.isFirstVisit == true {
             let newVC:CurrentFeedInitializeViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.CurrentFeedInit) as! CurrentFeedInitializeViewController
             
             navigationController?.pushViewController(newVC, animated: true)
         }
-        
+            
         else {
             let newVC:FeedViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.Feed) as! FeedViewController
+            
+            newVC.thisFeed = CurrentUser.shared.currentLocation
             
             navigationController?.pushViewController(newVC, animated: true)
         }
@@ -181,8 +192,7 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
                             }
                             
                             else {
-                                //self.onboardCurrentUserModel()
-                                self.moveToCurrentFeedView()
+                                self.loadCurrentUserVars()
                             }
                         })
                         
@@ -191,34 +201,7 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
             }
         })
     }
-    
-//    func onboardCurrentUserModel() {
-//        
-//        CurrentUser.shared.email = (FIRAuth.auth()?.currentUser?.email)!
-//        CurrentUser.shared.uid = (FIRAuth.auth()?.currentUser?.uid)!
-//        
-//        FirebaseManager.getCurrentUserRef().observeSingleEvent(of: .value, with: { (snapshot) in
-//            let userDic = snapshot.value as? NSDictionary
-//            
-//            //grab extra attributes and write to model
-//            CurrentUser.shared.username = userDic?["username"] as! String
-//            CurrentUser.shared.isFirstVisit = userDic?["isFirstVisit"] as! Bool
-//            CurrentUser.shared.profileImageUrl = userDic?["profileImageUrl"] as! String
-//            print("Current User populated in onboardCurrentUserModel")
-//            
-//            print("USER DICTIONARY >>>>>>>>>>>>>>>>>>>>> \(userDic)")
-//        })
-//        
-//        print("extra? \(CurrentUser.shared.extraAttributesToFirebase())")
-//        FirebaseManager.getCurrentUserRef().updateChildValues(CurrentUser.shared.extraAttributesToFirebase()) { (error, ref) in
-//            if error == nil {
-//                print("FB Extra Attributes update failed: \(error?.localizedDescription)")
-//            } else {
-//                print("FB Extra Attributes updated")
-//            }
-//        }
-//    }
-    
+
     func displayFirebaseError(error:Error, forEmail:Bool) {
         if let errorCode = FIRAuthErrorCode(rawValue: (error._code)){
             

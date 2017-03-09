@@ -31,6 +31,12 @@ alert-verify-title = "You must verify your email.";
 alert-verify-message = "We sent a verification link upon joining Locality. Please click the link in your email to continue.";
 alert-verify-button0 = "Resend verification";
 
+//Header
+current-location-title = "CURRENT LOCATION";
+
+//User
+username-anonymous = "Anonymous";
+
 //Errors
 email-duplicate = "This email is already registered.";
 in-use-email = "This email is already in use. Try authenticating via Facebook.";

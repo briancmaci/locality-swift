@@ -59,7 +59,7 @@ class FlexibleFeedHeaderView: FeedHeaderView {
     }
     
     func initIcons(inMenu:Bool) {
-        initAttributes(title: feedModel.name == K.String.CurrentFeedName ? "CURRENT LOCATION" : feedModel.name.uppercased(),
+        initAttributes(title: feedModel.name == K.String.CurrentFeedName ? K.String.Header.CurrentLocationTitle : feedModel.name.uppercased(),
                        leftType: inMenu ? .none : .hamburger,
                        rightType: inMenu ? .settings : .feedMenu)
         

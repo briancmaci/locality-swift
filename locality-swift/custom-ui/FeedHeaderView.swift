@@ -24,7 +24,7 @@ class FeedHeaderView: UIView {
     var leftIconButton:HeaderIconButton!
     var rightIconButton:HeaderIconButton!
     
-    weak var delegate:LocalityHeaderViewDelegate?
+    var delegate:LocalityHeaderViewDelegate?
     
 //    override init(frame:CGRect) {
 //        super.init(frame:frame)
