@@ -34,7 +34,7 @@ struct K {
             static let ProfileImageURL = "profileImageUrl"
             static let Status = "status"
             static let Username = "username"
-            static let PinnedLocation = "pinnedLocation"
+            static let CurrentLocation = "currentLocation"
             static let Locations = "locations"
             
             //Location
@@ -76,7 +76,14 @@ struct K {
     
     //Icons
     struct Icon {
-        //static let MarkerRange = "MarkerRange"
+        
+        struct Header {
+            static let Back = "IconBack"
+            static let Close = "IconClose"
+            static let Hamburger = "IconHamburger"
+            static let Settings = "IconSettings"
+            static let FeedMenu = "IconFeedMenu"
+        }
     }
     
     struct Image {
@@ -108,6 +115,9 @@ struct K {
             static let JoinValidate = "joinValidateVC"
             
             static let CurrentFeedInit = "currentFeedInitVC"
+            static let Feed = "feedVC"
+            
+            static let LeftMenu = "leftMenuVC"
         }
     }
     
@@ -120,6 +130,7 @@ struct K {
     //NIB Names
     struct NIBName {
         static let LocationSlider = "LocationSlider"
+        static let FlexibleFeedHeaderView = "FlexibleFeedHeaderView"
     }
     
     //UITableViewCell reuseIdentifiers
@@ -130,6 +141,8 @@ struct K {
     //Strings
     struct String {
         static let CopyrightVersionFormat = "copyright-version-format"
+        static let CurrentFeedName = "_current"
+        static let HeaderTitleLogo = "logo"
         
         struct Title {
             struct ViewController {
@@ -190,6 +203,17 @@ struct K {
         struct Map {
             static let EarthRadius = 6371000.0
             static let DefaultRange = 500.0
+        }
+        
+        struct Header {
+            static let HeroExpandHeight:CGFloat = 157.0
+            static let HeroCollapseHeight:CGFloat = 59.0
+            static let ButtonPadding:CGFloat = 20.0
+            static let TitleY0:CGFloat = 30.0
+            static let TitleY1:CGFloat = 62.0
+            static let TitleHeight:CGFloat = 20.0
+            static let FontSize:CGFloat = 18.0
+            static let ButtonIndent:CGFloat = 8.0
         }
     }
     

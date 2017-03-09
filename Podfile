@@ -18,6 +18,7 @@ pod 'Mapbox-iOS-SDK'
 pod 'Firebase'
 pod 'FirebaseAuth'
 pod 'Firebase/Database'
+pod 'Firebase/Storage'
 
 #GoogleMaps
 pod 'GoogleMaps', '~> 2.2'

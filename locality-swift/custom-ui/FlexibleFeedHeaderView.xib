@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Interstate-LightCondensed.ttf">
+            <string>Interstate-LightCondensed</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="XZx-Ia-zQd" customClass="FlexibleFeedHeaderView" customModule="locality_swift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="157"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ig9-w5-vZc" userLabel="ContainerView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="157"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I0g-oE-kpb" userLabel="bgImage">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="157"/>
+                        </imageView>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FeedHeroOverlay" translatesAutoresizingMaskIntoConstraints="NO" id="QEn-ft-cGh">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="157"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="feedName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPC-bo-Z0E">
+                            <rect key="frame" x="65" y="62" width="190" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="190" id="hrG-U5-7xj"/>
+                                <constraint firstAttribute="height" constant="20" id="wRs-hQ-Tam"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="18"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="locationName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7G-Dr-xd3" userLabel="Location Label">
+                            <rect key="frame" x="65" y="82" width="190" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="22" id="a4g-Yi-juL"/>
+                                <constraint firstAttribute="width" constant="190" id="uth-b5-xGw"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="15"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cl3-Ma-ruK" userLabel="openFeedButton">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="157"/>
+                            <state key="normal">
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Cl3-Ma-ruK" secondAttribute="trailing" id="1rv-D3-ypz"/>
+                        <constraint firstItem="QEn-ft-cGh" firstAttribute="leading" secondItem="ig9-w5-vZc" secondAttribute="leading" id="5pP-0J-o4P"/>
+                        <constraint firstItem="I0g-oE-kpb" firstAttribute="leading" secondItem="ig9-w5-vZc" secondAttribute="leading" id="ETl-yf-s5P"/>
+                        <constraint firstItem="Cl3-Ma-ruK" firstAttribute="top" secondItem="ig9-w5-vZc" secondAttribute="top" id="Pad-ke-zco"/>
+                        <constraint firstAttribute="trailing" secondItem="I0g-oE-kpb" secondAttribute="trailing" id="QWu-0t-wnS"/>
+                        <constraint firstAttribute="bottom" secondItem="I0g-oE-kpb" secondAttribute="bottom" id="Yf3-ST-QFy"/>
+                        <constraint firstAttribute="bottom" secondItem="QEn-ft-cGh" secondAttribute="bottom" id="dwB-N1-Z4o"/>
+                        <constraint firstItem="CPC-bo-Z0E" firstAttribute="top" secondItem="ig9-w5-vZc" secondAttribute="top" constant="62" id="fQm-5b-xfm"/>
+                        <constraint firstAttribute="bottom" secondItem="Cl3-Ma-ruK" secondAttribute="bottom" id="fty-dd-fff"/>
+                        <constraint firstItem="Cl3-Ma-ruK" firstAttribute="leading" secondItem="ig9-w5-vZc" secondAttribute="leading" id="iAo-Su-VmO"/>
+                        <constraint firstItem="I0g-oE-kpb" firstAttribute="top" secondItem="ig9-w5-vZc" secondAttribute="top" id="q1v-DE-7BC"/>
+                        <constraint firstAttribute="trailing" secondItem="QEn-ft-cGh" secondAttribute="trailing" id="sK1-a5-1pr"/>
+                        <constraint firstAttribute="height" constant="157" id="sXh-2S-GLN"/>
+                        <constraint firstAttribute="centerX" secondItem="CPC-bo-Z0E" secondAttribute="centerX" id="t0X-qg-znm"/>
+                        <constraint firstAttribute="centerX" secondItem="E7G-Dr-xd3" secondAttribute="centerX" id="tGX-bB-8yj"/>
+                        <constraint firstItem="QEn-ft-cGh" firstAttribute="top" secondItem="ig9-w5-vZc" secondAttribute="top" id="wab-RZ-UFe"/>
+                        <constraint firstItem="E7G-Dr-xd3" firstAttribute="top" secondItem="CPC-bo-Z0E" secondAttribute="bottom" id="xre-QF-Lvk"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.23662534360000001" green="0.27041301130000001" blue="0.30341908340000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="ig9-w5-vZc" firstAttribute="leading" secondItem="XZx-Ia-zQd" secondAttribute="leading" id="b9W-Pq-PUO"/>
+                <constraint firstAttribute="trailing" secondItem="ig9-w5-vZc" secondAttribute="trailing" id="iGI-oF-jq8"/>
+                <constraint firstItem="ig9-w5-vZc" firstAttribute="top" secondItem="XZx-Ia-zQd" secondAttribute="top" id="su5-Sm-D98"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="feedNameTop" destination="fQm-5b-xfm" id="gcw-WD-flF"/>
+                <outlet property="headerHeight" destination="sXh-2S-GLN" id="Efs-tM-187"/>
+                <outlet property="heroImageView" destination="I0g-oE-kpb" id="Ndf-wy-Aeb"/>
+                <outlet property="locationLabel" destination="E7G-Dr-xd3" id="Rb1-yb-uRE"/>
+                <outlet property="openFeedButton" destination="Cl3-Ma-ruK" id="Xn9-83-gQg"/>
+                <outlet property="shadowOverlay" destination="QEn-ft-cGh" id="1ib-TC-GWQ"/>
+                <outlet property="titleLabel" destination="CPC-bo-Z0E" id="BHS-Gl-dsx"/>
+            </connections>
+            <point key="canvasLocation" x="539" y="241"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="FeedHeroOverlay" width="320" height="150"/>
+    </resources>
+</document>

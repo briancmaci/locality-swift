@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <array>
+        <dict>
+            <key>title</key>
+            <string>SettingsLabel</string>
+            <key>storyboard_id</key>
+            <string>settingsVC</string>
+            <key>nav_type</key>
+            <string>ViewSegue</string>
+            <key>style</key>
+            <string>light</string>
+        </dict>
+        
+        <dict>
+            <key>title</key>
+            <string>LocationsLabel</string>
+            <key>storyboard_id</key>
+            <string>feedMenuVC</string>
+            <key>nav_type</key>
+            <string>ViewSegue</string>
+            <key>style</key>
+            <string>light</string>
+        </dict>
+        
+        <dict>
+            <key>title</key>
+            <string>AboutLabel</string>
+            <key>storyboard_id</key>
+            <string>aboutVC</string>
+            <key>nav_type</key>
+            <string>ViewSegue</string>
+            <key>style</key>
+            <string>light</string>
+        </dict>
+        
+        <dict>
+            <key>title</key>
+            <string>LogOutLabel</string>
+            <key>action_id</key>
+            <string>logout</string>
+            <key>nav_type</key>
+            <string>Action</string>
+            <key>style</key>
+            <string>light</string>
+        </dict>
+        
+        <dict>
+            <key>title</key>
+            <string>ContactUsLabel</string>
+            <key>action_id</key>
+            <string>contactus</string>
+            <key>nav_type</key>
+            <string>Action</string>
+            <key>style</key>
+            <string>light</string>
+        </dict>
+        
+        <dict>
+            <key>title</key>
+            <string>DeleteAccountLabel</string>
+            <key>action_id</key>
+            <string>deleteaccount</string>
+            <key>nav_type</key>
+            <string>Action</string>
+            <key>style</key>
+            <string>dark</string>
+        </dict>
+    </array>
+</plist>

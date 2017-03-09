@@ -97,9 +97,17 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
         //FInd out if this is the first time
         FirebaseManager.loadCurrentUserModel()
         
-        let newVC:CurrentFeedInitializeViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.CurrentFeedInit) as! CurrentFeedInitializeViewController
+        if CurrentUser.shared.isFirstVisit == false {
+            let newVC:CurrentFeedInitializeViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.CurrentFeedInit) as! CurrentFeedInitializeViewController
+            
+            navigationController?.pushViewController(newVC, animated: true)
+        }
         
-        navigationController?.pushViewController(newVC, animated: true)
+        else {
+            let newVC:FeedViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.Feed) as! FeedViewController
+            
+            navigationController?.pushViewController(newVC, animated: true)
+        }
     }
     
     // CTA

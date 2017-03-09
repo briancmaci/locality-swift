@@ -36,8 +36,13 @@ class LandingViewController: LocalityBaseViewController, AngledButtonPairDelegat
                 // 3
                 print("Landing:WE ARE AUTHENTICATED!")
                 FirebaseManager.getCurrentUserRef().child(K.DB.Var.IsFirstVisit).observeSingleEvent(of: .value, with: { (snapshot) in
-                    let isFirstVisit = snapshot.value as! Bool
+                    if let isFirstVisit = snapshot.value as? Bool {
                         print("Landing:IsFirstTime? \(isFirstVisit)")
+                    }
+                    
+                    else {
+                        print("Landing:ViewDidLoad():isFirstVisit null")
+                    }
                 })
             }
         }

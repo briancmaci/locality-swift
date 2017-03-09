@@ -150,19 +150,35 @@ class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapVie
         }
     }
     
+    func onboardCurrentLocation() {
+        let current = FeedLocation(coord: currentLocation,
+                                   name: K.String.CurrentFeedName,
+                                   range: Float(sliderSteps[currentRangeIndex].distance),
+                                   current: true)
+        
+        current.location = self.locationLabel.text!
+        CurrentUser.shared.currentLocation = current
+        
+        //write to Firebase
+        
+        FirebaseManager.getCurrentUserRef().child(K.DB.Var.CurrentLocation).setValue(current.toFireBaseObject()) { (error, ref) in
+            
+            if error == nil {
+                print("Current Location pushed. Ref? \(ref)")
+                
+                //now that we have successfully saved the current location we can set isFirstVisit false.
+                FirebaseManager.getCurrentUserRef().child(K.DB.Var.IsFirstVisit).setValue(false)
+            }
+        }
+    }
+    
     //CTA
     func setRangeDidTouch(sender:UIButton) {
-        print("Current range? \(sliderSteps[currentRangeIndex].distance)")
+        //save current location
+        onboardCurrentLocation()
     }
     
     // MARK: - MGLMapViewDelegate
-//    func mapView(_ mapView: MGLMapView, didUpdate userLocation: MGLUserLocation?) {
-//        mapView.setCenter(userLocation!.coordinate, zoomLevel: 14, animated:false)
-//        
-//        //set up the rest now that we have our location
-//        initMapRange()
-//    }
-    
     func mapView(_ mapView: MGLMapView, alphaForShapeAnnotation annotation: MGLShape) -> CGFloat {
         return 0.2
     }
