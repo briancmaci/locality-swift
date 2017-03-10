@@ -14,9 +14,20 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FlexibleFeedHeaderView" customModule="locality_swift" customModuleProvider="target">
+            <connections>
+                <outlet property="feedNameTop" destination="fQm-5b-xfm" id="qjz-fV-U93"/>
+                <outlet property="headerHeight" destination="sXh-2S-GLN" id="MCM-jf-nRm"/>
+                <outlet property="heroImageView" destination="I0g-oE-kpb" id="tSt-pL-ADv"/>
+                <outlet property="locationLabel" destination="E7G-Dr-xd3" id="qwA-Cf-3eM"/>
+                <outlet property="openFeedButton" destination="Cl3-Ma-ruK" id="FcJ-AA-MYR"/>
+                <outlet property="shadowOverlay" destination="QEn-ft-cGh" id="zXh-7K-3bN"/>
+                <outlet property="titleLabel" destination="CPC-bo-Z0E" id="Lf4-Pa-bln"/>
+                <outlet property="view" destination="XZx-Ia-zQd" id="yw6-sc-7kP"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="XZx-Ia-zQd" customClass="FlexibleFeedHeaderView" customModule="locality_swift" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="XZx-Ia-zQd">
             <rect key="frame" x="0.0" y="0.0" width="320" height="157"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -85,15 +96,6 @@
                 <constraint firstItem="ig9-w5-vZc" firstAttribute="top" secondItem="XZx-Ia-zQd" secondAttribute="top" id="su5-Sm-D98"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="feedNameTop" destination="fQm-5b-xfm" id="gcw-WD-flF"/>
-                <outlet property="headerHeight" destination="sXh-2S-GLN" id="Efs-tM-187"/>
-                <outlet property="heroImageView" destination="I0g-oE-kpb" id="Ndf-wy-Aeb"/>
-                <outlet property="locationLabel" destination="E7G-Dr-xd3" id="Rb1-yb-uRE"/>
-                <outlet property="openFeedButton" destination="Cl3-Ma-ruK" id="Xn9-83-gQg"/>
-                <outlet property="shadowOverlay" destination="QEn-ft-cGh" id="1ib-TC-GWQ"/>
-                <outlet property="titleLabel" destination="CPC-bo-Z0E" id="BHS-Gl-dsx"/>
-            </connections>
             <point key="canvasLocation" x="539" y="241"/>
         </view>
     </objects>

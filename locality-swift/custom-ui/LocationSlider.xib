@@ -14,9 +14,16 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LocationSlider" customModule="locality_swift" customModuleProvider="target">
+            <connections>
+                <outlet property="slider" destination="s8U-CS-vvv" id="Ibr-Rq-plv"/>
+                <outlet property="stepLabel" destination="rgX-0F-NBM" id="PRJ-PO-efI"/>
+                <outlet property="tickView" destination="8c4-2E-QmK" id="NLe-LY-dVK"/>
+                <outlet property="view" destination="iN0-l3-epB" id="Gtv-Y8-yGc"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LocationSlider" customModule="locality_swift" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -75,11 +82,7 @@
                 <constraint firstItem="ua1-CI-U7i" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="uxm-ED-PHe"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="slider" destination="s8U-CS-vvv" id="acN-YV-Ta2"/>
-                <outlet property="stepLabel" destination="rgX-0F-NBM" id="4bz-Kr-LG5"/>
-                <outlet property="tickView" destination="8c4-2E-QmK" id="CqH-MU-nd2"/>
-            </connections>
+            <point key="canvasLocation" x="-37" y="75"/>
         </view>
     </objects>
     <resources>

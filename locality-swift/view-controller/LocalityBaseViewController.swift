@@ -11,6 +11,8 @@ import FirebaseAuth
 
 class LocalityBaseViewController: UIViewController, LocalityHeaderViewDelegate {
     
+    var header:FeedHeaderView!
+    
     override var prefersStatusBarHidden: Bool {
         return false
     }
@@ -24,11 +26,18 @@ class LocalityBaseViewController: UIViewController, LocalityHeaderViewDelegate {
 
         // Do any additional setup after loading the view.
         hideKeyboardOnTouchedOut()
+        loadHeaderView()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func loadHeaderView() {
+        header = FeedHeaderView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: K.Screen.Width, height: K.NumberConstant.Header.HeroCollapseHeight)))
+        
+        header.delegate = self
     }
     
     func alertEmailValidate() {
@@ -59,8 +68,8 @@ class LocalityBaseViewController: UIViewController, LocalityHeaderViewDelegate {
     }
     
     // MARK: - LocalityHeaderDelegate
-    func iconClicked(btn: HeaderIconButton) {
-        print("Icon Clicked: \(btn.iconType)")
+    func iconTapped(btn: HeaderIconButton) {
+        print("Icon Tapped: \(btn.iconType)")
     }
     
 

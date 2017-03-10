@@ -71,9 +71,11 @@
 	<key>LSRequiresIPhoneOS</key>
 	<false/>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Your location will be shown on the map and your map usage will anonymously improve the map.</string>
+	<string>By accessing your location, locality will keep you current with what&apos;s around you.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>YES</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This feature will open your photo library to upload a photo to Locality.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Interstate-LightCondensed.ttf">
+            <string>Interstate-LightCondensed</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Qil-RT-KN2" customClass="PostFeedCellView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="166"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1gJ-eK-leV" userLabel="PostUserInfoVew" customClass="PostUserInfoView" customModule="locality_swift" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="25" width="230" height="35"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="M97-gW-4vM"/>
+                        <constraint firstAttribute="width" constant="230" id="T55-M0-rj7"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BZ5-vk-fPx" userLabel="FilterView" customClass="PostFilterView">
+                    <rect key="frame" x="252" y="35" width="44" height="16"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconFilterLocation" translatesAutoresizingMaskIntoConstraints="NO" id="rno-2S-4xg">
+                            <rect key="frame" x="0.0" y="3" width="8" height="10"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="8" id="mrf-Bo-GZq"/>
+                                <constraint firstAttribute="height" constant="10" id="vrM-UR-BED"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23ft" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryI-ap-dPG">
+                            <rect key="frame" x="14" y="0.0" width="30" height="16"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="6K6-97-Tbl"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="13"/>
+                            <color key="textColor" red="0.52964758869999995" green="0.52963173389999996" blue="0.52964073420000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="KHp-kp-KGh"/>
+                        <constraint firstAttribute="width" constant="44" id="MqY-yn-WpN"/>
+                        <constraint firstAttribute="bottom" secondItem="ryI-ap-dPG" secondAttribute="bottom" id="NpY-Qd-dtf"/>
+                        <constraint firstItem="rno-2S-4xg" firstAttribute="leading" secondItem="BZ5-vk-fPx" secondAttribute="leading" id="Xzq-ke-IdY"/>
+                        <constraint firstItem="rno-2S-4xg" firstAttribute="top" secondItem="BZ5-vk-fPx" secondAttribute="top" constant="3" id="agb-Jz-YbV"/>
+                        <constraint firstItem="ryI-ap-dPG" firstAttribute="top" secondItem="BZ5-vk-fPx" secondAttribute="top" id="f7C-UF-a8D"/>
+                        <constraint firstItem="ryI-ap-dPG" firstAttribute="leading" secondItem="rno-2S-4xg" secondAttribute="trailing" constant="6" id="gOc-xn-huJ"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="filterIcon" destination="rno-2S-4xg" id="MMH-iT-CTi"/>
+                        <outlet property="filterLabel" destination="ryI-ap-dPG" id="PG4-uP-ZZl"/>
+                    </connections>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPk-9M-dP3" userLabel="PostCaption">
+                    <rect key="frame" x="20" y="72" width="280" height="32"/>
+                    <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="15"/>
+                    <color key="textColor" red="0.32584697010000002" green="0.32583719490000002" blue="0.32584273819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iq8-n6-7m8" userLabel="LikeButton" customClass="LikePostButton">
+                    <rect key="frame" x="14" y="112" width="36" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="36" id="fMv-JR-Vge"/>
+                        <constraint firstAttribute="width" constant="36" id="hYU-aO-HgS"/>
+                    </constraints>
+                    <state key="normal" image="IconPostLikeOn">
+                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <state key="selected" image="icon_like_on"/>
+                    <state key="highlighted" image="icon_like_on"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1J-Wr-ZRR" userLabel="CommentButton" customClass="CommentButton">
+                    <rect key="frame" x="52" y="118" width="50" height="24"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="K1h-5x-4DN"/>
+                        <constraint firstAttribute="width" constant="50" id="en0-jU-hq6"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="13"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="4" maxY="0.0"/>
+                    <state key="normal" title="2k" image="IconPostComment">
+                        <color key="titleColor" red="0.32584697010000002" green="0.32583719490000002" blue="0.32584273819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ISI-9H-e5A" userLabel="Pinline">
+                    <rect key="frame" x="0.0" y="165" width="320" height="1"/>
+                    <color key="backgroundColor" red="0.75559091570000003" green="0.75556838510000002" blue="0.75558114050000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="oqI-On-wNk"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="J1J-Wr-ZRR" firstAttribute="leading" secondItem="Iq8-n6-7m8" secondAttribute="trailing" constant="2" id="0Ng-ZQ-MXJ"/>
+                <constraint firstItem="BZ5-vk-fPx" firstAttribute="top" secondItem="Qil-RT-KN2" secondAttribute="top" constant="35" id="4Ga-8Y-b50"/>
+                <constraint firstAttribute="trailing" secondItem="ISI-9H-e5A" secondAttribute="trailing" id="8P5-ko-W8v"/>
+                <constraint firstItem="WPk-9M-dP3" firstAttribute="leading" secondItem="Qil-RT-KN2" secondAttribute="leading" constant="20" id="9Mc-oC-yPL"/>
+                <constraint firstItem="ISI-9H-e5A" firstAttribute="leading" secondItem="Qil-RT-KN2" secondAttribute="leading" id="EGg-q4-mZo"/>
+                <constraint firstAttribute="bottom" secondItem="J1J-Wr-ZRR" secondAttribute="bottom" constant="24" id="ERC-JG-Tk8"/>
+                <constraint firstAttribute="bottom" secondItem="ISI-9H-e5A" secondAttribute="bottom" id="JHa-rJ-rq6"/>
+                <constraint firstItem="J1J-Wr-ZRR" firstAttribute="top" secondItem="WPk-9M-dP3" secondAttribute="bottom" constant="14" id="P4U-6C-0oZ"/>
+                <constraint firstItem="WPk-9M-dP3" firstAttribute="top" secondItem="1gJ-eK-leV" secondAttribute="bottom" constant="12" id="VcV-Wm-Vbt"/>
+                <constraint firstItem="1gJ-eK-leV" firstAttribute="leading" secondItem="Qil-RT-KN2" secondAttribute="leading" id="cLY-eF-vzP"/>
+                <constraint firstAttribute="bottom" secondItem="Iq8-n6-7m8" secondAttribute="bottom" constant="18" id="fZI-Li-yS0"/>
+                <constraint firstItem="Iq8-n6-7m8" firstAttribute="leading" secondItem="Qil-RT-KN2" secondAttribute="leading" constant="14" id="hPN-yz-dKc"/>
+                <constraint firstAttribute="trailing" secondItem="WPk-9M-dP3" secondAttribute="trailing" constant="20" id="nYX-fh-OaJ"/>
+                <constraint firstAttribute="trailing" secondItem="BZ5-vk-fPx" secondAttribute="trailing" constant="24" id="xv8-TJ-xeN"/>
+                <constraint firstItem="1gJ-eK-leV" firstAttribute="top" secondItem="Qil-RT-KN2" secondAttribute="top" constant="25" id="zJC-f0-cqN"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="captionLabel" destination="WPk-9M-dP3" id="ZoJ-VI-e7e"/>
+                <outlet property="commentButton" destination="J1J-Wr-ZRR" id="a6P-wJ-z9u"/>
+                <outlet property="filterView" destination="BZ5-vk-fPx" id="5Oc-Ic-k2k"/>
+                <outlet property="likeButton" destination="Iq8-n6-7m8" id="Vcb-Ik-aBK"/>
+                <outlet property="pinline" destination="ISI-9H-e5A" id="imj-cy-gDq"/>
+                <outlet property="postUser" destination="1gJ-eK-leV" id="PA3-ea-9nU"/>
+            </connections>
+            <point key="canvasLocation" x="726" y="343"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="IconFilterLocation" width="8" height="10"/>
+        <image name="IconPostComment" width="9" height="10"/>
+        <image name="IconPostLikeOn" width="24" height="24"/>
+        <image name="icon_like_on" width="16" height="16"/>
+    </resources>
+</document>

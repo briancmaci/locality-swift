@@ -29,5 +29,8 @@ pod 'FBSDKLoginKit'
 #SlideMenu
 pod 'SlideMenuControllerSwift', '~> 3.0'
 
+#ImageCropper
+pod 'RSKImageCropper', '~> 1.6'
+
 target 'locality-swift' do
 end

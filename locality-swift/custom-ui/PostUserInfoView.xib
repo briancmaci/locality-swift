@@ -14,9 +14,16 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostUserInfoView" customModule="locality_swift" customModuleProvider="target">
+            <connections>
+                <outlet property="nameLabel" destination="fLX-Vj-DLh" id="EPN-qr-qBP"/>
+                <outlet property="profileImage" destination="gLg-e5-OCh" id="Ux5-YZ-nxl"/>
+                <outlet property="statusLabel" destination="LYh-bu-NGy" id="hon-vt-br6"/>
+                <outlet property="view" destination="gfF-xI-NYU" id="D7w-vx-sUp"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="gfF-xI-NYU" customClass="PostUserInfoView" customModule="locality_swift" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="gfF-xI-NYU">
             <rect key="frame" x="0.0" y="0.0" width="230" height="35"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -58,11 +65,6 @@
                 <constraint firstItem="fLX-Vj-DLh" firstAttribute="leading" secondItem="gLg-e5-OCh" secondAttribute="trailing" constant="7" id="yBT-hC-89u"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="nameLabel" destination="fLX-Vj-DLh" id="juR-Is-rKn"/>
-                <outlet property="profileImage" destination="gLg-e5-OCh" id="y4o-B2-j54"/>
-                <outlet property="statusLabel" destination="LYh-bu-NGy" id="d9V-eB-Ysy"/>
-            </connections>
             <point key="canvasLocation" x="17" y="-53.5"/>
         </view>
     </objects>

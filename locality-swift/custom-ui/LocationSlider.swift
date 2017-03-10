@@ -13,6 +13,8 @@ protocol LocationSliderDelegate {
 }
 class LocationSlider: UIView {
     
+    @IBOutlet var view: UIView!
+    
     @IBOutlet weak var slider:UISlider!
     @IBOutlet weak var stepLabel:UILabel!
     @IBOutlet weak var tickView:UIView!
@@ -22,6 +24,14 @@ class LocationSlider: UIView {
     var currentStep:Int!
     
     var delegate:LocationSliderDelegate?
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        Bundle.main.loadNibNamed(K.NIBName.LocationSlider, owner: self, options: nil)
+        self.addSubview(view)
+        view.frame = self.bounds
+    }
     
     func initSliderWith(range:[RangeStep]) {
         

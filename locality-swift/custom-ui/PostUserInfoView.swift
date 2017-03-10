@@ -10,9 +10,19 @@ import UIKit
 
 class PostUserInfoView: UIView {
     
+    @IBOutlet weak var view:UIView!
+    
     @IBOutlet weak var nameLabel:UILabel!
     @IBOutlet weak var statusLabel:UILabel!
     @IBOutlet weak var profileImage:UIImageView!
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        Bundle.main.loadNibNamed(K.NIBName.PostUserInfoView, owner: self, options: nil)
+        self.addSubview(view)
+        view.frame = self.bounds
+    }
     
     func populate(imgUrl:String, username:String, status:String) {
     

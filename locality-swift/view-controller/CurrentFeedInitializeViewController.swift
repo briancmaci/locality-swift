@@ -16,9 +16,9 @@ class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapVie
     @IBOutlet weak var locationLabel : UILabel!
     @IBOutlet weak var setRangeButton : UIButton!
     
-    @IBOutlet weak var sliderContainer : UIView!
+    @IBOutlet weak var slider : LocationSlider!
     
-    var slider:LocationSlider!
+    //var slider:LocationSlider!
     
     var locationManager:CLLocationManager!
     var currentLocation:CLLocationCoordinate2D!
@@ -60,10 +60,10 @@ class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapVie
         }
         
         //add slider to view
-        slider = UIView.instanceFromNib(name: K.NIBName.LocationSlider) as! LocationSlider
+        //slider = UIView.instanceFromNib(name: K.NIBName.LocationSlider) as! LocationSlider
         slider.initSliderWith(range: sliderSteps)
         slider.delegate = self
-        sliderContainer.addSubview(slider)
+        //sliderContainer.addSubview(slider)
         
         //set currentIndex to default of slider
         currentRangeIndex = slider.currentStep

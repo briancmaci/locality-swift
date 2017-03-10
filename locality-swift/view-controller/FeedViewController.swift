@@ -7,25 +7,28 @@
 //
 
 import UIKit
+import Mapbox
 
 class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var headerContainer:UIView!
+    @IBOutlet weak var headerHero:FlexibleFeedHeaderView!
     @IBOutlet weak var postsTable:UITableView!
     @IBOutlet weak var flexHeaderHeight:NSLayoutConstraint!
+    @IBOutlet weak var postButton:UIButton!
     
     var thisFeed:FeedLocation!
     
-    var header:FlexibleFeedHeaderView!
+    
     var sortType:SortByType!
     
-    var posts:[UserPost]!
+    var posts:[UserPost] = [UserPost]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         initSortByType()
+        initPostButton()
         initHeaderView()
         initTableView()
     }
@@ -38,15 +41,14 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         sortType = .proximity
     }
     
+    func initPostButton() {
+        postButton.addTarget(self, action: #selector(postDidTouch), for: .touchUpInside)
+    }
+    
     func initHeaderView() {
-        
-        header = UIView.instanceFromNib(name: K.NIBName.FlexibleFeedHeaderView) as! FlexibleFeedHeaderView
-        
-        header.frame = CGRect(origin: CGPoint.zero, size: headerContainer.frame.size)
-        headerContainer.addSubview(header)
-        
-        header.populate(model: thisFeed, index: 0, inFeedMenu: false)
-        header.delegate = self
+        print("HeaderHero? \(headerHero)")
+        headerHero.populate(model: thisFeed, index: 0, inFeedMenu: false)
+        headerHero.delegate = self
     }
     
     func initTableView() {
@@ -57,6 +59,60 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         
         postsTable.contentInset = UIEdgeInsetsMake(topOffset, 0, 0, 0)
         
-        postsTable.register(PostFeedCell.self, forCellReuseIdentifier: K.ReuseID.PostFeedCell)
+        postsTable.register(PostFeedCell.self, forCellReuseIdentifier: K.ReuseID.PostFeedCellID)
+    }
+    
+    func postDidTouch(sender:UIButton) {
+        let newVC:PostCreateViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.PostCreate) as! PostCreateViewController
+        
+        navigationController?.pushViewController(newVC, animated: true)
+    }
+    
+    func heightForCellAtIndexPath(indexPath:IndexPath) -> CGFloat {
+        var sizingCell:PostFeedCell? = nil
+        DispatchQueue.once {
+            sizingCell = PostFeedCell(model: posts[indexPath.row], proximityTo: CLLocationCoordinate2D(latitude: thisFeed.lat, longitude: thisFeed.lon))
+        }
+        let p:UserPost = posts[indexPath.row]
+        let imgHeight:CGFloat = p.postImageUrl.isEmpty == true ? 0 : K.Screen.Width * K.NumberConstant.Post.ImageRatio
+        
+        return sizingCell!.postContent.getViewHeight(caption: p.caption) + imgHeight
+    }
+    
+    //MARK: - UITableViewDelegate Methods
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+//        let cell = tableView.dequeueReusableCell(withIdentifier: K.ReuseID.PostFeedCellID, for: indexPath) as! PostFeedCell
+        
+        let cell:PostFeedCell = PostFeedCell(model: posts[indexPath.row], proximityTo: CLLocationCoordinate2D(latitude:thisFeed.lat, longitude:thisFeed.lon))
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let newVC:PostDetailViewController = Util.controllerFromStoryboard(id: K.Storyboard.Name.Main) as! PostDetailViewController
+        
+        newVC.thisPost = posts[indexPath.row]
+        
+        navigationController?.pushViewController(newVC, animated: true)
+        
+        //deselect
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return heightForCellAtIndexPath(indexPath: indexPath)
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return posts.count
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
 }

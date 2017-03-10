@@ -9,14 +9,16 @@
 import UIKit
 
 @objc protocol LocalityHeaderViewDelegate {
-    @objc optional func iconClicked(btn:HeaderIconButton)
-    @objc optional func openFeedClicked(model:FeedLocation, index:Int)
+    @objc optional func iconTapped(btn:HeaderIconButton)
+    @objc optional func openFeedTapped(model:FeedLocation, index:Int)
 }
 
 class FeedHeaderView: UIView {
+    
+    @IBOutlet weak var view:UIView!
 
-    @IBOutlet weak var titleLabel:UILabel!
-    @IBOutlet weak var heroImageView:UIImageView!
+    @IBOutlet var titleLabel:UILabel!
+    @IBOutlet var heroImageView:UIImageView!
     
     @IBOutlet weak var headerHeight:NSLayoutConstraint!
     @IBOutlet weak var feedNameTop:NSLayoutConstraint!
@@ -116,7 +118,7 @@ class FeedHeaderView: UIView {
     }
     
     func iconDidTouch(sender:HeaderIconButton) {
-        delegate?.iconClicked!(btn: sender)
+        delegate?.iconTapped!(btn: sender)
     }
     
 }

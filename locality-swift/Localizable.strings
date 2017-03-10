@@ -34,6 +34,9 @@ alert-verify-button0 = "Resend verification";
 //Header
 current-location-title = "CURRENT LOCATION";
 
+//VC Titles
+create-post-header = "CREATE POST";
+
 //User
 username-anonymous = "Anonymous";
 

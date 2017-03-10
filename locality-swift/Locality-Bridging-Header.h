@@ -11,4 +11,5 @@
 
 #import "AFNetworking/AFNetworking.h"
 #import "SDWebImage/UIImageView+WebCache.h"
+#import <RSKImageCropper/RSKImageCropper.h>
 #endif /* Locality_Bridging_Header_h */

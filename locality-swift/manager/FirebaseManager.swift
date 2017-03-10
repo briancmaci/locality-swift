@@ -27,10 +27,10 @@ class FirebaseManager: NSObject {
                 CurrentUser.shared.username = userDic?[K.DB.Var.Username] as! String
                 CurrentUser.shared.isFirstVisit = userDic?[K.DB.Var.IsFirstVisit] as! Bool
                 CurrentUser.shared.profileImageUrl = userDic?[K.DB.Var.ProfileImageURL] as! String
-                CurrentUser.shared.currentLocation = FeedLocation(firebaseDictionary:userDic?[K.DB.Var.CurrentLocation] as! [String : AnyObject])
-                print("Login:username? \(CurrentUser.shared.username)")
-                print("Login:IsFirstTime? \(CurrentUser.shared.isFirstVisit )")
-                print("Login:CurrentLocation? \(CurrentUser.shared.currentLocation)")
+                
+                if let currentLocation = userDic?[K.DB.Var.CurrentLocation] {
+                    CurrentUser.shared.currentLocation = FeedLocation(firebaseDictionary:currentLocation as! [String : AnyObject])
+                }
                 
                 completionHandler(true, nil)
             }

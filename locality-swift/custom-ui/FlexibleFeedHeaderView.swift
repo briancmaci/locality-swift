@@ -19,6 +19,14 @@ class FlexibleFeedHeaderView: FeedHeaderView {
     
     let deltaHeight = K.NumberConstant.Header.HeroExpandHeight - K.NumberConstant.Header.HeroCollapseHeight
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        Bundle.main.loadNibNamed(K.NIBName.FlexibleFeedHeaderView, owner: self, options: nil)
+        self.addSubview(view)
+        view.frame = self.bounds
+    }
+    
     func populate(model:FeedLocation, index:Int, inFeedMenu:Bool) {
         
         feedModel = model
@@ -59,7 +67,7 @@ class FlexibleFeedHeaderView: FeedHeaderView {
     }
     
     func initIcons(inMenu:Bool) {
-        initAttributes(title: feedModel.name == K.String.CurrentFeedName ? K.String.Header.CurrentLocationTitle : feedModel.name.uppercased(),
+        initAttributes(title: feedModel.name == K.String.CurrentFeedName ? K.String.Header.CurrentLocationTitle.localized : feedModel.name.uppercased(),
                        leftType: inMenu ? .none : .hamburger,
                        rightType: inMenu ? .settings : .feedMenu)
         
@@ -86,7 +94,7 @@ class FlexibleFeedHeaderView: FeedHeaderView {
    
     //CTA
     func openFeedDidTouch(sender:UIButton) {
-        delegate?.openFeedClicked!(model: feedModel, index: feedIndex)
+        delegate?.openFeedTapped!(model: feedModel, index: feedIndex)
     }
     
     func updateHeaderHeight(newHeight:CGFloat) {

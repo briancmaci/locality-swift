@@ -68,6 +68,9 @@ struct K {
         static let localityLightBlue = UIColor(red: 199/255, green: 221/255, blue: 237/255, alpha: 1)
         static let localityMapAccent = UIColor(red: 1, green: 125/255, blue: 108/255, alpha: 1)
         
+        static let toggleRed = UIColor(red: 180/255, green: 0, blue: 38/255, alpha: 1)
+        static let toggleGray = UIColor(red: 205/255, green: 215/255, blue: 219/255, alpha: 1)
+        
     }
     
     struct FontName {
@@ -119,6 +122,9 @@ struct K {
             static let Feed = "feedVC"
             
             static let LeftMenu = "leftMenuVC"
+            
+            static let PostCreate = "postCreateVC"
+            static let PostDetail = "postDetailVC"
         }
     }
     
@@ -133,11 +139,15 @@ struct K {
         static let LocationSlider = "LocationSlider"
         static let FlexibleFeedHeaderView = "FlexibleFeedHeaderView"
         static let PostFeedCellView = "PostFeedCellView"
+        static let PostUserInfoView = "PostUserInfoView"
+        static let ImageUploadView = "ImageUploadView"
+        static let PostFromView = "PostFromView"
+        static let CameraOverlay = "CameraOverlay"
     }
     
     //UITableViewCell reuseIdentifiers
     struct ReuseID {
-        static let PostFeedCell = "postFeedCell"
+        static let PostFeedCellID = "postFeedCell"
     }
     
     //Strings
@@ -145,12 +155,6 @@ struct K {
         static let CopyrightVersionFormat = "copyright-version-format"
         static let CurrentFeedName = "_current"
         static let HeaderTitleLogo = "logo"
-        
-        struct Title {
-            struct ViewController {
-                
-            }
-        }
         
         //Buttons
         struct Button {
@@ -161,6 +165,7 @@ struct K {
         
         struct Header {
             static let CurrentLocationTitle = "current-location-title"
+            static let CreatePostHeader = "create-post-header"
         }
         
         struct User {
