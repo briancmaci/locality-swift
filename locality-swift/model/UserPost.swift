@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 import Mapbox
 
 class UserPost: NSObject {
@@ -25,7 +26,7 @@ class UserPost: NSObject {
     
     var isLikedByMe:Bool = false
     
-    init(coord:CLLocationCoordinate2D, caption:String, imgUrl:String) {
+    init(coord:CLLocationCoordinate2D, caption:String, imgUrl:String, user:BaseUser) {
         
         //This may change once we pull other users' posts
         
@@ -37,6 +38,46 @@ class UserPost: NSObject {
         self.caption = caption
         self.postImageUrl = imgUrl
         
-        user = CurrentUser.shared as BaseUser
+        self.user = user
+    }
+    
+    init(snapshot: FIRDataSnapshot) {
+        
+        let dic = snapshot.value as? [String:Any]
+        
+        let dateString = dic?[K.DB.Var.CreatedDate] as! String
+        
+        self.createdDate = Util.dateFromString(dateStr: dateString)
+        self.postId = dic?[K.DB.Var.PostId] as! String
+        
+        self.lat = dic?[K.DB.Var.Lat] as! Double
+        self.lon = dic?[K.DB.Var.Lon] as! Double
+        self.caption = dic?[K.DB.Var.Caption] as! String
+        self.postImageUrl = dic?[K.DB.Var.PostImageURL] as! String
+        
+        let userObj = dic?[K.DB.Var.User] as! [String:Any]
+        self.user = BaseUser(uid: userObj[K.DB.Var.UserId] as! String,
+                             username: userObj[K.DB.Var.Username] as! String,
+                             imgUrl: userObj[K.DB.Var.ProfileImageURL] as! String,
+                             status: UserStatusType(rawValue: (userObj[K.DB.Var.Status] as! Int))!)
+        
+    }
+
+    
+    func toFirebaseObject() -> [String:Any] {
+        return[K.DB.Var.CreatedDate:Util.stringFromDate(date: createdDate),
+               K.DB.Var.PostId:postId,
+               K.DB.Var.User:firebaseUser(),
+               K.DB.Var.Lat:lat,
+               K.DB.Var.Lon:lon,
+               K.DB.Var.Caption:caption,
+               K.DB.Var.PostImageURL:postImageUrl]
+    }
+    
+    func firebaseUser() -> [String:Any] {
+        return[K.DB.Var.UserId:user.uid,
+               K.DB.Var.Username:user.username,
+               K.DB.Var.Status:user.status.rawValue,
+               K.DB.Var.ProfileImageURL:user.profileImageUrl]
     }
 }

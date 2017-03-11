@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		722ABA111E7459FB00A3F1DA /* CGFloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722ABA101E7459FB00A3F1DA /* CGFloatExtension.swift */; };
+		722ABA291E74715000A3F1DA /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 722ABA281E74715000A3F1DA /* SlideNavigationController.m */; };
+		722ABA401E74761100A3F1DA /* SlideNavigationContorllerAnimatorFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 722ABA351E74761100A3F1DA /* SlideNavigationContorllerAnimatorFade.m */; };
+		722ABA411E74761100A3F1DA /* SlideNavigationContorllerAnimatorScale.m in Sources */ = {isa = PBXBuildFile; fileRef = 722ABA371E74761100A3F1DA /* SlideNavigationContorllerAnimatorScale.m */; };
+		722ABA421E74761100A3F1DA /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 722ABA391E74761100A3F1DA /* SlideNavigationContorllerAnimatorScaleAndFade.m */; };
+		722ABA431E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlide.m in Sources */ = {isa = PBXBuildFile; fileRef = 722ABA3B1E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlide.m */; };
+		722ABA441E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 722ABA3D1E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlideAndFade.m */; };
+		722ABA451E74761100A3F1DA /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 722ABA3F1E74761100A3F1DA /* SlideNavigationController.m */; };
 		72B881A11E65EE5000EB3B2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B881A01E65EE5000EB3B2E /* AppDelegate.swift */; };
 		72B881A61E65EE5000EB3B2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72B881A41E65EE5000EB3B2E /* Main.storyboard */; };
 		72B881A91E65EE5000EB3B2E /* locality_swift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 72B881A71E65EE5000EB3B2E /* locality_swift.xcdatamodeld */; };
@@ -82,6 +90,8 @@
 		72F24BF11E72494B00CA7702 /* LocalityPhotoBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BF01E72494B00CA7702 /* LocalityPhotoBaseViewController.swift */; };
 		72F24BF41E725B8200CA7702 /* CameraOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72F24BF31E725B8200CA7702 /* CameraOverlay.xib */; };
 		72F24BF61E725BCB00CA7702 /* CameraOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BF51E725BCB00CA7702 /* CameraOverlay.swift */; };
+		72F24BF81E730C5A00CA7702 /* PhotoUploadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BF71E730C5A00CA7702 /* PhotoUploadManager.swift */; };
+		72F24BFB1E735BF700CA7702 /* GeoFireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BFA1E735BF700CA7702 /* GeoFireManager.swift */; };
 		A4BE9DA43AD7D9F572693B60 /* Pods_locality_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB91C8D02C0D325EDFD2826E /* Pods_locality_swift.framework */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +113,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		722ABA101E7459FB00A3F1DA /* CGFloatExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGFloatExtension.swift; path = extension/CGFloatExtension.swift; sourceTree = "<group>"; };
+		722ABA281E74715000A3F1DA /* SlideNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlideNavigationController.m; path = "/Users/chelseapower/Desktop/brian/ios/personal/Locality/locality-swift/locality-swift/custom-ui/SlideNavigationController/SlideNavigationController.m"; sourceTree = "<absolute>"; };
+		722ABA331E74761100A3F1DA /* SlideNavigationContorllerAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlideNavigationContorllerAnimator.h; path = "custom-ui/SlideNavigationController/Animations/SlideNavigationContorllerAnimator.h"; sourceTree = "<group>"; };
+		722ABA341E74761100A3F1DA /* SlideNavigationContorllerAnimatorFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlideNavigationContorllerAnimatorFade.h; path = "custom-ui/SlideNavigationController/Animations/SlideNavigationContorllerAnimatorFade.h"; sourceTree = "<group>"; };
+		722ABA351E74761100A3F1DA /* SlideNavigationContorllerAnimatorFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlideNavigationContorllerAnimatorFade.m; path = "custom-ui/SlideNavigationController/Animations/SlideNavigationContorllerAnimatorFade.m"; sourceTree = "<group>"; };
+		722ABA361E74761100A3F1DA /* SlideNavigationContorllerAnimatorScale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlideNavigationContorllerAnimatorScale.h; path = "custom-ui/SlideNavigationController/Animations/SlideNavigationContorllerAnimatorScale.h"; sourceTree = "<group>"; };
+		722ABA371E74761100A3F1DA /* SlideNavigationContorllerAnimatorScale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlideNavigationContorllerAnimatorScale.m; path = "custom-ui/SlideNavigationController/Animations/SlideNavigationContorllerAnimatorScale.m"; sourceTree = "<group>"; };
+		722ABA381E74761100A3F1DA /* SlideNavigationContorllerAnimatorScaleAndFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlideNavigationContorllerAnimatorScaleAndFade.h; path = "custom-ui/SlideNavigationController/Animations/SlideNavigationContorllerAnimatorScaleAndFade.h"; sourceTree = "<group>"; };
+		722ABA391E74761100A3F1DA /* SlideNavigationContorllerAnimatorScaleAndFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlideNavigationContorllerAnimatorScaleAndFade.m; path = "custom-ui/SlideNavigationController/Animations/SlideNavigationContorllerAnimatorScaleAndFade.m"; sourceTree = "<group>"; };
+		722ABA3A1E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlideNavigationContorllerAnimatorSlide.h; path = "custom-ui/SlideNavigationController/Animations/SlideNavigationContorllerAnimatorSlide.h"; sourceTree = "<group>"; };
+		722ABA3B1E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlideNavigationContorllerAnimatorSlide.m; path = "custom-ui/SlideNavigationController/Animations/SlideNavigationContorllerAnimatorSlide.m"; sourceTree = "<group>"; };
+		722ABA3C1E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlideAndFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlideNavigationContorllerAnimatorSlideAndFade.h; path = "custom-ui/SlideNavigationController/Animations/SlideNavigationContorllerAnimatorSlideAndFade.h"; sourceTree = "<group>"; };
+		722ABA3D1E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlideAndFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlideNavigationContorllerAnimatorSlideAndFade.m; path = "custom-ui/SlideNavigationController/Animations/SlideNavigationContorllerAnimatorSlideAndFade.m"; sourceTree = "<group>"; };
+		722ABA3E1E74761100A3F1DA /* SlideNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlideNavigationController.h; path = "custom-ui/SlideNavigationController/SlideNavigationController.h"; sourceTree = "<group>"; };
+		722ABA3F1E74761100A3F1DA /* SlideNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlideNavigationController.m; path = "custom-ui/SlideNavigationController/SlideNavigationController.m"; sourceTree = "<group>"; };
 		72B8819D1E65EE5000EB3B2E /* locality-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "locality-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		72B881A01E65EE5000EB3B2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		72B881A51E65EE5000EB3B2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -185,6 +210,8 @@
 		72F24BF01E72494B00CA7702 /* LocalityPhotoBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalityPhotoBaseViewController.swift; path = "view-controller/LocalityPhotoBaseViewController.swift"; sourceTree = "<group>"; };
 		72F24BF31E725B8200CA7702 /* CameraOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraOverlay.xib; path = "custom-ui/CameraOverlay.xib"; sourceTree = "<group>"; };
 		72F24BF51E725BCB00CA7702 /* CameraOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraOverlay.swift; path = "custom-ui/CameraOverlay.swift"; sourceTree = "<group>"; };
+		72F24BF71E730C5A00CA7702 /* PhotoUploadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoUploadManager.swift; path = manager/PhotoUploadManager.swift; sourceTree = "<group>"; };
+		72F24BFA1E735BF700CA7702 /* GeoFireManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeoFireManager.swift; path = manager/GeoFireManager.swift; sourceTree = "<group>"; };
 		84886BD7BF3AE7DEF44AC1B8 /* Pods-locality-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-locality-swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-locality-swift/Pods-locality-swift.release.xcconfig"; sourceTree = "<group>"; };
 		B0C073B846F1D9C61B783347 /* Pods-locality-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-locality-swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-locality-swift/Pods-locality-swift.debug.xcconfig"; sourceTree = "<group>"; };
 		DB91C8D02C0D325EDFD2826E /* Pods_locality_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_locality_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -216,6 +243,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		722ABA121E746C3400A3F1DA /* slide-navigation-controller */ = {
+			isa = PBXGroup;
+			children = (
+				722ABA331E74761100A3F1DA /* SlideNavigationContorllerAnimator.h */,
+				722ABA341E74761100A3F1DA /* SlideNavigationContorllerAnimatorFade.h */,
+				722ABA351E74761100A3F1DA /* SlideNavigationContorllerAnimatorFade.m */,
+				722ABA361E74761100A3F1DA /* SlideNavigationContorllerAnimatorScale.h */,
+				722ABA371E74761100A3F1DA /* SlideNavigationContorllerAnimatorScale.m */,
+				722ABA381E74761100A3F1DA /* SlideNavigationContorllerAnimatorScaleAndFade.h */,
+				722ABA391E74761100A3F1DA /* SlideNavigationContorllerAnimatorScaleAndFade.m */,
+				722ABA3A1E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlide.h */,
+				722ABA3B1E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlide.m */,
+				722ABA3C1E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlideAndFade.h */,
+				722ABA3D1E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlideAndFade.m */,
+				722ABA3E1E74761100A3F1DA /* SlideNavigationController.h */,
+				722ABA3F1E74761100A3F1DA /* SlideNavigationController.m */,
+			);
+			name = "slide-navigation-controller";
+			sourceTree = "<group>";
+		};
 		72B881941E65EE5000EB3B2E = {
 			isa = PBXGroup;
 			children = (
@@ -283,11 +330,13 @@
 			isa = PBXGroup;
 			children = (
 				72DC48791E6B792200486535 /* AFNetworkingManager.swift */,
-				72B881D21E65F5E200EB3B2E /* FabricManager.swift */,
-				72B881E11E66B02F00EB3B2E /* FirebaseManager.swift */,
-				72B881E51E66B65700EB3B2E /* FacebookManager.swift */,
-				72B8821B1E6AA4C200EB3B2E /* MapboxManager.swift */,
 				72DC487D1E6C502400486535 /* DataParseManager.swift */,
+				72B881D21E65F5E200EB3B2E /* FabricManager.swift */,
+				72B881E51E66B65700EB3B2E /* FacebookManager.swift */,
+				72B881E11E66B02F00EB3B2E /* FirebaseManager.swift */,
+				72F24BFA1E735BF700CA7702 /* GeoFireManager.swift */,
+				72B8821B1E6AA4C200EB3B2E /* MapboxManager.swift */,
+				72F24BF71E730C5A00CA7702 /* PhotoUploadManager.swift */,
 			);
 			name = manager;
 			sourceTree = "<group>";
@@ -352,6 +401,7 @@
 				72F24BD21E71C2CA00CA7702 /* post-filter */,
 				72F24BE71E7227F300CA7702 /* post-from */,
 				72F24BC01E71AAEA00CA7702 /* post-user-info */,
+				722ABA121E746C3400A3F1DA /* slide-navigation-controller */,
 				72F24BBC1E71A41C00CA7702 /* tableviewcells */,
 			);
 			name = "custom-ui";
@@ -407,6 +457,7 @@
 				72F24BD91E71E8FD00CA7702 /* UILabelExtension.swift */,
 				72B882041E67E81900EB3B2E /* UIViewExtension.swift */,
 				72B882111E68F19D00EB3B2E /* UIViewControllerExtension.swift */,
+				722ABA101E7459FB00A3F1DA /* CGFloatExtension.swift */,
 			);
 			name = extension;
 			sourceTree = "<group>";
@@ -818,6 +869,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				722ABA401E74761100A3F1DA /* SlideNavigationContorllerAnimatorFade.m in Sources */,
 				72F24BAE1E70E9C300CA7702 /* FlexibleFeedHeaderView.swift in Sources */,
 				72F24BB91E70F84300CA7702 /* HeaderIconButton.swift in Sources */,
 				72B882011E67E79700EB3B2E /* LoginViewController.swift in Sources */,
@@ -830,29 +882,35 @@
 				72DC487E1E6C502400486535 /* DataParseManager.swift in Sources */,
 				72F24BCA1E71BAA700CA7702 /* LikePostButton.swift in Sources */,
 				72F24BE61E721D9300CA7702 /* ImageUploadView.swift in Sources */,
+				722ABA411E74761100A3F1DA /* SlideNavigationContorllerAnimatorScale.m in Sources */,
 				72F24BB21E70ECDF00CA7702 /* FeedHeaderView.swift in Sources */,
 				72B882121E68F19D00EB3B2E /* UIViewControllerExtension.swift in Sources */,
 				72F24BF61E725BCB00CA7702 /* CameraOverlay.swift in Sources */,
 				72B881E21E66B02F00EB3B2E /* FirebaseManager.swift in Sources */,
 				72B882051E67E81900EB3B2E /* BundleExtension.swift in Sources */,
 				72F24BCF1E71BBFF00CA7702 /* UserPost.swift in Sources */,
+				722ABA451E74761100A3F1DA /* SlideNavigationController.m in Sources */,
 				72B8821C1E6AA4C200EB3B2E /* MapboxManager.swift in Sources */,
+				722ABA421E74761100A3F1DA /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
 				72F24BED1E722BBC00CA7702 /* PostFromViewToggle.swift in Sources */,
 				72F24BC41E71ABEB00CA7702 /* PostUserInfoView.swift in Sources */,
 				72F24BDA1E71E8FD00CA7702 /* UILabelExtension.swift in Sources */,
 				72DC48891E6DA0F000486535 /* LocationSlider.swift in Sources */,
+				722ABA441E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */,
 				72F24BEB1E7228C100CA7702 /* PostFromView.swift in Sources */,
 				72B882141E693C0500EB3B2E /* JoinValidateViewController.swift in Sources */,
 				72B882061E67E81900EB3B2E /* UIViewExtension.swift in Sources */,
 				72B881EC1E676D8A00EB3B2E /* LandingViewController.swift in Sources */,
 				72DC487A1E6B792200486535 /* AFNetworkingManager.swift in Sources */,
 				72DC48781E6B4A7D00486535 /* CustomPointAnnotation.swift in Sources */,
+				722ABA291E74715000A3F1DA /* SlideNavigationController.m in Sources */,
 				72B881F91E67961E00EB3B2E /* AngledPairButton.swift in Sources */,
 				72F24BF11E72494B00CA7702 /* LocalityPhotoBaseViewController.swift in Sources */,
 				72F24BC61E71AD3D00CA7702 /* UIImageViewExtension.swift in Sources */,
 				72B882191E6A8BE800EB3B2E /* CurrentFeedInitializeViewController.swift in Sources */,
 				72B881D31E65F5E200EB3B2E /* FabricManager.swift in Sources */,
 				72F24BD11E71BD1B00CA7702 /* BaseUser.swift in Sources */,
+				72F24BF81E730C5A00CA7702 /* PhotoUploadManager.swift in Sources */,
 				72B881D91E665F3A00EB3B2E /* Config.swift in Sources */,
 				72F24BD41E71C2E600CA7702 /* PostFilterView.swift in Sources */,
 				72B882101E68EAE200EB3B2E /* StringExtension.swift in Sources */,
@@ -863,8 +921,10 @@
 				72DC487C1E6BCA7700486535 /* DIspatchQueueExtension.swift in Sources */,
 				72F24BB61E70F2E400CA7702 /* HeaderIcon.swift in Sources */,
 				72B881F41E678D2900EB3B2E /* AngledButtonPairView.swift in Sources */,
+				722ABA111E7459FB00A3F1DA /* CGFloatExtension.swift in Sources */,
 				72B8820C1E68B8D100EB3B2E /* JoinViewController.swift in Sources */,
 				72F24BAB1E70DB1500CA7702 /* FeedViewController.swift in Sources */,
+				72F24BFB1E735BF700CA7702 /* GeoFireManager.swift in Sources */,
 				72F24BA31E706AD700CA7702 /* FeedLocation.swift in Sources */,
 				72F24BE11E7214FC00CA7702 /* PostCreateViewController.swift in Sources */,
 				72B881A11E65EE5000EB3B2E /* AppDelegate.swift in Sources */,
@@ -873,6 +933,7 @@
 				72F24BA61E70BC7600CA7702 /* LeftMenuViewController.swift in Sources */,
 				72F24BA11E704FEC00CA7702 /* Util.swift in Sources */,
 				72F24BDD1E71F06A00CA7702 /* PostDetailViewController.swift in Sources */,
+				722ABA431E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
 				72B882161E69434000EB3B2E /* JoinUsernameViewController.swift in Sources */,
 				72B881A91E65EE5000EB3B2E /* locality_swift.xcdatamodeld in Sources */,
 			);
@@ -974,6 +1035,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -1015,6 +1077,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1026,9 +1089,104 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = MF94FJYR24;
+				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "locality-swift/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"Accounts\"",
+					"-framework",
+					"\"Bolts\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreMedia\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"FBSDKCoreKit\"",
+					"-framework",
+					"\"FBSDKLoginKit\"",
+					"-framework",
+					"\"Fabric\"",
+					"-framework",
+					"\"FirebaseAnalytics\"",
+					"-framework",
+					"\"FirebaseAuth\"",
+					"-framework",
+					"\"FirebaseCore\"",
+					"-framework",
+					"\"FirebaseDatabase\"",
+					"-framework",
+					"\"FirebaseInstanceID\"",
+					"-framework",
+					"\"FirebaseStorage\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GLKit\"",
+					"-framework",
+					"\"GTMSessionFetcher\"",
+					"-framework",
+					"\"GeoFire\"",
+					"-framework",
+					"\"GoogleMaps\"",
+					"-framework",
+					"\"GoogleMapsBase\"",
+					"-framework",
+					"\"GoogleMapsCore\"",
+					"-framework",
+					"\"GoogleToolboxForMac\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"Mapbox\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"RSKImageCropper\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"SafariServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"Social\"",
+					"-framework",
+					"\"StoreKit\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"TwitterCore\"",
+					"-framework",
+					"\"TwitterKit\"",
+					"-framework",
+					"\"UIKit\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.briancmaci.locality-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "locality-swift/Locality-Bridging-Header.h";
@@ -1042,9 +1200,104 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = MF94FJYR24;
+				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "locality-swift/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"Accounts\"",
+					"-framework",
+					"\"Bolts\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreMedia\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"FBSDKCoreKit\"",
+					"-framework",
+					"\"FBSDKLoginKit\"",
+					"-framework",
+					"\"Fabric\"",
+					"-framework",
+					"\"FirebaseAnalytics\"",
+					"-framework",
+					"\"FirebaseAuth\"",
+					"-framework",
+					"\"FirebaseCore\"",
+					"-framework",
+					"\"FirebaseDatabase\"",
+					"-framework",
+					"\"FirebaseInstanceID\"",
+					"-framework",
+					"\"FirebaseStorage\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GLKit\"",
+					"-framework",
+					"\"GTMSessionFetcher\"",
+					"-framework",
+					"\"GeoFire\"",
+					"-framework",
+					"\"GoogleMaps\"",
+					"-framework",
+					"\"GoogleMapsBase\"",
+					"-framework",
+					"\"GoogleMapsCore\"",
+					"-framework",
+					"\"GoogleToolboxForMac\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"Mapbox\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"RSKImageCropper\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"SafariServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"Social\"",
+					"-framework",
+					"\"StoreKit\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"TwitterCore\"",
+					"-framework",
+					"\"TwitterKit\"",
+					"-framework",
+					"\"UIKit\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.briancmaci.locality-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "locality-swift/Locality-Bridging-Header.h";

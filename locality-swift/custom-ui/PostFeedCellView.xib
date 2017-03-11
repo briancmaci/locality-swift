@@ -16,7 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="Qil-RT-KN2" customClass="PostFeedCellView">
+        <view contentMode="scaleToFill" id="Qil-RT-KN2" customClass="PostFeedCellView" customModule="locality_swift" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="166"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -28,7 +28,7 @@
                         <constraint firstAttribute="width" constant="230" id="T55-M0-rj7"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BZ5-vk-fPx" userLabel="FilterView" customClass="PostFilterView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BZ5-vk-fPx" userLabel="FilterView" customClass="PostFilterView" customModule="locality_swift" customModuleProvider="target">
                     <rect key="frame" x="252" y="35" width="44" height="16"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconFilterLocation" translatesAutoresizingMaskIntoConstraints="NO" id="rno-2S-4xg">
@@ -69,19 +69,19 @@
                     <color key="textColor" red="0.32584697010000002" green="0.32583719490000002" blue="0.32584273819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iq8-n6-7m8" userLabel="LikeButton" customClass="LikePostButton">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iq8-n6-7m8" userLabel="LikeButton" customClass="LikePostButton" customModule="locality_swift" customModuleProvider="target">
                     <rect key="frame" x="14" y="112" width="36" height="36"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="36" id="fMv-JR-Vge"/>
                         <constraint firstAttribute="width" constant="36" id="hYU-aO-HgS"/>
                     </constraints>
-                    <state key="normal" image="IconPostLikeOn">
+                    <state key="normal" image="IconPostLikeOff">
                         <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
-                    <state key="selected" image="icon_like_on"/>
-                    <state key="highlighted" image="icon_like_on"/>
+                    <state key="selected" image="IconPostLikeOn"/>
+                    <state key="highlighted" image="IconPostLikeOn"/>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1J-Wr-ZRR" userLabel="CommentButton" customClass="CommentButton">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1J-Wr-ZRR" userLabel="CommentButton" customClass="CommentButton" customModule="locality_swift" customModuleProvider="target">
                     <rect key="frame" x="52" y="118" width="50" height="24"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -123,7 +123,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="captionLabel" destination="WPk-9M-dP3" id="ZoJ-VI-e7e"/>
+                <outlet property="captionLabel" destination="WPk-9M-dP3" id="HHF-uc-pKL"/>
                 <outlet property="commentButton" destination="J1J-Wr-ZRR" id="a6P-wJ-z9u"/>
                 <outlet property="filterView" destination="BZ5-vk-fPx" id="5Oc-Ic-k2k"/>
                 <outlet property="likeButton" destination="Iq8-n6-7m8" id="Vcb-Ik-aBK"/>
@@ -136,7 +136,7 @@
     <resources>
         <image name="IconFilterLocation" width="8" height="10"/>
         <image name="IconPostComment" width="9" height="10"/>
+        <image name="IconPostLikeOff" width="24" height="24"/>
         <image name="IconPostLikeOn" width="24" height="24"/>
-        <image name="icon_like_on" width="16" height="16"/>
     </resources>
 </document>

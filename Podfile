@@ -20,6 +20,9 @@ pod 'FirebaseAuth'
 pod 'Firebase/Database'
 pod 'Firebase/Storage'
 
+#GeoFire
+pod 'GeoFire', :git => 'https://github.com/firebase/geofire-objc.git'
+
 #GoogleMaps
 pod 'GoogleMaps', '~> 2.2'
 
@@ -27,7 +30,7 @@ pod 'GoogleMaps', '~> 2.2'
 pod 'FBSDKLoginKit'
 
 #SlideMenu
-pod 'SlideMenuControllerSwift', '~> 3.0'
+#pod 'SlideMenuControllerSwift', '~> 3.0'
 
 #ImageCropper
 pod 'RSKImageCropper', '~> 1.6'

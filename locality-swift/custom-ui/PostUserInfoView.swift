@@ -27,6 +27,7 @@ class PostUserInfoView: UIView {
     func populate(imgUrl:String, username:String, status:String) {
     
         profileImage.loadProfilePostImage(url: imgUrl)
+        profileImage.encircled()
         nameLabel.text = username.isEmpty ? K.String.User.Anonymous.localized : username
         statusLabel.text = status
     }

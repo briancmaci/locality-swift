@@ -40,10 +40,11 @@ class PostFeedCell: UITableViewCell {
         let imgHeight = hasImage == true ? (K.Screen.Width * K.NumberConstant.Post.ImageRatio) : 0
         let cellHeight:CGFloat = postContent.frame.size.height + imgHeight
         
-        //super.init(frame:CGRect(origin: CGPoint.zero, size: CGSize(K.Screen.Width, cellHeight)))
         frame = CGRect(origin: CGPoint.zero, size: CGSize(width: K.Screen.Width, height: cellHeight))
         
-        addSubview(postImage)
+        if hasImage == true {
+            addSubview(postImage)
+        }
         addSubview(postContent)
     }
     
@@ -54,8 +55,9 @@ class PostFeedCell: UITableViewCell {
         let here:CLLocation = CLLocation(latitude:model.lat, longitude:model.lon)
         let distance:CLLocationDistance = here.distance(from: origin)
         
-        print("/////////////WE MUST PUT IN CONVERSION AND UNITS (FT, MI, etc)")
-        postContent.filterView.filterLabel.attributedText = Util.attributedRangeString(value:Util.metersToFeet(meters: CGFloat(distance)).description, unit: "FT")
+        let fromData:RangeStep = Util.distanceToDisplay(distance: CGFloat(distance))
+        
+        postContent.filterView.filterLabel.attributedText = Util.attributedDistanceFromString(value:fromData.distance.description, unit: fromData.unit)
     }
     
     func initImage() {
@@ -74,5 +76,12 @@ class PostFeedCell: UITableViewCell {
         
         postContent = UIView.instanceFromNib(name: K.NIBName.PostFeedCellView) as! PostFeedCellView
         postContent.frame = CGRect(x: 0, y: postY, width: K.Screen.Width, height: postContent.getViewHeight(caption: thisModel.caption))
+        
+        postContent.captionLabel.text = thisModel.caption
+        
+        postContent.postUser.populate(imgUrl: thisModel.user.profileImageUrl,
+                          username: thisModel.user.username,
+                          status: UserStatus.stringFrom(type: thisModel.user.status))
+        
     }
 }

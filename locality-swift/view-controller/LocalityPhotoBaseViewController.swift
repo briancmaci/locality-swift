@@ -10,9 +10,8 @@ import UIKit
 import RSKImageCropper
 import AVFoundation
 
-class LocalityPhotoBaseViewController: LocalityBaseViewController, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, RSKImageCropViewControllerDelegate {
-
-
+class LocalityPhotoBaseViewController: LocalityBaseViewController, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, RSKImageCropViewControllerDelegate, RSKImageCropViewControllerDataSource {
+    
     func checkCameraAccess() {
         let authStatus:AVAuthorizationStatus = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
         
@@ -152,18 +151,34 @@ class LocalityPhotoBaseViewController: LocalityBaseViewController, UIActionSheet
         self.present(picker, animated: true, completion: nil)
     }
     
+//    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+//        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+//            self.showImageCropper(image: image)
+//        } else{
+//            print("LocalityPhotoBaseVC:imagePickerController:didFinishPicking Error")
+//        }
+//        
+//        self.dismiss(animated: true, completion: nil)
+//    }
+
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         picker.dismiss(animated: true) {
-            let image:UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-            self.showImageCropper(image: image)
+            if let image:UIImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+                self.showImageCropper(image: image)
+            }
+            
+            else {
+                print("ImagePicker:didFinishPicking error")
+            }
         }
     }
     
     func showImageCropper(image:UIImage) {
-        let imageCropVC:RSKImageCropViewController = RSKImageCropViewController(image: image, cropMode: .circle)
+        let imageCropVC:RSKImageCropViewController = RSKImageCropViewController(image: image, cropMode:.custom)
         
         imageCropVC.delegate = self
-        //imageCropVC.dataSource = self
+        imageCropVC.dataSource = self
         navigationController?.pushViewController(imageCropVC, animated: true)
     }
     
@@ -177,22 +192,39 @@ class LocalityPhotoBaseViewController: LocalityBaseViewController, UIActionSheet
     }
    
     //MARK:- RSKImageCropperDataSource Methods
+    func imageCropViewControllerCustomMaskRect(_ controller: RSKImageCropViewController) -> CGRect {
+        let maskSize:CGSize = CGSize(width: K.Screen.Width, height: K.Screen.Width * K.NumberConstant.Post.ImageRatio)
+        let vw:CGFloat = controller.view.frame.size.width
+        let vh:CGFloat = controller.view.frame.size.height
+        
+        let maskRect:CGRect = CGRect(x: (vw - maskSize.width)/2,
+                                     y: (vh - maskSize.height)/2,
+                                     width: maskSize.width,
+                                     height: maskSize.height)
+        
+        return maskRect
+    }
     
-//    
-//    -(CGRect)imageCropViewControllerCustomMaskRect:(RSKImageCropViewController *)controller {
-//    
-//    CGSize maskSize = CGSizeMake(DEVICE_WIDTH, DEVICE_WIDTH*IMAGE_RATIO);
-//    
-//    CGFloat viewWidth = CGRectGetWidth(controller.view.frame);
-//    CGFloat viewHeight = CGRectGetHeight(controller.view.frame);
-//    
-//    CGRect maskRect = CGRectMake((viewWidth - maskSize.width) * 0.5f,
-//    (viewHeight - maskSize.height) * 0.5f,
-//    maskSize.width,
-//    maskSize.height);
-//    
-//    return maskRect;
-//    }
+    @available(iOS 3.2, *)
+    public func imageCropViewControllerCustomMaskPath(_ controller: RSKImageCropViewController) -> UIBezierPath {
+        
+        let rect:CGRect = controller.maskRect
+        
+        let point1:CGPoint = CGPoint(x:rect.minX, y:rect.maxY)
+        let point2:CGPoint = CGPoint(x:rect.maxX, y:rect.maxY)
+        let point3:CGPoint = CGPoint(x:rect.maxX, y:rect.minY)
+        let point4:CGPoint = CGPoint(x:rect.minX, y:rect.minY)
+        
+        let path:UIBezierPath = UIBezierPath()
+        
+        path.move(to: point1)
+        path.addLine(to: point2)
+        path.addLine(to: point3)
+        path.addLine(to: point4)
+        path.close()
+        
+        return path
+    }
 //    
 //    // Returns a custom path for the mask.
 //    - (UIBezierPath *)imageCropViewControllerCustomMaskPath:(RSKImageCropViewController *)controller

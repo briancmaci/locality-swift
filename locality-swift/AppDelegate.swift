@@ -30,6 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Setting metric or not in CurrentUser
         initDefaultUnitSystem()
+        
+        //Init SlideMenu
+        initSlideMenuController()
         return true
     }
 
@@ -67,9 +70,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func initDefaultUnitSystem() {
         let locale:NSLocale = NSLocale.current as NSLocale
-        
         CurrentUser.shared.isMetric = locale.object(forKey: .usesMetricSystem) as! Bool
-        print("IsMetric? \(CurrentUser.shared.isMetric)")
+    }
+    
+    func initSlideMenuController() {
+        let leftMenu:LeftMenuViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.LeftMenu) as! LeftMenuViewController
+        
+        SlideNavigationController.sharedInstance().leftMenu = leftMenu
+        SlideNavigationController.sharedInstance().portraitSlideOffset = 120.0
+        SlideNavigationController.sharedInstance().avoidSwitchingToSameClassViewController = true
+        
+        let revealAnimator = SlideNavigationContorllerAnimatorSlideAndFade()
+        SlideNavigationController.sharedInstance().menuRevealAnimator = revealAnimator
     }
     
     // MARK: - Core Data stack

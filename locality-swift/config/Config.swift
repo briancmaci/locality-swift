@@ -14,6 +14,7 @@ struct K {
     //API Keys
     struct APIKey {
         static let Mapbox = "MapboxAPIKey"
+        static let Firebase = "FirebaseDBKey"
     }
     
     //Back End URLs
@@ -22,14 +23,24 @@ struct K {
     }
     
     struct DB {
+        static let FirebaseURLFormat = "https://%@.firebaseio.com"
+        struct Storage {
+            static let Images = "images"
+        }
+        
         struct Table {
             static let Users = "users"
             static let Posts = "posts"
+            static let Comments = "comments"
+            
+            //GeoFire
+            static let PostLocations = "post_locations"
         }
         
         struct Var {
             
             //User
+            static let UserId = "uid"
             static let IsFirstVisit = "isFirstVisit"
             static let ProfileImageURL = "profileImageUrl"
             static let Status = "status"
@@ -48,6 +59,15 @@ struct K {
             static let PromotionsEnabled = "promotionsEnabled"
             static let PushEnabled = "pushEnabled"
             static let ImportantEnabled = "importantEnabled"
+            
+            //Post
+            static let User = "User"
+            static let CreatedDate = "createdDate"
+            static let PostId = "postId"
+            //Lat
+            //Long
+            static let Caption = "caption"
+            static let PostImageURL = "postImageUrl"
         }
     }
     
@@ -185,6 +205,12 @@ struct K {
             static let CurrentLocationHeader = "current-map-header"
         }
         
+        struct UploadURL {
+            static let ProfileFormat = "%@/profile"
+            static let LocationFormat = "%@/location_%@"
+            static let PostFormat = "%@/post_%@"
+        }
+        
         struct Alert {
             static let VerifyTitle = "alert-verify-title"
             static let VerifyMessage = "alert-verify-message"
@@ -204,6 +230,12 @@ struct K {
             static let PasswordWrong = "password-wrong"
             static let UserDisabled = "user-disabled"
             static let UsernameTaken = "username-taken"
+        }
+        
+        struct Post {
+            static let TimestampFormat = "yyyy-MM-dd HH:mm:ss zzz"
+            static let CaptionDefault = "post-caption-default"
+            static let CaptionError = "post-caption-error"
         }
     }
     
@@ -233,6 +265,10 @@ struct K {
         
         struct Post {
             static let ImageRatio:CGFloat = 0.5
+        }
+        
+        struct Upload {
+            static let ImageQuality:CGFloat = 0.5
         }
     }
     

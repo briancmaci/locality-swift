@@ -12,4 +12,7 @@
 #import "AFNetworking/AFNetworking.h"
 #import "SDWebImage/UIImageView+WebCache.h"
 #import <RSKImageCropper/RSKImageCropper.h>
+#import "SlideNavigationController.h"
+#import "SlideNavigationContorllerAnimatorSlideAndFade.h"
+
 #endif /* Locality_Bridging_Header_h */

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class BaseUser: NSObject {
 
@@ -22,5 +23,15 @@ class BaseUser: NSObject {
         self.username = username
         self.status = status
         self.profileImageUrl = imgUrl
+    }
+    
+    convenience init(snapshot: FIRDataSnapshot) {
+        self.init()
+        let dic = snapshot.value as? [String:Any]
+        
+        self.uid = dic?[K.DB.Var.UserId] as! String
+        self.username = dic?[K.DB.Var.Username] as! String
+        self.status = UserStatusType(rawValue:(dic?[K.DB.Var.Status] as! Int))!
+        self.profileImageUrl = dic?[K.DB.Var.ProfileImageURL] as! String
     }
 }

@@ -186,6 +186,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aOw-sB-DWu">
+                                <rect key="frame" x="0.0" y="59" width="375" height="608"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bJ8-3z-U79" userLabel="HeaderContainer" customClass="FlexibleFeedHeaderView" customModule="locality_swift" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="157"/>
                                 <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -193,10 +197,6 @@
                                     <constraint firstAttribute="height" constant="157" id="5hw-lK-19q"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aOw-sB-DWu">
-                                <rect key="frame" x="0.0" y="157" width="375" height="510"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nwy-fq-gdS">
                                 <rect key="frame" x="152" y="577" width="70" height="70"/>
                                 <constraints>
@@ -213,8 +213,8 @@
                             <constraint firstItem="B5n-W7-TST" firstAttribute="top" secondItem="aOw-sB-DWu" secondAttribute="bottom" id="C1Z-qq-O1O"/>
                             <constraint firstItem="nwy-fq-gdS" firstAttribute="centerX" secondItem="c67-D5-8de" secondAttribute="centerX" id="FMm-zS-jud"/>
                             <constraint firstItem="B5n-W7-TST" firstAttribute="top" secondItem="nwy-fq-gdS" secondAttribute="bottom" constant="20" id="Ozg-9a-iaN"/>
-                            <constraint firstItem="aOw-sB-DWu" firstAttribute="top" secondItem="bJ8-3z-U79" secondAttribute="bottom" id="awd-35-JDV"/>
                             <constraint firstItem="bJ8-3z-U79" firstAttribute="top" secondItem="c67-D5-8de" secondAttribute="top" id="d0J-XW-QoH"/>
+                            <constraint firstItem="aOw-sB-DWu" firstAttribute="top" secondItem="U3O-7b-dt3" secondAttribute="bottom" constant="39" id="wwo-o3-eZT"/>
                             <constraint firstItem="aOw-sB-DWu" firstAttribute="leading" secondItem="c67-D5-8de" secondAttribute="leading" id="x0h-o8-5Bn"/>
                             <constraint firstAttribute="trailing" secondItem="bJ8-3z-U79" secondAttribute="trailing" id="y1i-uX-dfc"/>
                         </constraints>
@@ -518,7 +518,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M8l-HW-Eij">
-                                <rect key="frame" x="10" y="595" width="355" height="54"/>
+                                <rect key="frame" x="10" y="575" width="355" height="54"/>
                                 <color key="backgroundColor" red="0.23662534360000001" green="0.27041301130000001" blue="0.30341908340000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="tAE-SQ-BU5"/>
@@ -534,6 +534,16 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZqP-Ot-saZ">
+                                <rect key="frame" x="10" y="630" width="355" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="14" id="suS-Pa-GQV"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="14" id="tp3-rE-zmV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="12"/>
+                                <color key="textColor" red="0.71522049489999995" green="0.01339015205" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d4E-Gn-DzP" customClass="ImageUploadView" customModule="locality_swift" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="170" width="375" height="164"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -551,21 +561,25 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ZqP-Ot-saZ" firstAttribute="leading" secondItem="TR2-sc-NGg" secondAttribute="leading" constant="10" id="5Dn-ep-itt"/>
                             <constraint firstAttribute="trailing" secondItem="y07-yq-KFs" secondAttribute="trailing" id="7WR-lc-fTv"/>
                             <constraint firstItem="y07-yq-KFs" firstAttribute="top" secondItem="d4E-Gn-DzP" secondAttribute="bottom" id="7mH-rf-OQ9"/>
                             <constraint firstAttribute="trailing" secondItem="M8l-HW-Eij" secondAttribute="trailing" constant="10" id="Nvl-2S-Z70"/>
                             <constraint firstItem="UXK-5Y-FHK" firstAttribute="top" secondItem="TR2-sc-NGg" secondAttribute="top" constant="69" id="Obn-Qk-R4f"/>
                             <constraint firstItem="UXK-5Y-FHK" firstAttribute="leading" secondItem="TR2-sc-NGg" secondAttribute="leading" constant="20" id="Uu7-Kh-ITo"/>
                             <constraint firstItem="y07-yq-KFs" firstAttribute="leading" secondItem="TR2-sc-NGg" secondAttribute="leading" id="VQX-uo-mvm"/>
-                            <constraint firstItem="r7h-ig-SW3" firstAttribute="top" secondItem="M8l-HW-Eij" secondAttribute="bottom" constant="18" id="Xn8-zg-W3m"/>
+                            <constraint firstItem="r7h-ig-SW3" firstAttribute="top" secondItem="M8l-HW-Eij" secondAttribute="bottom" constant="38" id="Xn8-zg-W3m"/>
                             <constraint firstItem="d4E-Gn-DzP" firstAttribute="leading" secondItem="TR2-sc-NGg" secondAttribute="leading" id="dSe-ed-haG"/>
                             <constraint firstItem="d4E-Gn-DzP" firstAttribute="top" secondItem="UXK-5Y-FHK" secondAttribute="bottom" constant="1" id="frm-rL-0GT"/>
+                            <constraint firstItem="ZqP-Ot-saZ" firstAttribute="top" secondItem="M8l-HW-Eij" secondAttribute="bottom" constant="1" id="hWL-UU-5ce"/>
+                            <constraint firstAttribute="trailing" secondItem="ZqP-Ot-saZ" secondAttribute="trailing" constant="10" id="i2e-GV-Qb2"/>
                             <constraint firstAttribute="trailing" secondItem="UXK-5Y-FHK" secondAttribute="trailing" constant="20" id="ncG-ww-4jo"/>
                             <constraint firstItem="M8l-HW-Eij" firstAttribute="leading" secondItem="TR2-sc-NGg" secondAttribute="leading" constant="10" id="oCn-q6-B4h"/>
                             <constraint firstAttribute="trailing" secondItem="d4E-Gn-DzP" secondAttribute="trailing" id="ycG-Kf-bDJ"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="captionError" destination="ZqP-Ot-saZ" id="9iB-tA-hFR"/>
                         <outlet property="captionField" destination="UXK-5Y-FHK" id="Pb0-cX-jth"/>
                         <outlet property="imageUploadView" destination="d4E-Gn-DzP" id="BT5-nF-VUW"/>
                         <outlet property="postFromView" destination="y07-yq-KFs" id="QhB-5K-5vf"/>
@@ -848,12 +862,12 @@
             </objects>
             <point key="canvasLocation" x="1729" y="-568"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Slide Navigation Controller-->
         <scene sceneID="XQj-PP-CDM">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Qd3-wx-0My" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Qd3-wx-0My" customClass="SlideNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2qF-2R-zkD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2qF-2R-zkD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.15877681969999999" green="0.2493949234" blue="0.31995546819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
