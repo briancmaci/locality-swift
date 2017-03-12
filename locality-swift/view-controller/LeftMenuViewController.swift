@@ -141,6 +141,7 @@ class LeftMenuViewController: LocalityPhotoBaseViewController, UITableViewDelega
                 let path:String = String(format:pathFormat, K.DB.Table.Users, CurrentUser.shared.uid, K.DB.Var.ProfileImageURL)
                 
                 FIRDatabase.database().reference().child(path).setValue(metadata?.downloadURL()?.absoluteString)
+                CurrentUser.shared.profileImageUrl = (metadata?.downloadURL()?.absoluteString)!
                 
                 UIApplication.topViewController()?.dismiss(animated: true, completion: {
                     //print("We should see the image in the side menu. We should save it now.")

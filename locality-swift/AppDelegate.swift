@@ -33,9 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Init SlideMenu
         initSlideMenuController()
-        
-        //Overlay Container - will attempt to use for multiple purposes
-        initOverlayContainer()
         return true
     }
 
@@ -85,19 +82,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let revealAnimator = SlideNavigationContorllerAnimatorSlideAndFade()
         SlideNavigationController.sharedInstance().menuRevealAnimator = revealAnimator
-    }
-    
-    func initOverlayContainer() {
-//        let cont:OverlayContainer = OverlayContainer()
-//        cont.frame = CGRect(x: 0, y: 0, width: 500, height: 500)
-//        cont.backgroundColor = K.Color.localityBlue
-//        window?.addSubview(cont)
-//        print("cont frame? \(cont.frame)")
-//        OverlayContainer.shared.frame = CGRect(x: 0, y: 0, width: K.Screen.Width, height: K.Screen.Height)
-//        
-//        OverlayContainer.shared.backgroundColor = K.Color.localityMapAccent
-//        
-//        window?.addSubview(OverlayContainer.shared)
     }
     
     // MARK: - Core Data stack

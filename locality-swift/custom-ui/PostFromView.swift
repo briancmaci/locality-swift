@@ -33,6 +33,10 @@ class PostFromView: UIView {
 //        return self
 //    }
     
+    func updateProfilePhoto() {
+        postFromMeToggle.img.loadProfileImage(url: CurrentUser.shared.profileImageUrl)
+    }
+    
     func initToggles() {
         postFromMeToggle.img.loadProfileImage(url: CurrentUser.shared.profileImageUrl)
         postFromMeToggle.img.encircled()

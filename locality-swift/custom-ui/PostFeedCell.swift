@@ -79,9 +79,17 @@ class PostFeedCell: UITableViewCell {
         
         postContent.captionLabel.text = thisModel.caption
         
+        //Load user from UserHandle
+        FirebaseManager.getPostBaseUser(uid: thisModel.userHandle) { (thisUser, error) in
+            self.thisModel.user = thisUser!
+            self.populateUserInfo()
+        }
+    }
+    
+    func populateUserInfo() {
         postContent.postUser.populate(imgUrl: thisModel.user.profileImageUrl,
-                          username: thisModel.user.username,
-                          status: UserStatus.stringFrom(type: thisModel.user.status))
-        
+                                      username: thisModel.user.username,
+                                      status: UserStatus.stringFrom(type: thisModel.user.status))
+
     }
 }

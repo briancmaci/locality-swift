@@ -34,6 +34,8 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        //reload photo
+        postFromView.updateProfilePhoto()
         startLocationServices()
     }
     

@@ -56,6 +56,22 @@ class FirebaseManager: NSObject {
         })
     }
     
+    class func getPostBaseUser(uid:String, completionHandler: @escaping (BaseUser?, Error?) -> ()) -> () {
+        
+        var thisUser:BaseUser!
+        
+        getUsersRef().child(uid).observeSingleEvent(of: .value, with: { snapshot in
+            let userDic = snapshot.value as? [String:Any]
+            print("Snapshot? \(snapshot)")
+            thisUser = BaseUser(uid: uid,
+                                username: userDic?[K.DB.Var.Username] as! String,
+                                imgUrl: userDic?[K.DB.Var.ProfileImageURL] as! String,
+                                status: UserStatusType(rawValue:userDic?[K.DB.Var.Status] as! Int)!)
+            
+            completionHandler(thisUser, nil)
+        })
+    }
+    
     class func write(post:UserPost, completionHandler: @escaping (Bool?, Error?) -> ()) -> () {
         
         FirebaseManager.getPostsRef().child(post.postId).updateChildValues(post.toFirebaseObject()) { (error, ref) in

@@ -94,7 +94,6 @@
 		72FE07FB1E747E2600F87A7F /* SlideMenuAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FE07FA1E747E2600F87A7F /* SlideMenuAttributes.swift */; };
 		72FE07FE1E74919400F87A7F /* LeftMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FE07FC1E74919400F87A7F /* LeftMenuCell.swift */; };
 		72FE07FF1E74919400F87A7F /* LeftMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72FE07FD1E74919400F87A7F /* LeftMenuCell.xib */; };
-		72FE08031E74D1CB00F87A7F /* OverlayContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FE08021E74D1CB00F87A7F /* OverlayContainer.swift */; };
 		72FE08051E74D72000F87A7F /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FE08041E74D72000F87A7F /* UIApplicationExtension.swift */; };
 		A4BE9DA43AD7D9F572693B60 /* Pods_locality_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB91C8D02C0D325EDFD2826E /* Pods_locality_swift.framework */; };
 /* End PBXBuildFile section */
@@ -218,7 +217,6 @@
 		72FE07FA1E747E2600F87A7F /* SlideMenuAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlideMenuAttributes.swift; path = model/SlideMenuAttributes.swift; sourceTree = "<group>"; };
 		72FE07FC1E74919400F87A7F /* LeftMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeftMenuCell.swift; path = "custom-ui/LeftMenuCell.swift"; sourceTree = "<group>"; };
 		72FE07FD1E74919400F87A7F /* LeftMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LeftMenuCell.xib; path = "custom-ui/LeftMenuCell.xib"; sourceTree = "<group>"; };
-		72FE08021E74D1CB00F87A7F /* OverlayContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OverlayContainer.swift; path = "custom-ui/OverlayContainer.swift"; sourceTree = "<group>"; };
 		72FE08041E74D72000F87A7F /* UIApplicationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIApplicationExtension.swift; path = extension/UIApplicationExtension.swift; sourceTree = "<group>"; };
 		84886BD7BF3AE7DEF44AC1B8 /* Pods-locality-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-locality-swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-locality-swift/Pods-locality-swift.release.xcconfig"; sourceTree = "<group>"; };
 		B0C073B846F1D9C61B783347 /* Pods-locality-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-locality-swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-locality-swift/Pods-locality-swift.debug.xcconfig"; sourceTree = "<group>"; };
@@ -396,7 +394,6 @@
 				72F24BE41E721B4D00CA7702 /* image-upload */,
 				72DC48871E6D9C0200486535 /* location-slider */,
 				72DC48761E6B4A5200486535 /* mapbox */,
-				72FE08011E74D19300F87A7F /* overlay-container */,
 				72F24BD21E71C2CA00CA7702 /* post-filter */,
 				72F24BE71E7227F300CA7702 /* post-from */,
 				72F24BC01E71AAEA00CA7702 /* post-user-info */,
@@ -664,14 +661,6 @@
 				72FE07FD1E74919400F87A7F /* LeftMenuCell.xib */,
 			);
 			name = "left-menu-cell";
-			sourceTree = "<group>";
-		};
-		72FE08011E74D19300F87A7F /* overlay-container */ = {
-			isa = PBXGroup;
-			children = (
-				72FE08021E74D1CB00F87A7F /* OverlayContainer.swift */,
-			);
-			name = "overlay-container";
 			sourceTree = "<group>";
 		};
 		A140867697BC340ACB5B7282 /* Pods */ = {
@@ -957,7 +946,6 @@
 				72F24BBB1E71A1B300CA7702 /* SortBy.swift in Sources */,
 				72B882081E688AB300EB3B2E /* CurrentUser.swift in Sources */,
 				72B881F71E67919400EB3B2E /* AngledButtonAttributes.swift in Sources */,
-				72FE08031E74D1CB00F87A7F /* OverlayContainer.swift in Sources */,
 				72DC487C1E6BCA7700486535 /* DIspatchQueueExtension.swift in Sources */,
 				72F24BB61E70F2E400CA7702 /* HeaderIcon.swift in Sources */,
 				72B881F41E678D2900EB3B2E /* AngledButtonPairView.swift in Sources */,
