@@ -120,5 +120,4 @@ class FeedHeaderView: UIView {
     func iconDidTouch(sender:HeaderIconButton) {
         delegate?.iconTapped!(btn: sender)
     }
-    
 }

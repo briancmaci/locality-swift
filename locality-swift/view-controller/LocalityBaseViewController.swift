@@ -69,7 +69,33 @@ class LocalityBaseViewController: UIViewController, LocalityHeaderViewDelegate {
     
     // MARK: - LocalityHeaderDelegate
     func iconTapped(btn: HeaderIconButton) {
-        print("Icon Tapped: \(btn.iconType)")
+        print("Icon type? \(btn.iconType)")
+        
+        let type:HeaderIconType = btn.iconType
+        
+        switch type {
+            
+        case .back:
+            _ = navigationController?.popViewController(animated: true)
+            
+        case .close:
+            print("Close Button Clicked")
+    
+        case .feedMenu:
+            //this pops for now until we get the sliding menu feature in
+             _ = navigationController?.popViewController(animated: true)
+            
+        case .hamburger:
+            SlideNavigationController.sharedInstance().open(MenuLeft, withCompletion: { 
+                print("nav slid open")
+            })
+        
+        case .settings:
+            print("feed settings")
+            
+        case .none:
+            print("Do Nothing")
+        }
     }
     
 

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		722ABA111E7459FB00A3F1DA /* CGFloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722ABA101E7459FB00A3F1DA /* CGFloatExtension.swift */; };
-		722ABA291E74715000A3F1DA /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 722ABA281E74715000A3F1DA /* SlideNavigationController.m */; };
 		722ABA401E74761100A3F1DA /* SlideNavigationContorllerAnimatorFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 722ABA351E74761100A3F1DA /* SlideNavigationContorllerAnimatorFade.m */; };
 		722ABA411E74761100A3F1DA /* SlideNavigationContorllerAnimatorScale.m in Sources */ = {isa = PBXBuildFile; fileRef = 722ABA371E74761100A3F1DA /* SlideNavigationContorllerAnimatorScale.m */; };
 		722ABA421E74761100A3F1DA /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 722ABA391E74761100A3F1DA /* SlideNavigationContorllerAnimatorScaleAndFade.m */; };
@@ -92,6 +91,11 @@
 		72F24BF61E725BCB00CA7702 /* CameraOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BF51E725BCB00CA7702 /* CameraOverlay.swift */; };
 		72F24BF81E730C5A00CA7702 /* PhotoUploadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BF71E730C5A00CA7702 /* PhotoUploadManager.swift */; };
 		72F24BFB1E735BF700CA7702 /* GeoFireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BFA1E735BF700CA7702 /* GeoFireManager.swift */; };
+		72FE07FB1E747E2600F87A7F /* SlideMenuAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FE07FA1E747E2600F87A7F /* SlideMenuAttributes.swift */; };
+		72FE07FE1E74919400F87A7F /* LeftMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FE07FC1E74919400F87A7F /* LeftMenuCell.swift */; };
+		72FE07FF1E74919400F87A7F /* LeftMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72FE07FD1E74919400F87A7F /* LeftMenuCell.xib */; };
+		72FE08031E74D1CB00F87A7F /* OverlayContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FE08021E74D1CB00F87A7F /* OverlayContainer.swift */; };
+		72FE08051E74D72000F87A7F /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FE08041E74D72000F87A7F /* UIApplicationExtension.swift */; };
 		A4BE9DA43AD7D9F572693B60 /* Pods_locality_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB91C8D02C0D325EDFD2826E /* Pods_locality_swift.framework */; };
 /* End PBXBuildFile section */
 
@@ -114,7 +118,6 @@
 
 /* Begin PBXFileReference section */
 		722ABA101E7459FB00A3F1DA /* CGFloatExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGFloatExtension.swift; path = extension/CGFloatExtension.swift; sourceTree = "<group>"; };
-		722ABA281E74715000A3F1DA /* SlideNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlideNavigationController.m; path = "/Users/chelseapower/Desktop/brian/ios/personal/Locality/locality-swift/locality-swift/custom-ui/SlideNavigationController/SlideNavigationController.m"; sourceTree = "<absolute>"; };
 		722ABA331E74761100A3F1DA /* SlideNavigationContorllerAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlideNavigationContorllerAnimator.h; path = "custom-ui/SlideNavigationController/Animations/SlideNavigationContorllerAnimator.h"; sourceTree = "<group>"; };
 		722ABA341E74761100A3F1DA /* SlideNavigationContorllerAnimatorFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlideNavigationContorllerAnimatorFade.h; path = "custom-ui/SlideNavigationController/Animations/SlideNavigationContorllerAnimatorFade.h"; sourceTree = "<group>"; };
 		722ABA351E74761100A3F1DA /* SlideNavigationContorllerAnimatorFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlideNavigationContorllerAnimatorFade.m; path = "custom-ui/SlideNavigationController/Animations/SlideNavigationContorllerAnimatorFade.m"; sourceTree = "<group>"; };
@@ -212,6 +215,11 @@
 		72F24BF51E725BCB00CA7702 /* CameraOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraOverlay.swift; path = "custom-ui/CameraOverlay.swift"; sourceTree = "<group>"; };
 		72F24BF71E730C5A00CA7702 /* PhotoUploadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoUploadManager.swift; path = manager/PhotoUploadManager.swift; sourceTree = "<group>"; };
 		72F24BFA1E735BF700CA7702 /* GeoFireManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeoFireManager.swift; path = manager/GeoFireManager.swift; sourceTree = "<group>"; };
+		72FE07FA1E747E2600F87A7F /* SlideMenuAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlideMenuAttributes.swift; path = model/SlideMenuAttributes.swift; sourceTree = "<group>"; };
+		72FE07FC1E74919400F87A7F /* LeftMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeftMenuCell.swift; path = "custom-ui/LeftMenuCell.swift"; sourceTree = "<group>"; };
+		72FE07FD1E74919400F87A7F /* LeftMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LeftMenuCell.xib; path = "custom-ui/LeftMenuCell.xib"; sourceTree = "<group>"; };
+		72FE08021E74D1CB00F87A7F /* OverlayContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OverlayContainer.swift; path = "custom-ui/OverlayContainer.swift"; sourceTree = "<group>"; };
+		72FE08041E74D72000F87A7F /* UIApplicationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIApplicationExtension.swift; path = extension/UIApplicationExtension.swift; sourceTree = "<group>"; };
 		84886BD7BF3AE7DEF44AC1B8 /* Pods-locality-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-locality-swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-locality-swift/Pods-locality-swift.release.xcconfig"; sourceTree = "<group>"; };
 		B0C073B846F1D9C61B783347 /* Pods-locality-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-locality-swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-locality-swift/Pods-locality-swift.debug.xcconfig"; sourceTree = "<group>"; };
 		DB91C8D02C0D325EDFD2826E /* Pods_locality_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_locality_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -246,17 +254,7 @@
 		722ABA121E746C3400A3F1DA /* slide-navigation-controller */ = {
 			isa = PBXGroup;
 			children = (
-				722ABA331E74761100A3F1DA /* SlideNavigationContorllerAnimator.h */,
-				722ABA341E74761100A3F1DA /* SlideNavigationContorllerAnimatorFade.h */,
-				722ABA351E74761100A3F1DA /* SlideNavigationContorllerAnimatorFade.m */,
-				722ABA361E74761100A3F1DA /* SlideNavigationContorllerAnimatorScale.h */,
-				722ABA371E74761100A3F1DA /* SlideNavigationContorllerAnimatorScale.m */,
-				722ABA381E74761100A3F1DA /* SlideNavigationContorllerAnimatorScaleAndFade.h */,
-				722ABA391E74761100A3F1DA /* SlideNavigationContorllerAnimatorScaleAndFade.m */,
-				722ABA3A1E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlide.h */,
-				722ABA3B1E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlide.m */,
-				722ABA3C1E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlideAndFade.h */,
-				722ABA3D1E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlideAndFade.m */,
+				72FE07F91E747DC300F87A7F /* animations */,
 				722ABA3E1E74761100A3F1DA /* SlideNavigationController.h */,
 				722ABA3F1E74761100A3F1DA /* SlideNavigationController.m */,
 			);
@@ -398,6 +396,7 @@
 				72F24BE41E721B4D00CA7702 /* image-upload */,
 				72DC48871E6D9C0200486535 /* location-slider */,
 				72DC48761E6B4A5200486535 /* mapbox */,
+				72FE08011E74D19300F87A7F /* overlay-container */,
 				72F24BD21E71C2CA00CA7702 /* post-filter */,
 				72F24BE71E7227F300CA7702 /* post-from */,
 				72F24BC01E71AAEA00CA7702 /* post-user-info */,
@@ -458,6 +457,7 @@
 				72B882041E67E81900EB3B2E /* UIViewExtension.swift */,
 				72B882111E68F19D00EB3B2E /* UIViewControllerExtension.swift */,
 				722ABA101E7459FB00A3F1DA /* CGFloatExtension.swift */,
+				72FE08041E74D72000F87A7F /* UIApplicationExtension.swift */,
 			);
 			name = extension;
 			sourceTree = "<group>";
@@ -538,6 +538,7 @@
 			isa = PBXGroup;
 			children = (
 				72F24BB51E70F2E400CA7702 /* HeaderIcon.swift */,
+				72FE07FA1E747E2600F87A7F /* SlideMenuAttributes.swift */,
 				72F24BBA1E71A1B300CA7702 /* SortBy.swift */,
 				72B882091E6894BE00EB3B2E /* UserStatus.swift */,
 			);
@@ -559,6 +560,7 @@
 		72F24BBC1E71A41C00CA7702 /* tableviewcells */ = {
 			isa = PBXGroup;
 			children = (
+				72FE08001E74919F00F87A7F /* left-menu-cell */,
 				72F24BBD1E71A42800CA7702 /* post-feed-cell */,
 			);
 			name = tableviewcells;
@@ -635,6 +637,41 @@
 				72F24BF31E725B8200CA7702 /* CameraOverlay.xib */,
 			);
 			name = "camera-overlay";
+			sourceTree = "<group>";
+		};
+		72FE07F91E747DC300F87A7F /* animations */ = {
+			isa = PBXGroup;
+			children = (
+				722ABA331E74761100A3F1DA /* SlideNavigationContorllerAnimator.h */,
+				722ABA341E74761100A3F1DA /* SlideNavigationContorllerAnimatorFade.h */,
+				722ABA351E74761100A3F1DA /* SlideNavigationContorllerAnimatorFade.m */,
+				722ABA361E74761100A3F1DA /* SlideNavigationContorllerAnimatorScale.h */,
+				722ABA371E74761100A3F1DA /* SlideNavigationContorllerAnimatorScale.m */,
+				722ABA381E74761100A3F1DA /* SlideNavigationContorllerAnimatorScaleAndFade.h */,
+				722ABA391E74761100A3F1DA /* SlideNavigationContorllerAnimatorScaleAndFade.m */,
+				722ABA3A1E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlide.h */,
+				722ABA3B1E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlide.m */,
+				722ABA3C1E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlideAndFade.h */,
+				722ABA3D1E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlideAndFade.m */,
+			);
+			name = animations;
+			sourceTree = "<group>";
+		};
+		72FE08001E74919F00F87A7F /* left-menu-cell */ = {
+			isa = PBXGroup;
+			children = (
+				72FE07FC1E74919400F87A7F /* LeftMenuCell.swift */,
+				72FE07FD1E74919400F87A7F /* LeftMenuCell.xib */,
+			);
+			name = "left-menu-cell";
+			sourceTree = "<group>";
+		};
+		72FE08011E74D19300F87A7F /* overlay-container */ = {
+			isa = PBXGroup;
+			children = (
+				72FE08021E74D1CB00F87A7F /* OverlayContainer.swift */,
+			);
+			name = "overlay-container";
 			sourceTree = "<group>";
 		};
 		A140867697BC340ACB5B7282 /* Pods */ = {
@@ -769,6 +806,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				72F24BB01E70E9DC00CA7702 /* FlexibleFeedHeaderView.xib in Resources */,
+				72FE07FF1E74919400F87A7F /* LeftMenuCell.xib in Resources */,
 				72F24BE31E721B3700CA7702 /* ImageUploadView.xib in Resources */,
 				72DC48841E6CC8BC00486535 /* RangeValuesFeet.plist in Resources */,
 				72DC488B1E6DA11000486535 /* LocationSlider.xib in Resources */,
@@ -881,6 +919,7 @@
 				72B8820A1E6894BE00EB3B2E /* UserStatus.swift in Sources */,
 				72DC487E1E6C502400486535 /* DataParseManager.swift in Sources */,
 				72F24BCA1E71BAA700CA7702 /* LikePostButton.swift in Sources */,
+				72FE08051E74D72000F87A7F /* UIApplicationExtension.swift in Sources */,
 				72F24BE61E721D9300CA7702 /* ImageUploadView.swift in Sources */,
 				722ABA411E74761100A3F1DA /* SlideNavigationContorllerAnimatorScale.m in Sources */,
 				72F24BB21E70ECDF00CA7702 /* FeedHeaderView.swift in Sources */,
@@ -903,9 +942,9 @@
 				72B881EC1E676D8A00EB3B2E /* LandingViewController.swift in Sources */,
 				72DC487A1E6B792200486535 /* AFNetworkingManager.swift in Sources */,
 				72DC48781E6B4A7D00486535 /* CustomPointAnnotation.swift in Sources */,
-				722ABA291E74715000A3F1DA /* SlideNavigationController.m in Sources */,
 				72B881F91E67961E00EB3B2E /* AngledPairButton.swift in Sources */,
 				72F24BF11E72494B00CA7702 /* LocalityPhotoBaseViewController.swift in Sources */,
+				72FE07FE1E74919400F87A7F /* LeftMenuCell.swift in Sources */,
 				72F24BC61E71AD3D00CA7702 /* UIImageViewExtension.swift in Sources */,
 				72B882191E6A8BE800EB3B2E /* CurrentFeedInitializeViewController.swift in Sources */,
 				72B881D31E65F5E200EB3B2E /* FabricManager.swift in Sources */,
@@ -918,6 +957,7 @@
 				72F24BBB1E71A1B300CA7702 /* SortBy.swift in Sources */,
 				72B882081E688AB300EB3B2E /* CurrentUser.swift in Sources */,
 				72B881F71E67919400EB3B2E /* AngledButtonAttributes.swift in Sources */,
+				72FE08031E74D1CB00F87A7F /* OverlayContainer.swift in Sources */,
 				72DC487C1E6BCA7700486535 /* DIspatchQueueExtension.swift in Sources */,
 				72F24BB61E70F2E400CA7702 /* HeaderIcon.swift in Sources */,
 				72B881F41E678D2900EB3B2E /* AngledButtonPairView.swift in Sources */,
@@ -929,6 +969,7 @@
 				72F24BE11E7214FC00CA7702 /* PostCreateViewController.swift in Sources */,
 				72B881A11E65EE5000EB3B2E /* AppDelegate.swift in Sources */,
 				72F24BEF1E722EC800CA7702 /* UIImageExtension.swift in Sources */,
+				72FE07FB1E747E2600F87A7F /* SlideMenuAttributes.swift in Sources */,
 				72DC48861E6CD0B500486535 /* RangeStep.swift in Sources */,
 				72F24BA61E70BC7600CA7702 /* LeftMenuViewController.swift in Sources */,
 				72F24BA11E704FEC00CA7702 /* Util.swift in Sources */,

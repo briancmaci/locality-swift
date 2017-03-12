@@ -61,7 +61,7 @@ struct K {
             static let ImportantEnabled = "importantEnabled"
             
             //Post
-            static let User = "User"
+            static let User = "user"
             static let CreatedDate = "createdDate"
             static let PostId = "postId"
             //Lat
@@ -91,6 +91,9 @@ struct K {
         static let toggleRed = UIColor(red: 180/255, green: 0, blue: 38/255, alpha: 1)
         static let toggleGray = UIColor(red: 205/255, green: 215/255, blue: 219/255, alpha: 1)
         
+        static let leftNavSelected = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        static let leftNavLight = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
+        static let leftNavDark = UIColor(red: 75/255, green: 81/255, blue: 85/255, alpha: 1)
     }
     
     struct FontName {
@@ -151,6 +154,7 @@ struct K {
     struct PList {
         static let Keys = "Keys"
         static let Main = "Main"
+        static let MenuOptions = "MenuOptions"
         static let RangeValuesFeet = "RangeValuesFeet"
     }
     
@@ -163,11 +167,14 @@ struct K {
         static let ImageUploadView = "ImageUploadView"
         static let PostFromView = "PostFromView"
         static let CameraOverlay = "CameraOverlay"
+        
+        static let LeftMenuCell = "LeftMenuCell"
     }
     
     //UITableViewCell reuseIdentifiers
     struct ReuseID {
         static let PostFeedCellID = "postFeedCell"
+        static let LeftMenuCellID = "leftMenuCell"
     }
     
     //Strings
@@ -181,6 +188,7 @@ struct K {
             static let LandingExplore = "explore-button-label"
             static let LandingJoin = "join-button-label"
             static let LandingLogin = "login-button-label"
+            static let Terms = "terms-label"
         }
         
         struct Header {
@@ -199,6 +207,18 @@ struct K {
             static let Reporter = "reporter"
             static let Columnist = "columnist"
             static let TrustedSource = "trusted-source"
+        }
+        
+        struct Menu {
+            struct Action{
+                static let Segue = "ViewSegue"
+                static let Action = "Action"
+            }
+            
+            struct Style {
+                static let Light = "light"
+                static let Dark = "dark"
+            }
         }
         
         struct Mapbox {
@@ -250,6 +270,10 @@ struct K {
         struct Map {
             static let EarthRadius = 6371000.0
             static let DefaultRange = 500.0
+        }
+        
+        struct Menu {
+            static let RowHeight:CGFloat = 42.0
         }
         
         struct Header {

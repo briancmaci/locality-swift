@@ -16,7 +16,7 @@ class HeaderIcon: NSObject {
 
     class func imageName(type:HeaderIconType) -> String {
     
-        switch (type) {
+        switch type {
             case .back:
             return K.Icon.Header.Back
             

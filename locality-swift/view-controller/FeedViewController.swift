@@ -132,7 +132,7 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let newVC:PostDetailViewController = Util.controllerFromStoryboard(id: K.Storyboard.Name.Main) as! PostDetailViewController
+        let newVC:PostDetailViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.PostDetail) as! PostDetailViewController
         
         newVC.thisPost = posts[indexPath.row]
         

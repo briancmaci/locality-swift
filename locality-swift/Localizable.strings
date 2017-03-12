@@ -43,6 +43,14 @@ create-post-header = "CREATE POST";
 //User
 username-anonymous = "Anonymous";
 
+//Menu Options
+SettingsLabel = "Settings";
+LocationsLabel = "My Locations";
+AboutLabel = "About";
+LogOutLabel = "Log Out";
+ContactUsLabel = "Contact Us";
+DeleteAccountLabel = "Delete Account";
+
 //Errors
 email-duplicate = "This email is already registered.";
 in-use-email = "This email is already in use. Try authenticating via Facebook.";
@@ -57,6 +65,9 @@ password-wrong = "You have entered an incorrect password.";
 user-disabled = "I'm sorry, your account is disabled.";
 username-taken = "This username is already taken.";
 post-caption-error = "You must enter a caption to post.";
+
+//Menu
+terms-label = "Terms and Privacy";
 
 //Copyright
 copyright-version-format = "©%d Locality v%@.%@. All rights reserved.";

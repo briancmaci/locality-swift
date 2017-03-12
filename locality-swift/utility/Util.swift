@@ -39,6 +39,20 @@ class Util: NSObject {
         }
     }
     
+    class func getPListArray(name:String) -> [[String: AnyObject]] {
+        
+        if let path = Bundle.main.path(forResource: name, ofType: "plist"),
+            let dict = NSArray(contentsOfFile: path) as? [[String: AnyObject]] {
+            
+            return dict
+        }
+            
+        else {
+            
+            return [[:]]
+        }
+    }
+    
     //Location Slider Utility
     class func attributedRangeString(value:String, unit:String) -> NSMutableAttributedString {
         

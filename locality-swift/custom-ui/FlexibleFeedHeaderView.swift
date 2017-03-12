@@ -94,7 +94,8 @@ class FlexibleFeedHeaderView: FeedHeaderView {
    
     //CTA
     func openFeedDidTouch(sender:UIButton) {
-        delegate?.openFeedTapped!(model: feedModel, index: feedIndex)
+        
+        delegate?.openFeedTapped?(model: feedModel, index: feedIndex)
     }
     
     func updateHeaderHeight(newHeight:CGFloat) {
