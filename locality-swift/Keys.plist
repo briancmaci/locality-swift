@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>GooglePlacesAPIKey</key>
+	<string>AIzaSyABFHPke1O60vsN2qeKPULT4yu6fZUXX1w</string>
 	<key>MapboxAPIKey</key>
 	<string>pk.eyJ1IjoiYnJpYW5jbWFjaSIsImEiOiJlNGZkNGRiOTZlYzBiMTJiOGJiMzA4NzdiOGRmMWE2NSJ9.nU_n7E8n5J4uoetH-rD8MA</string>
 	<key>FirebaseDBKey</key>

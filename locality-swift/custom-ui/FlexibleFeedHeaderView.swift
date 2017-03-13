@@ -79,17 +79,22 @@ class FlexibleFeedHeaderView: FeedHeaderView {
     }
     
     func updateIconsY() {
-        var frame = leftIconButton.frame
         
-        frame.origin.y = feedNameTop.constant + (titleLabel.frame.size.height - leftIconButton.frame.size.height)/2
+        if let lButton = leftIconButton {
+            var lFrame = lButton.frame
+            
+            lFrame.origin.y = feedNameTop.constant + (titleLabel.frame.size.height - lButton.frame.size.height)/2
+            
+            lButton.frame = lFrame
+        }
         
-        leftIconButton.frame = frame
-        
-        frame = rightIconButton.frame
-        frame.origin.y = feedNameTop.constant + (titleLabel.frame.size.height - rightIconButton.frame.size.height)/2
-        
-        rightIconButton.frame = frame
-        
+        if let rButton = rightIconButton {
+            var rFrame = rButton.frame
+            
+            rFrame.origin.y = feedNameTop.constant + (titleLabel.frame.size.height - rButton.frame.size.height)/2
+            
+            rButton.frame = rFrame
+        }
     }
    
     //CTA

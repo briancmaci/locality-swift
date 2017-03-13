@@ -25,6 +25,7 @@ pod 'GeoFire', :git => 'https://github.com/firebase/geofire-objc.git'
 
 #GoogleMaps
 pod 'GoogleMaps', '~> 2.2'
+pod 'GooglePlaces', '~> 2.2'
 
 #Auth Pods
 pod 'FBSDKLoginKit'

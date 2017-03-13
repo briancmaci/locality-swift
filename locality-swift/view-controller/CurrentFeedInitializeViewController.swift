@@ -83,6 +83,7 @@ class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapVie
         }
         
         map.showsUserLocation = false
+        map.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         //init light style
         let localityStyleURL = K.Mapbox.MapStyle

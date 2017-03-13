@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>label</key>
+		<string>push-alerts-label</string>
+		<key>default</key>
+		<true/>
+		<key>var</key>
+		<string>pushEnabled</string>
+	</dict>
+    
+    <dict>
+        <key>label</key>
+        <string>promotions-label</string>
+        <key>default</key>
+        <false/>
+        <key>var</key>
+        <string>promotionsEnabled</string>
+    </dict>
+</array>
+</plist>

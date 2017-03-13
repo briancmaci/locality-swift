@@ -35,6 +35,18 @@ class FirebaseManager: NSObject {
                     CurrentUser.shared.currentLocation = FeedLocation(firebaseDictionary:currentLocation as! [String : AnyObject])
                 }
                 
+                if let pinned = userDic?[K.DB.Var.Pinned] as? [[String : AnyObject]]{
+                    
+                    var pins:[FeedLocation] = [FeedLocation]()
+                    
+                    for pin in pinned {
+                        let l:FeedLocation = FeedLocation(firebaseDictionary:pin)
+                        pins.append(l)
+                    }
+                    
+                    CurrentUser.shared.pinnedLocations = pins
+                }
+                
                 completionHandler(true, nil)
             }
         })
@@ -62,7 +74,7 @@ class FirebaseManager: NSObject {
         
         getUsersRef().child(uid).observeSingleEvent(of: .value, with: { snapshot in
             let userDic = snapshot.value as? [String:Any]
-            print("Snapshot? \(snapshot)")
+            
             thisUser = BaseUser(uid: uid,
                                 username: userDic?[K.DB.Var.Username] as! String,
                                 imgUrl: userDic?[K.DB.Var.ProfileImageURL] as! String,

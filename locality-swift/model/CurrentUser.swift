@@ -19,7 +19,7 @@ class CurrentUser: BaseUser {
     var isFirstVisit:Bool = true
     
     var currentLocation:FeedLocation!
-    var pinnedLocations:[FeedLocation]!
+    var pinnedLocations:[FeedLocation] = [FeedLocation]()
     
     func extraAttributesToFirebase() -> [String:Any] {
         

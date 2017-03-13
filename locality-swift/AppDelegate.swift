@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import FBSDKLoginKit
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FacebookManager.initFacebookWith(app: application, options: launchOptions)
         FirebaseManager.initFirebase()
         MapboxManager.initMapbox()
+        GMSPlacesClient.provideAPIKey(Util.getPList(name: K.PList.Keys)[K.APIKey.GooglePlaces] as! String)
         
         //Setting metric or not in CurrentUser
         initDefaultUnitSystem()

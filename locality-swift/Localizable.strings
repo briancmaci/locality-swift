@@ -19,6 +19,10 @@ login-button-label = "LOGIN";
 //Current Location
 current-map-header = "YOU ARE CURRENTLY IN";
 
+//Feed
+add-feed-label = "ADD NEW LOCATION";
+save-feed-label = "SAVE LOCATION";
+
 //UserStatus
 new-user = "User";
 contributor = "Contributor";
@@ -28,6 +32,7 @@ trusted-source = "Trusted Source";
 
 //Defaults
 post-caption-default = "Add your caption";
+feed-name-default = "Name your location";
 
 //Email Verification Alert
 alert-verify-title = "You must verify your email.";
@@ -39,6 +44,8 @@ current-location-title = "CURRENT LOCATION";
 
 //VC Titles
 create-post-header = "CREATE POST";
+add-new-location-header = "ADD NEW LOCATION";
+edit-location-header = "EDIT LOCATION";
 
 //User
 username-anonymous = "Anonymous";
@@ -65,6 +72,10 @@ password-wrong = "You have entered an incorrect password.";
 user-disabled = "I'm sorry, your account is disabled.";
 username-taken = "This username is already taken.";
 post-caption-error = "You must enter a caption to post.";
+
+//Feed Menu Options
+push-alerts-label = "Send me push alerts from this location";
+promotions-label = "Include promotions for this location";
 
 //Menu
 terms-label = "Terms and Privacy";

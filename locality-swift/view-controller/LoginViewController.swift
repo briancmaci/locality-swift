@@ -113,11 +113,17 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
         }
             
         else {
+            
+            // ADD Feed Menu First!!
+            let feedMenuVC:FeedMenuTableViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.FeedMenu) as! FeedMenuTableViewController
+            
+            SlideNavigationController.sharedInstance().popAllAndSwitch(to: feedMenuVC, withCompletion: nil)
+            
             let newVC:FeedViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.Feed) as! FeedViewController
             
             newVC.thisFeed = CurrentUser.shared.currentLocation
+            SlideNavigationController.sharedInstance().pushViewController(newVC, animated: false)
             
-            navigationController?.pushViewController(newVC, animated: true)
         }
     }
     

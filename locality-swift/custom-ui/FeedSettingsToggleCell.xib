@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Interstate-LightCondensed.ttf">
+            <string>Interstate-LightCondensed</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedSettingsToggleCell" id="KGk-i7-Jjw" customClass="FeedSettingsToggleCell" customModule="locality_swift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2g-rf-QyA">
+                        <rect key="frame" x="9" y="11" width="224" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="ouW-6q-ARe"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="16"/>
+                        <color key="textColor" red="0.32584697010000002" green="0.32583719490000002" blue="0.32584273819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="s8O-YI-hDl">
+                        <rect key="frame" x="251" y="6" width="51" height="31"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="31" id="5qh-BQ-NMM"/>
+                            <constraint firstAttribute="width" constant="49" id="xMV-Re-aBm"/>
+                        </constraints>
+                        <color key="onTintColor" red="1" green="0.49019607840000001" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </switch>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="s8O-YI-hDl" firstAttribute="leading" secondItem="a2g-rf-QyA" secondAttribute="trailing" constant="18" id="16x-mb-hBu"/>
+                    <constraint firstItem="a2g-rf-QyA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="9" id="4fN-zG-QHm"/>
+                    <constraint firstAttribute="trailing" secondItem="s8O-YI-hDl" secondAttribute="trailing" constant="20" id="Xsk-mK-xd7"/>
+                    <constraint firstItem="s8O-YI-hDl" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="d0c-Et-wCQ"/>
+                    <constraint firstItem="a2g-rf-QyA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="lfR-L6-vI7"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="settingsLabel" destination="a2g-rf-QyA" id="8cs-Rg-brf"/>
+                <outlet property="settingsSwitch" destination="s8O-YI-hDl" id="Kns-se-KhA"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

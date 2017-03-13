@@ -15,6 +15,7 @@ struct K {
     struct APIKey {
         static let Mapbox = "MapboxAPIKey"
         static let Firebase = "FirebaseDBKey"
+        static let GooglePlaces = "GooglePlacesAPIKey"
     }
     
     //Back End URLs
@@ -46,7 +47,7 @@ struct K {
             static let Status = "status"
             static let Username = "username"
             static let CurrentLocation = "currentLocation"
-            static let Locations = "locations"
+            static let Pinned = "pinned"
             
             //Location
             static let Name = "name"
@@ -143,6 +144,8 @@ struct K {
             
             static let CurrentFeedInit = "currentFeedInitVC"
             static let Feed = "feedVC"
+            static let FeedMenu = "feedMenuVC"
+            static let FeedSettings = "feedSettingsVC"
             
             static let LeftMenu = "leftMenuVC"
             
@@ -155,6 +158,7 @@ struct K {
         static let Keys = "Keys"
         static let Main = "Main"
         static let MenuOptions = "MenuOptions"
+        static let FeedOptions = "FeedOptions"
         static let RangeValuesFeet = "RangeValuesFeet"
     }
     
@@ -169,12 +173,20 @@ struct K {
         static let CameraOverlay = "CameraOverlay"
         
         static let LeftMenuCell = "LeftMenuCell"
+        static let FeedAddNewCell = "FeedAddNewCell"
+        static let FeedMenuCell = "FeedMenuCell"
+        
+        static let FeedSettingsToggleCell = "FeedSettingsToggleCell"
     }
     
     //UITableViewCell reuseIdentifiers
     struct ReuseID {
         static let PostFeedCellID = "postFeedCell"
         static let LeftMenuCellID = "leftMenuCell"
+        static let FeedAddNewCellID = "feedAddNewCell"
+        static let FeedMenuCellID = "feedMenuCell"
+        static let FeedSettingsToggleCellID = "feedSettingsToggleCell"
+        static let PlacesSearchCellID = "SPGooglePlacesAutocompleteCell"
     }
     
     //Strings
@@ -194,6 +206,14 @@ struct K {
         struct Header {
             static let CurrentLocationTitle = "current-location-title"
             static let CreatePostHeader = "create-post-header"
+            static let AddNewLocationHeader = "add-new-location-header"
+            static let EditLocationHeader = "edit-location-header"
+        }
+        
+        struct Feed {
+            static let AddFeedLabel = "add-feed-label"
+            static let SaveFeedLabel = "save-feed-label"
+            static let FeedNameDefault = "feed-name-default"
         }
         
         struct User {
@@ -266,6 +286,12 @@ struct K {
         //Buttons
         static let RoundedButtonCornerRadius : CGFloat = 5
         static let RoundedButtonAngleWidth : CGFloat = 14
+        
+        struct Feed {
+            static let AddNewCellHeight : CGFloat = 137.0
+            static let FeedOptionHeight : CGFloat = 44.0
+            static let FeedBottomPadding : CGFloat = 80.0
+        }
         
         struct Map {
             static let EarthRadius = 6371000.0
