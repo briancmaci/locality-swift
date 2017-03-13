@@ -11,6 +11,7 @@ import UIKit
 class FlexibleFeedHeaderView: FeedHeaderView {    
 
     @IBOutlet weak var locationLabel:UILabel!
+    @IBOutlet weak var locationContainer:UIView!
     @IBOutlet weak var openFeedButton:UIButton!
     @IBOutlet weak var shadowOverlay:UIImageView!
     
@@ -75,7 +76,45 @@ class FlexibleFeedHeaderView: FeedHeaderView {
     }
     
     func initLabels() {
+        
+        //clear lines
+        let subs = locationContainer.subviews
+        
+        for sub in subs {
+            if sub != locationLabel {
+                sub.removeFromSuperview()
+            }
+        }
+        //locationLabel.text = String(format:"— %@ —", feedModel.location.uppercased())
         locationLabel.text = feedModel.location.uppercased()
+        let textWidth = locationLabel.intrinsicContentSize.width
+        //CGSize textSize = [[label text] sizeWithAttributes:@{NSFontAttributeName:[label font]}];
+        
+        
+        let lineWidth:CGFloat = 14.0
+        let linePadding:CGFloat = 4.0
+        
+        let lineAccentLeft:UIView = UIView()
+        lineAccentLeft.backgroundColor = .white
+        
+        let lineAccentRight:UIView = UIView()
+        lineAccentRight.backgroundColor = .white
+        
+        let lFrame = CGRect(x:(K.Screen.Width - textWidth)/2 - lineWidth - linePadding,
+                            y:locationLabel.center.y,
+                            width:lineWidth,
+                            height:1.0)
+        
+        let rFrame = CGRect(x:(K.Screen.Width + textWidth)/2 + linePadding,
+                            y:locationLabel.center.y,
+                            width:lineWidth,
+                            height:1.0)
+        
+        lineAccentLeft.frame = lFrame
+        lineAccentRight.frame = rFrame
+        
+        locationContainer.addSubview(lineAccentLeft)
+        locationContainer.addSubview(lineAccentRight)
     }
     
     func updateIconsY() {
@@ -105,7 +144,7 @@ class FlexibleFeedHeaderView: FeedHeaderView {
     
     func updateHeaderHeight(newHeight:CGFloat) {
         headerHeight.constant = newHeight
-        locationLabel.alpha = (newHeight - K.NumberConstant.Header.HeroCollapseHeight)/deltaHeight
+        locationContainer.alpha = (newHeight - K.NumberConstant.Header.HeroCollapseHeight)/deltaHeight
         
         feedNameTop.constant = K.NumberConstant.Header.TitleY0 + (K.NumberConstant.Header.TitleY1 * ((newHeight - K.NumberConstant.Header.HeroCollapseHeight)/K.NumberConstant.Header.HeroExpandHeight))
         

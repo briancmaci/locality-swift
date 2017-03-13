@@ -208,7 +208,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aOw-sB-DWu">
-                                <rect key="frame" x="0.0" y="59" width="375" height="608"/>
+                                <rect key="frame" x="0.0" y="39" width="375" height="628"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bJ8-3z-U79" userLabel="HeaderContainer" customClass="FlexibleFeedHeaderView" customModule="locality_swift" customModuleProvider="target">
@@ -235,7 +235,7 @@
                             <constraint firstItem="nwy-fq-gdS" firstAttribute="centerX" secondItem="c67-D5-8de" secondAttribute="centerX" id="FMm-zS-jud"/>
                             <constraint firstItem="B5n-W7-TST" firstAttribute="top" secondItem="nwy-fq-gdS" secondAttribute="bottom" constant="20" id="Ozg-9a-iaN"/>
                             <constraint firstItem="bJ8-3z-U79" firstAttribute="top" secondItem="c67-D5-8de" secondAttribute="top" id="d0J-XW-QoH"/>
-                            <constraint firstItem="aOw-sB-DWu" firstAttribute="top" secondItem="U3O-7b-dt3" secondAttribute="bottom" constant="39" id="wwo-o3-eZT"/>
+                            <constraint firstItem="aOw-sB-DWu" firstAttribute="top" secondItem="U3O-7b-dt3" secondAttribute="bottom" constant="19" id="wwo-o3-eZT"/>
                             <constraint firstItem="aOw-sB-DWu" firstAttribute="leading" secondItem="c67-D5-8de" secondAttribute="leading" id="x0h-o8-5Bn"/>
                             <constraint firstAttribute="trailing" secondItem="bJ8-3z-U79" secondAttribute="trailing" id="y1i-uX-dfc"/>
                         </constraints>
@@ -370,7 +370,7 @@
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="16"/>
                                                         <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                        <state key="normal" title="SAVE LOCATION" image="button_add_location_icon">
+                                                        <state key="normal" title="SAVE LOCATION" image="ButtonAddLocationIcon">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
@@ -1296,6 +1296,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ButtonAddLocationIcon" width="16" height="16"/>
         <image name="ButtonPost" width="70" height="70"/>
         <image name="IconCamera" width="12" height="10"/>
         <image name="IconLeftMenuLikes" width="24" height="24"/>
@@ -1304,6 +1305,5 @@
         <image name="LandingLogo" width="167" height="76"/>
         <image name="LaunchBackground" width="320" height="568"/>
         <image name="LaunchContourLines" width="320" height="568"/>
-        <image name="button_add_location_icon" width="16" height="16"/>
     </resources>
 </document>

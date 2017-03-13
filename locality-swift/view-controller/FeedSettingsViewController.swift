@@ -263,7 +263,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         }
         
         if imageUploadView.selectedPhoto.image == nil {
-            createLocationToWrite(url: "")
+            createLocationToWrite(url: K.Image.DefaultFeedHero)
         }
             
         else {
@@ -288,25 +288,38 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
                                                      range: Float(sliderSteps[currentRangeIndex].distance),
                                                      current: false)
         
-        thisLocation.location = "GET REVERSE GEOCODE"
-        thisLocation.feedImgUrl = url
-        
-        print("MUST SAVE SWITCHES!!!!!!!!")
-        
-        //save to current
-        CurrentUser.shared.pinnedLocations.append(thisLocation)
-        //check anonymous
-        
-        FirebaseManager.write(pinnedLocations:CurrentUser.shared.pinnedLocations, completionHandler: { (success, error) in
+        //get location from location
+        GoogleMapsManager.reverseGeocode(coord: currentLocation) { (address, error) in
+            
             if error != nil {
-                print("Locations Write Error: \(error?.localizedDescription)")
+                print("Address retrieval error")
             }
-                
+            
             else {
-                print("Locations written written!")
+                thisLocation.location = Util.locationLabel(address: address!)
                 
+                thisLocation.feedImgUrl = url
+                
+                print("MUST SAVE SWITCHES!!!!!!!!")
+                
+                //save to current
+                CurrentUser.shared.pinnedLocations.append(thisLocation)
+                //check anonymous
+                
+                FirebaseManager.write(pinnedLocations:CurrentUser.shared.pinnedLocations, completionHandler: { (success, error) in
+                    if error != nil {
+                        print("Locations Write Error: \(error?.localizedDescription)")
+                    }
+                        
+                    else {
+                        print("Locations written written!")
+                        
+                    }
+                })
             }
-        })
+        }
+        
+        
     }
 
     
@@ -482,7 +495,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         if locationName.text?.isEmpty == true {
-            locationName.text = K.String.Post.CaptionDefault.localized
+            locationName.text = K.String.Feed.FeedNameDefault.localized
         }
     }
     

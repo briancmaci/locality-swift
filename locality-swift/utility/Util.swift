@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMaps
 
 class Util: NSObject {
 
@@ -51,6 +52,14 @@ class Util: NSObject {
             
             return [[:]]
         }
+    }
+    
+    class func locationLabel(address:GMSAddress) -> String {
+        
+        let address0:String = ((address.locality != nil) ? address.locality : address.subLocality)!
+        let address1:String = ((address.administrativeArea != nil) ? address.administrativeArea : address.country)!
+        
+        return String(format:"%@, %@", address0, address1)
     }
     
     //Location Slider Utility

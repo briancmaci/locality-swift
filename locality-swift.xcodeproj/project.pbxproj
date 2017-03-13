@@ -64,6 +64,7 @@
 		72EEDF901E75D6C0009DFA77 /* FeedOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 72EEDF8F1E75D6C0009DFA77 /* FeedOptions.plist */; };
 		72EEDF941E75FB1A009DFA77 /* FeedSettingsToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EEDF921E75FB1A009DFA77 /* FeedSettingsToggleCell.swift */; };
 		72EEDF951E75FB1A009DFA77 /* FeedSettingsToggleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EEDF931E75FB1A009DFA77 /* FeedSettingsToggleCell.xib */; };
+		72EEDF981E76F319009DFA77 /* GoogleMapsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EEDF971E76F319009DFA77 /* GoogleMapsManager.swift */; };
 		72F24BA11E704FEC00CA7702 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BA01E704FEC00CA7702 /* Util.swift */; };
 		72F24BA31E706AD700CA7702 /* FeedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BA21E706AD700CA7702 /* FeedLocation.swift */; };
 		72F24BA61E70BC7600CA7702 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BA51E70BC7600CA7702 /* LeftMenuViewController.swift */; };
@@ -196,6 +197,7 @@
 		72EEDF8F1E75D6C0009DFA77 /* FeedOptions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FeedOptions.plist; sourceTree = "<group>"; };
 		72EEDF921E75FB1A009DFA77 /* FeedSettingsToggleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedSettingsToggleCell.swift; path = "custom-ui/FeedSettingsToggleCell.swift"; sourceTree = "<group>"; };
 		72EEDF931E75FB1A009DFA77 /* FeedSettingsToggleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FeedSettingsToggleCell.xib; path = "custom-ui/FeedSettingsToggleCell.xib"; sourceTree = "<group>"; };
+		72EEDF971E76F319009DFA77 /* GoogleMapsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleMapsManager.swift; path = manager/GoogleMapsManager.swift; sourceTree = "<group>"; };
 		72F24BA01E704FEC00CA7702 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = utility/Util.swift; sourceTree = "<group>"; };
 		72F24BA21E706AD700CA7702 /* FeedLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedLocation.swift; path = model/FeedLocation.swift; sourceTree = "<group>"; };
 		72F24BA51E70BC7600CA7702 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeftMenuViewController.swift; path = "view-controller/LeftMenuViewController.swift"; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 				72B881E51E66B65700EB3B2E /* FacebookManager.swift */,
 				72B881E11E66B02F00EB3B2E /* FirebaseManager.swift */,
 				72F24BFA1E735BF700CA7702 /* GeoFireManager.swift */,
+				72EEDF971E76F319009DFA77 /* GoogleMapsManager.swift */,
 				72B8821B1E6AA4C200EB3B2E /* MapboxManager.swift */,
 				72F24BF71E730C5A00CA7702 /* PhotoUploadManager.swift */,
 			);
@@ -1000,6 +1003,7 @@
 				72B881A11E65EE5000EB3B2E /* AppDelegate.swift in Sources */,
 				72F24BEF1E722EC800CA7702 /* UIImageExtension.swift in Sources */,
 				72FE07FB1E747E2600F87A7F /* SlideMenuAttributes.swift in Sources */,
+				72EEDF981E76F319009DFA77 /* GoogleMapsManager.swift in Sources */,
 				72EEDF831E7586A6009DFA77 /* FeedMenuTableViewController.swift in Sources */,
 				72DC48861E6CD0B500486535 /* RangeStep.swift in Sources */,
 				72F24BA61E70BC7600CA7702 /* LeftMenuViewController.swift in Sources */,

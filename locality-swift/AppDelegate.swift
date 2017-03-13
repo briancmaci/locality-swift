@@ -27,8 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FabricManager.initFabric()
         FacebookManager.initFacebookWith(app: application, options: launchOptions)
         FirebaseManager.initFirebase()
+        GoogleMapsManager.initGoogleMaps()
         MapboxManager.initMapbox()
-        GMSPlacesClient.provideAPIKey(Util.getPList(name: K.PList.Keys)[K.APIKey.GooglePlaces] as! String)
         
         //Setting metric or not in CurrentUser
         initDefaultUnitSystem()

@@ -111,7 +111,7 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //for ease of reading
         let collapseH = K.NumberConstant.Header.HeroCollapseHeight
-        let expandH = K.NumberConstant.Header.HeroExpandHeight
+        let expandH = K.NumberConstant.Header.HeroExpandHeight - 20
         
         flexHeaderHeight.constant = max( collapseH, collapseH + (expandH - collapseH) * -(postsTable.contentOffset.y/headerExpandedOffset))
         
