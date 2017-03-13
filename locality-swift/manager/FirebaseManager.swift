@@ -97,6 +97,26 @@ class FirebaseManager: NSObject {
         }
     }
     
+    class func write(pinnedLocations:[FeedLocation], completionHandler: @escaping (Bool?, Error?) -> ()) -> () {
+        
+        //add location to pinned locations
+        var firPinnedArray:[[String:Any]] = [[String:Any]]()
+        
+        for loc in pinnedLocations {
+            firPinnedArray.append(loc.toFireBaseObject())
+        }
+        
+        FirebaseManager.getCurrentUserRef().child(K.DB.Var.Pinned).setValue(firPinnedArray) { (error, ref) in
+            if error != nil {
+                completionHandler(false, error)
+            }
+                
+            else {
+                completionHandler(true, nil)
+            }
+        }
+    }
+    
     class func getUsersRef() -> FIRDatabaseReference {
         return FIRDatabase.database().reference(withPath:K.DB.Table.Users)
     }

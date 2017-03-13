@@ -10,6 +10,14 @@ import UIKit
 
 class FeedMenuTableViewController: UITableViewController, LocalityHeaderViewDelegate {
     
+    override var prefersStatusBarHidden: Bool {
+        return false
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     var addNewCell:FeedAddNewCell!
     var menuOptions:[FeedLocation] = [FeedLocation]()
 
@@ -37,6 +45,8 @@ class FeedMenuTableViewController: UITableViewController, LocalityHeaderViewDele
         
         tableView.register(UINib(nibName: K.NIBName.FeedAddNewCell, bundle: nil),
                            forCellReuseIdentifier: K.ReuseID.FeedAddNewCellID)
+        
+        tableView.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 0, right: 0)
     }
     
     func initMenuOptions(current:FeedLocation, pinned:[FeedLocation]) {

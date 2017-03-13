@@ -11,7 +11,7 @@ import GoogleMaps
 import GooglePlaces
 import Mapbox
 
-class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationManagerDelegate, LocationSliderDelegate, UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate, UIGestureRecognizerDelegate, UITextFieldDelegate, UIScrollViewDelegate, MGLMapViewDelegate {
+class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationManagerDelegate, LocationSliderDelegate, ImageUploadViewDelegate, UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate, UIGestureRecognizerDelegate, UITextFieldDelegate, UIScrollViewDelegate, MGLMapViewDelegate {
     
     @IBOutlet weak var scrollView:UIScrollView!
     @IBOutlet weak var scrollContentHeight:NSLayoutConstraint!
@@ -20,6 +20,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     
     @IBOutlet weak var locationName:UITextField!
     @IBOutlet weak var locationNameContainer:UIView!
+    @IBOutlet weak var locationNameError:UILabel!
     
     @IBOutlet weak var slider:LocationSlider!
     
@@ -52,6 +53,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         super.viewDidLoad()
 
         initText()
+        initButtons()
         initHeaderView()
         initLocationName()
         initAutoCompleteSearch()
@@ -74,8 +76,15 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     
     func initText() {
         locationName.placeholder = K.String.Feed.FeedNameDefault.localized
+        locationName.delegate = self
+        
         scrollSaveButton.setTitle(K.String.Feed.SaveFeedLabel.localized, for: .normal)
         
+        locationNameError.text?.removeAll()
+    }
+    
+    func initButtons() {
+        scrollSaveButton.addTarget(self, action: #selector(saveLocationDidTouch), for: .touchUpInside)
     }
     
     func initHeaderView() {
@@ -192,7 +201,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     }
     
     func initImageUploadView() {
-        //imageUploadView.delegate = self
+        imageUploadView.delegate = self
     }
     
     /// MARK : - CLLocationManagerDelegate Methods
@@ -245,18 +254,80 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         map.addAnnotation(rangeMarker)
     }
     
+    /// WRITE TO FIREBASE
+    func saveLocationDidTouch(sender:UIButton) {
+        
+        if (locationName.text?.isEmpty)! {
+            locationNameError.text = K.String.Feed.FeedNameError.localized
+            return
+        }
+        
+        if imageUploadView.selectedPhoto.image == nil {
+            createLocationToWrite(url: "")
+        }
+            
+        else {
+            PhotoUploadManager.uploadPhoto(image: imageUploadView.selectedPhoto.image!, type: .location, uid: CurrentUser.shared.uid) { (metadata, error) in
+                
+                if error != nil {
+                    print("Upload Error: \(error?.localizedDescription)")
+                }
+                    
+                else {
+                    let downloadURL = metadata!.downloadURL()!.absoluteString
+                    self.createLocationToWrite(url:downloadURL)
+                    
+                }
+            }
+        }
+    }
+    
+    func createLocationToWrite(url:String) {
+        let thisLocation:FeedLocation = FeedLocation(coord: self.currentLocation,
+                                                     name: locationName.text!,
+                                                     range: Float(sliderSteps[currentRangeIndex].distance),
+                                                     current: false)
+        
+        thisLocation.location = "GET REVERSE GEOCODE"
+        thisLocation.feedImgUrl = url
+        
+        print("MUST SAVE SWITCHES!!!!!!!!")
+        
+        //save to current
+        CurrentUser.shared.pinnedLocations.append(thisLocation)
+        //check anonymous
+        
+        FirebaseManager.write(pinnedLocations:CurrentUser.shared.pinnedLocations, completionHandler: { (success, error) in
+            if error != nil {
+                print("Locations Write Error: \(error?.localizedDescription)")
+            }
+                
+            else {
+                print("Locations written written!")
+                
+            }
+        })
+    }
+
+    
     /// MARK : - ImageUploadViewDelegate Methods
     
     //These both go through the action sheet flow that checks for camera access
     
-//    - (void) takePhotoTapped {
-//    [self checkCameraAccess];
-//    }
-//    
-//    - (void) uploadPhotoTapped {
-//    [self checkCameraAccess];
-//    }
+    func takePhotoTapped() {
+        takePhoto()
+    }
     
+    func uploadPhotoTapped() {
+        selectPhoto()
+    }
+    
+    override func imageCropViewController(_ controller: RSKImageCropViewController, didCropImage croppedImage: UIImage, usingCropRect cropRect: CGRect, rotationAngle: CGFloat) {
+        
+        imageUploadView.setLocationImage(image: croppedImage)
+        _ = navigationController?.popViewController(animated: true)
+        
+    }
     /// MARK : - MGLMapViewDelegate Methods
     
     func handleMapSingleTap(tap:UITapGestureRecognizer) {
@@ -399,6 +470,22 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         return false
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        //clear error
+        locationNameError.text?.removeAll()
+        
+        if locationName.text == K.String.Feed.FeedNameDefault.localized {
+            locationName.text?.removeAll()
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        if locationName.text?.isEmpty == true {
+            locationName.text = K.String.Post.CaptionDefault.localized
+        }
+    }
+    
     ///MARK : - UITableViewDataSource Methods
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -442,9 +529,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         if tableView != feedOptionsTable {
-            print("SELECTED! \(indexPath.row)")
             getDetailsWithPlaceID(placeId: placeAtIndexPath(indexPath: indexPath).placeID!)
             dismissSearchControllerWhileStayingActive()
             shouldBeginEditing = false

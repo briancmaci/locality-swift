@@ -324,16 +324,28 @@
                                                         <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zwX-3N-fHi">
+                                                        <rect key="frame" x="20" y="41" width="335" height="14"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="14" id="xb1-Ce-78c"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="12"/>
+                                                        <color key="textColor" red="0.71522049489999995" green="0.01339015205" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
+                                                    <constraint firstItem="zwX-3N-fHi" firstAttribute="top" secondItem="zuB-Og-Y7A" secondAttribute="bottom" constant="1" id="Fhc-Rd-CER"/>
                                                     <constraint firstItem="zuB-Og-Y7A" firstAttribute="leading" secondItem="07n-oE-OrW" secondAttribute="leading" constant="20" id="V1M-zQ-dLx"/>
+                                                    <constraint firstAttribute="trailing" secondItem="zwX-3N-fHi" secondAttribute="trailing" constant="20" id="ZDr-bi-oqw"/>
                                                     <constraint firstAttribute="height" constant="54" id="eLH-NQ-CVV"/>
+                                                    <constraint firstItem="zwX-3N-fHi" firstAttribute="leading" secondItem="07n-oE-OrW" secondAttribute="leading" constant="20" id="fdp-Sa-zHn"/>
                                                     <constraint firstAttribute="trailing" secondItem="zuB-Og-Y7A" secondAttribute="trailing" constant="20" id="hgj-Ja-tIt"/>
                                                     <constraint firstItem="zuB-Og-Y7A" firstAttribute="top" secondItem="07n-oE-OrW" secondAttribute="top" id="mnp-4S-x3P"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sOl-VT-ncw" userLabel="ImageUploadView" customClass="ImageUploadView">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sOl-VT-ncw" userLabel="ImageUploadView" customClass="ImageUploadView" customModule="locality_swift" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="530" width="375" height="164"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -435,9 +447,10 @@
                     <connections>
                         <outlet property="feedOptionsHeight" destination="wCg-GN-lX3" id="kym-Cv-m5l"/>
                         <outlet property="feedOptionsTable" destination="siN-gQ-WOs" id="mmy-ab-gAK"/>
-                        <outlet property="imageUploadView" destination="sOl-VT-ncw" id="Asu-UV-Asw"/>
+                        <outlet property="imageUploadView" destination="sOl-VT-ncw" id="8rX-ff-CgG"/>
                         <outlet property="locationName" destination="zuB-Og-Y7A" id="Ld4-n3-33Q"/>
-                        <outlet property="locationNameContainer" destination="07n-oE-OrW" id="D6q-rV-lrl"/>
+                        <outlet property="locationNameContainer" destination="07n-oE-OrW" id="RBl-hd-zQ7"/>
+                        <outlet property="locationNameError" destination="zwX-3N-fHi" id="Kcj-jh-f27"/>
                         <outlet property="map" destination="1Qn-i5-o4R" id="nLJ-la-oik"/>
                         <outlet property="scrollButtonContainer" destination="WEz-9j-oye" id="Iet-wx-dMZ"/>
                         <outlet property="scrollContentHeight" destination="3ss-Db-RuF" id="xC4-dn-npi"/>

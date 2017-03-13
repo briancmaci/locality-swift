@@ -72,6 +72,7 @@ password-wrong = "You have entered an incorrect password.";
 user-disabled = "I'm sorry, your account is disabled.";
 username-taken = "This username is already taken.";
 post-caption-error = "You must enter a caption to post.";
+feed-name-error = "You must name your location.";
 
 //Feed Menu Options
 push-alerts-label = "Send me push alerts from this location";

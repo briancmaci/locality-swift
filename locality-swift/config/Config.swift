@@ -186,7 +186,7 @@ struct K {
         static let FeedAddNewCellID = "feedAddNewCell"
         static let FeedMenuCellID = "feedMenuCell"
         static let FeedSettingsToggleCellID = "feedSettingsToggleCell"
-        static let PlacesSearchCellID = "SPGooglePlacesAutocompleteCell"
+        static let PlacesSearchCellID = "GMSPlacesAutocompleteCell"
     }
     
     //Strings
@@ -214,6 +214,7 @@ struct K {
             static let AddFeedLabel = "add-feed-label"
             static let SaveFeedLabel = "save-feed-label"
             static let FeedNameDefault = "feed-name-default"
+            static let FeedNameError = "feed-name-error"
         }
         
         struct User {
