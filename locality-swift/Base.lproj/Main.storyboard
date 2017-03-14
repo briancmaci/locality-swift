@@ -1296,7 +1296,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ButtonAddLocationIcon" width="16" height="16"/>
+        <image name="ButtonAddLocationIcon" width="9" height="11"/>
         <image name="ButtonPost" width="70" height="70"/>
         <image name="IconCamera" width="12" height="10"/>
         <image name="IconLeftMenuLikes" width="24" height="24"/>

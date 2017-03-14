@@ -68,11 +68,17 @@ class FirebaseManager: NSObject {
         })
     }
     
-    class func getPostBaseUser(uid:String, completionHandler: @escaping (BaseUser?, Error?) -> ()) -> () {
+    class func getPostBaseUser(uid:String, completionHandler: @escaping (BaseUser?) -> ()) -> () {
         
         var thisUser:BaseUser!
         
         getUsersRef().child(uid).observeSingleEvent(of: .value, with: { snapshot in
+            
+            if !snapshot.exists() {
+                completionHandler(nil)
+                return
+            }
+            
             let userDic = snapshot.value as? [String:Any]
             
             thisUser = BaseUser(uid: uid,
@@ -80,7 +86,7 @@ class FirebaseManager: NSObject {
                                 imgUrl: userDic?[K.DB.Var.ProfileImageURL] as! String,
                                 status: UserStatusType(rawValue:userDic?[K.DB.Var.Status] as! Int)!)
             
-            completionHandler(thisUser, nil)
+            completionHandler(thisUser)
         })
     }
     

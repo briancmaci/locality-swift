@@ -80,7 +80,13 @@ class PostFeedCell: UITableViewCell {
         postContent.captionLabel.text = thisModel.caption
         
         //Load user from UserHandle
-        FirebaseManager.getPostBaseUser(uid: thisModel.userHandle) { (thisUser, error) in
+        FirebaseManager.getPostBaseUser(uid: thisModel.userHandle) { (thisUser) in
+            
+            if thisUser == nil {
+                print("User no longer exists")
+                return
+            }
+            
             self.thisModel.user = thisUser!
             self.populateUserInfo()
         }

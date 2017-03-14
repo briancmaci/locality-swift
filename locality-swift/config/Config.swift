@@ -215,6 +215,12 @@ struct K {
             static let SaveFeedLabel = "save-feed-label"
             static let FeedNameDefault = "feed-name-default"
             static let FeedNameError = "feed-name-error"
+            
+            //settings
+            struct Setting {
+                static let PushEnabled = "pushEnabled"
+                static let PromotionsEnabled = "promotionsEnabled"
+            }
         }
         
         struct User {

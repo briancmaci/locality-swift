@@ -22,7 +22,7 @@ class FeedLocation: NSObject {
     var isCurrentLocation:Bool = false
     
     var promotionsEnabled:Bool = true
-    var pushEnabled:Bool = true
+    var pushEnabled:Bool = false
     var importantEnabled:Bool = true
     
     init(coord:CLLocationCoordinate2D, name:String) {

@@ -34,14 +34,10 @@ class GeoFireManager: NSObject {
         let query = geofire.query(at: location, withRadius: Double(radiusInKM))
         
         query?.observe(.keyEntered, with: { (key, location) in
-            print("+ + + + Key '\(key)' is at location '\(location)'")
-            
             matchingPosts.append(key!)
-            
         })
         
         query?.observeReady({
-            print("Matching Posts? \(matchingPosts)")
             completionHandler(matchingPosts, nil)
         })
     }

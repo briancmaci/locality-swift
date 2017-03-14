@@ -139,6 +139,8 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         scrollContentHeight.constant = contentHeight
         scrollView.contentSize = CGSize(width: K.Screen.Width, height: contentHeight)
         
+        scrollView.contentInset = UIEdgeInsetsMake(0, 0, 40, 0)
+        
         scrollView.delegate = self
     }
     
@@ -297,10 +299,21 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
             
             else {
                 thisLocation.location = Util.locationLabel(address: address!)
-                
                 thisLocation.feedImgUrl = url
                 
-                print("MUST SAVE SWITCHES!!!!!!!!")
+                
+                for op in self.feedOptionsTable.visibleCells {
+                    
+                    let c = op as! FeedSettingsToggleCell
+                    
+                    if c.data["var"] as! String == K.String.Feed.Setting.PushEnabled {
+                        thisLocation.pushEnabled = c.settingsSwitch.isOn
+                    }
+                    
+                    else if c.data["var"] as! String == K.String.Feed.Setting.PromotionsEnabled {
+                        thisLocation.promotionsEnabled = c.settingsSwitch.isOn
+                    }
+                }
                 
                 //save to current
                 CurrentUser.shared.pinnedLocations.append(thisLocation)
@@ -522,6 +535,15 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
             let toggleCell:FeedSettingsToggleCell = tableView.dequeueReusableCell(withIdentifier: K.ReuseID.FeedSettingsToggleCellID, for: indexPath) as! FeedSettingsToggleCell
             
             toggleCell.populate(data: feedOptions[indexPath.row])
+
+            ////THIS WILL COME WHEN WE EDIT SETTINGS. WE SET THEM NOW WHEN SAVING FEED
+//            if toggleCell.data["var"] as! String == K.String.Feed.Setting.PushEnabled {
+//                thisLocation.pushEnabled = c.settingsSwitch.isOn
+//            }
+//                
+//            else if toggleCell.data["var"] as! String == K.String.Feed.Setting.PromotionsEnabled {
+//                thisLocation.promotionsEnabled = c.settingsSwitch.isOn
+//            }
             
             return toggleCell
         }

@@ -47,6 +47,8 @@ class FeedMenuTableViewController: UITableViewController, LocalityHeaderViewDele
                            forCellReuseIdentifier: K.ReuseID.FeedAddNewCellID)
         
         tableView.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 0, right: 0)
+        
+        tableView.separatorColor = .clear
     }
     
     func initMenuOptions(current:FeedLocation, pinned:[FeedLocation]) {

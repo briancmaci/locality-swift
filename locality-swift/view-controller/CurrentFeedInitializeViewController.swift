@@ -139,15 +139,9 @@ class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapVie
         map.setCenter(currentLocation, zoomLevel: 14, animated:false)
         
         //reverse geocode label
-        AFNetworkingManager.getReverseGeocodingFor(coordinate: currentLocation) { (data, error) in
-            if error == nil {
-                self.locationHeaderLabel.text = K.String.Mapbox.CurrentLocationHeader.localized
-                self.locationLabel.text = DataParseManager.parseReverseGeoData(data: data)
-            }
-            
-            else {
-                print("REVERSE GEOCODE ERROR: \(error?.localizedDescription)")
-            }
+        GoogleMapsManager.reverseGeocode(coord: currentLocation) { (address, error) in
+            self.locationHeaderLabel.text = K.String.Mapbox.CurrentLocationHeader.localized
+            self.locationLabel.text = Util.locationLabel(address: address!)
         }
     }
     
@@ -165,12 +159,23 @@ class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapVie
         FirebaseManager.getCurrentUserRef().child(K.DB.Var.CurrentLocation).setValue(current.toFireBaseObject()) { (error, ref) in
             
             if error == nil {
-                print("Current Location pushed. Ref? \(ref)")
-                
                 //now that we have successfully saved the current location we can set isFirstVisit false.
                 FirebaseManager.getCurrentUserRef().child(K.DB.Var.IsFirstVisit).setValue(false)
+                
+                self.moveIntoApp()
             }
         }
+    }
+    
+    func moveIntoApp() {
+        let feedMenuVC:FeedMenuTableViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.FeedMenu) as! FeedMenuTableViewController
+        
+        SlideNavigationController.sharedInstance().popAllAndSwitch(to: feedMenuVC, withCompletion: nil)
+        
+        let newVC:FeedViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.Feed) as! FeedViewController
+        
+        newVC.thisFeed = CurrentUser.shared.currentLocation
+        SlideNavigationController.sharedInstance().pushViewController(newVC, animated: false)
     }
     
     //CTA

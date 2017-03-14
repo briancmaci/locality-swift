@@ -113,7 +113,7 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         let collapseH = K.NumberConstant.Header.HeroCollapseHeight
         let expandH = K.NumberConstant.Header.HeroExpandHeight - 20
         
-        flexHeaderHeight.constant = max( collapseH, collapseH + (expandH - collapseH) * -(postsTable.contentOffset.y/headerExpandedOffset))
+        flexHeaderHeight.constant = max( collapseH, collapseH + (expandH - collapseH + 20) * -(postsTable.contentOffset.y/headerExpandedOffset) - 20)
         
         headerHero.setNeedsUpdateConstraints()
         headerHero.updateHeaderHeight(newHeight: flexHeaderHeight.constant)
