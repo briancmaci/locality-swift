@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Interstate-LightCondensed.ttf">
+            <string>Interstate-LightCondensed</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostDetailHeaderView" customModule="locality_swift" customModuleProvider="target">
+            <connections>
+                <outlet property="captionLabel" destination="S1O-OS-SkV" id="v6D-uG-WAR"/>
+                <outlet property="drawingBackground" destination="lG0-A5-c16" id="yCR-Ky-lsR"/>
+                <outlet property="userInfo" destination="Gjz-I3-xPs" id="ayB-UE-eQO"/>
+                <outlet property="view" destination="iN0-l3-epB" id="HNa-Yp-ID8"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="136"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lG0-A5-c16" userLabel="drawingView" customClass="PostDetailHeaderBackground" customModule="locality_swift" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="136"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gjz-I3-xPs" userLabel="PostUserInfoVew" customClass="PostUserInfoView" customModule="locality_swift" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="15" width="230" height="35"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="230" id="K7q-O8-w5h"/>
+                        <constraint firstAttribute="height" constant="35" id="Kr3-og-a9S"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1O-OS-SkV">
+                    <rect key="frame" x="20" y="64" width="335" height="48"/>
+                    <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="14"/>
+                    <color key="textColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="lG0-A5-c16" secondAttribute="trailing" id="9O6-gz-p4L"/>
+                <constraint firstItem="Gjz-I3-xPs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="9dc-bX-Q71"/>
+                <constraint firstAttribute="bottom" secondItem="lG0-A5-c16" secondAttribute="bottom" id="Meb-sR-3Uv"/>
+                <constraint firstItem="Gjz-I3-xPs" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="ZmD-J8-BtF"/>
+                <constraint firstItem="S1O-OS-SkV" firstAttribute="top" secondItem="Gjz-I3-xPs" secondAttribute="bottom" constant="14" id="jTt-sW-0rk"/>
+                <constraint firstItem="lG0-A5-c16" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pyK-0k-eYg"/>
+                <constraint firstItem="S1O-OS-SkV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="qNh-PF-4We"/>
+                <constraint firstItem="lG0-A5-c16" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="qvY-p8-RXp"/>
+                <constraint firstAttribute="bottom" secondItem="S1O-OS-SkV" secondAttribute="bottom" constant="24" id="vzf-j7-WGT"/>
+                <constraint firstAttribute="trailing" secondItem="S1O-OS-SkV" secondAttribute="trailing" constant="20" id="z4j-oc-d1c"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="35.5" y="54"/>
+        </view>
+    </objects>
+</document>

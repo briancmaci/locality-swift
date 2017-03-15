@@ -48,7 +48,7 @@ class FeedMenuTableViewController: UITableViewController, LocalityHeaderViewDele
         
         tableView.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 0, right: 0)
         
-        tableView.separatorColor = .clear
+        tableView.separatorStyle = .none
     }
     
     func initMenuOptions(current:FeedLocation, pinned:[FeedLocation]) {

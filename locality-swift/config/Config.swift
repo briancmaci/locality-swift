@@ -65,10 +65,18 @@ struct K {
             static let User = "user"
             static let CreatedDate = "createdDate"
             static let PostId = "postId"
+            static let LikedBy = "likedBy"
             //Lat
             //Long
             static let Caption = "caption"
             static let PostImageURL = "postImageUrl"
+            
+            //Comment
+            //UserId
+            //PostId
+            //CreatedDate
+            static let CommentId = "cid"
+            static let CommentText = "comment"
         }
     }
     
@@ -95,6 +103,8 @@ struct K {
         static let leftNavSelected = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         static let leftNavLight = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
         static let leftNavDark = UIColor(red: 75/255, green: 81/255, blue: 85/255, alpha: 1)
+        
+        static let commentBackground = UIColor(red: 238/255, green: 238/255, blue:238/255, alpha:1)
     }
     
     struct FontName {
@@ -171,12 +181,15 @@ struct K {
         static let ImageUploadView = "ImageUploadView"
         static let PostFromView = "PostFromView"
         static let CameraOverlay = "CameraOverlay"
-        
+        static let PostDetailHeaderView = "PostDetailHeaderView"
         static let LeftMenuCell = "LeftMenuCell"
+        
         static let FeedAddNewCell = "FeedAddNewCell"
         static let FeedMenuCell = "FeedMenuCell"
-        
         static let FeedSettingsToggleCell = "FeedSettingsToggleCell"
+        
+        static let CommentFeedCell = "CommentFeedCell"
+        static let AddCommentCell = "AddCommentCell"
     }
     
     //UITableViewCell reuseIdentifiers
@@ -187,6 +200,8 @@ struct K {
         static let FeedMenuCellID = "feedMenuCell"
         static let FeedSettingsToggleCellID = "feedSettingsToggleCell"
         static let PlacesSearchCellID = "GMSPlacesAutocompleteCell"
+        static let CommentFeedCellID = "commentFeedCell"
+        static let AddCommentCellID = "addCommentCell"
     }
     
     //Strings
@@ -206,6 +221,7 @@ struct K {
         struct Header {
             static let CurrentLocationTitle = "current-location-title"
             static let CreatePostHeader = "create-post-header"
+            static let PostDetailHeader = "post-detail-header"
             static let AddNewLocationHeader = "add-new-location-header"
             static let EditLocationHeader = "edit-location-header"
         }
@@ -283,12 +299,14 @@ struct K {
             static let TimestampFormat = "yyyy-MM-dd HH:mm:ss zzz"
             static let CaptionDefault = "post-caption-default"
             static let CaptionError = "post-caption-error"
+            static let NoCommentsLabel = "no-comments-label"
         }
     }
     
     //Constant numerical values
     struct NumberConstant {
         static let HeaderAndStatusBarsHeight : CGFloat = 64
+        static let StatusBarHeight : CGFloat = 20
         
         //Buttons
         static let RoundedButtonCornerRadius : CGFloat = 5
@@ -322,6 +340,20 @@ struct K {
         
         struct Post {
             static let ImageRatio:CGFloat = 0.5
+            static let PointHeight:CGFloat = 5.0
+            static let PointWidth:CGFloat = 10.0
+            static let ShadowOffset:CGFloat = 1.0
+            static let ShadowBlur:CGFloat = 0.6
+            static let DefaultViewHeight:CGFloat = 166.0
+            static let DefaultCaptionHeight:CGFloat = 32.0
+            static let DefaultHeaderViewHeight:CGFloat = 136.0
+            static let DefaultHeaderCaptionHeight:CGFloat = 48.0
+            static let DetailFooterHeight:CGFloat = 84.0
+        }
+        
+        struct Comment {
+            static let DefaultHeight:CGFloat = 124.0
+            static let DefaultCommentHeight:CGFloat = 44.0
         }
         
         struct Upload {

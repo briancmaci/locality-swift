@@ -46,6 +46,7 @@ current-location-title = "CURRENT LOCATION";
 create-post-header = "CREATE POST";
 add-new-location-header = "ADD NEW LOCATION";
 edit-location-header = "EDIT LOCATION";
+post-detail-header = "COMMENTS";
 
 //User
 username-anonymous = "Anonymous";
@@ -80,6 +81,9 @@ promotions-label = "Include promotions for this location";
 
 //Menu
 terms-label = "Terms and Privacy";
+
+//PostDetail
+no-comments-label = "There are no comments for this post yet.";
 
 //Copyright
 copyright-version-format = "©%d Locality v%@.%@. All rights reserved.";

@@ -78,6 +78,7 @@ class PostFeedCell: UITableViewCell {
         postContent.frame = CGRect(x: 0, y: postY, width: K.Screen.Width, height: postContent.getViewHeight(caption: thisModel.caption))
         
         postContent.captionLabel.text = thisModel.caption
+        postContent.populate(model: self.thisModel)
         
         //Load user from UserHandle
         FirebaseManager.getPostBaseUser(uid: thisModel.userHandle) { (thisUser) in

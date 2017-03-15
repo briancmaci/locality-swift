@@ -92,7 +92,7 @@ class FirebaseManager: NSObject {
     
     class func write(post:UserPost, completionHandler: @escaping (Bool?, Error?) -> ()) -> () {
         
-        FirebaseManager.getPostsRef().child(post.postId).updateChildValues(post.toFirebaseObject()) { (error, ref) in
+        getPostsRef().child(post.postId).updateChildValues(post.toFirebaseObject()) { (error, ref) in
             if error != nil {
                 completionHandler(false, error)
             }
@@ -101,6 +101,90 @@ class FirebaseManager: NSObject {
                 completionHandler(true, nil)
             }
         }
+    }
+    
+    class func write(comment:UserComment, completionHandler: @escaping (Bool?, Error?) -> ()) -> () {
+        
+        getCommentsRef().child(comment.commentId).updateChildValues(comment.toFirebaseObject()) { (error, ref) in
+            if error != nil {
+                completionHandler(false, error)
+            }
+                
+            else {
+                completionHandler(true, nil)
+            }
+        }
+    }
+    
+    //Once we've successfully liked we return the likesArray to save to current user
+    class func likePost(pid:String, completionHandler: @escaping ([String]?, Error?) -> ()) -> () {
+        
+        //Grab likes
+        getPostsRef().child(pid).child(K.DB.Var.LikedBy).observeSingleEvent(of: .value, with: { snapshot in
+            
+            var likesArray:[String] = [String]()
+            
+            if snapshot.exists() {
+                //create likedBy
+                likesArray = snapshot.value as! [String]
+            }
+            
+            //add us
+            
+            if !likesArray.contains(CurrentUser.shared.uid) {
+                likesArray.append(CurrentUser.shared.uid)
+            }
+            
+            else {
+                print("We were already liking this post. Look into this.")
+            }
+            
+            getPostsRef().child(pid).updateChildValues([K.DB.Var.LikedBy:likesArray], withCompletionBlock: { (error, ref) in
+                
+                if error != nil {
+                    completionHandler(nil, error)
+                }
+                
+                else {
+                    completionHandler(likesArray, nil)
+                }
+            })
+        })
+    }
+    
+    class func unlikePost(pid:String, completionHandler: @escaping ([String]?, Error?) -> ()) -> () {
+        
+        //Grab likes
+        getPostsRef().child(pid).child(K.DB.Var.LikedBy).observeSingleEvent(of: .value, with: { snapshot in
+            
+            var likesArray:[String] = [String]()
+            
+            if snapshot.exists() {
+                //create likedBy
+                likesArray = snapshot.value as! [String]
+            }
+            
+            //add us
+            
+            if likesArray.contains(CurrentUser.shared.uid) {
+                likesArray.remove(at: likesArray.index(of: CurrentUser.shared.uid)!)
+            }
+            
+            else {
+                print("We were not included in LikedBy array for this post. Look into this.")
+            }
+            
+            getPostsRef().child(pid).updateChildValues([K.DB.Var.LikedBy:likesArray], withCompletionBlock: { (error, ref) in
+                
+                if error != nil {
+                    completionHandler(nil, error)
+                }
+                    
+                else {
+                    completionHandler(likesArray, nil)
+                }
+            })
+        })
     }
     
     class func write(pinnedLocations:[FeedLocation], completionHandler: @escaping (Bool?, Error?) -> ()) -> () {
@@ -137,6 +221,10 @@ class FirebaseManager: NSObject {
     
     class func getPostsRef() -> FIRDatabaseReference {
         return FIRDatabase.database().reference(withPath:K.DB.Table.Posts)
+    }
+    
+    class func getCommentsRef() -> FIRDatabaseReference {
+        return FIRDatabase.database().reference(withPath:K.DB.Table.Comments)
     }
     
     class func getStorageRef() -> FIRStorageReference {

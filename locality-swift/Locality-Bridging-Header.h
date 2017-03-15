@@ -9,7 +9,7 @@
 #ifndef Locality_Bridging_Header_h
 #define Locality_Bridging_Header_h
 
-#import "AFNetworking/AFNetworking.h"
+//#import "AFNetworking/AFNetworking.h"
 #import "SDWebImage/UIImageView+WebCache.h"
 #import <RSKImageCropper/RSKImageCropper.h>
 #import "SlideNavigationController.h"

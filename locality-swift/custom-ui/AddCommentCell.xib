@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Interstate-LightCondensed.ttf">
+            <string>Interstate-LightCondensed</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addCommentCell" id="KGk-i7-Jjw" customClass="AddCommentCell" customModule="locality_swift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="299"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g4U-Vy-2MF" userLabel="PostUserInfoVew" customClass="PostUserInfoView" customModule="locality_swift" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="26" width="230" height="35"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="230" id="4N6-e9-4AP"/>
+                            <constraint firstAttribute="height" constant="35" id="Drx-Cl-hDQ"/>
+                        </constraints>
+                    </view>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Write your comment here" translatesAutoresizingMaskIntoConstraints="NO" id="Jy7-zs-M5M">
+                        <rect key="frame" x="20" y="76" width="280" height="73.5"/>
+                        <color key="textColor" red="0.32584697010000002" green="0.32583719490000002" blue="0.32584273819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="13"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="yes" keyboardAppearance="light"/>
+                    </textView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oXX-Eq-DGl">
+                        <rect key="frame" x="10" y="161.5" width="300" height="54"/>
+                        <color key="backgroundColor" red="0.23662534360000001" green="0.27041301130000001" blue="0.30341908340000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="54" id="Ck0-3M-qun"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="16"/>
+                        <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                        <state key="normal" title="POST COMMENT" image="IconPaperclipWhite">
+                            <color key="titleColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="oXX-Eq-DGl" secondAttribute="bottom" constant="84" id="5Hs-9V-6T4"/>
+                    <constraint firstAttribute="trailing" secondItem="oXX-Eq-DGl" secondAttribute="trailing" constant="10" id="8wb-CV-6gf"/>
+                    <constraint firstAttribute="trailing" secondItem="Jy7-zs-M5M" secondAttribute="trailing" constant="20" id="9iv-zl-4Cu"/>
+                    <constraint firstItem="Jy7-zs-M5M" firstAttribute="top" secondItem="g4U-Vy-2MF" secondAttribute="bottom" constant="15" id="IW7-3I-ZAP"/>
+                    <constraint firstItem="oXX-Eq-DGl" firstAttribute="top" secondItem="Jy7-zs-M5M" secondAttribute="bottom" constant="12" id="Zjg-sw-TLd"/>
+                    <constraint firstItem="g4U-Vy-2MF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="cKG-yZ-TEv"/>
+                    <constraint firstItem="g4U-Vy-2MF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="26" id="kFK-lC-wWe"/>
+                    <constraint firstItem="oXX-Eq-DGl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="lZF-IL-hDS"/>
+                    <constraint firstItem="Jy7-zs-M5M" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="vJt-Ig-Pp1"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.91664922240000002" green="0.91662180419999995" blue="0.91663730139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <connections>
+                <outlet property="commentField" destination="Jy7-zs-M5M" id="zyi-g7-DsP"/>
+                <outlet property="postButton" destination="oXX-Eq-DGl" id="egA-ch-kCo"/>
+                <outlet property="postButtonBottom" destination="5Hs-9V-6T4" id="e92-PT-7lI"/>
+                <outlet property="postUser" destination="g4U-Vy-2MF" id="qYt-EX-lAx"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="IconPaperclipWhite" width="9" height="10"/>
+    </resources>
+</document>

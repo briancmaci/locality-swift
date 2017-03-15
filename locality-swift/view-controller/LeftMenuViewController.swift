@@ -84,7 +84,7 @@ class LeftMenuViewController: LocalityPhotoBaseViewController, UITableViewDelega
         
         menuTable.register(UINib(nibName: K.NIBName.LeftMenuCell, bundle: nil), forCellReuseIdentifier: K.ReuseID.LeftMenuCellID)
         
-        menuTable.separatorColor = .clear
+        menuTable.separatorStyle = .none
         
         tableHeight.constant = CGFloat(menuOptions.count) * K.NumberConstant.Menu.RowHeight
         menuTable.layoutIfNeeded()

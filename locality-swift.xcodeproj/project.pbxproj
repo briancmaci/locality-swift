@@ -64,6 +64,14 @@
 		72EEDF941E75FB1A009DFA77 /* FeedSettingsToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EEDF921E75FB1A009DFA77 /* FeedSettingsToggleCell.swift */; };
 		72EEDF951E75FB1A009DFA77 /* FeedSettingsToggleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EEDF931E75FB1A009DFA77 /* FeedSettingsToggleCell.xib */; };
 		72EEDF981E76F319009DFA77 /* GoogleMapsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EEDF971E76F319009DFA77 /* GoogleMapsManager.swift */; };
+		72EEDF9C1E787974009DFA77 /* PostDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EEDF9B1E787974009DFA77 /* PostDetailHeaderView.xib */; };
+		72EEDF9E1E78798E009DFA77 /* PostDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EEDF9D1E78798E009DFA77 /* PostDetailHeaderView.swift */; };
+		72EEDFA01E7879B0009DFA77 /* PostDetailHeaderBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EEDF9F1E7879B0009DFA77 /* PostDetailHeaderBackground.swift */; };
+		72EEDFA21E7893EE009DFA77 /* UserComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EEDFA11E7893EE009DFA77 /* UserComment.swift */; };
+		72EEDFA61E78A3BF009DFA77 /* CommentFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EEDFA41E78A3BF009DFA77 /* CommentFeedCell.swift */; };
+		72EEDFA71E78A3BF009DFA77 /* CommentFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EEDFA51E78A3BF009DFA77 /* CommentFeedCell.xib */; };
+		72EEDFAA1E78A3DF009DFA77 /* AddCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EEDFA81E78A3DF009DFA77 /* AddCommentCell.swift */; };
+		72EEDFAB1E78A3DF009DFA77 /* AddCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EEDFA91E78A3DF009DFA77 /* AddCommentCell.xib */; };
 		72F24BA11E704FEC00CA7702 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BA01E704FEC00CA7702 /* Util.swift */; };
 		72F24BA31E706AD700CA7702 /* FeedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BA21E706AD700CA7702 /* FeedLocation.swift */; };
 		72F24BA61E70BC7600CA7702 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BA51E70BC7600CA7702 /* LeftMenuViewController.swift */; };
@@ -196,6 +204,14 @@
 		72EEDF921E75FB1A009DFA77 /* FeedSettingsToggleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedSettingsToggleCell.swift; path = "custom-ui/FeedSettingsToggleCell.swift"; sourceTree = "<group>"; };
 		72EEDF931E75FB1A009DFA77 /* FeedSettingsToggleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FeedSettingsToggleCell.xib; path = "custom-ui/FeedSettingsToggleCell.xib"; sourceTree = "<group>"; };
 		72EEDF971E76F319009DFA77 /* GoogleMapsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleMapsManager.swift; path = manager/GoogleMapsManager.swift; sourceTree = "<group>"; };
+		72EEDF9B1E787974009DFA77 /* PostDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PostDetailHeaderView.xib; path = "custom-ui/PostDetailHeaderView.xib"; sourceTree = "<group>"; };
+		72EEDF9D1E78798E009DFA77 /* PostDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostDetailHeaderView.swift; path = "custom-ui/PostDetailHeaderView.swift"; sourceTree = "<group>"; };
+		72EEDF9F1E7879B0009DFA77 /* PostDetailHeaderBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostDetailHeaderBackground.swift; path = "custom-ui/PostDetailHeaderBackground.swift"; sourceTree = "<group>"; };
+		72EEDFA11E7893EE009DFA77 /* UserComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserComment.swift; path = model/UserComment.swift; sourceTree = "<group>"; };
+		72EEDFA41E78A3BF009DFA77 /* CommentFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentFeedCell.swift; path = "custom-ui/CommentFeedCell.swift"; sourceTree = "<group>"; };
+		72EEDFA51E78A3BF009DFA77 /* CommentFeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommentFeedCell.xib; path = "custom-ui/CommentFeedCell.xib"; sourceTree = "<group>"; };
+		72EEDFA81E78A3DF009DFA77 /* AddCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddCommentCell.swift; path = "custom-ui/AddCommentCell.swift"; sourceTree = "<group>"; };
+		72EEDFA91E78A3DF009DFA77 /* AddCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddCommentCell.xib; path = "custom-ui/AddCommentCell.xib"; sourceTree = "<group>"; };
 		72F24BA01E704FEC00CA7702 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = utility/Util.swift; sourceTree = "<group>"; };
 		72F24BA21E706AD700CA7702 /* FeedLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedLocation.swift; path = model/FeedLocation.swift; sourceTree = "<group>"; };
 		72F24BA51E70BC7600CA7702 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeftMenuViewController.swift; path = "view-controller/LeftMenuViewController.swift"; sourceTree = "<group>"; };
@@ -413,6 +429,7 @@
 				72F24BE41E721B4D00CA7702 /* image-upload */,
 				72DC48871E6D9C0200486535 /* location-slider */,
 				72DC48761E6B4A5200486535 /* mapbox */,
+				72EEDF9A1E78794A009DFA77 /* post-detail-header */,
 				72F24BD21E71C2CA00CA7702 /* post-filter */,
 				72F24BE71E7227F300CA7702 /* post-from */,
 				72F24BC01E71AAEA00CA7702 /* post-user-info */,
@@ -440,6 +457,7 @@
 				72F24BA21E706AD700CA7702 /* FeedLocation.swift */,
 				72DC48851E6CD0B500486535 /* RangeStep.swift */,
 				72F24BCE1E71BBFF00CA7702 /* UserPost.swift */,
+				72EEDFA11E7893EE009DFA77 /* UserComment.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -527,6 +545,27 @@
 			name = "feed-settings-cell";
 			sourceTree = "<group>";
 		};
+		72EEDF9A1E78794A009DFA77 /* post-detail-header */ = {
+			isa = PBXGroup;
+			children = (
+				72EEDF9F1E7879B0009DFA77 /* PostDetailHeaderBackground.swift */,
+				72EEDF9D1E78798E009DFA77 /* PostDetailHeaderView.swift */,
+				72EEDF9B1E787974009DFA77 /* PostDetailHeaderView.xib */,
+			);
+			name = "post-detail-header";
+			sourceTree = "<group>";
+		};
+		72EEDFA31E78A374009DFA77 /* comment-cell */ = {
+			isa = PBXGroup;
+			children = (
+				72EEDFA81E78A3DF009DFA77 /* AddCommentCell.swift */,
+				72EEDFA91E78A3DF009DFA77 /* AddCommentCell.xib */,
+				72EEDFA41E78A3BF009DFA77 /* CommentFeedCell.swift */,
+				72EEDFA51E78A3BF009DFA77 /* CommentFeedCell.xib */,
+			);
+			name = "comment-cell";
+			sourceTree = "<group>";
+		};
 		72F24BA41E70BC4700CA7702 /* left-menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -590,10 +629,11 @@
 		72F24BBC1E71A41C00CA7702 /* tableviewcells */ = {
 			isa = PBXGroup;
 			children = (
+				72EEDFA31E78A374009DFA77 /* comment-cell */,
+				72EEDF881E7589E9009DFA77 /* feed-menu-table */,
 				72EEDF911E75FAED009DFA77 /* feed-settings-cell */,
 				72FE08001E74919F00F87A7F /* left-menu-cell */,
 				72F24BBD1E71A42800CA7702 /* post-feed-cell */,
-				72EEDF881E7589E9009DFA77 /* feed-menu-table */,
 			);
 			name = tableviewcells;
 			sourceTree = "<group>";
@@ -831,6 +871,7 @@
 			files = (
 				72F24BB01E70E9DC00CA7702 /* FlexibleFeedHeaderView.xib in Resources */,
 				72FE07FF1E74919400F87A7F /* LeftMenuCell.xib in Resources */,
+				72EEDFA71E78A3BF009DFA77 /* CommentFeedCell.xib in Resources */,
 				72F24BE31E721B3700CA7702 /* ImageUploadView.xib in Resources */,
 				72EEDF901E75D6C0009DFA77 /* FeedOptions.plist in Resources */,
 				72EEDF8C1E7591F9009DFA77 /* FeedMenuCell.xib in Resources */,
@@ -847,9 +888,11 @@
 				72EEDF951E75FB1A009DFA77 /* FeedSettingsToggleCell.xib in Resources */,
 				72DC48801E6C9BCE00486535 /* Localizable.strings in Resources */,
 				72F24BF41E725B8200CA7702 /* CameraOverlay.xib in Resources */,
+				72EEDF9C1E787974009DFA77 /* PostDetailHeaderView.xib in Resources */,
 				72B881AB1E65EE5000EB3B2E /* Assets.xcassets in Resources */,
 				72B881A61E65EE5000EB3B2E /* Main.storyboard in Resources */,
 				72B8820E1E68D10700EB3B2E /* Interstate-LightCondensed.ttf in Resources */,
+				72EEDFAB1E78A3DF009DFA77 /* AddCommentCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -940,6 +983,8 @@
 				72F24BAE1E70E9C300CA7702 /* FlexibleFeedHeaderView.swift in Sources */,
 				72F24BB91E70F84300CA7702 /* HeaderIconButton.swift in Sources */,
 				72B882011E67E79700EB3B2E /* LoginViewController.swift in Sources */,
+				72EEDFA21E7893EE009DFA77 /* UserComment.swift in Sources */,
+				72EEDF9E1E78798E009DFA77 /* PostDetailHeaderView.swift in Sources */,
 				72B881FE1E67DFB100EB3B2E /* LocalityBaseViewController.swift in Sources */,
 				72B881E61E66B65700EB3B2E /* FacebookManager.swift in Sources */,
 				72F24BCC1E71BAB300CA7702 /* CommentButton.swift in Sources */,
@@ -992,10 +1037,13 @@
 				72B881F41E678D2900EB3B2E /* AngledButtonPairView.swift in Sources */,
 				722ABA111E7459FB00A3F1DA /* CGFloatExtension.swift in Sources */,
 				72B8820C1E68B8D100EB3B2E /* JoinViewController.swift in Sources */,
+				72EEDFA61E78A3BF009DFA77 /* CommentFeedCell.swift in Sources */,
 				72F24BAB1E70DB1500CA7702 /* FeedViewController.swift in Sources */,
 				72F24BFB1E735BF700CA7702 /* GeoFireManager.swift in Sources */,
 				72F24BA31E706AD700CA7702 /* FeedLocation.swift in Sources */,
 				72F24BE11E7214FC00CA7702 /* PostCreateViewController.swift in Sources */,
+				72EEDFA01E7879B0009DFA77 /* PostDetailHeaderBackground.swift in Sources */,
+				72EEDFAA1E78A3DF009DFA77 /* AddCommentCell.swift in Sources */,
 				72B881A11E65EE5000EB3B2E /* AppDelegate.swift in Sources */,
 				72F24BEF1E722EC800CA7702 /* UIImageExtension.swift in Sources */,
 				72FE07FB1E747E2600F87A7F /* SlideMenuAttributes.swift in Sources */,
@@ -1174,8 +1222,6 @@
 					"-l\"sqlite3\"",
 					"-l\"z\"",
 					"-framework",
-					"\"AFNetworking\"",
-					"-framework",
 					"\"AVFoundation\"",
 					"-framework",
 					"\"Accelerate\"",
@@ -1284,8 +1330,6 @@
 					"-l\"icucore\"",
 					"-l\"sqlite3\"",
 					"-l\"z\"",
-					"-framework",
-					"\"AFNetworking\"",
 					"-framework",
 					"\"AVFoundation\"",
 					"-framework",

@@ -75,7 +75,6 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     }
     
     func initHeaderView() {
-        print("HeaderHero? \(headerHero)")
         headerHero.populate(model: thisFeed, index: 0, inFeedMenu: false)
         headerHero.delegate = self
     }

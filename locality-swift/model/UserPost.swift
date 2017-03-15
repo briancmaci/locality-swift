@@ -23,7 +23,7 @@ class UserPost: NSObject {
     var postImageUrl:String = ""
     
     var commentsCount:Int = 0
-    var likesCount:Int = 0
+    var likedBy:[String] = [String]()
     
     var isLikedByMe:Bool = false
     
@@ -55,23 +55,16 @@ class UserPost: NSObject {
         self.lat = dic?[K.DB.Var.Lat] as! Double
         self.lon = dic?[K.DB.Var.Lon] as! Double
         self.caption = dic?[K.DB.Var.Caption] as! String
-        self.postImageUrl = dic?[K.DB.Var.PostImageURL] as! String
+        
+        if (dic?[K.DB.Var.LikedBy]) != nil {
+            self.likedBy = dic?[K.DB.Var.LikedBy] as! [String]
+        }
+            self.postImageUrl = dic?[K.DB.Var.PostImageURL] as! String
         self.userHandle = dic?[K.DB.Var.UserId] as! String
         self.user = BaseUser()
         
-        //Grab the user object from firebase
-//        let thisUID:String = dic?[K.DB.Var.UserId] as! String
-//        
-//        FirebaseManager.getPostBaseUser(uid: thisUID) { (thisUser, error) in
-//            self.user = thisUser!
-//        }
-        
-//        let userObj = dic?[K.DB.Var.User] as! [String:Any]
-//        self.user = BaseUser(uid: userObj[K.DB.Var.UserId] as! String,
-//                             username: userObj[K.DB.Var.Username] as! String,
-//                             imgUrl: userObj[K.DB.Var.ProfileImageURL] as! String,
-//                             status: UserStatusType(rawValue: (userObj[K.DB.Var.Status] as! Int))!)
-        
+        //Set is likedByMe
+        self.isLikedByMe = self.likedBy.contains(CurrentUser.shared.uid)
     }
 
 
@@ -82,23 +75,7 @@ class UserPost: NSObject {
                K.DB.Var.Lat:lat,
                K.DB.Var.Lon:lon,
                K.DB.Var.Caption:caption,
-               K.DB.Var.PostImageURL:postImageUrl]
+               K.DB.Var.PostImageURL:postImageUrl,
+               K.DB.Var.LikedBy:likedBy]
     }
-    
-//    func toFirebaseObject() -> [String:Any] {
-//        return[K.DB.Var.CreatedDate:Util.stringFromDate(date: createdDate),
-//               K.DB.Var.PostId:postId,
-//               K.DB.Var.User:firebaseUser(),
-//               K.DB.Var.Lat:lat,
-//               K.DB.Var.Lon:lon,
-//               K.DB.Var.Caption:caption,
-//               K.DB.Var.PostImageURL:postImageUrl]
-//    }
-    
-//    func firebaseUser() -> [String:Any] {
-//        return[K.DB.Var.UserId:user.uid,
-//               K.DB.Var.Username:user.username,
-//               K.DB.Var.Status:user.status.rawValue,
-//               K.DB.Var.ProfileImageURL:user.profileImageUrl]
-//    }
 }
