@@ -46,6 +46,8 @@ class PostFeedCell: UITableViewCell {
             addSubview(postImage)
         }
         addSubview(postContent)
+        
+        
     }
     
     convenience init(model:UserPost, proximityTo:CLLocationCoordinate2D) {
