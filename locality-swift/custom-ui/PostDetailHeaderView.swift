@@ -14,6 +14,7 @@ class PostDetailHeaderView: UIView {
     
     @IBOutlet weak var drawingBackground:PostDetailHeaderBackground!
     @IBOutlet weak var userInfo:PostUserInfoView!
+    @IBOutlet weak var filterView:PostFilterView!
     @IBOutlet weak var captionLabel:UILabel!
     
     var thisPost:UserPost!

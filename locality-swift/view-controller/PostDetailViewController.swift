@@ -11,6 +11,7 @@ import UIKit
 class PostDetailViewController: LocalityBaseViewController, UITableViewDelegate, UITableViewDataSource, AddCommentDelegate {
 
     var thisPost:UserPost!
+    var distance:NSAttributedString!
     
     @IBOutlet weak var postHeader:PostDetailHeaderView!
     @IBOutlet weak var postHeaderHeightConstraint:NSLayoutConstraint!
@@ -80,6 +81,7 @@ class PostDetailViewController: LocalityBaseViewController, UITableViewDelegate,
     
     func initPostDetailHeader() {
         postHeader.populateWithData(model: thisPost)
+        postHeader.filterView.filterLabel.attributedText = distance
         postHeader.backgroundColor = .clear
         postHeader.isOpaque = false
     }

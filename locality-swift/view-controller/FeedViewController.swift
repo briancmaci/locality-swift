@@ -136,7 +136,9 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         
         let newVC:PostDetailViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.PostDetail) as! PostDetailViewController
         
+        let thisCell:PostFeedCell = postsTable.cellForRow(at: indexPath) as! PostFeedCell
         newVC.thisPost = posts[indexPath.row]
+        newVC.distance = thisCell.postContent.filterView.filterLabel.attributedText
         
         navigationController?.pushViewController(newVC, animated: true)
         
