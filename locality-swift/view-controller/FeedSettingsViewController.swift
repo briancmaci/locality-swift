@@ -91,7 +91,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         header.initHeaderViewStage()
         header.initAttributes(title: K.String.Header.AddNewLocationHeader.localized,
                               leftType: .back,
-                              rightType: .close)
+                              rightType: .none)
         
         view.addSubview(header)
     }

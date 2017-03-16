@@ -28,7 +28,10 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loadPosts()
+        if posts.isEmpty == true {
+            loadPosts()
+        }
+        
         // Do any additional setup after loading the view.
         initSortByType()
         initPostButton()

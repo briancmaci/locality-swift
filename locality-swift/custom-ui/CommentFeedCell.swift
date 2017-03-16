@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import NSDate_TimeAgo
 
 class CommentFeedCell: UITableViewCell {
 
     @IBOutlet weak var postUser:PostUserInfoView!
     @IBOutlet weak var commentText:UILabel!
+    @IBOutlet weak var timeAgoLabel:UILabel!
     @IBOutlet weak var pinline:UIView!
     
     var thisComment:UserComment!
@@ -27,25 +29,28 @@ class CommentFeedCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    convenience init(comment:UserComment) {
-        self.init()
+    func initCellViewContent(comment:UserComment) {
         
         thisComment = comment
-        backgroundColor = K.Color.commentBackground
-        populateWithData()
+        commentText.text = thisComment.commentText
         
+        backgroundColor = K.Color.commentBackground
+        
+        let date:NSDate = thisComment.createdDate as NSDate
+        timeAgoLabel.text = date.timeAgo()
+        
+        populateWithUser()
     }
-
-    func populateWithData() {
+    
+    func populateWithUser() {
     
         postUser.populate(imgUrl: thisComment.user.profileImageUrl,
                           username: thisComment.user.username,
                           status: UserStatus.stringFrom(type: thisComment.user.status))
-        
-        commentText.text = thisComment.commentText
     }
 
     func getViewHeight(txt:String) -> CGFloat {
+        commentText.text = txt
         return K.NumberConstant.Comment.DefaultHeight - K.NumberConstant.Comment.DefaultCommentHeight + commentText.requiredHeight()
     }
     

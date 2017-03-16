@@ -81,7 +81,7 @@ class PostFeedCell: UITableViewCell {
         postContent.populate(model: self.thisModel)
         
         //Load user from UserHandle
-        FirebaseManager.getPostBaseUser(uid: thisModel.userHandle) { (thisUser) in
+        FirebaseManager.getUserFromHandle(uid: thisModel.userHandle) { (thisUser) in
             
             if thisUser == nil {
                 print("User no longer exists")

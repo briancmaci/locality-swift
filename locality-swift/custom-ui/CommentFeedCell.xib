@@ -39,10 +39,20 @@
                             <constraint firstAttribute="height" constant="35" id="Qz5-Kj-ZOT"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fV-4D-pa8">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fV-4D-pa8">
                         <rect key="frame" x="20" y="65" width="280" height="44"/>
                         <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="13"/>
                         <color key="textColor" red="0.32584697010000002" green="0.32583719490000002" blue="0.32584273819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fjs-Pv-QtI">
+                        <rect key="frame" x="222" y="13" width="78" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="78" id="4s8-ws-0ca"/>
+                            <constraint firstAttribute="height" constant="21" id="e2V-M5-mQT"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="10"/>
+                        <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -50,9 +60,11 @@
                     <constraint firstItem="4Uc-Mc-PW4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="3xe-9z-DXz"/>
                     <constraint firstItem="3fV-4D-pa8" firstAttribute="top" secondItem="oOF-CV-nxv" secondAttribute="bottom" constant="14" id="DGa-gB-CPp"/>
                     <constraint firstAttribute="trailing" secondItem="4Uc-Mc-PW4" secondAttribute="trailing" constant="20" id="EV1-1i-ueE"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Fjs-Pv-QtI" secondAttribute="trailing" constant="12" id="Lln-us-tCQ"/>
                     <constraint firstAttribute="trailing" secondItem="3fV-4D-pa8" secondAttribute="trailing" constant="20" id="Xf2-SA-tLG"/>
                     <constraint firstItem="oOF-CV-nxv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Zzf-wi-uBK"/>
                     <constraint firstItem="3fV-4D-pa8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="mIW-V9-lMS"/>
+                    <constraint firstItem="Fjs-Pv-QtI" firstAttribute="top" secondItem="4Uc-Mc-PW4" secondAttribute="bottom" constant="12" id="xXu-Rj-7Fd"/>
                     <constraint firstItem="4Uc-Mc-PW4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="yfx-vq-2G3"/>
                 </constraints>
             </tableViewCellContentView>
@@ -62,9 +74,10 @@
                 <constraint firstAttribute="bottom" secondItem="3fV-4D-pa8" secondAttribute="bottom" constant="15" id="T3S-Xn-UPv"/>
             </constraints>
             <connections>
-                <outlet property="commentText" destination="3fV-4D-pa8" id="IMM-zk-cF5"/>
+                <outlet property="commentText" destination="3fV-4D-pa8" id="eeP-3A-usx"/>
                 <outlet property="pinline" destination="4Uc-Mc-PW4" id="Z0m-bn-TKr"/>
                 <outlet property="postUser" destination="oOF-CV-nxv" id="SYq-9m-IHS"/>
+                <outlet property="timeAgoLabel" destination="Fjs-Pv-QtI" id="5Lu-Kg-W24"/>
             </connections>
         </tableViewCell>
     </objects>

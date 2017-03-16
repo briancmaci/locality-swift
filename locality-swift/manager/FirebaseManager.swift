@@ -68,7 +68,24 @@ class FirebaseManager: NSObject {
         })
     }
     
-    class func getPostBaseUser(uid:String, completionHandler: @escaping (BaseUser?) -> ()) -> () {
+    class func loadFeedComments(postId:String, completionHandler: @escaping ([UserComment]?, Error?) -> ()) -> () {
+        
+        var comments:[UserComment] = [UserComment]()
+        
+        getCommentsRef().queryOrdered(byChild: K.DB.Var.PostId).queryEqual(toValue: postId).observeSingleEvent(of: .value, with: { snapshot in
+            
+            for child in snapshot.children {
+                comments.append(UserComment(snapshot: child as! FIRDataSnapshot))
+            }
+            
+            //sort comments by date
+            let commentsSorted:[UserComment] = comments.sorted(by: { $0.createdDate < $1.createdDate })
+            
+            completionHandler(commentsSorted, nil)
+        })
+    }
+    
+    class func getUserFromHandle(uid:String, completionHandler: @escaping (BaseUser?) -> ()) -> () {
         
         var thisUser:BaseUser!
         

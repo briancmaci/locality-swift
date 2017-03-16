@@ -27,12 +27,18 @@ class AddCommentCell: UITableViewCell, UITextViewDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        initButtons()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func initButtons() {
+        postButton.addTarget(self, action: #selector(postDidTouch), for: .touchUpInside)
     }
     
     func activate() {

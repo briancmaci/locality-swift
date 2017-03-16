@@ -27,6 +27,11 @@ class PostDetailViewController: LocalityBaseViewController, UITableViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        initSizingCell()
+        
+        if postComments.isEmpty == true {
+            loadComments()
+        }
         initHeaderView()
         initButtons()
         initNoCommentsLabel()
@@ -38,19 +43,25 @@ class PostDetailViewController: LocalityBaseViewController, UITableViewDelegate,
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        loadComments()
+        if postComments.isEmpty != true {
+            loadComments()
+        }
     }
     
     func initHeaderView() {
         header.initHeaderViewStage()
         header.initAttributes(title: K.String.Header.PostDetailHeader.localized,
-                              leftType: .back, rightType: .close)
+                              leftType: .back, rightType: .none)
         
         view.addSubview(header)
     }
     
     func initButtons() {
         writeCommentButton.addTarget(self, action: #selector(writeCommentDidTouch), for: .touchUpInside)
+    }
+    
+    func initSizingCell() {
+        sizingCell = UIView.instanceFromNib(name: K.NIBName.CommentFeedCell) as! CommentFeedCell
     }
     
     func initNoCommentsLabel() {
@@ -74,7 +85,14 @@ class PostDetailViewController: LocalityBaseViewController, UITableViewDelegate,
     }
     
     func loadComments() {
-        print("LOAD COMMENTS >>>>>")
+        FirebaseManager.loadFeedComments(postId: thisPost.postId, completionHandler: { (matchedComments, error) in
+            self.postComments.removeAll()
+            self.postComments = matchedComments!
+            self.commentsTable.reloadData()
+            
+            self.noCommentsLabel.isHidden = !self.postComments.isEmpty
+            
+        })
     }
     
     ////MARK : - UITableViewDelegate Methods
@@ -104,7 +122,7 @@ class PostDetailViewController: LocalityBaseViewController, UITableViewDelegate,
     }
     
     func heightForBasicCellAtIndexPath(path: IndexPath) -> CGFloat {
-        sizingCell = CommentFeedCell(comment: postComments[0])
+        sizingCell.initCellViewContent(comment: postComments[0])
         let c:UserComment = postComments[path.row]
         
         return sizingCell.getViewHeight(txt: c.commentText)
@@ -120,7 +138,25 @@ class PostDetailViewController: LocalityBaseViewController, UITableViewDelegate,
     }
     
     func basicCellAtIndexPath(path:IndexPath) -> CommentFeedCell {
-        let cell:CommentFeedCell = CommentFeedCell(comment:postComments[path.row])
+        let cell = commentsTable.dequeueReusableCell(withIdentifier: K.ReuseID.CommentFeedCellID, for: path) as! CommentFeedCell
+        
+        if postComments[path.row].user.uid.isEmpty {
+            
+            FirebaseManager.getUserFromHandle(uid: postComments[path.row].userHandle) { (thisUser) in
+                
+                if thisUser == nil {
+                    print("User no longer exists")
+                    return
+                }
+                
+                self.postComments[path.row].user = thisUser!
+                cell.initCellViewContent(comment: self.postComments[path.row])
+            }
+        }
+        
+        else {
+            cell.initCellViewContent(comment: postComments[path.row])
+        }
         
         if path.row == 0 {
             cell.pinline.isHidden = true
@@ -150,6 +186,11 @@ class PostDetailViewController: LocalityBaseViewController, UITableViewDelegate,
     func initAddCommentCell() {
         addCommentCell = UIView.instanceFromNib(name: K.NIBName.AddCommentCell) as! AddCommentCell
         addCommentCell.delegate = self
+        
+        //set post user
+        addCommentCell.postUser.populate(imgUrl: CurrentUser.shared.profileImageUrl,
+                                         username: CurrentUser.shared.username,
+                                         status: UserStatus.stringFrom(type: CurrentUser.shared.status))
     }
     
     func writeCommentDidTouch(sender:UIButton) {
@@ -182,7 +223,6 @@ class PostDetailViewController: LocalityBaseViewController, UITableViewDelegate,
             }
             
             else {
-                print("Comment written!")
                 self.pushNewCommentToTable(comment:newComment)
             }
         }
@@ -202,8 +242,8 @@ class PostDetailViewController: LocalityBaseViewController, UITableViewDelegate,
             
             self.commentsTable.insertRows(at: [newCommentPath], with: .left)
             
-            let c:CommentFeedCell = self.commentsTable.cellForRow(at: newCommentPath) as! CommentFeedCell
-            c.popBackground()
+//            let c:CommentFeedCell = self.commentsTable.cellForRow(at: newCommentPath) as! CommentFeedCell
+//            c.popBackground()
             
             self.scrollToBottomOfTableViewWithNewComment(addNew:false, animated:true)
             self.commentsTable.isScrollEnabled = true
