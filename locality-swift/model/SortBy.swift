@@ -14,6 +14,16 @@ enum SortByType:Int {
 
 class SortBy: NSObject {
     
-    
-
+    class func getIcon(type:SortByType) -> String {
+        switch type {
+        case .proximity:
+            return K.Icon.Sort.Proximity
+            
+        case .time:
+            return K.Icon.Sort.Time
+            
+        case .activity:
+            return K.Icon.Sort.Activity
+        }
+    }
 }

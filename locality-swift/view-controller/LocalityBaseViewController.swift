@@ -13,6 +13,8 @@ class LocalityBaseViewController: UIViewController, LocalityHeaderViewDelegate {
     
     var header:FeedHeaderView!
     
+    var viewDidLoadCalled:Bool = false
+    
     override var prefersStatusBarHidden: Bool {
         return false
     }
@@ -69,25 +71,27 @@ class LocalityBaseViewController: UIViewController, LocalityHeaderViewDelegate {
     
     // MARK: - LocalityHeaderDelegate
     func iconTapped(btn: HeaderIconButton) {
-        print("Icon type? \(btn.iconType)")
+        //print("Icon type? \(btn.iconType)")
         
         let type:HeaderIconType = btn.iconType
         
         switch type {
             
         case .back:
-            _ = navigationController?.popViewController(animated: true)
+            //SlideNavigationController.sharedInstance().popViewController(animated: true)
+            _ = SlideNavigationController.sharedInstance().popViewController(animated: true)
             
         case .close:
             print("Close Button Clicked")
     
         case .feedMenu:
             //this pops for now until we get the sliding menu feature in
-             _ = navigationController?.popViewController(animated: true)
+            //SlideNavigationController.sharedInstance().popViewController(animated: true)
+            _ = navigationController?.popViewController(animated: true)
             
         case .hamburger:
             SlideNavigationController.sharedInstance().open(MenuLeft, withCompletion: { 
-                print("nav slid open")
+                //print("nav slid open")
             })
         
         case .settings:

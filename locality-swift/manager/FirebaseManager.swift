@@ -128,7 +128,32 @@ class FirebaseManager: NSObject {
             }
                 
             else {
-                completionHandler(true, nil)
+                
+                //Increment post count
+                let countRef = getPostsRef().child(comment.postId).child(K.DB.Var.CommentCount)
+                countRef.runTransactionBlock({ (countData) -> FIRTransactionResult in
+                    
+                    var value:NSNumber!
+                    
+                    if countData.value is NSNull {
+                        value = 0
+                    }
+                    else {
+                        value = countData.value as! NSNumber
+                    }
+                    
+                    countData.value = NSNumber(integerLiteral: (1 + value.intValue))
+                    return FIRTransactionResult.success(withValue: countData)
+                    
+                }, andCompletionBlock: { (error, success, snapshot) in
+                    
+                    if success == true {
+                        //print("Number incremented!")
+                    }
+                    
+                    completionHandler(true, nil)
+                })
+                
             }
         }
     }

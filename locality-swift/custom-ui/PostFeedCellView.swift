@@ -27,8 +27,9 @@ class PostFeedCellView: UIView {
     
     func initButtons() {
         likeButton.addTarget(self, action: #selector(likeDidTouch), for: .touchUpInside)
-        
         likeButton.isSelected = thisPost.isLikedByMe
+        
+        commentButton.setTitle(thisPost.commentCount.description, for: .normal)
     }
     
     //CTA

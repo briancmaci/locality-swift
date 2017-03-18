@@ -81,7 +81,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SlideNavigationController.sharedInstance().leftMenu = leftMenu
         SlideNavigationController.sharedInstance().portraitSlideOffset = 120.0
         SlideNavigationController.sharedInstance().avoidSwitchingToSameClassViewController = true
-        
+        SlideNavigationController.sharedInstance().enableSwipeGesture = true
+ 
         let revealAnimator = SlideNavigationContorllerAnimatorSlideAndFade()
         SlideNavigationController.sharedInstance().menuRevealAnimator = revealAnimator
     }

@@ -22,7 +22,7 @@ class UserPost: NSObject {
     var caption:String = ""
     var postImageUrl:String = ""
     
-    var commentsCount:Int = 0
+    var commentCount:Int = 0
     var likedBy:[String] = [String]()
     
     var isLikedByMe:Bool = false
@@ -59,7 +59,9 @@ class UserPost: NSObject {
         if (dic?[K.DB.Var.LikedBy]) != nil {
             self.likedBy = dic?[K.DB.Var.LikedBy] as! [String]
         }
-            self.postImageUrl = dic?[K.DB.Var.PostImageURL] as! String
+        
+        self.commentCount = dic?[K.DB.Var.CommentCount] as! Int
+        self.postImageUrl = dic?[K.DB.Var.PostImageURL] as! String
         self.userHandle = dic?[K.DB.Var.UserId] as! String
         self.user = BaseUser()
         
@@ -76,6 +78,7 @@ class UserPost: NSObject {
                K.DB.Var.Lon:lon,
                K.DB.Var.Caption:caption,
                K.DB.Var.PostImageURL:postImageUrl,
+               K.DB.Var.CommentCount:commentCount,
                K.DB.Var.LikedBy:likedBy]
     }
 }

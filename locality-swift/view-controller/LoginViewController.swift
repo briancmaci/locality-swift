@@ -74,6 +74,10 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
                                    password: passwordField.text!,
                                    completion: { (user, error) in
                                     if error == nil {
+                                        
+                                        //for email verifiy logout/login
+                                        CurrentUser.shared.password = self.passwordField.text!
+                                        
                                         self.loadCurrentUserVars()
                                     }
                                             
@@ -88,6 +92,9 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
         
         //check email verification
         if FirebaseManager.getCurrentUser().isEmailVerified == false {
+            
+            
+            
             let newVC:JoinValidateViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.JoinValidate) as! JoinValidateViewController
             
             navigationController?.pushViewController(newVC, animated: true)
@@ -187,6 +194,9 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
                     }
                     
                     else {
+                        
+                        //Save token
+                        CurrentUser.shared.facebookToken = (result?.token.tokenString)!
                         
                         FirebaseManager.getCurrentUserRef().child(K.DB.Var.Username).observeSingleEvent(of: .value, with: { (snapshot) in
                             

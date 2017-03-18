@@ -79,7 +79,9 @@ class JoinViewController: LocalityBaseViewController, UITextFieldDelegate {
                                    completion: { (user, error) in
                                     if error == nil {
                                         
-                                        print("Logged in user: \(user)")
+                                        //save password for emailVerify
+                                        CurrentUser.shared.password = self.passwordField.text!
+                                        
                                         //move to username
                                         let newVC:JoinUsernameViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.JoinUser) as! JoinUsernameViewController
                                         
@@ -172,6 +174,10 @@ class JoinViewController: LocalityBaseViewController, UITextFieldDelegate {
                         
                     else {
                         print("Logged in FB user: \(user)")
+                        
+                        //save password for emailVerify
+                        CurrentUser.shared.facebookToken = (result?.token.tokenString)!
+                        
                         //move to username
                         let newVC:JoinUsernameViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.JoinUser) as! JoinUsernameViewController
                         

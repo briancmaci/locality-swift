@@ -10,6 +10,7 @@ import UIKit
 
 protocol AddCommentDelegate {
     func commentToPost(comment:String)
+    func addCommentDidCancel()
 }
 
 class AddCommentCell: UITableViewCell, UITextViewDelegate {
@@ -29,6 +30,7 @@ class AddCommentCell: UITableViewCell, UITextViewDelegate {
         // Initialization code
         
         initButtons()
+        initKeyboard()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -41,11 +43,42 @@ class AddCommentCell: UITableViewCell, UITextViewDelegate {
         postButton.addTarget(self, action: #selector(postDidTouch), for: .touchUpInside)
     }
     
+    // Keyboard Toolbar Create
+    func initKeyboard() {
+        let cancelToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: K.Screen.Width, height: 30))
+        
+        cancelToolbar.barStyle       = UIBarStyle.default
+        cancelToolbar.barTintColor = K.Color.localityBlue
+        
+        let flexSpace              = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let cancel: UIBarButtonItem  = UIBarButtonItem(title: "CANCEL", style: .plain, target: self, action: #selector(cancelButtonAction))
+        
+        cancel.setTitleTextAttributes([
+            NSFontAttributeName: UIFont(name: K.FontName.InterstateLightCondensed, size: 14.0)!,
+            NSForegroundColorAttributeName: UIColor.white],
+                                       for: .normal)
+
+        
+        var items = [UIBarButtonItem]()
+        items.append(flexSpace)
+        items.append(cancel)
+        
+        cancelToolbar.items = items
+        cancelToolbar.sizeToFit()
+        
+        commentField.inputAccessoryView = cancelToolbar
+    }
+    
+    func cancelButtonAction() {
+        commentField.resignFirstResponder()
+        
+        delegate?.addCommentDidCancel()
+    }
+    
     func activate() {
+        listenForKeyboard(yes: true)
         commentField.text.removeAll()
         commentField.becomeFirstResponder()
-        
-        listenForKeyboard(yes: true)
     }
     
     func listenForKeyboard(yes:Bool) {
@@ -60,6 +93,7 @@ class AddCommentCell: UITableViewCell, UITextViewDelegate {
     }
     
     func onKeyboardShow(notification:Notification) {
+        
         listenForKeyboard(yes: false)
         
         let keyboardInfo = notification.userInfo

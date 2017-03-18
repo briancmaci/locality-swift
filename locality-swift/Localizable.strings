@@ -82,8 +82,19 @@ promotions-label = "Include promotions for this location";
 //Menu
 terms-label = "Terms and Privacy";
 
+//Buttons
+button-post-label = "POST";
+button-sort-label = "SORT";
+
 //PostDetail
 no-comments-label = "There are no comments for this post yet.";
+
+//FeedMenu
+no-posts-label = "There are no posts for this location yet.";
+
+//About
+about-copy = "Locality is a news, entertainment and information gathering application based on your whereabouts. It helps with decision making and keeps you informed no matter where you are by adding new locations.";
+about-share-label = "Help get the word out about Locality";
 
 //Copyright
 copyright-version-format = "©%d Locality v%@.%@. All rights reserved.";

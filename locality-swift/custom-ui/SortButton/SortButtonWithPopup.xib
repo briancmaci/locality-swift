@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Interstate-LightCondensed.ttf">
+            <string>Interstate-LightCondensed</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SortButtonWithPopup" customModule="locality_swift" customModuleProvider="target">
+            <connections>
+                <outlet property="sortButtonContainer" destination="tdz-PO-SUl" id="Jdr-BL-xhA"/>
+                <outlet property="sortButtonTrigger" destination="hwX-th-uRM" id="L9i-9L-IdJ"/>
+                <outlet property="view" destination="iN0-l3-epB" id="EMU-nj-eUa"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tdz-PO-SUl" userLabel="Container">
+                    <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hwX-th-uRM" customClass="SortButtonView" customModule="locality_swift" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ButtonSortBG" translatesAutoresizingMaskIntoConstraints="NO" id="Pe2-Mv-CiU">
+                                    <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="59" id="bUd-BD-ASx"/>
+                                        <constraint firstAttribute="width" constant="59" id="mlC-Vh-aRT"/>
+                                    </constraints>
+                                </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ButtonSortProximity" translatesAutoresizingMaskIntoConstraints="NO" id="t6u-0T-RCd">
+                                    <rect key="frame" x="24" y="15" width="11" height="11"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="11" id="41b-wV-Hum"/>
+                                        <constraint firstAttribute="height" constant="11" id="tdU-73-fAf"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SORT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RM1-TY-spL">
+                                    <rect key="frame" x="19" y="31" width="22" height="14"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="14" id="eO8-cV-lco"/>
+                                        <constraint firstAttribute="width" constant="22" id="nCi-M5-U6I"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="12"/>
+                                    <color key="textColor" red="0.46666666670000001" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="Pe2-Mv-CiU" firstAttribute="leading" secondItem="hwX-th-uRM" secondAttribute="leading" id="SoQ-1p-Uzw"/>
+                                <constraint firstAttribute="bottom" secondItem="RM1-TY-spL" secondAttribute="bottom" constant="14" id="fP3-HU-WYf"/>
+                                <constraint firstItem="Pe2-Mv-CiU" firstAttribute="top" secondItem="hwX-th-uRM" secondAttribute="top" id="hbl-hs-2fO"/>
+                                <constraint firstItem="t6u-0T-RCd" firstAttribute="top" secondItem="hwX-th-uRM" secondAttribute="top" constant="15" id="jbd-66-l06"/>
+                                <constraint firstItem="RM1-TY-spL" firstAttribute="centerX" secondItem="Pe2-Mv-CiU" secondAttribute="centerX" id="mZe-se-6Vv"/>
+                                <constraint firstAttribute="height" constant="59" id="oTs-Cw-eHf"/>
+                                <constraint firstAttribute="width" constant="59" id="qaV-aC-QWG"/>
+                                <constraint firstItem="t6u-0T-RCd" firstAttribute="centerX" secondItem="Pe2-Mv-CiU" secondAttribute="centerX" id="tEF-3V-9x2"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="bg" destination="Pe2-Mv-CiU" id="cGJ-aM-hDv"/>
+                                <outlet property="icon" destination="t6u-0T-RCd" id="Ejz-ks-f8z"/>
+                            </connections>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="hwX-th-uRM" secondAttribute="bottom" id="2CL-D2-geb"/>
+                        <constraint firstAttribute="width" constant="59" id="8fg-ER-tm6"/>
+                        <constraint firstItem="hwX-th-uRM" firstAttribute="leading" secondItem="tdz-PO-SUl" secondAttribute="leading" id="MhG-Bd-HuJ"/>
+                        <constraint firstAttribute="height" constant="59" id="g9y-ev-3ax"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="tdz-PO-SUl" secondAttribute="bottom" id="UBz-P7-KCg"/>
+                <constraint firstItem="tdz-PO-SUl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="YMo-n9-9bO"/>
+                <constraint firstItem="tdz-PO-SUl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="bkl-RM-fOB"/>
+                <constraint firstAttribute="trailing" secondItem="tdz-PO-SUl" secondAttribute="trailing" id="gNc-dI-49U"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ButtonSortBG" width="59" height="59"/>
+        <image name="ButtonSortProximity" width="11" height="11"/>
+    </resources>
+</document>

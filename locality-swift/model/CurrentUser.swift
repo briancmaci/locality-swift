@@ -16,6 +16,9 @@ class CurrentUser: BaseUser {
     var isMetric:Bool = false
     
     var email:String = ""
+    var password:String = "" //This is only used for email verification
+    var facebookToken:String = "" //This is only used for email verification
+    
     var isFirstVisit:Bool = true
     
     var currentLocation:FeedLocation!

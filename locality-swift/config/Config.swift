@@ -66,6 +66,7 @@ struct K {
             static let CreatedDate = "createdDate"
             static let PostId = "postId"
             static let LikedBy = "likedBy"
+            static let CommentCount = "commentCount"
             //Lat
             //Long
             static let Caption = "caption"
@@ -105,6 +106,13 @@ struct K {
         static let leftNavDark = UIColor(red: 75/255, green: 81/255, blue: 85/255, alpha: 1)
         
         static let commentBackground = UIColor(red: 238/255, green: 238/255, blue:238/255, alpha:1)
+        
+        //sort
+        static let sortBackgroundOff:UIColor = UIColor(red: 238/255, green: 238/255, blue: 238/255, alpha: 1)
+        static let sortBackgroundOn:UIColor = UIColor(red: 75/255, green: 82/255, blue: 87/255, alpha: 1)
+        static let sortIconOff:UIColor = UIColor(red: 119/255, green: 119/255, blue: 119/255, alpha: 1)
+        static let sortIconOn:UIColor = .white
+        static let sortPin:UIColor = UIColor(red: 219/255, green: 219/255, blue: 219/255, alpha: 1)
     }
     
     struct FontName {
@@ -120,6 +128,12 @@ struct K {
             static let Hamburger = "IconHamburger"
             static let Settings = "IconSettings"
             static let FeedMenu = "IconFeedMenu"
+        }
+        
+        struct Sort {
+            static let Proximity = "ButtonSortProximity"
+            static let Time = "ButtonSortTime"
+            static let Activity = "ButtonSortActivity"
         }
     }
     
@@ -161,6 +175,8 @@ struct K {
             
             static let PostCreate = "postCreateVC"
             static let PostDetail = "postDetailVC"
+            
+            static let About = "aboutVC"
         }
     }
     
@@ -190,6 +206,8 @@ struct K {
         
         static let CommentFeedCell = "CommentFeedCell"
         static let AddCommentCell = "AddCommentCell"
+        
+        static let SortButtonWithPopup = "SortButtonWithPopup"
     }
     
     //UITableViewCell reuseIdentifiers
@@ -216,6 +234,8 @@ struct K {
             static let LandingJoin = "join-button-label"
             static let LandingLogin = "login-button-label"
             static let Terms = "terms-label"
+            static let Post = "button-post-label"
+            static let Sort = "button-sort-label"
         }
         
         struct Header {
@@ -299,7 +319,13 @@ struct K {
             static let TimestampFormat = "yyyy-MM-dd HH:mm:ss zzz"
             static let CaptionDefault = "post-caption-default"
             static let CaptionError = "post-caption-error"
+            static let NoPostsLabel = "no-posts-label"
             static let NoCommentsLabel = "no-comments-label"
+        }
+        
+        struct About {
+            static let AboutCopy = "about-copy"
+            static let AboutShareLabel = "about-share-label"
         }
     }
     

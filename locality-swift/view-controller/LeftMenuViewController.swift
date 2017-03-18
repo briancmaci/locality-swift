@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 
 class LeftMenuViewController: LocalityPhotoBaseViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -32,21 +33,33 @@ class LeftMenuViewController: LocalityPhotoBaseViewController, UITableViewDelega
     @IBOutlet weak var updatePhotoButton:UIButton!
     
     var menuOptions:[[String:AnyObject]] = [[String:AnyObject]]()
-    
+    var viewHasLoaded:Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewHasLoaded = true
 
-        initProfileImage()
         initPhotoButton()
-        initLabels()
+        initTermsCopyright()
         initMenuOptions()
         initTableView()
+        populateMenuWithUser()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func populateMenuWithUser() {
+        
+        if !viewHasLoaded {
+            return
+        }
+        
+        initProfileImage()
+        initLabels()
     }
     
     func initProfileImage() {
@@ -59,13 +72,15 @@ class LeftMenuViewController: LocalityPhotoBaseViewController, UITableViewDelega
     }
     
     func initLabels() {
-        
+        nameLabel.text = CurrentUser.shared.username
+        statusLabel.text = UserStatus.stringFrom(type: CurrentUser.shared.status).localized
+    }
+    
+    func initTermsCopyright() {
         let date = Date()
         let calendar = Calendar.current
         let year = calendar.component(.year, from: date)
         
-        nameLabel.text = CurrentUser.shared.username
-        statusLabel.text = UserStatus.stringFrom(type: CurrentUser.shared.status).localized
         copyrightLabel.text = String(format:K.String.CopyrightVersionFormat.localized,
                                      year,
                                      Bundle.main.buildVersionNumber!,
@@ -165,15 +180,40 @@ class LeftMenuViewController: LocalityPhotoBaseViewController, UITableViewDelega
     
     //Menu Action Methods
     func gotoViewControllerWithId(id:String) {
-        let newVC:LocalityBaseViewController = Util.controllerFromStoryboard(id: id) as! LocalityBaseViewController
         
-        SlideNavigationController.sharedInstance().popToRootAndSwitch(to: newVC) {
-            print("New vc from menu selected")
+        if id != K.Storyboard.ID.FeedMenu {
+            let newVC:LocalityBaseViewController = Util.controllerFromStoryboard(id: id) as! LocalityBaseViewController
+            
+            SlideNavigationController.sharedInstance().popToRootAndSwitch(to: newVC, withSlideOutAnimation: false, andCompletion: nil)
+        }
+        
+        else {
+            let menuVC:UITableViewController = Util.controllerFromStoryboard(id: id) as! UITableViewController
+            
+            SlideNavigationController.sharedInstance().popToRootAndSwitch(to: menuVC, withSlideOutAnimation: false, andCompletion: nil)
         }
     }
     
     func triggerActionWithId(id:String) {
         print("Trigger: \(id)")
+        
+        if id == "logout" {
+            logout()
+        }
+    }
+    
+    //Trigger CTAs
+    func logout() {
+        
+        do {
+            try FIRAuth.auth()?.signOut()
+            
+            let landingVC:LandingViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.Landing) as! LandingViewController
+            
+            SlideNavigationController.sharedInstance().popAllAndSwitch(to: landingVC, withSlideOutAnimation: false, andCompletion: nil)
+        } catch {
+            print("Logout error")
+        }
     }
     
     //MARK: - UITableViewDelegate Methods

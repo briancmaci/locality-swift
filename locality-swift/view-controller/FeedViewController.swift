@@ -9,18 +9,19 @@
 import UIKit
 import Mapbox
 
-class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
+class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, SortButtonDelegate {
 
     let headerExpandedOffset = K.NumberConstant.Header.HeroExpandHeight - K.NumberConstant.Header.HeroCollapseHeight
     
     @IBOutlet weak var headerHero:FlexibleFeedHeaderView!
     @IBOutlet weak var postsTable:UITableView!
     @IBOutlet weak var flexHeaderHeight:NSLayoutConstraint!
+    @IBOutlet weak var sortButton:SortButtonWithPopup!
     @IBOutlet weak var postButton:UIButton!
     
+    @IBOutlet weak var noPostsLabel:UILabel!
+    
     var thisFeed:FeedLocation!
-    
-    
     var sortType:SortByType!
     
     var posts:[UserPost] = [UserPost]()
@@ -28,13 +29,13 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if posts.isEmpty == true {
-            loadPosts()
-        }
+        viewDidLoadCalled = true
+        loadPosts()
         
         // Do any additional setup after loading the view.
         initSortByType()
         initPostButton()
+        initNoPostsLabel()
         initHeaderView()
         initTableView()
     }
@@ -43,10 +44,13 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         super.viewWillAppear(true)
         
         //If we have posts available already... reload for new data added
-        if posts.isEmpty != true {
-            
+        if viewDidLoadCalled == true {
             loadPosts()
         }
+        
+        let leftMenu:LeftMenuViewController = SlideNavigationController.sharedInstance().leftMenu as! LeftMenuViewController
+        
+        leftMenu.populateMenuWithUser()
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,18 +67,29 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
                 self.posts = matchedPosts!
                 self.postsTable.reloadData()
                 
+                self.noPostsLabel.isHidden = !self.posts.isEmpty
+                
                })
             }
             
         }
     }
     
+    func initNoPostsLabel() {
+        noPostsLabel.text = K.String.Post.NoPostsLabel.localized
+    }
+    
     func initSortByType() {
         sortType = .proximity
+        
+        sortButton.delegate = self
     }
     
     func initPostButton() {
+        postButton.setTitle(K.String.Button.Post.localized, for: .normal)
         postButton.addTarget(self, action: #selector(postDidTouch), for: .touchUpInside)
+        
+        view.bringSubview(toFront: postButton)
     }
     
     func initHeaderView() {
@@ -91,6 +106,8 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         postsTable.contentInset = UIEdgeInsetsMake(topOffset, 0, topOffset, 0)
         
         postsTable.register(PostFeedCell.self, forCellReuseIdentifier: K.ReuseID.PostFeedCellID)
+        
+        postsTable.separatorStyle = .none
     }
     
     func postDidTouch(sender:UIButton) {
@@ -120,6 +137,11 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         headerHero.setNeedsUpdateConstraints()
         headerHero.updateHeaderHeight(newHeight: flexHeaderHeight.constant)
         
+    }
+    
+    //MARK: - SortButtonDelegate Methods
+    func sortByTypeDidUpdate(type: SortByType) {
+        print("Update sort to: \(type)")
     }
     
     //MARK: - UITableViewDelegate Methods

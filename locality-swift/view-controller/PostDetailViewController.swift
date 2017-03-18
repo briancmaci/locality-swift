@@ -30,9 +30,9 @@ class PostDetailViewController: LocalityBaseViewController, UITableViewDelegate,
 
         initSizingCell()
         
-        if postComments.isEmpty == true {
-            loadComments()
-        }
+        viewDidLoadCalled = true
+        loadComments()
+        
         initHeaderView()
         initButtons()
         initNoCommentsLabel()
@@ -44,7 +44,7 @@ class PostDetailViewController: LocalityBaseViewController, UITableViewDelegate,
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        if postComments.isEmpty != true {
+        if viewDidLoadCalled == true {
             loadComments()
         }
     }
@@ -120,6 +120,12 @@ class PostDetailViewController: LocalityBaseViewController, UITableViewDelegate,
         
         else {
             return commentsTable.frame.size.height
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            addCommentCell.activate()
         }
     }
     
@@ -208,10 +214,10 @@ class PostDetailViewController: LocalityBaseViewController, UITableViewDelegate,
         
         let newIndexPath:IndexPath = IndexPath(row:0, section:1)
         
-        commentsTable.beginUpdates()
-        addCommentCell.activate()
-        commentsTable.insertRows(at: [newIndexPath], with: .bottom)
-        commentsTable.endUpdates()
+        self.commentsTable.beginUpdates()
+        //self.addCommentCell.activate()
+        self.commentsTable.insertRows(at: [newIndexPath], with: .bottom)
+        self.commentsTable.endUpdates()
     }
     
     ////MARK : - AddCommentDelegate Methods
@@ -228,6 +234,17 @@ class PostDetailViewController: LocalityBaseViewController, UITableViewDelegate,
                 self.pushNewCommentToTable(comment:newComment)
             }
         }
+    }
+    
+    func addCommentDidCancel() {
+        isAddingComment = false
+        
+        noCommentsLabel.isHidden = !postComments.isEmpty
+        
+        let addNewIndexPath:IndexPath = IndexPath(row:0, section:1)
+        commentsTable.beginUpdates()
+        commentsTable.deleteRows(at: [addNewIndexPath], with: .fade)
+        commentsTable.endUpdates()
     }
     
     func pushNewCommentToTable(comment:UserComment) {
