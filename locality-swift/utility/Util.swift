@@ -92,7 +92,7 @@ class Util: NSObject {
         let attrString:NSMutableAttributedString = NSMutableAttributedString(string: rawString as String)
         
         let font = UIFont(name: K.FontName.InterstateLightCondensed, size: 13)
-        let smallFont = UIFont(name: K.FontName.InterstateLightCondensed, size: 9)
+        let smallFont = UIFont(name: K.FontName.InterstateLightCondensed, size: 10)
         
         attrString.beginEditing()
         attrString.addAttribute(NSFontAttributeName,
@@ -121,26 +121,34 @@ class Util: NSObject {
         if CurrentUser.shared.isMetric == true {
             if convertedDistance > metricThreshold {
                 convertedDistance = convertedDistance / metricThreshold
-                unit = "KM"
+                unit = "km"
             }
             
             else {
-                unit = "M"
+                unit = "m"
             }
         }
         
         else if CurrentUser.shared.isMetric == false {
             if convertedDistance > imperialThreshold {
                 convertedDistance = convertedDistance / imperialThreshold
-                unit = "MI"
+                unit = "mi"
             }
             
             else {
-                unit = "FT"
+                unit = "ft"
             }
         }
         
         return RangeStep(distance: convertedDistance.roundTo(places: 1), label: "", unit: unit)
+    }
+    
+    class func distanceFrom(lat:Double, lon:Double) -> Double {
+        let origin:CLLocation = CLLocation(latitude: CurrentUser.shared.currentFeedLocation.latitude,
+                                           longitude: CurrentUser.shared.currentFeedLocation.longitude)
+        
+        let here:CLLocation = CLLocation(latitude:lat, longitude:lon)
+        return here.distance(from: origin)
     }
     
     class func generateUUID() -> String {
@@ -155,20 +163,11 @@ class Util: NSObject {
         return feet * 0.3408
     }
     
-    class func stringFromDate(date:Date) -> String {
-        
-        let format:DateFormatter = DateFormatter()
-        format.setLocalizedDateFormatFromTemplate(K.String.Post.TimestampFormat)
-        
-        return format.string(from: date)
-        
+    class func intFromDate(date:Date) -> Int {
+        return Int(date.timeIntervalSince1970)
     }
     
-    class func dateFromString(dateStr:String) -> Date {
-    
-        let format:DateFormatter = DateFormatter()
-        format.setLocalizedDateFormatFromTemplate(K.String.Post.TimestampFormat)
-        
-        return format.date(from: dateStr)!
+    class func dateFromInt(dateInt:Int) -> Date {
+        return Date(timeIntervalSince1970: TimeInterval(dateInt))
     }
 }

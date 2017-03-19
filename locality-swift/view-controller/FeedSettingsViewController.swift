@@ -325,7 +325,9 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
                     }
                         
                     else {
-                        print("Locations written written!")
+                        print("Location written!")
+                        
+                        SlideNavigationController.sharedInstance().popViewController(animated: true)
                         
                     }
                 })

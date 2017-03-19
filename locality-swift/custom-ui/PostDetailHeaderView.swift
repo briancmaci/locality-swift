@@ -14,7 +14,7 @@ class PostDetailHeaderView: UIView {
     
     @IBOutlet weak var drawingBackground:PostDetailHeaderBackground!
     @IBOutlet weak var userInfo:PostUserInfoView!
-    @IBOutlet weak var filterView:PostFilterView!
+    @IBOutlet weak var sortView:PostSortView!
     @IBOutlet weak var captionLabel:UILabel!
     
     var thisPost:UserPost!
@@ -39,5 +39,7 @@ class PostDetailHeaderView: UIView {
                           status: UserStatus.stringFrom(type: thisPost.user.status))
         
         captionLabel.text = thisPost.caption
+        
+        sortView.populate(model: thisPost)
     }
 }

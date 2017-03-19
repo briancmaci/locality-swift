@@ -46,21 +46,22 @@ class PostFeedCell: UITableViewCell {
             addSubview(postImage)
         }
         addSubview(postContent)
-        
-        
     }
     
-    convenience init(model:UserPost, proximityTo:CLLocationCoordinate2D) {
-        self.init(model:model)
-        
-        let origin:CLLocation = CLLocation(latitude: proximityTo.latitude, longitude: proximityTo.longitude)
-        let here:CLLocation = CLLocation(latitude:model.lat, longitude:model.lon)
-        let distance:CLLocationDistance = here.distance(from: origin)
-        
-        let fromData:RangeStep = Util.distanceToDisplay(distance: CGFloat(distance))
-        
-        postContent.filterView.filterLabel.attributedText = Util.attributedDistanceFromString(value:fromData.distance.description, unit: fromData.unit)
-    }
+//    convenience init(model:UserPost, proximityTo:CLLocationCoordinate2D) {
+//        self.init(model:model)
+    
+//        let origin:CLLocation = CLLocation(latitude: proximityTo.latitude, longitude: proximityTo.longitude)
+//        let here:CLLocation = CLLocation(latitude:model.lat, longitude:model.lon)
+//        let distance:CLLocationDistance = here.distance(from: origin)
+//        
+//        let fromData:RangeStep = Util.distanceToDisplay(distance: CGFloat(distance))
+//        let correctedDistance:String = fromData.distance.description.replacingOccurrences(of: ".0", with: "")
+//        
+//        postContent.sortView.sortLabel.attributedText = Util.attributedDistanceFromString(value:correctedDistance, unit: fromData.unit)
+//    }
+    
+    
     
     func initImage() {
         

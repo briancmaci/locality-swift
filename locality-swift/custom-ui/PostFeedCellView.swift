@@ -14,7 +14,7 @@ class PostFeedCellView: UIView {
     @IBOutlet weak var captionLabel:UILabel!
     @IBOutlet weak var likeButton:LikePostButton!
     @IBOutlet weak var commentButton:CommentButton!
-    @IBOutlet weak var filterView:PostFilterView!
+    @IBOutlet weak var sortView:PostSortView!
     @IBOutlet weak var pinline:UIView!
     
     var thisPost:UserPost!
@@ -23,6 +23,7 @@ class PostFeedCellView: UIView {
         thisPost = model
         
         initButtons()
+        populateSortView()
     }
     
     func initButtons() {
@@ -79,6 +80,10 @@ class PostFeedCellView: UIView {
                 self.likeButton.isSelected  = true
             }
         }
+    }
+    
+    func populateSortView() {
+        sortView.populate(model:thisPost)
     }
     
     func getViewHeight(caption:String) -> CGFloat {

@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import Mapbox
 
 class CurrentUser: BaseUser {
 
@@ -23,6 +24,12 @@ class CurrentUser: BaseUser {
     
     var currentLocation:FeedLocation!
     var pinnedLocations:[FeedLocation] = [FeedLocation]()
+    
+    //sort
+    var sortByType:SortByType = .proximity
+    
+    //feed location
+    var currentFeedLocation:CLLocationCoordinate2D! = nil
     
     func extraAttributesToFirebase() -> [String:Any] {
         

@@ -29,6 +29,8 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        CurrentUser.shared.currentFeedLocation = CLLocationCoordinate2D(latitude: thisFeed.lat, longitude: thisFeed.lon)
+        
         viewDidLoadCalled = true
         loadPosts()
         
@@ -62,7 +64,9 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         GeoFireManager.getPostLocations(range: thisFeed.range, location: CLLocation(latitude:thisFeed.lat, longitude:thisFeed.lon)) { (matched, error) in
             
             if error == nil {
-               FirebaseManager.loadFeedPosts(postIDs: matched!, completionHandler: { (matchedPosts, error) in
+                FirebaseManager.loadFeedPosts(postIDs: matched!,
+                                              orderedBy: CurrentUser.shared.sortByType,
+                                              completionHandler: { (matchedPosts, error) in
                 self.posts.removeAll()
                 self.posts = matchedPosts!
                 self.postsTable.reloadData()
@@ -119,7 +123,7 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     func heightForCellAtIndexPath(indexPath:IndexPath) -> CGFloat {
         var sizingCell:PostFeedCell? = nil
         //DispatchQueue.once {
-            sizingCell = PostFeedCell(model: posts[indexPath.row], proximityTo: CLLocationCoordinate2D(latitude: thisFeed.lat, longitude: thisFeed.lon))
+            sizingCell = PostFeedCell(model: posts[indexPath.row])
         //}
         let p:UserPost = posts[indexPath.row]
         let imgHeight:CGFloat = p.postImageUrl.isEmpty == true ? 0 : K.Screen.Width * K.NumberConstant.Post.ImageRatio
@@ -141,7 +145,10 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     
     //MARK: - SortButtonDelegate Methods
     func sortByTypeDidUpdate(type: SortByType) {
-        print("Update sort to: \(type)")
+        CurrentUser.shared.sortByType = type
+        
+        //reload posts and table
+        loadPosts()
     }
     
     //MARK: - UITableViewDelegate Methods
@@ -149,7 +156,7 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         
 //        let cell = tableView.dequeueReusableCell(withIdentifier: K.ReuseID.PostFeedCellID, for: indexPath) as! PostFeedCell
         
-        let cell:PostFeedCell = PostFeedCell(model: posts[indexPath.row], proximityTo: CLLocationCoordinate2D(latitude:thisFeed.lat, longitude:thisFeed.lon))
+        let cell:PostFeedCell = PostFeedCell(model: posts[indexPath.row])
         
         return cell
     }
@@ -158,9 +165,9 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         
         let newVC:PostDetailViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.PostDetail) as! PostDetailViewController
         
-        let thisCell:PostFeedCell = postsTable.cellForRow(at: indexPath) as! PostFeedCell
+        //let thisCell:PostFeedCell = postsTable.cellForRow(at: indexPath) as! PostFeedCell
         newVC.thisPost = posts[indexPath.row]
-        newVC.distance = thisCell.postContent.filterView.filterLabel.attributedText
+        //newVC.distance = thisCell.postContent.filterView.filterLabel.attributedText
         
         navigationController?.pushViewController(newVC, animated: true)
         

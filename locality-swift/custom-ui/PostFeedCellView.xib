@@ -28,7 +28,7 @@
                         <constraint firstAttribute="width" constant="230" id="T55-M0-rj7"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BZ5-vk-fPx" userLabel="FilterView" customClass="PostFilterView" customModule="locality_swift" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BZ5-vk-fPx" userLabel="PostSortView" customClass="PostSortView" customModule="locality_swift" customModuleProvider="target">
                     <rect key="frame" x="252" y="35" width="44" height="16"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconFilterLocation" translatesAutoresizingMaskIntoConstraints="NO" id="rno-2S-4xg">
@@ -38,7 +38,7 @@
                                 <constraint firstAttribute="height" constant="10" id="vrM-UR-BED"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23ft" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryI-ap-dPG">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23ft" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryI-ap-dPG">
                             <rect key="frame" x="14" y="0.0" width="30" height="16"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="30" id="6K6-97-Tbl"/>
@@ -53,14 +53,15 @@
                         <constraint firstAttribute="height" constant="16" id="KHp-kp-KGh"/>
                         <constraint firstAttribute="width" constant="44" id="MqY-yn-WpN"/>
                         <constraint firstAttribute="bottom" secondItem="ryI-ap-dPG" secondAttribute="bottom" id="NpY-Qd-dtf"/>
-                        <constraint firstItem="rno-2S-4xg" firstAttribute="leading" secondItem="BZ5-vk-fPx" secondAttribute="leading" id="Xzq-ke-IdY"/>
                         <constraint firstItem="rno-2S-4xg" firstAttribute="top" secondItem="BZ5-vk-fPx" secondAttribute="top" constant="3" id="agb-Jz-YbV"/>
                         <constraint firstItem="ryI-ap-dPG" firstAttribute="top" secondItem="BZ5-vk-fPx" secondAttribute="top" id="f7C-UF-a8D"/>
                         <constraint firstItem="ryI-ap-dPG" firstAttribute="leading" secondItem="rno-2S-4xg" secondAttribute="trailing" constant="6" id="gOc-xn-huJ"/>
+                        <constraint firstAttribute="trailing" secondItem="ryI-ap-dPG" secondAttribute="trailing" id="yoZ-hr-UwR"/>
                     </constraints>
                     <connections>
-                        <outlet property="filterIcon" destination="rno-2S-4xg" id="MMH-iT-CTi"/>
-                        <outlet property="filterLabel" destination="ryI-ap-dPG" id="PG4-uP-ZZl"/>
+                        <outlet property="sortIcon" destination="rno-2S-4xg" id="3hi-O7-n3N"/>
+                        <outlet property="sortLabel" destination="ryI-ap-dPG" id="uwx-0i-hYW"/>
+                        <outlet property="sortLabelWidth" destination="6K6-97-Tbl" id="Eeb-OC-aJ3"/>
                     </connections>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPk-9M-dP3" userLabel="PostCaption">
@@ -125,10 +126,10 @@
             <connections>
                 <outlet property="captionLabel" destination="WPk-9M-dP3" id="HHF-uc-pKL"/>
                 <outlet property="commentButton" destination="J1J-Wr-ZRR" id="a6P-wJ-z9u"/>
-                <outlet property="filterView" destination="BZ5-vk-fPx" id="5Oc-Ic-k2k"/>
                 <outlet property="likeButton" destination="Iq8-n6-7m8" id="Vcb-Ik-aBK"/>
                 <outlet property="pinline" destination="ISI-9H-e5A" id="imj-cy-gDq"/>
                 <outlet property="postUser" destination="1gJ-eK-leV" id="PA3-ea-9nU"/>
+                <outlet property="sortView" destination="BZ5-vk-fPx" id="lqd-dJ-QTd"/>
             </connections>
             <point key="canvasLocation" x="726" y="343"/>
         </view>

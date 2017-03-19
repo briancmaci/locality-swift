@@ -52,20 +52,67 @@ class FirebaseManager: NSObject {
         })
     }
     
-    class func loadFeedPosts(postIDs:[String], completionHandler: @escaping ([UserPost]?, Error?) -> ()) -> () {
+    class func loadFeedPosts(postIDs:[String],
+                             orderedBy:SortByType,
+                             completionHandler: @escaping ([UserPost]?, Error?) -> ()) -> () {
         
         var posts:[UserPost] = [UserPost]()
+        var postsDic:[UserPost:Double] = [UserPost:Double]()
         
-        getPostsRef().observeSingleEvent(of: .value, with: { snapshot in
-            for child in snapshot.children {
-                let childSnap = child as! FIRDataSnapshot
-                if postIDs.contains(childSnap.key) {
-                    posts.append(UserPost(snapshot: childSnap))
+        switch orderedBy {
+        case .proximity:
+        
+            getPostsRef().observeSingleEvent(of: .value, with: { snapshot in
+                for child in snapshot.children {
+                    let childSnap = child as! FIRDataSnapshot
+                    if postIDs.contains(childSnap.key) {
+                        //posts.append(UserPost(snapshot: childSnap))
+                        
+                        //push to dictionary before sorting
+                        let p = UserPost(snapshot: childSnap)
+                        postsDic[p] = Util.distanceFrom(lat: p.lat, lon: p.lon)
+                        
+                    }
                 }
-            }
+                
+                //let's order the dictionary by key(distance)
+                let sortedKeys = Array(postsDic).sorted(by: {$0.1 < $1.1})
+
+                for p in sortedKeys {
+                    posts.append(p.key)
+                }
+                
+                completionHandler(posts, nil)
+            })
             
-            completionHandler(posts, nil)
-        })
+        case .time:
+            getPostsRef().queryOrdered(byChild: K.DB.Var.CreatedDate).observeSingleEvent(of: .value, with: { snapshot in
+                for child in snapshot.children {
+                    let childSnap = child as! FIRDataSnapshot
+                    if postIDs.contains(childSnap.key) {
+                        posts.append(UserPost(snapshot: childSnap))
+                    }
+                }
+                
+                //We have to reverse these to make the newest 
+                completionHandler(posts.reversed(), nil)
+            })
+            
+        case .activity:
+            getPostsRef().queryOrdered(byChild: K.DB.Var.CommentCount).observeSingleEvent(of: .value, with: { snapshot in
+                for child in snapshot.children {
+                    let childSnap = child as! FIRDataSnapshot
+                    if postIDs.contains(childSnap.key) {
+                        posts.append(UserPost(snapshot: childSnap))
+                    }
+                }
+                
+                completionHandler(posts.reversed(), nil)
+            })
+                
+        }
+        
+        
     }
     
     class func loadFeedComments(postId:String, completionHandler: @escaping ([UserComment]?, Error?) -> ()) -> () {

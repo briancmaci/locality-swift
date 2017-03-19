@@ -18,7 +18,7 @@
             <connections>
                 <outlet property="captionLabel" destination="S1O-OS-SkV" id="v6D-uG-WAR"/>
                 <outlet property="drawingBackground" destination="lG0-A5-c16" id="yCR-Ky-lsR"/>
-                <outlet property="filterView" destination="s4N-kM-JB7" id="SG5-5t-O2X"/>
+                <outlet property="sortView" destination="s4N-kM-JB7" id="8FA-J2-MJt"/>
                 <outlet property="userInfo" destination="Gjz-I3-xPs" id="ayB-UE-eQO"/>
                 <outlet property="view" destination="iN0-l3-epB" id="HNa-Yp-ID8"/>
             </connections>
@@ -40,7 +40,7 @@
                         <constraint firstAttribute="height" constant="35" id="Kr3-og-a9S"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s4N-kM-JB7" userLabel="FilterView" customClass="PostFilterView" customModule="locality_swift" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s4N-kM-JB7" userLabel="SortView" customClass="PostSortView" customModule="locality_swift" customModuleProvider="target">
                     <rect key="frame" x="311" y="35" width="44" height="16"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconFilterLocation" translatesAutoresizingMaskIntoConstraints="NO" id="3ZR-4B-QAV">
@@ -50,7 +50,7 @@
                                 <constraint firstAttribute="width" constant="8" id="f7s-HW-diS"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23ft" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5b-TI-tNt">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23ft" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5b-TI-tNt">
                             <rect key="frame" x="14" y="0.0" width="30" height="16"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="30" id="w9s-TL-N5P"/>
@@ -64,15 +64,16 @@
                     <constraints>
                         <constraint firstItem="A5b-TI-tNt" firstAttribute="leading" secondItem="3ZR-4B-QAV" secondAttribute="trailing" constant="6" id="63g-5X-Hq5"/>
                         <constraint firstAttribute="bottom" secondItem="A5b-TI-tNt" secondAttribute="bottom" id="7IJ-vT-iuZ"/>
+                        <constraint firstAttribute="trailing" secondItem="A5b-TI-tNt" secondAttribute="trailing" id="7Lt-pw-BdB"/>
                         <constraint firstAttribute="width" constant="44" id="M1Z-q0-xPN"/>
                         <constraint firstAttribute="height" constant="16" id="No0-iq-LZI"/>
                         <constraint firstItem="A5b-TI-tNt" firstAttribute="top" secondItem="s4N-kM-JB7" secondAttribute="top" id="Uka-vO-5K8"/>
                         <constraint firstItem="3ZR-4B-QAV" firstAttribute="top" secondItem="s4N-kM-JB7" secondAttribute="top" constant="3" id="Wi4-Rg-zz8"/>
-                        <constraint firstItem="3ZR-4B-QAV" firstAttribute="leading" secondItem="s4N-kM-JB7" secondAttribute="leading" id="Xrj-fl-Slq"/>
                     </constraints>
                     <connections>
-                        <outlet property="filterIcon" destination="3ZR-4B-QAV" id="U2T-iy-JDo"/>
-                        <outlet property="filterLabel" destination="A5b-TI-tNt" id="URn-Qx-9rL"/>
+                        <outlet property="sortIcon" destination="3ZR-4B-QAV" id="WyN-u4-RQ1"/>
+                        <outlet property="sortLabel" destination="A5b-TI-tNt" id="gAd-vC-IZC"/>
+                        <outlet property="sortLabelWidth" destination="w9s-TL-N5P" id="EI1-hO-fat"/>
                     </connections>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1O-OS-SkV">

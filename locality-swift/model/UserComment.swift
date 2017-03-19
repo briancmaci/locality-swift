@@ -38,9 +38,9 @@ class UserComment: NSObject {
         super.init()
         let dic = snapshot.value as? [String:Any]
         
-        let dateString = dic?[K.DB.Var.CreatedDate] as! String
+        let dateInt = dic?[K.DB.Var.CreatedDate] as! Int
         
-        self.createdDate = Util.dateFromString(dateStr: dateString)
+        self.createdDate = Util.dateFromInt(dateInt: dateInt)
         self.postId = dic?[K.DB.Var.PostId] as! String
         self.commentText = dic?[K.DB.Var.CommentText] as! String
         self.commentId = dic?[K.DB.Var.CommentId] as! String
@@ -51,7 +51,7 @@ class UserComment: NSObject {
     
     
     func toFirebaseObject() -> [String:Any] {
-        return[K.DB.Var.CreatedDate:Util.stringFromDate(date: createdDate),
+        return[K.DB.Var.CreatedDate:Util.intFromDate(date: createdDate),
                K.DB.Var.PostId:postId,
                K.DB.Var.UserId:userHandle,
                K.DB.Var.CommentId:commentId,

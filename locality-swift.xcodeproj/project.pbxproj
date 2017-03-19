@@ -97,7 +97,7 @@
 		72F24BCC1E71BAB300CA7702 /* CommentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BCB1E71BAB300CA7702 /* CommentButton.swift */; };
 		72F24BCF1E71BBFF00CA7702 /* UserPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BCE1E71BBFF00CA7702 /* UserPost.swift */; };
 		72F24BD11E71BD1B00CA7702 /* BaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BD01E71BD1B00CA7702 /* BaseUser.swift */; };
-		72F24BD41E71C2E600CA7702 /* PostFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BD31E71C2E600CA7702 /* PostFilterView.swift */; };
+		72F24BD41E71C2E600CA7702 /* PostSortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BD31E71C2E600CA7702 /* PostSortView.swift */; };
 		72F24BD71E71D0F200CA7702 /* PostFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BD51E71D0F200CA7702 /* PostFeedCell.swift */; };
 		72F24BDA1E71E8FD00CA7702 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BD91E71E8FD00CA7702 /* UILabelExtension.swift */; };
 		72F24BDD1E71F06A00CA7702 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F24BDC1E71F06A00CA7702 /* PostDetailViewController.swift */; };
@@ -243,7 +243,7 @@
 		72F24BCB1E71BAB300CA7702 /* CommentButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentButton.swift; path = "custom-ui/CommentButton.swift"; sourceTree = "<group>"; };
 		72F24BCE1E71BBFF00CA7702 /* UserPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserPost.swift; path = model/UserPost.swift; sourceTree = "<group>"; };
 		72F24BD01E71BD1B00CA7702 /* BaseUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseUser.swift; path = model/BaseUser.swift; sourceTree = "<group>"; };
-		72F24BD31E71C2E600CA7702 /* PostFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostFilterView.swift; path = "custom-ui/PostFilterView.swift"; sourceTree = "<group>"; };
+		72F24BD31E71C2E600CA7702 /* PostSortView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostSortView.swift; path = "custom-ui/PostSortView.swift"; sourceTree = "<group>"; };
 		72F24BD51E71D0F200CA7702 /* PostFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostFeedCell.swift; path = "custom-ui/PostFeedCell.swift"; sourceTree = "<group>"; };
 		72F24BD91E71E8FD00CA7702 /* UILabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UILabelExtension.swift; path = extension/UILabelExtension.swift; sourceTree = "<group>"; };
 		72F24BDC1E71F06A00CA7702 /* PostDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostDetailViewController.swift; path = "view-controller/PostDetailViewController.swift"; sourceTree = "<group>"; };
@@ -443,7 +443,7 @@
 				72DC48871E6D9C0200486535 /* location-slider */,
 				72DC48761E6B4A5200486535 /* mapbox */,
 				72EEDF9A1E78794A009DFA77 /* post-detail-header */,
-				72F24BD21E71C2CA00CA7702 /* post-filter */,
+				72F24BD21E71C2CA00CA7702 /* post-sort */,
 				72F24BE71E7227F300CA7702 /* post-from */,
 				72F24BC01E71AAEA00CA7702 /* post-user-info */,
 				722ABA121E746C3400A3F1DA /* slide-navigation-controller */,
@@ -700,12 +700,12 @@
 			name = post;
 			sourceTree = "<group>";
 		};
-		72F24BD21E71C2CA00CA7702 /* post-filter */ = {
+		72F24BD21E71C2CA00CA7702 /* post-sort */ = {
 			isa = PBXGroup;
 			children = (
-				72F24BD31E71C2E600CA7702 /* PostFilterView.swift */,
+				72F24BD31E71C2E600CA7702 /* PostSortView.swift */,
 			);
-			name = "post-filter";
+			name = "post-sort";
 			sourceTree = "<group>";
 		};
 		72F24BDB1E71F04300CA7702 /* post */ = {
@@ -1062,7 +1062,7 @@
 				72F24BD11E71BD1B00CA7702 /* BaseUser.swift in Sources */,
 				72F24BF81E730C5A00CA7702 /* PhotoUploadManager.swift in Sources */,
 				72B881D91E665F3A00EB3B2E /* Config.swift in Sources */,
-				72F24BD41E71C2E600CA7702 /* PostFilterView.swift in Sources */,
+				72F24BD41E71C2E600CA7702 /* PostSortView.swift in Sources */,
 				72B882101E68EAE200EB3B2E /* StringExtension.swift in Sources */,
 				72F24BC81E71B93C00CA7702 /* PostFeedCellView.swift in Sources */,
 				72F24BBB1E71A1B300CA7702 /* SortBy.swift in Sources */,
