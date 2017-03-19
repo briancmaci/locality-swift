@@ -228,7 +228,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="opb-fK-nfh" customClass="SortButtonWithPopup" customModule="locality_swift" customModuleProvider="target">
-                                <rect key="frame" x="206" y="582" width="59" height="59"/>
+                                <rect key="frame" x="206.5" y="582" width="59" height="59"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="59" id="Eed-Lb-17Z"/>
@@ -236,7 +236,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nwy-fq-gdS">
-                                <rect key="frame" x="152" y="577" width="70" height="70"/>
+                                <rect key="frame" x="152.5" y="577" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="03d-sO-G8G"/>
                                     <constraint firstAttribute="width" constant="70" id="CqF-1f-Zva"/>
@@ -337,7 +337,7 @@
                                                         </constraints>
                                                         <color key="textColor" red="0.32584697010000002" green="0.32583719490000002" blue="0.32584273819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="light"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zwX-3N-fHi">
                                                         <rect key="frame" x="20" y="41" width="335" height="14"/>
@@ -442,7 +442,7 @@
                                     <constraint firstAttribute="height" constant="44" id="per-nS-xVx"/>
                                 </constraints>
                                 <color key="barTintColor" red="0.89866240929999996" green="0.90179006279999996" blue="0.91117302339999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="light"/>
                                 <connections>
                                     <outlet property="delegate" destination="5rd-XA-qBv" id="v2Q-LN-ikI"/>
                                 </connections>
@@ -463,7 +463,7 @@
                         <outlet property="feedOptionsHeight" destination="wCg-GN-lX3" id="kym-Cv-m5l"/>
                         <outlet property="feedOptionsTable" destination="siN-gQ-WOs" id="mmy-ab-gAK"/>
                         <outlet property="imageUploadView" destination="sOl-VT-ncw" id="8rX-ff-CgG"/>
-                        <outlet property="locationName" destination="zuB-Og-Y7A" id="Ld4-n3-33Q"/>
+                        <outlet property="locationName" destination="zuB-Og-Y7A" id="NUA-6E-bGr"/>
                         <outlet property="locationNameContainer" destination="07n-oE-OrW" id="RBl-hd-zQ7"/>
                         <outlet property="locationNameError" destination="zwX-3N-fHi" id="Kcj-jh-f27"/>
                         <outlet property="map" destination="1Qn-i5-o4R" id="nLJ-la-oik"/>
@@ -479,7 +479,7 @@
                 <searchDisplayController id="zEK-Fx-AJQ">
                     <connections>
                         <outlet property="delegate" destination="5rd-XA-qBv" id="wtb-2W-u5O"/>
-                        <outlet property="searchBar" destination="dZs-2o-u2t" id="pmr-rZ-bQd"/>
+                        <outlet property="searchBar" destination="dZs-2o-u2t" id="NR5-fT-81u"/>
                         <outlet property="searchContentsController" destination="5rd-XA-qBv" id="X67-td-ebE"/>
                         <outlet property="searchResultsDataSource" destination="5rd-XA-qBv" id="jFE-Cj-1XA"/>
                         <outlet property="searchResultsDelegate" destination="5rd-XA-qBv" id="7ev-Fj-qU6"/>
@@ -510,7 +510,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gEB-ef-DJI" userLabel="LoginView">
-                                <rect key="frame" x="47" y="173" width="280" height="322"/>
+                                <rect key="frame" x="47.5" y="172.5" width="280" height="322"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Email" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="mKW-FK-hso">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
@@ -705,7 +705,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MKh-6b-Wps">
-                                <rect key="frame" x="47" y="553" width="280" height="54"/>
+                                <rect key="frame" x="47.5" y="553" width="280" height="54"/>
                                 <color key="backgroundColor" red="0.15877681969999999" green="0.2493949234" blue="0.31995546819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="CMt-nl-Y4a"/>
@@ -861,7 +861,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoAbout" translatesAutoresizingMaskIntoConstraints="NO" id="ukF-zB-LHh">
-                                <rect key="frame" x="128" y="168" width="120" height="65"/>
+                                <rect key="frame" x="127.5" y="168" width="120" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="IR8-nd-9E0"/>
                                     <constraint firstAttribute="width" constant="120" id="saT-84-jPr"/>
@@ -1130,7 +1130,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VdU-eR-IRj" userLabel="RegisterView">
-                                <rect key="frame" x="48" y="137" width="280" height="354"/>
+                                <rect key="frame" x="47.5" y="137" width="280" height="354"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Email" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="qQh-Mg-5K4">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>

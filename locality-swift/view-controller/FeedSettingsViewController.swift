@@ -32,30 +32,35 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     @IBOutlet weak var feedOptionsTable:UITableView!
     @IBOutlet weak var feedOptionsHeight:NSLayoutConstraint!
     
+    //GeoServices
     var locationManager:CLLocationManager!
     var geocoder:GMSGeocoder!
     var feedOptions:[[String:AnyObject]] = [[String:AnyObject]]()
     
-    var sliderSteps:[RangeStep]!
-
+    //Mapbox
+    var sliderSteps:[RangeStep] = [RangeStep]()
     var currentRangeIndex:Int!
     var currentLocation:CLLocationCoordinate2D!
     
+    //AutoComplete
     var searchResults:NSArray! = NSArray()
     var placesClient:GMSPlacesClient!
     var filter:GMSAutocompleteFilter!
     var region:GMSVisibleRegion!
     var bounds:GMSCoordinateBounds!
     
+    //UISearchBar
     var shouldBeginEditing:Bool!
+    
+    //ViewController Mode
+    var isNewFeed:Bool! = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        initText()
         initButtons()
-        initHeaderView()
         initLocationName()
+        initHeaderView()
         initAutoCompleteSearch()
         initFeedOptionsTable()
         initScrollView()
@@ -74,17 +79,15 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         cancelKeyboardNotifications()
     }
     
-    func initText() {
-        locationName.placeholder = K.String.Feed.FeedNameDefault.localized
-        locationName.delegate = self
-        
+    func initButtons() {
         scrollSaveButton.setTitle(K.String.Feed.SaveFeedLabel.localized, for: .normal)
-        
-        locationNameError.text?.removeAll()
+        scrollSaveButton.addTarget(self, action: #selector(saveLocationDidTouch), for: .touchUpInside)
     }
     
-    func initButtons() {
-        scrollSaveButton.addTarget(self, action: #selector(saveLocationDidTouch), for: .touchUpInside)
+    func initLocationName() {
+        locationName.placeholder = K.String.Feed.FeedNameDefault.localized
+        locationName.delegate = self
+        locationNameError.text?.removeAll()
     }
     
     func initHeaderView() {
@@ -96,22 +99,16 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         view.addSubview(header)
     }
     
-    func initLocationName() {
-        locationName.delegate = self
-    }
-    
     func initAutoCompleteSearch() {
         let font:UIFont = UIFont(name: K.FontName.InterstateLightCondensed, size: 16.0)!
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).font = font
         
         placesClient = GMSPlacesClient()
-        
         let mglBounds:MGLCoordinateBounds = map.visibleCoordinateBounds
         bounds = GMSCoordinateBounds(coordinate: mglBounds.ne, coordinate: mglBounds.sw)
         
         filter = GMSAutocompleteFilter()
         filter.type = .geocode
-        
     }
     
     func initFeedOptionsTable() {
@@ -126,19 +123,9 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     }
     
     func initScrollView() {
-        var contentHeight:CGFloat = 0.0
-        
-        contentHeight += (searchDisplayController?.searchBar.frame.size.height)!
-        contentHeight += map.frame.size.height
-        contentHeight += slider.frame.size.height
-        contentHeight += locationNameContainer.frame.size.height
-        contentHeight += imageUploadView.frame.size.height
-        contentHeight += scrollButtonContainer.frame.size.height
-        contentHeight += K.NumberConstant.Feed.FeedBottomPadding
-        
+        let contentHeight = getScrollContentHeight()
         scrollContentHeight.constant = contentHeight
         scrollView.contentSize = CGSize(width: K.Screen.Width, height: contentHeight)
-        
         scrollView.contentInset = UIEdgeInsetsMake(0, 0, 40, 0)
         
         scrollView.delegate = self
@@ -146,16 +133,12 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     
     func initRangeSlider() {
         
-        sliderSteps = [RangeStep]()
-        
         let stepsArray = Util.getPList(name: K.PList.RangeValuesFeet)["Steps"] as! [AnyObject]
         
         for i in 0...stepsArray.count-1 {
-            
             let step:RangeStep = RangeStep(distance: stepsArray[i]["distance"] as! CGFloat,
                                            label:stepsArray[i]["label"] as! String,
                                            unit:stepsArray[i]["unit"] as! String)
-            
             sliderSteps.append(step)
         }
         
@@ -184,10 +167,13 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         //init light style
         let localityStyleURL = K.Mapbox.MapStyle
         map.styleURL = URL(string:localityStyleURL)
-        
         map.delegate = self
         
         bindMapGestures()
+    }
+    
+    func initImageUploadView() {
+        imageUploadView.delegate = self
     }
     
     func bindMapGestures() {
@@ -202,12 +188,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         map.addGestureRecognizer(singleTap)
     }
     
-    func initImageUploadView() {
-        imageUploadView.delegate = self
-    }
-    
     /// MARK : - CLLocationManagerDelegate Methods
-    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
             locationManager.startUpdatingLocation()
@@ -224,7 +205,6 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         }
         
         locationManager.stopUpdatingLocation()
-        
     }
     
     func updateMapRange() {
@@ -238,11 +218,13 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         
         map.centerCoordinate = currentLocation
         let currentRadius:Double = Double(sliderSteps[currentRangeIndex].distance/2)
+        let rangePointSW:CLLocationCoordinate2D = MapboxManager.metersToDegrees(coord: map.centerCoordinate,
+                                                                                metersLat: -currentRadius,
+                                                                                metersLong: -currentRadius)
         
-        let rangePointSW:CLLocationCoordinate2D = MapboxManager.metersToDegrees(coord: map.centerCoordinate, metersLat: -currentRadius, metersLong: -currentRadius)
-        
-        let rangePointNE:CLLocationCoordinate2D = MapboxManager.metersToDegrees(coord: map.centerCoordinate, metersLat: currentRadius, metersLong: currentRadius)
-        
+        let rangePointNE:CLLocationCoordinate2D = MapboxManager.metersToDegrees(coord: map.centerCoordinate,
+                                                                                metersLat: currentRadius,
+                                                                                metersLong: currentRadius)
         let bounds = MGLCoordinateBoundsMake(rangePointSW, rangePointNE)
         map.setVisibleCoordinateBounds(bounds, edgePadding: UIEdgeInsets.init(top: 20, left: 20, bottom: 20, right: 20), animated: false)
         
@@ -256,7 +238,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         map.addAnnotation(rangeMarker)
     }
     
-    /// WRITE TO FIREBASE
+    // CTA
     func saveLocationDidTouch(sender:UIButton) {
         
         if (locationName.text?.isEmpty)! {
@@ -278,7 +260,6 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
                 else {
                     let downloadURL = metadata!.downloadURL()!.absoluteString
                     self.createLocationToWrite(url:downloadURL)
-                    
                 }
             }
         }
@@ -293,51 +274,48 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         //get location from location
         GoogleMapsManager.reverseGeocode(coord: currentLocation) { (address, error) in
             
+            //get address
             if error != nil {
                 print("Address retrieval error")
+                thisLocation.location = "Location Unknown"
+            }
+            else
+            {
+                thisLocation.location = Util.locationLabel(address: address!)
             }
             
-            else {
-                thisLocation.location = Util.locationLabel(address: address!)
-                thisLocation.feedImgUrl = url
+            thisLocation.feedImgUrl = url
+            
+            //toggles
+            for op in self.feedOptionsTable.visibleCells {
                 
+                let c = op as! FeedSettingsToggleCell
                 
-                for op in self.feedOptionsTable.visibleCells {
-                    
-                    let c = op as! FeedSettingsToggleCell
-                    
-                    if c.data["var"] as! String == K.String.Feed.Setting.PushEnabled {
-                        thisLocation.pushEnabled = c.settingsSwitch.isOn
-                    }
-                    
-                    else if c.data["var"] as! String == K.String.Feed.Setting.PromotionsEnabled {
-                        thisLocation.promotionsEnabled = c.settingsSwitch.isOn
-                    }
+                if c.data["var"] as! String == K.String.Feed.Setting.PushEnabled {
+                    thisLocation.pushEnabled = c.settingsSwitch.isOn
                 }
-                
-                //save to current
-                CurrentUser.shared.pinnedLocations.append(thisLocation)
-                //check anonymous
-                
-                FirebaseManager.write(pinnedLocations:CurrentUser.shared.pinnedLocations, completionHandler: { (success, error) in
-                    if error != nil {
-                        print("Locations Write Error: \(error?.localizedDescription)")
-                    }
-                        
-                    else {
-                        print("Location written!")
-                        
-                        SlideNavigationController.sharedInstance().popViewController(animated: true)
-                        
-                    }
-                })
+                    
+                else if c.data["var"] as! String == K.String.Feed.Setting.PromotionsEnabled {
+                    thisLocation.promotionsEnabled = c.settingsSwitch.isOn
+                }
             }
+            
+            //save to current
+            CurrentUser.shared.pinnedLocations.append(thisLocation)
+            
+            FirebaseManager.write(pinnedLocations:CurrentUser.shared.pinnedLocations, completionHandler: { (success, error) in
+                if error != nil {
+                    print("Locations Write Error: \(error?.localizedDescription)")
+                }
+                    
+                else {
+                    print("Location written")
+                    SlideNavigationController.sharedInstance().popViewController(animated: true)
+                }
+            })
         }
-        
-        
     }
 
-    
     /// MARK : - ImageUploadViewDelegate Methods
     
     //These both go through the action sheet flow that checks for camera access
@@ -434,19 +412,27 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     }
    
     func keyboardWillShow(notification:Notification) {
+        
+        //We only wish to do this for the locationName
+        if !locationName.isFirstResponder {
+            return
+        }
+        
         let info:[String:AnyObject] = notification.userInfo as! [String : AnyObject]
         
-        let keyboardSize = info[UIKeyboardFrameBeginUserInfoKey]?.cgSizeValue
+        //print("USER INFO? \(info), NOTIFICATION? \(notification)")
+        var keyboardFrame:CGRect = (info[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
         
         let locOrigin:CGPoint = locationName.frame.origin
         let locHeight:CGFloat = locationName.frame.size.height
         
         var visibleRect:CGRect = scrollView.frame
         
-        visibleRect.size.height -= (keyboardSize?.height)!
+        visibleRect.size.height -= (keyboardFrame.size.height)
         
         if visibleRect.contains(locOrigin) == false {
-            let scrollPoint:CGPoint = CGPoint(x:0.0, y:keyboardSize!.height - locOrigin.y - locHeight)
+            let scrollPoint:CGPoint = CGPoint(x:0.0, y:keyboardFrame.size.height - locOrigin.y - locHeight)
             
             scrollView.setContentOffset(scrollPoint, animated: true)
         }
@@ -499,6 +485,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("TEXT FIELD DID BEGIN EDITING \(locationName, locationName.frame)")
         //clear error
         locationNameError.text?.removeAll()
         
@@ -596,46 +583,6 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         return true
     }
     
-//    searchDisplayController
-//    - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
-//    [self handleSearchForSearchString:searchString];
-//
-//    // Return YES to cause the search result table view to be reloaded.
-//    return YES;
-//    }
-//    
-//    #pragma mark -
-//    #pragma mark UISearchBar Delegate
-//
-//    - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-//    if (![searchBar isFirstResponder]) {
-//    // User tapped the 'clear' button.
-//    shouldBeginEditing = NO;
-//    [self.searchDisplayController setActive:NO];
-//    //[self.mapView removeAnnotation:selectedPlaceAnnotation];
-//    }
-//    }
-//    
-//    - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
-//    if (shouldBeginEditing) {
-//    // Animate in the table view.
-//    //        NSTimeInterval animationDuration = 0.3;
-//    //        [UIView beginAnimations:nil context:NULL];
-//    //        [UIView setAnimationDuration:animationDuration];
-//    //        self.searchDisplayController.searchResultsTableView.alpha = 1.0;
-//    //        [UIView commitAnimations];
-//    //
-//    //        [self.searchDisplayController.searchBar setShowsCancelButton:YES animated:YES];
-//    
-//    }
-//    
-//    BOOL boolToReturn = shouldBeginEditing;
-//    shouldBeginEditing = YES;
-//    return boolToReturn;
-//    }
-//    
-
-    
     func dismissSearchControllerWhileStayingActive() {
         let dur:TimeInterval = 0.3
         
@@ -646,83 +593,21 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
             self.searchDisplayController?.searchBar.resignFirstResponder()
         }
     }
-
     
-    
-//    #pragma mark - Save New Location Feed
-//    
-//    -(IBAction)saveLocationTapped:(id)sender {
-//    
-//    //upload photo
-//    
-//    if( _imageUploadView.selectedPhoto.image ) {
-//    [PhotoUploadManager uploadPhoto:_imageUploadView.selectedPhoto.image ofType:LocationFeedPhoto success:^(id response) {
-//    NSLog(@"URL: %@", response);
-//    [self createFeedModelWithImageUrl:response];
-//    
-//    } failure:^(NSError *error) {
-//    NSLog(@"Picture Upload failure: %@", error);
-//    }];
-//    }
-//    
-//    else {
-//    //they have no image to upload... use default
-//    [self createFeedModelWithImageUrl:DEFAULT_FEED_IMAGE];
-//    }
-//    }
-//    
-//    -(void)createFeedModelWithImageUrl:(NSString *)url {
-//    
-//    FeedLocationModel *newFeed = [[FeedLocationModel alloc] initWithLocation:_currentLocation andName:_locationName.text];
-//    
-//    newFeed.imgUrl = url;
-//    newFeed.range = _currentRange;
-//    
-//    newFeed.pushEnabled = YES;
-//    newFeed.promotionsEnabled = YES;
-//    newFeed.importantEnabled = YES;
-//    
-//    //reverse geolocate to get location
-//    [GoogleMapsManager reverseGeocodeCoordinate:CLLocationCoordinate2DMake(newFeed.latitude, newFeed.longitude) success:^(id response) {
-//    // we got the address
-//    GMSAddress *address = (GMSAddress *)response;
-//    //NSLog(@"address? %@", address);
-//    
-//    newFeed.location = [AppUtilities locationLabelFromAddress:address];
-//    
-//    [self saveFeedModel:newFeed];
-//    
-//    } failure:^(NSError *error) {
-//    NSLog(@"error retrieving address: %@", error);
-//    //do nothing
-//    [self saveFeedModel:newFeed];
-//    }];
-//    }
-//    
-//    -(void)saveFeedModel:(FeedLocationModel *)newFeed {
-//    
-//    [ParseManager addNewPinnedLocation:newFeed success:^(id response) {
-//    NSLog(@"Pinned Location added!");
-//    
-//    //go back
-//    [self.navigationController popViewControllerAnimated:YES];
-//    
-//    } failure:^(NSError *error) {
-//    NSLog(@"Pinned Location add fail: %@", error);
-//    }];
-//    }
-//    
-//    #pragma mark - RSKImageCropper Override
-//    
-//    -(void)imageCropViewController:(RSKImageCropViewController *)controller didCropImage:(UIImage *)croppedImage usingCropRect:(CGRect)cropRect {
-//    [super imageCropViewController:controller didCropImage:croppedImage usingCropRect:cropRect];
-//    
-//    [_imageUploadView setLocationImage:croppedImage];
-//    [self.navigationController popViewControllerAnimated:YES];
-//    }
-
-    
-
+    //Utility
+    func getScrollContentHeight() -> CGFloat {
+        
+        var contentHeight:CGFloat = 0.0
+        contentHeight += (searchDisplayController?.searchBar.frame.size.height)!
+        contentHeight += map.frame.size.height
+        contentHeight += slider.frame.size.height
+        contentHeight += locationNameContainer.frame.size.height
+        contentHeight += imageUploadView.frame.size.height
+        contentHeight += scrollButtonContainer.frame.size.height
+        contentHeight += K.NumberConstant.Feed.FeedBottomPadding
+        
+        return contentHeight
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
