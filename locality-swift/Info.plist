@@ -100,5 +100,7 @@
 	<true/>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<string>NO</string>
+	<key>NSCameraUsageDescription</key>
+	<string>We are using the camera so you can personalize your experience as much as possible.</string>
 </dict>
 </plist>
