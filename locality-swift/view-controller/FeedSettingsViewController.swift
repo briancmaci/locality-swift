@@ -41,6 +41,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     var sliderSteps:[RangeStep] = [RangeStep]()
     var currentRangeIndex:Int!
     var currentLocation:CLLocationCoordinate2D!
+    var hasMapped:Bool = false
     
     //AutoComplete
     var searchResults:NSArray! = NSArray()
@@ -190,9 +191,17 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         let location:CLLocation = locations[0]
         currentLocation = location.coordinate
         
-        DispatchQueue.once {
-            map.setCenter(currentLocation, animated: false)
+//        DispatchQueue.once {
+//            map.setCenter(currentLocation, animated: false)
+//            updateMapRange()
+//        }
+        
+        
+        
+        if hasMapped == false {
+            map.setCenter(currentLocation, animated:false)
             updateMapRange()
+            hasMapped = true
         }
         
         locationManager.stopUpdatingLocation()

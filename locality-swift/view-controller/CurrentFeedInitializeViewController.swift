@@ -26,6 +26,8 @@ class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapVie
     var currentRangeIndex:Int!
     var sliderSteps:[RangeStep]!
     
+    var hasMapped:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -112,9 +114,15 @@ class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapVie
         locationManager.stopUpdatingLocation()
         currentLocation = locations[0].coordinate
         
-        DispatchQueue.once {
-            updateMapLocation()
+//        DispatchQueue.once {
+//            updateMapLocation()
+//            updateMapRange()
+//        }
+        
+        if hasMapped == false {
+            map.setCenter(currentLocation, animated:false)
             updateMapRange()
+            hasMapped = true
         }
         
     }
