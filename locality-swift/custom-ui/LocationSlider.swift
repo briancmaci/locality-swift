@@ -33,7 +33,23 @@ class LocationSlider: UIView {
         view.frame = self.bounds
     }
     
-    func initSliderWith(range:[RangeStep]) {
+    func initSlider() -> [RangeStep] {
+        let stepsArray = Util.getPList(name: K.PList.RangeValuesFeet)["Steps"] as! [AnyObject]
+        var steps:[RangeStep] = [RangeStep]()
+        
+        for i in 0...stepsArray.count-1 {
+            let step:RangeStep = RangeStep(distance: stepsArray[i]["distance"] as! CGFloat,
+                                           label:stepsArray[i]["label"] as! String,
+                                           unit:stepsArray[i]["unit"] as! String)
+            steps.append(step)
+        }
+        
+        populate(range: steps)
+        
+        return steps
+    }
+    
+    func populate(range:[RangeStep]) {
         
         sliderRange = range
         stepsCount = sliderRange.count - 1

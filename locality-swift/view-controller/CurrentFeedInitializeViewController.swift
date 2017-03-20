@@ -46,24 +46,8 @@ class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapVie
     
     func initRangeSlider() {
         
-        sliderSteps = [RangeStep]()
-        
-        let stepsArray = Util.getPList(name: K.PList.RangeValuesFeet)["Steps"] as! [AnyObject]
-        
-        for i in 0...stepsArray.count-1 {
-            
-            let step:RangeStep = RangeStep(distance: stepsArray[i]["distance"] as! CGFloat,
-                                           label:stepsArray[i]["label"] as! String,
-                                           unit:stepsArray[i]["unit"] as! String)
-            
-            sliderSteps.append(step)
-        }
-        
-        //add slider to view
-        //slider = UIView.instanceFromNib(name: K.NIBName.LocationSlider) as! LocationSlider
-        slider.initSliderWith(range: sliderSteps)
+        sliderSteps = slider.initSlider()
         slider.delegate = self
-        //sliderContainer.addSubview(slider)
         
         //set currentIndex to default of slider
         currentRangeIndex = slider.currentStep

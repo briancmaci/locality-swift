@@ -55,11 +55,55 @@ class Util: NSObject {
     }
     
     class func locationLabel(address:GMSAddress) -> String {
+        var address0:String!
+        var address1:String!
+
+        if let tryAdd0 = address.locality {
+            address0 = tryAdd0
+        }
+        else if let tryAdd0 = address.subLocality {
+            address0 = tryAdd0
+        }
+        else {
+            address0 = ""
+        }
         
-        let address0:String = ((address.locality != nil) ? address.locality : address.subLocality)!
-        let address1:String = ((address.administrativeArea != nil) ? address.administrativeArea : address.country)!
+        if let tryAdd1 = address.administrativeArea {
+            address1 = tryAdd1
+        }
+        else if let tryAdd1 = address.country {
+            address1 = tryAdd1
+        }
+        else {
+            address1 = ""
+        }
         
-        return String(format:"%@, %@", address0, address1)
+        if address0.isEmpty && address1.isEmpty {
+            return "Unknown"
+        }
+        
+        else if !address0.isEmpty && address1.isEmpty {
+            return address0
+        }
+        
+        else if address0.isEmpty && !address1.isEmpty {
+            
+            //test what we have here thus far
+            if address.administrativeArea != nil {
+                address0 = address.administrativeArea
+                address1 = address.country
+                
+                return String(format:"%@, %@", address0, address1)
+            }
+            
+            else {
+                return address1
+            }
+        }
+        
+        else {
+            return String(format:"%@, %@", address0, address1)
+        }
     }
     
     //Location Slider Utility

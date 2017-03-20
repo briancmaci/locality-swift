@@ -132,17 +132,8 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     }
     
     func initRangeSlider() {
-        
-        let stepsArray = Util.getPList(name: K.PList.RangeValuesFeet)["Steps"] as! [AnyObject]
-        
-        for i in 0...stepsArray.count-1 {
-            let step:RangeStep = RangeStep(distance: stepsArray[i]["distance"] as! CGFloat,
-                                           label:stepsArray[i]["label"] as! String,
-                                           unit:stepsArray[i]["unit"] as! String)
-            sliderSteps.append(step)
-        }
-        
-        slider.initSliderWith(range: sliderSteps)
+
+        sliderSteps = slider.initSlider()
         slider.delegate = self
         
         //set currentIndex to default of slider
