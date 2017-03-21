@@ -17,7 +17,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImageUploadView" customModule="locality_swift" customModuleProvider="target">
             <connections>
-                <outlet property="selectedPhoto" destination="RVn-5Z-M8j" id="h6s-v2-Wy3"/>
+                <outlet property="selectedPhoto" destination="Ue2-F0-Ift" id="ysc-UG-ZSq"/>
                 <outlet property="takePhotoButton" destination="bcU-OS-7Ac" id="R4d-Fn-ag5"/>
                 <outlet property="takePhotoView" destination="R7P-Jg-HzX" id="94C-lh-JbZ"/>
                 <outlet property="uploadPhotoButton" destination="gah-TI-UjB" id="j6r-gq-l8k"/>
@@ -114,24 +114,50 @@
                         <constraint firstAttribute="centerX" secondItem="ESg-Ve-w7v" secondAttribute="centerX" id="ymH-8W-mbO"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RVn-5Z-M8j">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ue2-F0-Ift" customClass="SelectedPhotoView" customModule="locality_swift" customModuleProvider="target">
                     <rect key="frame" x="20" y="0.0" width="280" height="140"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xGy-j6-KTP">
+                            <rect key="frame" x="0.0" y="0.0" width="280" height="140"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVJ-6z-3Ne">
+                            <rect key="frame" x="244" y="0.0" width="36" height="36"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="36" id="cOZ-iV-g6e"/>
+                                <constraint firstAttribute="height" constant="36" id="jtF-Et-Ptb"/>
+                            </constraints>
+                            <state key="normal" image="IconClose"/>
+                            <connections>
+                                <action selector="closeButtonDidTouchWithSender:" destination="Ue2-F0-Ift" eventType="touchUpInside" id="Rvw-yJ-Dwk"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="RVn-5Z-M8j" secondAttribute="height" multiplier="2:1" id="6CM-ha-Y5l"/>
+                        <constraint firstAttribute="trailing" secondItem="nVJ-6z-3Ne" secondAttribute="trailing" id="5pA-bD-n15"/>
+                        <constraint firstItem="nVJ-6z-3Ne" firstAttribute="top" secondItem="Ue2-F0-Ift" secondAttribute="top" id="DEa-fJ-sQy"/>
+                        <constraint firstItem="xGy-j6-KTP" firstAttribute="top" secondItem="Ue2-F0-Ift" secondAttribute="top" id="NxW-X3-nDI"/>
+                        <constraint firstAttribute="width" secondItem="Ue2-F0-Ift" secondAttribute="height" multiplier="2:1" id="cm0-fl-AUf"/>
+                        <constraint firstAttribute="trailing" secondItem="xGy-j6-KTP" secondAttribute="trailing" id="mrU-q2-mbn"/>
+                        <constraint firstItem="xGy-j6-KTP" firstAttribute="leading" secondItem="Ue2-F0-Ift" secondAttribute="leading" id="pBW-Xf-HOn"/>
+                        <constraint firstAttribute="bottom" secondItem="xGy-j6-KTP" secondAttribute="bottom" id="uGM-Ac-CCO"/>
                     </constraints>
-                </imageView>
+                    <connections>
+                        <outlet property="imgView" destination="xGy-j6-KTP" id="3Z4-gQ-F4X"/>
+                    </connections>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="RVn-5Z-M8j" firstAttribute="top" secondItem="h79-vq-Vgh" secondAttribute="top" id="7hH-yx-os3"/>
-                <constraint firstAttribute="trailing" secondItem="RVn-5Z-M8j" secondAttribute="trailing" constant="20" id="HdH-zY-q1m"/>
                 <constraint firstItem="J7d-GZ-baE" firstAttribute="top" secondItem="h79-vq-Vgh" secondAttribute="top" id="K5E-1U-FE0"/>
                 <constraint firstItem="R7P-Jg-HzX" firstAttribute="top" secondItem="h79-vq-Vgh" secondAttribute="top" id="V20-2e-gHk"/>
-                <constraint firstItem="RVn-5Z-M8j" firstAttribute="leading" secondItem="h79-vq-Vgh" secondAttribute="leading" constant="20" id="htV-dQ-cWz"/>
+                <constraint firstAttribute="trailing" secondItem="Ue2-F0-Ift" secondAttribute="trailing" constant="20" id="hTv-ST-69E"/>
                 <constraint firstAttribute="trailing" secondItem="J7d-GZ-baE" secondAttribute="trailing" constant="20" id="jSS-CE-xlp"/>
                 <constraint firstItem="J7d-GZ-baE" firstAttribute="leading" secondItem="R7P-Jg-HzX" secondAttribute="trailing" id="qye-l3-0N9"/>
                 <constraint firstItem="R7P-Jg-HzX" firstAttribute="leading" secondItem="h79-vq-Vgh" secondAttribute="leading" constant="20" id="sBC-Kg-6gG"/>
                 <constraint firstItem="R7P-Jg-HzX" firstAttribute="width" secondItem="J7d-GZ-baE" secondAttribute="width" id="sun-Ty-rG6"/>
+                <constraint firstItem="Ue2-F0-Ift" firstAttribute="leading" secondItem="h79-vq-Vgh" secondAttribute="leading" constant="20" id="yXV-4O-ahQ"/>
+                <constraint firstItem="Ue2-F0-Ift" firstAttribute="top" secondItem="h79-vq-Vgh" secondAttribute="top" id="zyi-wP-far"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="411" y="480"/>
@@ -140,5 +166,6 @@
     <resources>
         <image name="ButtonAddPhoto" width="51" height="43"/>
         <image name="ButtonUploadPhoto" width="43" height="43"/>
+        <image name="IconClose" width="16" height="16"/>
     </resources>
 </document>

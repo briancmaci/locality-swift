@@ -20,7 +20,7 @@ class ImageUploadView: UIView {
     @IBOutlet weak var uploadPhotoView:UIView!
     @IBOutlet weak var takePhotoButton:UIButton!
     @IBOutlet weak var uploadPhotoButton:UIButton!
-    @IBOutlet weak var selectedPhoto:UIImageView!
+    @IBOutlet weak var selectedPhoto:SelectedPhotoView!
     
     var delegate:ImageUploadViewDelegate?
     
@@ -35,14 +35,22 @@ class ImageUploadView: UIView {
     }
     
     func initView() {
-        selectedPhoto.isUserInteractionEnabled = false
-        
         takePhotoButton.addTarget(self, action: #selector(takePhotoDidTouch), for: .touchUpInside)
         uploadPhotoButton.addTarget(self, action: #selector(uploadPhotoDidTouch), for: .touchUpInside)
+        
+        selectedPhoto.set(hidden:true)
     }
 
     func setLocationImage(image:UIImage) {
-        selectedPhoto.image = image
+        selectedPhoto.populateImage(img: image)
+    }
+    
+    func hasImage() -> Bool {
+        return selectedPhoto.imgView.image == nil ? false : true
+    }
+    
+    func getImage() -> UIImage {
+        return selectedPhoto.imgView.image!
     }
     
     //CTA

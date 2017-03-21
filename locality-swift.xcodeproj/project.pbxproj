@@ -46,6 +46,7 @@
 		72B882191E6A8BE800EB3B2E /* CurrentFeedInitializeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B882181E6A8BE800EB3B2E /* CurrentFeedInitializeViewController.swift */; };
 		72B8821C1E6AA4C200EB3B2E /* MapboxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B8821B1E6AA4C200EB3B2E /* MapboxManager.swift */; };
 		72B8821E1E6AA54800EB3B2E /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 72B8821D1E6AA54800EB3B2E /* Keys.plist */; };
+		72C97A361E80CC320061BA1E /* SelectedPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C97A351E80CC320061BA1E /* SelectedPhotoView.swift */; };
 		72DC48781E6B4A7D00486535 /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DC48771E6B4A7D00486535 /* CustomPointAnnotation.swift */; };
 		72DC487C1E6BCA7700486535 /* DIspatchQueueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DC487B1E6BCA7700486535 /* DIspatchQueueExtension.swift */; };
 		72DC487E1E6C502400486535 /* DataParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DC487D1E6C502400486535 /* DataParseManager.swift */; };
@@ -192,6 +193,7 @@
 		72B882181E6A8BE800EB3B2E /* CurrentFeedInitializeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrentFeedInitializeViewController.swift; path = "view-controller/CurrentFeedInitializeViewController.swift"; sourceTree = "<group>"; };
 		72B8821B1E6AA4C200EB3B2E /* MapboxManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapboxManager.swift; path = manager/MapboxManager.swift; sourceTree = "<group>"; };
 		72B8821D1E6AA54800EB3B2E /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		72C97A351E80CC320061BA1E /* SelectedPhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectedPhotoView.swift; path = "custom-ui/SelectedPhotoView.swift"; sourceTree = "<group>"; };
 		72DC48771E6B4A7D00486535 /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomPointAnnotation.swift; path = "custom-ui/CustomPointAnnotation.swift"; sourceTree = "<group>"; };
 		72DC487B1E6BCA7700486535 /* DIspatchQueueExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DIspatchQueueExtension.swift; path = extension/DIspatchQueueExtension.swift; sourceTree = "<group>"; };
 		72DC487D1E6C502400486535 /* DataParseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataParseManager.swift; path = manager/DataParseManager.swift; sourceTree = "<group>"; };
@@ -722,6 +724,7 @@
 			children = (
 				72F24BE51E721D9300CA7702 /* ImageUploadView.swift */,
 				72F24BE21E721B3700CA7702 /* ImageUploadView.xib */,
+				72C97A351E80CC320061BA1E /* SelectedPhotoView.swift */,
 			);
 			name = "image-upload";
 			sourceTree = "<group>";
@@ -1016,6 +1019,7 @@
 				72EEDF861E7589CD009DFA77 /* FeedAddNewCell.swift in Sources */,
 				722ABA401E74761100A3F1DA /* SlideNavigationContorllerAnimatorFade.m in Sources */,
 				72F24BAE1E70E9C300CA7702 /* FlexibleFeedHeaderView.swift in Sources */,
+				72C97A361E80CC320061BA1E /* SelectedPhotoView.swift in Sources */,
 				72F24BB91E70F84300CA7702 /* HeaderIconButton.swift in Sources */,
 				72B882011E67E79700EB3B2E /* LoginViewController.swift in Sources */,
 				72EEDFA21E7893EE009DFA77 /* UserComment.swift in Sources */,

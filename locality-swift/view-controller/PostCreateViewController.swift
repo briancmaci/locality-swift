@@ -81,12 +81,12 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
             return
         }
         
-        if imageUploadView.selectedPhoto.image == nil {
+        if !imageUploadView.hasImage() {
             createPostToWrite(url: "")
         }
         
         else {
-            PhotoUploadManager.uploadPhoto(image: imageUploadView.selectedPhoto.image!, type: .post, uid: CurrentUser.shared.uid) { (metadata, error) in
+            PhotoUploadManager.uploadPhoto(image: imageUploadView.getImage(), type: .post, uid: CurrentUser.shared.uid) { (metadata, error) in
                 
                 if error != nil {
                     print("Upload Error: \(error?.localizedDescription)")
@@ -109,6 +109,7 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
         
         //check anonymous
         if self.postFromView.isAnonymous == true {
+            print("ANONYMOUS!")
             thisPost.user.username.removeAll()
         }
         

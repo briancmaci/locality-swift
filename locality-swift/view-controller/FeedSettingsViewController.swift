@@ -246,12 +246,12 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
             return
         }
         
-        if imageUploadView.selectedPhoto.image == nil {
+        if !imageUploadView.hasImage() {
             createLocationToWrite(url: K.Image.DefaultFeedHero)
         }
             
         else {
-            PhotoUploadManager.uploadPhoto(image: imageUploadView.selectedPhoto.image!, type: .location, uid: CurrentUser.shared.uid) { (metadata, error) in
+            PhotoUploadManager.uploadPhoto(image: imageUploadView.getImage(), type: .location, uid: CurrentUser.shared.uid) { (metadata, error) in
                 
                 if error != nil {
                     print("Upload Error: \(error?.localizedDescription)")
