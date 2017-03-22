@@ -72,7 +72,7 @@ class LocalityPhotoBaseViewController: LocalityBaseViewController, UIActionSheet
         
         alert.addAction(cancelAction)
         alert.view.tag = 3491832
-        self.present(alert, animated: true, completion: nil)
+        UIApplication.topViewController()?.present(alert, animated: true, completion: nil)
         
     }
     
@@ -99,7 +99,7 @@ class LocalityPhotoBaseViewController: LocalityBaseViewController, UIActionSheet
         actionSheet.addAction(takeAction)
         actionSheet.addAction(selectAction)
         actionSheet.addAction(cancelAction)
-        self.present(actionSheet, animated:true, completion:nil)
+        UIApplication.topViewController()?.present(actionSheet, animated:true, completion:nil)
     }
     
     // ActionSheet styling. (ios8 has a work-around).
@@ -133,7 +133,7 @@ class LocalityPhotoBaseViewController: LocalityBaseViewController, UIActionSheet
         picker.allowsEditing = false
         picker.sourceType = .photoLibrary
         
-        present(picker, animated: true, completion: nil)
+        UIApplication.topViewController()?.present(picker, animated: true, completion: nil)
     }
 
     func takePhoto() {
@@ -148,7 +148,7 @@ class LocalityPhotoBaseViewController: LocalityBaseViewController, UIActionSheet
         picker.cameraOverlayView = cameraOverlay
         cameraOverlay.pickerReference = picker
         
-        self.present(picker, animated: true, completion: nil)
+        UIApplication.topViewController()?.present(picker, animated: true, completion: nil)
     }
     
 //    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
@@ -179,12 +179,13 @@ class LocalityPhotoBaseViewController: LocalityBaseViewController, UIActionSheet
         
         imageCropVC.delegate = self
         imageCropVC.dataSource = self
-        navigationController?.pushViewController(imageCropVC, animated: true)
+        UIApplication.topViewController()?.present(imageCropVC, animated: true)
     }
     
     //MARK:- RSKImageCropperDelegate Methods
     func imageCropViewControllerDidCancelCrop(_ controller: RSKImageCropViewController) {
-        _ = navigationController?.popViewController(animated: true)
+        UIApplication.topViewController()?.dismiss(animated: true, completion: nil)
+        //_ = navigationController?.popViewController(animated: true)
     }
     
     func imageCropViewController(_ controller: RSKImageCropViewController, didCropImage croppedImage: UIImage, usingCropRect cropRect: CGRect, rotationAngle: CGFloat) {

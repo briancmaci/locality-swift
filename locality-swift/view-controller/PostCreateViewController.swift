@@ -163,7 +163,7 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
     //MARK:- RSKImageCropper Delegate Override
     override func imageCropViewController(_ controller: RSKImageCropViewController, didCropImage croppedImage: UIImage, usingCropRect cropRect: CGRect, rotationAngle: CGFloat) {
         imageUploadView.setLocationImage(image: croppedImage)
-        _ = navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     

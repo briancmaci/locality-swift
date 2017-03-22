@@ -132,6 +132,43 @@ class FirebaseManager: NSObject {
         })
     }
     
+    class func getTotalLikes(completionHandler: @escaping (Int?) -> ()) -> () {
+        var likes:Int = 0
+        getPostsRef().queryOrdered(byChild:K.DB.Var.UserId).queryEqual(toValue: CurrentUser.shared.uid).observeSingleEvent(of: .value, with: { snapshot in
+            
+            if snapshot.exists() {
+                for child in snapshot.children {
+            
+                let childDic = (child as! FIRDataSnapshot).value as? NSDictionary
+                    if let likesArray = childDic?.object(forKey:K.DB.Var.LikedBy) as? NSArray {
+                        likes += likesArray.count
+                    }}
+                
+                completionHandler(likes)
+            }
+            
+            else {
+                completionHandler(nil)
+            }
+        })
+    }
+    
+    class func getTotalPosts(completionHandler: @escaping (Int?) -> ()) -> () {
+        var posts:Int = 0
+        
+        getPostsRef().queryOrdered(byChild:K.DB.Var.UserId).queryEqual(toValue: CurrentUser.shared.uid).observeSingleEvent(of: .value, with: { snapshot in
+            
+            if snapshot.exists() {
+                posts = snapshot.children.allObjects.count
+                completionHandler(posts)
+            }
+                
+            else {
+                completionHandler(nil)
+            }
+        })
+    }
+    
     class func getUserFromHandle(uid:String, completionHandler: @escaping (BaseUser?) -> ()) -> () {
         
         var thisUser:BaseUser!

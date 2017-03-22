@@ -90,6 +90,9 @@ class LocalityBaseViewController: UIViewController, LocalityHeaderViewDelegate {
             _ = navigationController?.popViewController(animated: true)
             
         case .hamburger:
+            //load posts & likes
+            
+            updateLeftMenuPostsAndLikes()
             SlideNavigationController.sharedInstance().open(MenuLeft, withCompletion: { 
                 //print("nav slid open")
             })
@@ -102,6 +105,10 @@ class LocalityBaseViewController: UIViewController, LocalityHeaderViewDelegate {
         }
     }
     
+    func updateLeftMenuPostsAndLikes() {
+        let leftMenu = SlideNavigationController.sharedInstance().leftMenu as! LeftMenuViewController
+        leftMenu.loadTotals()
+    }
 
     /*
     // MARK: - Navigation

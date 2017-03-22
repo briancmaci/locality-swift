@@ -44,9 +44,15 @@ class LeftMenuViewController: LocalityPhotoBaseViewController, UITableViewDelega
         initTermsCopyright()
         initMenuOptions()
         initTableView()
-        populateMenuWithUser()
+        
+        loadTotals()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        populateMenuWithUser()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -107,21 +113,38 @@ class LeftMenuViewController: LocalityPhotoBaseViewController, UITableViewDelega
         menuTable.isScrollEnabled = false
     }
     
-    //CTA
-    func updatePhotoDidTouch(sender:UIButton) {
-        selectPhoto()
+    //Data
+    func loadTotals() {
+        var postsTotal:Int = 0
+        var likesTotal:Int = 0
+        
+        FirebaseManager.getTotalLikes { (likes) in
+            if likes != nil {
+                likesTotal = likes!
+            }
+            
+            self.likesLabel.text = String(format:"%d Likes", likesTotal)
+            self.likesWidth.constant = self.likesLabel.intrinsicContentSize.width
+            self.likesLabel.layoutIfNeeded()
+        }
+        
+        FirebaseManager.getTotalPosts { (posts) in
+            if posts != nil {
+                postsTotal = posts!
+            }
+            
+            self.postsLabel.text = String(format:"%d Posts", postsTotal)
+            self.postsWidth.constant = self.postsLabel.intrinsicContentSize.width
+            self.postsLabel.layoutIfNeeded()
+        }
     }
     
-    override func selectPhoto() {
-        
-        let picker:UIImagePickerController = UIImagePickerController()
-        picker.delegate = self
-        picker.allowsEditing = false
-        picker.sourceType = .photoLibrary
-        
-        UIApplication.topViewController()?.present(picker, animated: true, completion: nil)
-        
+    //CTA
+    func updatePhotoDidTouch(sender:UIButton) {
+        showPictureOptions()
     }
+    
+
     
     override func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         picker.dismiss(animated: true) {
@@ -268,6 +291,8 @@ class LeftMenuViewController: LocalityPhotoBaseViewController, UITableViewDelega
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
+    
 
     /*
     // MARK: - Navigation
