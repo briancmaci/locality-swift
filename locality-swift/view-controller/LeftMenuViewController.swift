@@ -161,6 +161,9 @@ class LeftMenuViewController: LocalityPhotoBaseViewController, UITableViewDelega
     override func showImageCropper(image:UIImage) {
         let imageCropVC:RSKImageCropViewController = RSKImageCropViewController(image: image, cropMode:.circle)
         
+        imageCropVC.avoidEmptySpaceAroundImage = true
+        styleImageCropper(vc: imageCropVC)
+        
         imageCropVC.delegate = self
         imageCropVC.dataSource = self
         UIApplication.topViewController()?.present(imageCropVC, animated: true)

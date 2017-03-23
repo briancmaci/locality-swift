@@ -82,7 +82,7 @@ class LocalityPhotoBaseViewController: LocalityBaseViewController, UIActionSheet
         let other2:String = "Browse Photo Library"
         let cancelTitle:String = "Cancel"
         
-        let actionSheet = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let takeAction = UIAlertAction(title: other1, style: .default, handler: {action in
             self.takePhoto()
@@ -92,7 +92,7 @@ class LocalityPhotoBaseViewController: LocalityBaseViewController, UIActionSheet
             self.selectPhoto()
         })
         
-        let cancelAction = UIAlertAction(title:cancelTitle, style: .cancel, handler: {action in
+        let cancelAction = UIAlertAction(title:cancelTitle, style: .destructive, handler: {action in
             actionSheet.dismiss(animated:true, completion:nil)
         })
         
@@ -179,7 +179,27 @@ class LocalityPhotoBaseViewController: LocalityBaseViewController, UIActionSheet
         
         imageCropVC.delegate = self
         imageCropVC.dataSource = self
+        imageCropVC.avoidEmptySpaceAroundImage = true
+        styleImageCropper(vc: imageCropVC)
         UIApplication.topViewController()?.present(imageCropVC, animated: true)
+    }
+    
+    func styleImageCropper(vc:RSKImageCropViewController) {
+        
+        vc.moveAndScaleLabel.font = UIFont(name: K.FontName.InterstateLightCondensed,
+                                           size: 24)
+        
+        vc.moveAndScaleLabel.text = vc.moveAndScaleLabel.text?.uppercased()
+        
+        let cancelTitle = NSAttributedString(string: "Cancel",
+                                             attributes: [NSFontAttributeName : UIFont(name: K.FontName.InterstateLightCondensed, size:16)!, NSForegroundColorAttributeName: UIColor.white])
+        
+        vc.cancelButton.setAttributedTitle(cancelTitle, for: .normal)
+        
+        let chooseTitle = NSAttributedString(string: "Choose",
+                                             attributes: [NSFontAttributeName : UIFont(name: K.FontName.InterstateLightCondensed, size:16)!, NSForegroundColorAttributeName: UIColor.white])
+        
+        vc.chooseButton.setAttributedTitle(chooseTitle, for: .normal)
     }
     
     //MARK:- RSKImageCropperDelegate Methods
