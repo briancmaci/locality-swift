@@ -67,6 +67,8 @@ struct K {
             static let PostId = "postId"
             static let LikedBy = "likedBy"
             static let CommentCount = "commentCount"
+            static let OffensiveTo = "offensiveTo"
+            static let IsAnonymous = "isAnonymous"
             //Lat
             //Long
             static let Caption = "caption"
@@ -113,6 +115,10 @@ struct K {
         static let sortIconOff:UIColor = UIColor(red: 119/255, green: 119/255, blue: 119/255, alpha: 1)
         static let sortIconOn:UIColor = .white
         static let sortPin:UIColor = UIColor(red: 219/255, green: 219/255, blue: 219/255, alpha: 1)
+        
+        //swipe
+        static let swipeDeletRow:UIColor = UIColor(red: 74/255, green:45/255, blue:45/255, alpha: 1)
+        static let swipeReportRow:UIColor = UIColor(red: 72/255, green:74/255, blue:45/255, alpha: 1)
     }
     
     struct FontName {
@@ -148,6 +154,10 @@ struct K {
         static let SliderBackground = "SliderBackground"
         static let SliderTickMark = "SliderTickMark"
         static let SliderKnob = "SliderKnob"
+        
+        //SwipeToDelete
+        static let DeleteRow = "DeleteRow"
+        static let ReportRow = "ReportRow"
     }
     
     //Storyboard IDs
@@ -261,6 +271,7 @@ struct K {
         
         struct User {
             static let Anonymous = "username-anonymous"
+            static let Me = "username-me"
         }
         
         //UserStatus
@@ -333,6 +344,7 @@ struct K {
     struct NumberConstant {
         static let HeaderAndStatusBarsHeight : CGFloat = 64
         static let StatusBarHeight : CGFloat = 20
+        static let SwipeableButtonWidth : CGFloat = 44
         
         //Buttons
         static let RoundedButtonCornerRadius : CGFloat = 5

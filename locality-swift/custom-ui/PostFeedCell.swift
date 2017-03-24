@@ -8,8 +8,10 @@
 
 import UIKit
 import Mapbox
+import SWTableViewCell
 
-class PostFeedCell: UITableViewCell {
+
+class PostFeedCell: SWTableViewCell {
 
     var postImage:UIImageView!
     var postContent:PostFeedCellView!
@@ -43,25 +45,10 @@ class PostFeedCell: UITableViewCell {
         frame = CGRect(origin: CGPoint.zero, size: CGSize(width: K.Screen.Width, height: cellHeight))
         
         if hasImage == true {
-            addSubview(postImage)
+            contentView.addSubview(postImage)
         }
-        addSubview(postContent)
+        contentView.addSubview(postContent)
     }
-    
-//    convenience init(model:UserPost, proximityTo:CLLocationCoordinate2D) {
-//        self.init(model:model)
-    
-//        let origin:CLLocation = CLLocation(latitude: proximityTo.latitude, longitude: proximityTo.longitude)
-//        let here:CLLocation = CLLocation(latitude:model.lat, longitude:model.lon)
-//        let distance:CLLocationDistance = here.distance(from: origin)
-//        
-//        let fromData:RangeStep = Util.distanceToDisplay(distance: CGFloat(distance))
-//        let correctedDistance:String = fromData.distance.description.replacingOccurrences(of: ".0", with: "")
-//        
-//        postContent.sortView.sortLabel.attributedText = Util.attributedDistanceFromString(value:correctedDistance, unit: fromData.unit)
-//    }
-    
-    
     
     func initImage() {
         
@@ -97,8 +84,9 @@ class PostFeedCell: UITableViewCell {
     }
     
     func populateUserInfo() {
-        postContent.postUser.populate(imgUrl: thisModel.user.profileImageUrl,
-                                      username: thisModel.user.username,
+        
+        postContent.postUser.populate(imgUrl: thisModel.isAnonymous ? K.Image.DefaultAvatarProfilePost : thisModel.user.profileImageUrl,
+                                      username: Util.displayUsername(post: thisModel),
                                       status: UserStatus.stringFrom(type: thisModel.user.status))
 
     }

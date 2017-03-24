@@ -34,8 +34,8 @@ class PostDetailHeaderView: UIView {
     func populateWithData(model:UserPost) {
         thisPost = model
         
-        userInfo.populate(imgUrl: thisPost.user.profileImageUrl,
-                          username: thisPost.user.username,
+        userInfo.populate(imgUrl: thisPost.isAnonymous ? K.Image.DefaultAvatarProfilePost : thisPost.user.profileImageUrl,
+                          username: Util.displayUsername(post: thisPost),
                           status: UserStatus.stringFrom(type: thisPost.user.status))
         
         captionLabel.text = thisPost.caption

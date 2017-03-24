@@ -8,8 +8,9 @@
 
 import UIKit
 import Mapbox
+import SWTableViewCell
 
-class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, SortButtonDelegate {
+class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, SortButtonDelegate, SWTableViewCellDelegate {
 
     let headerExpandedOffset = K.NumberConstant.Header.HeroExpandHeight - K.NumberConstant.Header.HeroCollapseHeight
     
@@ -153,10 +154,18 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     
     //MARK: - UITableViewDelegate Methods
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-//        let cell = tableView.dequeueReusableCell(withIdentifier: K.ReuseID.PostFeedCellID, for: indexPath) as! PostFeedCell
-        
+    
         let cell:PostFeedCell = PostFeedCell(model: posts[indexPath.row])
+        
+        if cell.thisModel.userHandle == CurrentUser.shared.uid {
+            cell.setRightUtilityButtons(rightButtonsMe() as [Any]!, withButtonWidth: K.NumberConstant.SwipeableButtonWidth)
+            cell.delegate = self
+        }
+        
+        else {
+            cell.setRightUtilityButtons(rightButtons() as [Any]!, withButtonWidth: K.NumberConstant.SwipeableButtonWidth)
+            cell.delegate = self
+        }
         
         return cell
     }
@@ -165,10 +174,7 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         
         let newVC:PostDetailViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.PostDetail) as! PostDetailViewController
         
-        //let thisCell:PostFeedCell = postsTable.cellForRow(at: indexPath) as! PostFeedCell
         newVC.thisPost = posts[indexPath.row]
-        //newVC.distance = thisCell.postContent.filterView.filterLabel.attributedText
-        
         navigationController?.pushViewController(newVC, animated: true)
         
         //deselect
@@ -180,8 +186,6 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         return heightForCellAtIndexPath(indexPath: indexPath)
     }
     
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
@@ -189,4 +193,49 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
+    //MARK: - SWTableViewCellDelegate Methods
+    func rightButtonsMe() -> [Any] {
+        let rightUtilityButtons = NSMutableArray()
+        
+        rightUtilityButtons.sw_addUtilityButton(with: K.Color.swipeDeletRow, icon:UIImage(named:K.Image.DeleteRow))
+        
+        return rightUtilityButtons.copy() as! [Any]
+    }
+    
+    func rightButtons() -> [Any] {
+        let rightUtilityButtons = NSMutableArray()
+        rightUtilityButtons.sw_addUtilityButton(with: K.Color.swipeReportRow, icon:UIImage(named:K.Image.ReportRow))
+        
+        return rightUtilityButtons.copy() as! [Any]
+    }
+    
+    func swipeableTableViewCell(_ cell: SWTableViewCell!, didTriggerRightUtilityButtonWith index: Int) {
+        
+        let thisCell = cell as! PostFeedCell
+        let cellIndexPath:IndexPath = postsTable.indexPath(for: thisCell)!
+        
+        if thisCell.thisModel.userHandle == CurrentUser.shared.uid {
+            //delete
+            deletePostFromList(thisPost: thisCell.thisModel, indexPath: cellIndexPath)
+        }
+        thisCell.hideUtilityButtons(animated: true)
+    }
+    
+    func swipeableTableViewCellShouldHideUtilityButtons(onSwipe cell: SWTableViewCell!) -> Bool {
+        return true
+    }
+    
+    func deletePostFromList(thisPost:UserPost, indexPath:IndexPath) {
+        
+        //Update arrays
+        FirebaseManager.delete(post: thisPost) { (error) in
+            if error == nil {
+                print("Post Deleted!")
+                self.posts.remove(at: indexPath.row)
+                self.postsTable.deleteRows(at: [indexPath], with: .automatic)
+            }
+        }
+    }
+
 }

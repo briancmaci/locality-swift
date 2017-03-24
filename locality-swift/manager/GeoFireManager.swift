@@ -25,6 +25,14 @@ class GeoFireManager: NSObject {
         }
     }
     
+    class func delete(postId:String, completionHandler: @escaping(Error?) -> ()) -> () {
+        let geofire = getGeofireLocationsRef()
+        
+        geofire.removeKey(postId) { (error) in
+            completionHandler(error)
+        }
+    }
+    
     class func getPostLocations(range:Float, location:CLLocation, completionHandler: @escaping ([String]?, Error?) -> ()) -> () {
         var matchingPosts:[String] = [String]()
         

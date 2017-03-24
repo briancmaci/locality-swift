@@ -7,7 +7,7 @@ platform :ios, '9.0'
 pod 'SDWebImage', '~> 4.0'
 pod 'NSDate+TimeAgo', '~> 1.0'
 #pod 'Koloda', '~> 4.0'
-#pod 'SWTableViewCell', '~> 0.3'
+pod 'SWTableViewCell', '~> 0.3'
 
 #Fabric
 pod 'Fabric'

@@ -109,8 +109,7 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
         
         //check anonymous
         if self.postFromView.isAnonymous == true {
-            print("ANONYMOUS!")
-            thisPost.user.username.removeAll()
+            thisPost.isAnonymous = true
         }
         
         FirebaseManager.write(post: thisPost, completionHandler: { (success, error) in

@@ -17,6 +17,7 @@ class UserPost: NSObject {
     var createdDate:Date = Date()
     var postId:String = ""
     var userHandle:String = ""
+    var isAnonymous:Bool = false
     var lat:Double = 0.0
     var lon:Double = 0.0
     var caption:String = ""
@@ -26,6 +27,8 @@ class UserPost: NSObject {
     var likedBy:[String] = [String]()
     
     var isLikedByMe:Bool = false
+    
+    var offensiveTo:[String] = [] //How many people have removed this from their list
     
     init(coord:CLLocationCoordinate2D, caption:String, imgUrl:String, user:BaseUser) {
         
@@ -63,6 +66,15 @@ class UserPost: NSObject {
         self.commentCount = dic?[K.DB.Var.CommentCount] as! Int
         self.postImageUrl = dic?[K.DB.Var.PostImageURL] as! String
         self.userHandle = dic?[K.DB.Var.UserId] as! String
+        
+        if (dic?[K.DB.Var.IsAnonymous]) != nil {
+            self.isAnonymous = dic?[K.DB.Var.IsAnonymous] as! Bool
+        }
+        
+        if (dic?[K.DB.Var.OffensiveTo]) != nil {
+            self.offensiveTo = dic?[K.DB.Var.OffensiveTo] as! [String]
+        }
+        
         self.user = BaseUser()
         
         //Set is likedByMe
@@ -79,6 +91,8 @@ class UserPost: NSObject {
                K.DB.Var.Caption:caption,
                K.DB.Var.PostImageURL:postImageUrl,
                K.DB.Var.CommentCount:commentCount,
+               K.DB.Var.IsAnonymous:isAnonymous,
+               K.DB.Var.OffensiveTo:offensiveTo,
                K.DB.Var.LikedBy:likedBy]
     }
 }

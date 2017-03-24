@@ -50,6 +50,7 @@ post-detail-header = "COMMENTS";
 
 //User
 username-anonymous = "Anonymous";
+username-me = "Me";
 
 //Menu Options
 SettingsLabel = "Settings";

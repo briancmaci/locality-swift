@@ -9,11 +9,11 @@
 #ifndef Locality_Bridging_Header_h
 #define Locality_Bridging_Header_h
 
-//#import "AFNetworking/AFNetworking.h"
 #import "SDWebImage/UIImageView+WebCache.h"
 #import <RSKImageCropper/RSKImageCropper.h>
 #import "SlideNavigationController.h"
 #import "SlideNavigationContorllerAnimatorSlideAndFade.h"
-//#import "NSDate+TimeAgo.h"
+#import "SWTableViewCell/SWTableViewCell.h"
+
 
 #endif /* Locality_Bridging_Header_h */

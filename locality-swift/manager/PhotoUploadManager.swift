@@ -50,4 +50,13 @@ class PhotoUploadManager: NSObject {
             return String(format: K.String.UploadURL.PostFormat, uid, Util.generateUUID())
         }
     }
+    
+    class func deletePhoto(url:String, completionHandler: @escaping (Error?) -> ()) -> () {
+        
+        //let filePath = buildPhotoURL(type: type, uid: uid)
+        FirebaseManager.getImageStorageRef().child(url).delete { (error) in
+            completionHandler(error)
+        }
+        
+    }
 }

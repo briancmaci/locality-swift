@@ -313,6 +313,38 @@ class FirebaseManager: NSObject {
         })
     }
     
+    class func delete(post:UserPost, completionHandler: @escaping (Error?) -> ()) -> () {
+        
+        //Cascade removing image, comments, location, post
+        getPostsRef().child(post.postId).removeValue { (error, ref) in
+            if error == nil {
+                //delete location
+                GeoFireManager.delete(postId: post.postId, completionHandler: { (error) in
+                    if error == nil {
+                        //delete comments
+                        print("location deleted")
+                        getCommentsRef().queryOrdered(byChild: K.DB.Var.PostId).queryEqual(toValue: post.postId).observeSingleEvent(of: .value, with: { snapshot in
+                            for child in snapshot.children {
+                                print("CHILD? \(child)")
+                                (child as AnyObject).ref.removeValue(completionBlock: { (error, ref) in
+                                    print("Comment deleted")
+                                })
+                            }
+                        })
+                        
+                        //delete photo
+                        PhotoUploadManager.deletePhoto(url:post.postImageUrl, completionHandler: { (error) in
+                            if error == nil {
+                                print("Photo deleted!")
+                            }
+                        })
+                        completionHandler(error)
+                    }
+                })
+            }
+        }
+    }
+    
     class func write(pinnedLocations:[FeedLocation], completionHandler: @escaping (Bool?, Error?) -> ()) -> () {
         
         //add location to pinned locations

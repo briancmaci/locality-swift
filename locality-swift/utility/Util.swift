@@ -195,6 +195,21 @@ class Util: NSObject {
         return here.distance(from: origin)
     }
     
+    class func displayUsername(post:UserPost) -> String {
+        
+        if post.isAnonymous == true {
+            return K.String.User.Anonymous.localized
+        }
+            
+        else if post.user.uid == CurrentUser.shared.uid {
+            return K.String.User.Me.localized
+        }
+        
+        else {
+            return post.user.username
+        }
+    }
+    
     class func generateUUID() -> String {
         return UUID().uuidString
     }

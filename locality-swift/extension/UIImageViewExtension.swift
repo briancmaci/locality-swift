@@ -38,7 +38,7 @@ extension UIImageView {
     
     func loadProfilePostImage(url:String) {
         
-        if url == K.Image.DefaultAvatarProfile {
+        if url == K.Image.DefaultAvatarProfilePost {
             image = UIImage(named:K.Image.DefaultAvatarProfilePost)
             return
         }
