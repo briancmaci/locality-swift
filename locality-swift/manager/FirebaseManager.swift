@@ -333,7 +333,7 @@ class FirebaseManager: NSObject {
                         })
                         
                         //delete photo
-                        PhotoUploadManager.deletePhoto(url:post.postImageUrl, completionHandler: { (error) in
+                        PhotoUploadManager.deletePostPhoto(postId:post.postId, completionHandler: { (error) in
                             if error == nil {
                                 print("Photo deleted!")
                             }

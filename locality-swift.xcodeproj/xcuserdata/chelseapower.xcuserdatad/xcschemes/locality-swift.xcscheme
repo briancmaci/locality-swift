@@ -28,36 +28,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "72B881B31E65EE5000EB3B2E"
-               BuildableName = "locality-swiftTests.xctest"
-               BlueprintName = "locality-swiftTests"
-               ReferencedContainer = "container:locality-swift.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "72B881BE1E65EE5000EB3B2E"
-               BuildableName = "locality-swiftUITests.xctest"
-               BlueprintName = "locality-swiftUITests"
-               ReferencedContainer = "container:locality-swift.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "72B8819C1E65EE5000EB3B2E"
-            BuildableName = "locality-swift.app"
-            BlueprintName = "locality-swift"
-            ReferencedContainer = "container:locality-swift.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -90,8 +61,7 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "72B8819C1E65EE5000EB3B2E"
@@ -99,7 +69,7 @@
             BlueprintName = "locality-swift"
             ReferencedContainer = "container:locality-swift.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

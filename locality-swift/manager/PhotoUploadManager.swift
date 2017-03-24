@@ -17,12 +17,12 @@ class PhotoUploadManager: NSObject {
     
     
 
-    class func uploadPhoto(image:UIImage, type:PhotoType, uid:String, completionHandler: @escaping (FIRStorageMetadata?, Error?) -> ()) -> () {
+    class func uploadPhoto(image:UIImage, type:PhotoType, uid:String, pid:String="", completionHandler: @escaping (FIRStorageMetadata?, Error?) -> ()) -> () {
         
         let imageData:Data = UIImageJPEGRepresentation(image, K.NumberConstant.Upload.ImageQuality)!
         
         // set upload path
-        let filePath = buildPhotoURL(type: type, uid: uid)
+        let filePath = buildPhotoURL(type: type, uid: uid, pid:pid)
         let metaData = FIRStorageMetadata()
         metaData.contentType = "image/jpg"
         
@@ -38,7 +38,7 @@ class PhotoUploadManager: NSObject {
         }
     }
 
-    class func buildPhotoURL(type:PhotoType, uid:String) -> String {
+    class func buildPhotoURL(type:PhotoType, uid:String, pid:String="") -> String {
         switch type {
         case .profile:
             return String(format: K.String.UploadURL.ProfileFormat, uid)
@@ -47,14 +47,14 @@ class PhotoUploadManager: NSObject {
             return String(format: K.String.UploadURL.LocationFormat, uid, Util.generateUUID())
             
         case .post:
-            return String(format: K.String.UploadURL.PostFormat, uid, Util.generateUUID())
+            return String(format: K.String.UploadURL.PostFormat, uid, pid)
         }
     }
     
-    class func deletePhoto(url:String, completionHandler: @escaping (Error?) -> ()) -> () {
+    class func deletePostPhoto(postId:String, completionHandler: @escaping (Error?) -> ()) -> () {
         
-        //let filePath = buildPhotoURL(type: type, uid: uid)
-        FirebaseManager.getImageStorageRef().child(url).delete { (error) in
+        let filePath = buildPhotoURL(type: .post, uid: CurrentUser.shared.uid, pid:postId)
+        FirebaseManager.getImageStorageRef().child(filePath).delete { (error) in
             completionHandler(error)
         }
         

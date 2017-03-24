@@ -81,12 +81,15 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
             return
         }
         
+        //CREATE POST_ID NOW!!!!
+        let thisPostId = Util.generateUUID()
+        
         if !imageUploadView.hasImage() {
-            createPostToWrite(url: "")
+            createPostToWrite(url: "", pid:thisPostId)
         }
         
         else {
-            PhotoUploadManager.uploadPhoto(image: imageUploadView.getImage(), type: .post, uid: CurrentUser.shared.uid) { (metadata, error) in
+            PhotoUploadManager.uploadPhoto(image: imageUploadView.getImage(), type: .post, uid: CurrentUser.shared.uid, pid:thisPostId) { (metadata, error) in
                 
                 if error != nil {
                     print("Upload Error: \(error?.localizedDescription)")
@@ -94,18 +97,20 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
                 
                 else {
                     let downloadURL = metadata!.downloadURL()!.absoluteString
-                    self.createPostToWrite(url:downloadURL)
+                    self.createPostToWrite(url:downloadURL, pid:thisPostId)
                     
                 }
             }
         }
     }
     
-    func createPostToWrite(url:String) {
+    func createPostToWrite(url:String, pid:String) {
         let thisPost:UserPost = UserPost(coord: self.currentLocation,
                                          caption: self.captionField.text,
                                          imgUrl: url,
                                          user: CurrentUser.shared)
+        
+        thisPost.postId = pid
         
         //check anonymous
         if self.postFromView.isAnonymous == true {
