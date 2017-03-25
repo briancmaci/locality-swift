@@ -67,7 +67,7 @@ struct K {
             static let PostId = "postId"
             static let LikedBy = "likedBy"
             static let CommentCount = "commentCount"
-            static let OffensiveTo = "offensiveTo"
+            static let BlockedBy = "blockedBy"
             static let IsAnonymous = "isAnonymous"
             //Lat
             //Long
@@ -350,8 +350,10 @@ struct K {
     struct NumberConstant {
         static let HeaderAndStatusBarsHeight : CGFloat = 64
         static let StatusBarHeight : CGFloat = 20
+        
         static let SwipeableButtonWidth : CGFloat = 44
         
+        static let BlockedByLimit : Int = 5
         //Buttons
         static let RoundedButtonCornerRadius : CGFloat = 5
         static let RoundedButtonAngleWidth : CGFloat = 14

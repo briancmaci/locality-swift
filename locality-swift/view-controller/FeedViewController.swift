@@ -219,6 +219,12 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
             //delete
             deletePostFromList(thisPost: thisCell.thisModel, indexPath: cellIndexPath)
         }
+        
+        else {
+            //block
+            blockPostFromList(thisPost: thisCell.thisModel, indexPath: cellIndexPath)
+        }
+        
         thisCell.hideUtilityButtons(animated: true)
     }
     
@@ -234,6 +240,27 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
                 print("Post Deleted!")
                 self.posts.remove(at: indexPath.row)
                 self.postsTable.deleteRows(at: [indexPath], with: .automatic)
+            }
+        }
+    }
+    
+    func blockPostFromList(thisPost:UserPost, indexPath:IndexPath) {
+        FirebaseManager.blockPost(pid: thisPost.postId) { (blockedPosts, error) in
+            
+            if error == nil {
+                print("Post Blocked!")
+                thisPost.blockedBy = blockedPosts!
+                self.posts.remove(at: indexPath.row)
+                self.postsTable.deleteRows(at: [indexPath], with: .automatic)
+                
+                if blockedPosts?.count == K.NumberConstant.BlockedByLimit {
+                    //remove post
+                    FirebaseManager.delete(post: thisPost) { (error) in
+                        if error == nil {
+                            print("Post deleted from too many blocks!")
+                        }
+                    }
+                }
             }
         }
     }

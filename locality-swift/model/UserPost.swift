@@ -28,7 +28,7 @@ class UserPost: NSObject {
     
     var isLikedByMe:Bool = false
     
-    var offensiveTo:[String] = [] //How many people have removed this from their list
+    var blockedBy:[String] = [] //How many people have removed this from their list
     
     init(coord:CLLocationCoordinate2D, caption:String, imgUrl:String, user:BaseUser) {
         
@@ -71,8 +71,8 @@ class UserPost: NSObject {
             self.isAnonymous = dic?[K.DB.Var.IsAnonymous] as! Bool
         }
         
-        if (dic?[K.DB.Var.OffensiveTo]) != nil {
-            self.offensiveTo = dic?[K.DB.Var.OffensiveTo] as! [String]
+        if (dic?[K.DB.Var.BlockedBy]) != nil {
+            self.blockedBy = dic?[K.DB.Var.BlockedBy] as! [String]
         }
         
         self.user = BaseUser()
@@ -92,7 +92,7 @@ class UserPost: NSObject {
                K.DB.Var.PostImageURL:postImageUrl,
                K.DB.Var.CommentCount:commentCount,
                K.DB.Var.IsAnonymous:isAnonymous,
-               K.DB.Var.OffensiveTo:offensiveTo,
+               K.DB.Var.BlockedBy:blockedBy,
                K.DB.Var.LikedBy:likedBy]
     }
 }

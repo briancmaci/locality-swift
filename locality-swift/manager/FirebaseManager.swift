@@ -66,7 +66,6 @@ class FirebaseManager: NSObject {
                 for child in snapshot.children {
                     let childSnap = child as! FIRDataSnapshot
                     if postIDs.contains(childSnap.key) {
-                        //posts.append(UserPost(snapshot: childSnap))
                         
                         //push to dictionary before sorting
                         let p = UserPost(snapshot: childSnap)
@@ -79,7 +78,11 @@ class FirebaseManager: NSObject {
                 let sortedKeys = Array(postsDic).sorted(by: {$0.1 < $1.1})
 
                 for p in sortedKeys {
-                    posts.append(p.key)
+                    
+                    //check for blocks post-sort as objects are easier to deal with
+                    if !p.key.blockedBy.contains(CurrentUser.shared.uid) {
+                        posts.append(p.key)
+                    }
                 }
                 
                 completionHandler(posts, nil)
@@ -90,7 +93,13 @@ class FirebaseManager: NSObject {
                 for child in snapshot.children {
                     let childSnap = child as! FIRDataSnapshot
                     if postIDs.contains(childSnap.key) {
-                        posts.append(UserPost(snapshot: childSnap))
+                        
+                        let p = UserPost(snapshot: childSnap)
+                        
+                        //check for blocks post-sort as objects are easier to deal with
+                        if !p.blockedBy.contains(CurrentUser.shared.uid) {
+                            posts.append(p)
+                        }
                     }
                 }
                 
@@ -103,7 +112,13 @@ class FirebaseManager: NSObject {
                 for child in snapshot.children {
                     let childSnap = child as! FIRDataSnapshot
                     if postIDs.contains(childSnap.key) {
-                        posts.append(UserPost(snapshot: childSnap))
+                        
+                        let p = UserPost(snapshot: childSnap)
+                        
+                        //check for blocks post-sort as objects are easier to deal with
+                        if !p.blockedBy.contains(CurrentUser.shared.uid) {
+                            posts.append(p)
+                        }
                     }
                 }
                 
@@ -309,6 +324,35 @@ class FirebaseManager: NSObject {
                 else {
                     completionHandler(likesArray, nil)
                 }
+            })
+        })
+    }
+    
+    class func blockPost(pid:String, completionHandler: @escaping ([String]?, Error?) -> ()) -> () {
+        
+        //Grab likes
+        getPostsRef().child(pid).child(K.DB.Var.BlockedBy).observeSingleEvent(of: .value, with: { snapshot in
+            
+            var blocksArray:[String] = [String]()
+            
+            if snapshot.exists() {
+                //create blockedBy
+                blocksArray = snapshot.value as! [String]
+            }
+            
+            //add us
+            
+            if !blocksArray.contains(CurrentUser.shared.uid) {
+                blocksArray.append(CurrentUser.shared.uid)
+            }
+                
+            else {
+                print("We blocked this post. We shouldn't see it. Look into this.")
+            }
+            
+            getPostsRef().child(pid).updateChildValues([K.DB.Var.BlockedBy:blocksArray], withCompletionBlock: { (error, ref) in
+                
+                completionHandler(blocksArray, error)
             })
         })
     }
