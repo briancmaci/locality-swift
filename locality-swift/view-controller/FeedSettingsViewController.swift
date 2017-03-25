@@ -124,9 +124,9 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     }
     
     func initScrollView() {
-        let contentHeight = getScrollContentHeight()
-        scrollContentHeight.constant = contentHeight
-        scrollView.contentSize = CGSize(width: K.Screen.Width, height: contentHeight)
+//        let contentHeight = getScrollContentHeight()
+//        scrollContentHeight.constant = contentHeight
+//        scrollView.contentSize = CGSize(width: K.Screen.Width, height: contentHeight)
         scrollView.contentInset = UIEdgeInsetsMake(0, 0, 40, 0)
         
         scrollView.delegate = self

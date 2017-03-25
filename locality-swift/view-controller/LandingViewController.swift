@@ -26,13 +26,13 @@ class LandingViewController: LocalityBaseViewController, AngledButtonPairDelegat
     @IBOutlet weak var joinLoginBottom : NSLayoutConstraint!
     @IBOutlet weak var exploreBottom : NSLayoutConstraint!
     
+    let kParallaxRange:CGFloat = 60.0
+    let buttonGap : CGFloat = 10
+    
     var joinLoginY0 : CGFloat!
     var joinLoginY1 : CGFloat!
     var exploreY0 : CGFloat!
     var exploreY1 : CGFloat!
-    
-    let kParallaxRange:CGFloat = 36.0
-    let buttonGap : CGFloat = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
