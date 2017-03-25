@@ -17,12 +17,14 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
     @IBOutlet weak var emailField:UITextField!
     @IBOutlet weak var passwordField:UITextField!
     
-    @IBOutlet weak var loginEmailButton:UIButton!
-    @IBOutlet weak var loginFacebookButton:UIButton!
+    @IBOutlet weak var loginEmailButton:LoadingButton!
+    @IBOutlet weak var loginFacebookButton:LoadingButton!
     
     @IBOutlet weak var emailError:UILabel!
     @IBOutlet weak var passwordError:UILabel!
     @IBOutlet weak var facebookError:UILabel!
+    
+    var isLoadingView:UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +38,7 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
         initButtons()
         initErrorFields()
         initTextFields()
+        initLoadingView()
         
     }
 
@@ -68,11 +71,22 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
         
     }
     
+    func initLoadingView() {
+        isLoadingView = UIView(frame: CGRect(x:0, y:0, width:K.Screen.Width, height:K.Screen.Height))
+        isLoadingView.backgroundColor = K.Color.localityLightBlue
+        isLoadingView.alpha = 0.3
+    }
+    
     //Firebase Sign Up
     func loginViaEmail() {
+        loginEmailButton.showLoading()
+        toggleLoading(true)
         FIRAuth.auth()?.signIn(withEmail: emailField.text!,
                                    password: passwordField.text!,
                                    completion: { (user, error) in
+                                    
+                                    self.loginEmailButton.hideLoading()
+                                    self.toggleLoading(false)
                                     if error == nil {
                                         
                                         //for email verifiy logout/login
@@ -175,19 +189,27 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
     
     // MARK: - FBSDKLoginButtonDelegate Methods
     func loginViaFacebook() {
-        let login = FBSDKLoginManager()
         
+        loginFacebookButton.showLoading()
+        toggleLoading(true)
+        
+        let login = FBSDKLoginManager()
         
         login.logIn(withReadPermissions: ["public_profile"], from: self, handler: { (result, error) in
             
             
             if (error != nil || (result?.isCancelled)!) {
                 print("Facebook Login Error \(error?.localizedDescription)")
+                self.loginFacebookButton.hideLoading()
+                self.toggleLoading(false)
             } else {
                 
                 // Log in to Firebase via Facebook
                 let credential = FIRFacebookAuthProvider.credential(withAccessToken: (result?.token.tokenString)!)
                 FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+                    
+                    self.loginFacebookButton.hideLoading()
+                    self.toggleLoading(false)
                     
                     if (error != nil) {
                         print("Facebook Firebase Login Error \(error?.localizedDescription)")
@@ -218,6 +240,17 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
         })
     }
 
+    func toggleLoading(_ isLoading:Bool) {
+    
+        if isLoading == true {
+            view.addSubview(isLoadingView)
+        }
+        
+        else {
+            isLoadingView.removeFromSuperview()
+        }
+    }
+    
     func displayFirebaseError(error:Error, forEmail:Bool) {
         if let errorCode = FIRAuthErrorCode(rawValue: (error._code)){
             

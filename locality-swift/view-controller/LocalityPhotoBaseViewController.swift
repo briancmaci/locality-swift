@@ -189,14 +189,14 @@ class LocalityPhotoBaseViewController: LocalityBaseViewController, UIActionSheet
         vc.moveAndScaleLabel.font = UIFont(name: K.FontName.InterstateLightCondensed,
                                            size: 24)
         
-        vc.moveAndScaleLabel.text = vc.moveAndScaleLabel.text?.uppercased()
+        vc.moveAndScaleLabel.text = K.String.Cropper.TitleLabel.localized
         
-        let cancelTitle = NSAttributedString(string: "Cancel",
+        let cancelTitle = NSAttributedString(string: K.String.Cropper.CancelLabel.localized,
                                              attributes: [NSFontAttributeName : UIFont(name: K.FontName.InterstateLightCondensed, size:16)!, NSForegroundColorAttributeName: UIColor.white])
         
         vc.cancelButton.setAttributedTitle(cancelTitle, for: .normal)
         
-        let chooseTitle = NSAttributedString(string: "Choose",
+        let chooseTitle = NSAttributedString(string: K.String.Cropper.ChooseLabel.localized,
                                              attributes: [NSFontAttributeName : UIFont(name: K.FontName.InterstateLightCondensed, size:16)!, NSForegroundColorAttributeName: UIColor.white])
         
         vc.chooseButton.setAttributedTitle(chooseTitle, for: .normal)
@@ -245,47 +245,5 @@ class LocalityPhotoBaseViewController: LocalityBaseViewController, UIActionSheet
         path.close()
         
         return path
-    }
-//    
-//    // Returns a custom path for the mask.
-//    - (UIBezierPath *)imageCropViewControllerCustomMaskPath:(RSKImageCropViewController *)controller
-//    {
-//    CGRect rect = controller.maskRect;
-//    CGPoint point1 = CGPointMake(CGRectGetMinX(rect), CGRectGetMaxY(rect));
-//    CGPoint point2 = CGPointMake(CGRectGetMaxX(rect), CGRectGetMaxY(rect));
-//    CGPoint point3 = CGPointMake(CGRectGetMaxX(rect), CGRectGetMinY(rect));
-//    CGPoint point4 = CGPointMake(CGRectGetMinX(rect), CGRectGetMinY(rect));
-//    
-//    UIBezierPath *rectPath = [UIBezierPath bezierPath];
-//    [rectPath moveToPoint:point1];
-//    [rectPath addLineToPoint:point2];
-//    [rectPath addLineToPoint:point3];
-//    [rectPath addLineToPoint:point4];
-//    [rectPath closePath];
-//    
-//    return rectPath;
-//    }
-//    
-//    
-//    -(CGRect)imageCropViewControllerCustomMovementRect:(RSKImageCropViewController *)controller {
-//    
-//    return controller.maskRect;
-//    }
-
-    
-    
-    
-
-
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }

@@ -560,7 +560,7 @@
                                         <color key="textColor" red="0.71522049489999995" green="0.01339015205" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pdn-bb-aHa">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pdn-bb-aHa" customClass="LoadingButton" customModule="locality_swift" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="105" width="280" height="54"/>
                                         <color key="backgroundColor" red="0.15877681969999999" green="0.2493949234" blue="0.31995546819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -571,7 +571,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qSl-kX-Kpg">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qSl-kX-Kpg" customClass="LoadingButton" customModule="locality_swift" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="255" width="280" height="54"/>
                                         <color key="backgroundColor" red="0.15877681969999999" green="0.2493949234" blue="0.31995546819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -636,8 +636,8 @@
                         <outlet property="emailError" destination="Axy-4l-rb1" id="oeX-GE-PNK"/>
                         <outlet property="emailField" destination="mKW-FK-hso" id="dQO-3s-sYr"/>
                         <outlet property="facebookError" destination="V4i-Fl-w98" id="iTx-q4-vcE"/>
-                        <outlet property="loginEmailButton" destination="Pdn-bb-aHa" id="Cd2-Y1-1O1"/>
-                        <outlet property="loginFacebookButton" destination="qSl-kX-Kpg" id="20a-7d-UIP"/>
+                        <outlet property="loginEmailButton" destination="Pdn-bb-aHa" id="sAu-eF-X8T"/>
+                        <outlet property="loginFacebookButton" destination="qSl-kX-Kpg" id="maH-gF-Xxn"/>
                         <outlet property="passwordError" destination="c9g-Ix-Kcv" id="CAb-b7-Lz1"/>
                         <outlet property="passwordField" destination="BIu-7q-5iX" id="se0-0c-Xnh"/>
                     </connections>
@@ -1293,7 +1293,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Qd3-wx-0My" customClass="SlideNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2qF-2R-zkD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2qF-2R-zkD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.15877681969999999" green="0.2493949234" blue="0.31995546819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

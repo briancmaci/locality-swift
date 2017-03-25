@@ -338,6 +338,12 @@ struct K {
             static let AboutCopy = "about-copy"
             static let AboutShareLabel = "about-share-label"
         }
+        
+        struct Cropper {
+            static let TitleLabel = "cropper-title"
+            static let CancelLabel = "cropper-cancel-label"
+            static let ChooseLabel = "cropper-choose-label"
+        }
     }
     
     //Constant numerical values

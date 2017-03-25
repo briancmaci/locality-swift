@@ -14,6 +14,7 @@
 		722ABA431E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlide.m in Sources */ = {isa = PBXBuildFile; fileRef = 722ABA3B1E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlide.m */; };
 		722ABA441E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 722ABA3D1E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlideAndFade.m */; };
 		722ABA451E74761100A3F1DA /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 722ABA3F1E74761100A3F1DA /* SlideNavigationController.m */; };
+		7244AC6A1E8610E00091715E /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7244AC691E8610E00091715E /* LoadingButton.swift */; };
 		72B881A11E65EE5000EB3B2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B881A01E65EE5000EB3B2E /* AppDelegate.swift */; };
 		72B881A61E65EE5000EB3B2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72B881A41E65EE5000EB3B2E /* Main.storyboard */; };
 		72B881A91E65EE5000EB3B2E /* locality_swift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 72B881A71E65EE5000EB3B2E /* locality_swift.xcdatamodeld */; };
@@ -154,6 +155,7 @@
 		722ABA3D1E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlideAndFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlideNavigationContorllerAnimatorSlideAndFade.m; path = "custom-ui/SlideNavigationController/Animations/SlideNavigationContorllerAnimatorSlideAndFade.m"; sourceTree = "<group>"; };
 		722ABA3E1E74761100A3F1DA /* SlideNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlideNavigationController.h; path = "custom-ui/SlideNavigationController/SlideNavigationController.h"; sourceTree = "<group>"; };
 		722ABA3F1E74761100A3F1DA /* SlideNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlideNavigationController.m; path = "custom-ui/SlideNavigationController/SlideNavigationController.m"; sourceTree = "<group>"; };
+		7244AC691E8610E00091715E /* LoadingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingButton.swift; path = "custom-ui/LoadingButton.swift"; sourceTree = "<group>"; };
 		72B8819D1E65EE5000EB3B2E /* locality-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "locality-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		72B881A01E65EE5000EB3B2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		72B881A51E65EE5000EB3B2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -305,6 +307,14 @@
 				722ABA3F1E74761100A3F1DA /* SlideNavigationController.m */,
 			);
 			name = "slide-navigation-controller";
+			sourceTree = "<group>";
+		};
+		7244AC681E8610BA0091715E /* loading-button */ = {
+			isa = PBXGroup;
+			children = (
+				7244AC691E8610E00091715E /* LoadingButton.swift */,
+			);
+			name = "loading-button";
 			sourceTree = "<group>";
 		};
 		72B881941E65EE5000EB3B2E = {
@@ -653,6 +663,7 @@
 		72F24BB71E70F80200CA7702 /* buttons */ = {
 			isa = PBXGroup;
 			children = (
+				7244AC681E8610BA0091715E /* loading-button */,
 				72F24BCD1E71BAC600CA7702 /* post */,
 				72B881F31E678D2900EB3B2E /* AngledButtonPairView.swift */,
 				72B881F81E67961E00EB3B2E /* AngledPairButton.swift */,
@@ -1038,6 +1049,7 @@
 				72EEDF941E75FB1A009DFA77 /* FeedSettingsToggleCell.swift in Sources */,
 				72F24BB21E70ECDF00CA7702 /* FeedHeaderView.swift in Sources */,
 				72B882121E68F19D00EB3B2E /* UIViewControllerExtension.swift in Sources */,
+				7244AC6A1E8610E00091715E /* LoadingButton.swift in Sources */,
 				72F24BF61E725BCB00CA7702 /* CameraOverlay.swift in Sources */,
 				72B881E21E66B02F00EB3B2E /* FirebaseManager.swift in Sources */,
 				72B882051E67E81900EB3B2E /* BundleExtension.swift in Sources */,
