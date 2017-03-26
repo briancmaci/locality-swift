@@ -124,9 +124,9 @@ class LeftMenuViewController: LocalityPhotoBaseViewController, UITableViewDelega
             }
             
             if likesTotal == 1 {
-                self.likesLabel.text = String(format:"%d Like", likesTotal)
+                self.likesLabel.text = String(format:K.String.Menu.LikesOneFormat.localized, likesTotal)
             } else {
-                self.likesLabel.text = String(format:"%d Likes", likesTotal)
+                self.likesLabel.text = String(format:K.String.Menu.LikesMultiFormat.localized, likesTotal)
             }
             
             self.likesWidth.constant = self.likesLabel.intrinsicContentSize.width
@@ -139,9 +139,9 @@ class LeftMenuViewController: LocalityPhotoBaseViewController, UITableViewDelega
             }
             
             if postsTotal == 1 {
-                self.postsLabel.text = String(format:"%d Post", postsTotal)
+                self.postsLabel.text = String(format:K.String.Menu.PostsOneFormat.localized, postsTotal)
             } else {
-                self.postsLabel.text = String(format:"%d Posts", postsTotal)
+                self.postsLabel.text = String(format:K.String.Menu.PostsMultiFormat.localized, postsTotal)
             }
             
             self.postsWidth.constant = self.postsLabel.intrinsicContentSize.width

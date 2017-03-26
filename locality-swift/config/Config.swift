@@ -304,6 +304,11 @@ struct K {
                 static let Light = "light"
                 static let Dark = "dark"
             }
+            
+            static let LikesOneFormat = "likes-one-format"
+            static let LikesMultiFormat = "likes-multi-format"
+            static let PostsOneFormat = "posts-one-format"
+            static let PostsMultiFormat = "posts-multi-format"
         }
         
         struct Mapbox {
@@ -354,6 +359,10 @@ struct K {
             static let TitleLabel = "cropper-title"
             static let CancelLabel = "cropper-cancel-label"
             static let ChooseLabel = "cropper-choose-label"
+        }
+        
+        struct Login {
+            static let ForgotPasswordLabel = "forgot-password-label"
         }
     }
     

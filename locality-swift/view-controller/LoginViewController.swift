@@ -20,6 +20,8 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
     @IBOutlet weak var loginEmailButton:LoadingButton!
     @IBOutlet weak var loginFacebookButton:LoadingButton!
     
+    @IBOutlet weak var forgotPasswordButton:UIButton!
+    
     @IBOutlet weak var emailError:UILabel!
     @IBOutlet weak var passwordError:UILabel!
     @IBOutlet weak var facebookError:UILabel!
@@ -50,6 +52,9 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
     func initButtons() {
         loginEmailButton.addTarget(self, action: #selector(emailDidTouch), for: .touchUpInside)
         loginFacebookButton.addTarget(self, action: #selector(facebookDidTouch), for: .touchUpInside)
+        
+        forgotPasswordButton.setTitle(K.String.Login.ForgotPasswordLabel.localized, for: .normal)
+        forgotPasswordButton.addTarget(self, action: #selector(passwordForgotDidTouch), for: .touchUpInside)
 
     }
     
@@ -162,6 +167,10 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
         loginViaFacebook()
     }
     
+    func passwordForgotDidTouch(sender:UIButton) {
+        print("Load Password Modal")
+    }
+    
     func textFieldDidChange(sender:UITextField) {
         if sender == emailField {
             emailError.text?.removeAll()
@@ -185,6 +194,21 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
         }
     
         return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        if textField == passwordField {
+            forgotPasswordButton.isHidden = true
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == passwordField {
+            if textField.text?.isEmpty == true {
+                forgotPasswordButton.isHidden = false
+            }
+        }
     }
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {

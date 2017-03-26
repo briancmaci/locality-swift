@@ -13,7 +13,8 @@ explore-button-label = "EXPLORE LOCALITY";
 join-button-label = "JOIN LOCALITY";
 login-button-label = "LOGIN";
 
-//Join
+//Login
+forgot-password-label = "Forgot?";
 
 
 //Current Location
@@ -84,6 +85,10 @@ promotions-label = "Include promotions for this location";
 
 //Menu
 terms-label = "Terms and Privacy";
+likes-one-format = "%d Like";
+likes-multi-format = "%d Likes";
+posts-one-format = "%d Post";
+posts-multi-format = "%d Posts";
 
 //Buttons
 button-post-label = "POST";

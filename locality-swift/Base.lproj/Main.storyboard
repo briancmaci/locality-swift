@@ -551,6 +551,16 @@
                                         <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="light" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PtV-DA-D1a">
+                                        <rect key="frame" x="210" y="54" width="60" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="NgB-L4-HMx"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="14"/>
+                                        <state key="normal" title="Forgot?">
+                                            <color key="titleColor" red="0.15877681969999999" green="0.2493949234" blue="0.31995546819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9g-Ix-Kcv">
                                         <rect key="frame" x="2" y="85" width="276" height="14"/>
                                         <constraints>
@@ -617,6 +627,7 @@
                                     <constraint firstAttribute="trailing" secondItem="c9g-Ix-Kcv" secondAttribute="trailing" constant="2" id="LZG-um-YNs"/>
                                     <constraint firstAttribute="height" constant="322" id="Mqh-2m-d1D"/>
                                     <constraint firstItem="QfM-mO-b1R" firstAttribute="centerX" secondItem="gEB-ef-DJI" secondAttribute="centerX" id="Ncb-fP-sjb"/>
+                                    <constraint firstItem="PtV-DA-D1a" firstAttribute="bottom" secondItem="BIu-7q-5iX" secondAttribute="bottom" id="Swr-eh-9Pv"/>
                                     <constraint firstItem="QfM-mO-b1R" firstAttribute="top" secondItem="Pdn-bb-aHa" secondAttribute="bottom" constant="35" id="UrJ-Sx-f5X"/>
                                     <constraint firstItem="mKW-FK-hso" firstAttribute="top" secondItem="gEB-ef-DJI" secondAttribute="top" id="Wbk-sz-Hy2"/>
                                     <constraint firstItem="BIu-7q-5iX" firstAttribute="leading" secondItem="gEB-ef-DJI" secondAttribute="leading" id="XLp-Y0-g7e"/>
@@ -628,8 +639,10 @@
                                     <constraint firstAttribute="trailing" secondItem="BIu-7q-5iX" secondAttribute="trailing" id="mTh-kZ-3Nk"/>
                                     <constraint firstItem="qSl-kX-Kpg" firstAttribute="centerX" secondItem="gEB-ef-DJI" secondAttribute="centerX" id="pzF-5D-dUV"/>
                                     <constraint firstItem="V4i-Fl-w98" firstAttribute="top" secondItem="qSl-kX-Kpg" secondAttribute="bottom" constant="1" id="pzY-SP-ROd"/>
+                                    <constraint firstItem="PtV-DA-D1a" firstAttribute="trailing" secondItem="BIu-7q-5iX" secondAttribute="trailing" constant="-10" id="sjr-5B-XXS"/>
                                     <constraint firstAttribute="trailing" secondItem="V4i-Fl-w98" secondAttribute="trailing" constant="2" id="vIN-lm-Tla"/>
                                     <constraint firstItem="Pdn-bb-aHa" firstAttribute="top" secondItem="c9g-Ix-Kcv" secondAttribute="bottom" constant="6" id="wAE-ep-llb"/>
+                                    <constraint firstItem="PtV-DA-D1a" firstAttribute="top" secondItem="BIu-7q-5iX" secondAttribute="top" id="zmz-cF-a5Y"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -646,6 +659,7 @@
                         <outlet property="emailError" destination="Axy-4l-rb1" id="oeX-GE-PNK"/>
                         <outlet property="emailField" destination="mKW-FK-hso" id="dQO-3s-sYr"/>
                         <outlet property="facebookError" destination="V4i-Fl-w98" id="iTx-q4-vcE"/>
+                        <outlet property="forgotPasswordButton" destination="PtV-DA-D1a" id="Bqf-W8-9l8"/>
                         <outlet property="loginEmailButton" destination="Pdn-bb-aHa" id="sAu-eF-X8T"/>
                         <outlet property="loginFacebookButton" destination="qSl-kX-Kpg" id="maH-gF-Xxn"/>
                         <outlet property="passwordError" destination="c9g-Ix-Kcv" id="CAb-b7-Lz1"/>
@@ -1303,7 +1317,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Qd3-wx-0My" customClass="SlideNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2qF-2R-zkD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2qF-2R-zkD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.15877681969999999" green="0.2493949234" blue="0.31995546819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
