@@ -123,7 +123,12 @@ class LeftMenuViewController: LocalityPhotoBaseViewController, UITableViewDelega
                 likesTotal = likes!
             }
             
-            self.likesLabel.text = String(format:"%d Likes", likesTotal)
+            if likesTotal == 1 {
+                self.likesLabel.text = String(format:"%d Like", likesTotal)
+            } else {
+                self.likesLabel.text = String(format:"%d Likes", likesTotal)
+            }
+            
             self.likesWidth.constant = self.likesLabel.intrinsicContentSize.width
             self.likesLabel.layoutIfNeeded()
         }
@@ -133,7 +138,12 @@ class LeftMenuViewController: LocalityPhotoBaseViewController, UITableViewDelega
                 postsTotal = posts!
             }
             
-            self.postsLabel.text = String(format:"%d Posts", postsTotal)
+            if postsTotal == 1 {
+                self.postsLabel.text = String(format:"%d Post", postsTotal)
+            } else {
+                self.postsLabel.text = String(format:"%d Posts", postsTotal)
+            }
+            
             self.postsWidth.constant = self.postsLabel.intrinsicContentSize.width
             self.postsLabel.layoutIfNeeded()
         }
@@ -294,17 +304,4 @@ class LeftMenuViewController: LocalityPhotoBaseViewController, UITableViewDelega
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
