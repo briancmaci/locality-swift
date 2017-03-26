@@ -464,10 +464,8 @@
                         <outlet property="feedOptionsTable" destination="siN-gQ-WOs" id="mmy-ab-gAK"/>
                         <outlet property="imageUploadView" destination="sOl-VT-ncw" id="8rX-ff-CgG"/>
                         <outlet property="locationName" destination="zuB-Og-Y7A" id="NUA-6E-bGr"/>
-                        <outlet property="locationNameContainer" destination="07n-oE-OrW" id="RBl-hd-zQ7"/>
                         <outlet property="locationNameError" destination="zwX-3N-fHi" id="Kcj-jh-f27"/>
                         <outlet property="map" destination="1Qn-i5-o4R" id="nLJ-la-oik"/>
-                        <outlet property="scrollButtonContainer" destination="WEz-9j-oye" id="Iet-wx-dMZ"/>
                         <outlet property="scrollSaveButton" destination="N0s-dc-zaR" id="1M9-B8-mfc"/>
                         <outlet property="scrollView" destination="q4j-KC-8oW" id="Ejp-MQ-36k"/>
                         <outlet property="searchDisplayController" destination="zEK-Fx-AJQ" id="Plq-mz-XWt"/>
@@ -1292,7 +1290,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Qd3-wx-0My" customClass="SlideNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2qF-2R-zkD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2qF-2R-zkD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.15877681969999999" green="0.2493949234" blue="0.31995546819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -14,21 +14,12 @@ import Mapbox
 class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationManagerDelegate, LocationSliderDelegate, ImageUploadViewDelegate, UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate, UIGestureRecognizerDelegate, UITextFieldDelegate, UIScrollViewDelegate, MGLMapViewDelegate {
     
     @IBOutlet weak var scrollView:UIScrollView!
-    @IBOutlet weak var scrollContentHeight:NSLayoutConstraint!
-    
     @IBOutlet weak var map:MGLMapView!
-    
     @IBOutlet weak var locationName:UITextField!
-    @IBOutlet weak var locationNameContainer:UIView!
     @IBOutlet weak var locationNameError:UILabel!
-    
     @IBOutlet weak var slider:LocationSlider!
-    
     @IBOutlet weak var imageUploadView:ImageUploadView!
-    
     @IBOutlet weak var scrollSaveButton:UIButton!
-    @IBOutlet weak var scrollButtonContainer:UIView!
-    
     @IBOutlet weak var feedOptionsTable:UITableView!
     @IBOutlet weak var feedOptionsHeight:NSLayoutConstraint!
     
@@ -56,18 +47,14 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     //ViewController Mode
     var isNewFeed:Bool! = true
     
+    //------------------------------------------------------------------------------
+    // MARK: - View Lifecycle
+    //------------------------------------------------------------------------------
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        initButtons()
-        initLocationName()
-        initHeaderView()
-        initAutoCompleteSearch()
-        initFeedOptionsTable()
-        initScrollView()
-        initMap()
-        initRangeSlider()
-        initImageUploadView()
+        initialSetup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,18 +67,38 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         cancelKeyboardNotifications()
     }
     
+    //------------------------------------------------------------------------------
+    // MARK: - Initial Setup
+    //------------------------------------------------------------------------------
+    
+    func initialSetup() {
+        
+        initButtons()
+        initLocationName()
+        initHeaderView()
+        initAutoCompleteSearch()
+        initFeedOptionsTable()
+        initScrollView()
+        initRangeSlider()
+        initMap()
+        initImageUploadView()
+    }
+    
     func initButtons() {
+    
         scrollSaveButton.setTitle(K.String.Feed.SaveFeedLabel.localized, for: .normal)
         scrollSaveButton.addTarget(self, action: #selector(saveLocationDidTouch), for: .touchUpInside)
     }
     
     func initLocationName() {
+        
         locationName.placeholder = K.String.Feed.FeedNameDefault.localized
         locationName.delegate = self
         locationNameError.text?.removeAll()
     }
     
     func initHeaderView() {
+        
         header.initHeaderViewStage()
         header.initAttributes(title: K.String.Header.AddNewLocationHeader.localized,
                               leftType: .back,
@@ -101,6 +108,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     }
     
     func initAutoCompleteSearch() {
+        
         let font:UIFont = UIFont(name: K.FontName.InterstateLightCondensed, size: 16.0)!
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).font = font
         
@@ -113,6 +121,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     }
     
     func initFeedOptionsTable() {
+        
         feedOptions = Util.getPListArray(name: K.PList.FeedOptions)
         
         feedOptionsTable.register(UINib(nibName: K.NIBName.FeedSettingsToggleCell, bundle: nil), forCellReuseIdentifier: K.ReuseID.FeedSettingsToggleCellID)
@@ -124,11 +133,8 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     }
     
     func initScrollView() {
-//        let contentHeight = getScrollContentHeight()
-//        scrollContentHeight.constant = contentHeight
-//        scrollView.contentSize = CGSize(width: K.Screen.Width, height: contentHeight)
+
         scrollView.contentInset = UIEdgeInsetsMake(0, 0, 40, 0)
-        
         scrollView.delegate = self
     }
     
@@ -137,7 +143,6 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         sliderSteps = slider.initSlider()
         slider.delegate = self
         
-        //set currentIndex to default of slider
         currentRangeIndex = slider.currentStep
     }
     
@@ -156,7 +161,6 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         map.showsUserLocation = false
         map.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
-        //init light style
         let localityStyleURL = K.Mapbox.MapStyle
         map.styleURL = URL(string:localityStyleURL)
         map.delegate = self
@@ -164,121 +168,33 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         bindMapGestures()
     }
     
-    func initImageUploadView() {
-        imageUploadView.delegate = self
-    }
-    
     func bindMapGestures() {
         
-        let doubleTap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: nil)
-        doubleTap.numberOfTapsRequired = 2
-        map.addGestureRecognizer(doubleTap)
-        
         let singleTap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleMapSingleTap))
-        singleTap.require(toFail: doubleTap)
         singleTap.delegate = self
         map.addGestureRecognizer(singleTap)
     }
     
-    /// MARK : - CLLocationManagerDelegate Methods
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse {
-            locationManager.startUpdatingLocation()
-        }
+    func initImageUploadView() {
+        imageUploadView.delegate = self
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location:CLLocation = locations[0]
-        currentLocation = location.coordinate
-        
-//        DispatchQueue.once {
-//            map.setCenter(currentLocation, animated: false)
-//            updateMapRange()
-//        }
-        
-        
-        
-        if hasMapped == false {
-            map.setCenter(currentLocation, animated:false)
-            updateMapRange()
-            hasMapped = true
-        }
-        
-        locationManager.stopUpdatingLocation()
-    }
+    //------------------------------------------------------------------------------
+    // MARK: - Data & API
+    //------------------------------------------------------------------------------
     
-    func updateMapRange() {
-        
-        //remove all annotations first
-        if let annotations = map.annotations {
-            for ann in annotations {
-                map.removeAnnotation(ann)
-            }
-        }
-        
-        map.centerCoordinate = currentLocation
-        let currentRadius:Double = Double(sliderSteps[currentRangeIndex].distance/2)
-        let rangePointSW:CLLocationCoordinate2D = MapboxManager.metersToDegrees(coord: map.centerCoordinate,
-                                                                                metersLat: -currentRadius,
-                                                                                metersLong: -currentRadius)
-        
-        let rangePointNE:CLLocationCoordinate2D = MapboxManager.metersToDegrees(coord: map.centerCoordinate,
-                                                                                metersLat: currentRadius,
-                                                                                metersLong: currentRadius)
-        let bounds = MGLCoordinateBoundsMake(rangePointSW, rangePointNE)
-        map.setVisibleCoordinateBounds(bounds, edgePadding: UIEdgeInsets.init(top: 20, left: 20, bottom: 20, right: 20), animated: false)
-        
-        let rangeCircle = MapboxManager.polygonCircleForCoordinate(coordinate: map.centerCoordinate,
-                                                                   meterRadius: currentRadius)
-        map.add(rangeCircle)
-        
-        let rangeMarker = CustomPointAnnotation()
-        rangeMarker.coordinate = map.centerCoordinate
-        rangeMarker.markerType = K.Mapbox.Marker.Type.Range
-        map.addAnnotation(rangeMarker)
-    }
-    
-    // CTA
-    func saveLocationDidTouch(sender:UIButton) {
-        
-        if (locationName.text?.isEmpty)! {
-            locationNameError.text = K.String.Feed.FeedNameError.localized
-            return
-        }
-        
-        if !imageUploadView.hasImage() {
-            createLocationToWrite(url: K.Image.DefaultFeedHero)
-        }
-            
-        else {
-            PhotoUploadManager.uploadPhoto(image: imageUploadView.getImage(), type: .location, uid: CurrentUser.shared.uid) { (metadata, error) in
-                
-                if error != nil {
-                    print("Upload Error: \(error?.localizedDescription)")
-                }
-                    
-                else {
-                    let downloadURL = metadata!.downloadURL()!.absoluteString
-                    self.createLocationToWrite(url:downloadURL)
-                }
-            }
-        }
-    }
-    
-    func createLocationToWrite(url:String) {
+    func writeLocation(url:String) {
         let thisLocation:FeedLocation = FeedLocation(coord: self.currentLocation,
                                                      name: locationName.text!,
                                                      range: Float(sliderSteps[currentRangeIndex].distance),
                                                      current: false)
         
-        //get location from location
         GoogleMapsManager.reverseGeocode(coord: currentLocation) { (address, error) in
             
-            //get address
             if error != nil {
-                print("Address retrieval error")
                 thisLocation.location = "Location Unknown"
             }
+            
             else
             {
                 thisLocation.location = Util.locationLabel(address: address!)
@@ -286,7 +202,6 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
             
             thisLocation.feedImgUrl = url
             
-            //toggles
             for op in self.feedOptionsTable.visibleCells {
                 
                 let c = op as! FeedSettingsToggleCell
@@ -315,10 +230,102 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
             })
         }
     }
-
-    /// MARK : - ImageUploadViewDelegate Methods
     
-    //These both go through the action sheet flow that checks for camera access
+    func writePhotoToStorage() {
+        PhotoUploadManager.uploadPhoto(image: imageUploadView.getImage(), type: .location, uid: CurrentUser.shared.uid) { (metadata, error) in
+            
+            if error != nil {
+                print("Upload Error: \(error?.localizedDescription)")
+            }
+                
+            else {
+                let downloadURL = metadata!.downloadURL()!.absoluteString
+                self.writeLocation(url:downloadURL)
+            }
+        }
+    }
+    
+    //------------------------------------------------------------------------------
+    // MARK: - CTA Methods
+    //------------------------------------------------------------------------------
+    
+    func saveLocationDidTouch(sender:UIButton) {
+        
+        if (locationName.text?.isEmpty)! {
+            locationNameError.text = K.String.Feed.FeedNameError.localized
+            return
+        }
+        
+        if !imageUploadView.hasImage() {
+            writeLocation(url: K.Image.DefaultFeedHero)
+        }
+            
+        else {
+            writePhotoToStorage()
+        }
+    }
+    
+    func handleMapSingleTap(tap:UITapGestureRecognizer) {
+        currentLocation = map.convert(tap.location(in: map), toCoordinateFrom: map)
+        updateMapRange()
+    }
+    
+    //------------------------------------------------------------------------------
+    // MARK: - CLLocationManagerDelegate Methods
+    //------------------------------------------------------------------------------
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    
+        if status == .authorizedWhenInUse {
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location:CLLocation = locations[0]
+        currentLocation = location.coordinate
+        
+        if hasMapped == false {
+            map.setCenter(currentLocation, animated:false)
+            updateMapRange()
+            hasMapped = true
+        }
+        
+        locationManager.stopUpdatingLocation()
+    }
+    
+    func updateMapRange() {
+        
+        if let annotations = map.annotations {
+            for ann in annotations {
+                map.removeAnnotation(ann)
+            }
+        }
+        
+        map.centerCoordinate = currentLocation
+        let currentRadius:Double = Double(sliderSteps[currentRangeIndex].distance/2)
+        
+        let rangePointSW:CLLocationCoordinate2D = MapboxManager.metersToDegrees(coord: map.centerCoordinate, metersLat: -currentRadius, metersLong: -currentRadius)
+        
+        let rangePointNE:CLLocationCoordinate2D = MapboxManager.metersToDegrees(coord: map.centerCoordinate, metersLat: currentRadius, metersLong: currentRadius)
+        
+        let bounds = MGLCoordinateBoundsMake(rangePointSW, rangePointNE)
+        
+        map.setVisibleCoordinateBounds(bounds, edgePadding: UIEdgeInsets.init(top: 20, left: 20, bottom: 20, right: 20), animated: false)
+        
+        let rangeCircle = MapboxManager.polygonCircleForCoordinate(coordinate: map.centerCoordinate,
+                                                                   meterRadius: currentRadius)
+        map.add(rangeCircle)
+        
+        let rangeMarker = CustomPointAnnotation()
+        rangeMarker.coordinate = map.centerCoordinate
+        rangeMarker.markerType = K.Mapbox.Marker.Type.Range
+        map.addAnnotation(rangeMarker)
+    }
+    
+    //------------------------------------------------------------------------------
+    // MARK: - ImageUploadViewDelegate Methods
+    //------------------------------------------------------------------------------
     
     func takePhotoTapped() {
         takePhoto()
@@ -334,22 +341,21 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         dismiss(animated: true, completion:nil)
         
     }
-    /// MARK : - MGLMapViewDelegate Methods
     
-    func handleMapSingleTap(tap:UITapGestureRecognizer) {
-        currentLocation = map.convert(tap.location(in: map), toCoordinateFrom: map)
-        updateMapRange()
-        
-        print("map tapped")
-    }
+    //------------------------------------------------------------------------------
+    // MARK: - LocationRangeSliderDelegate Methods
+    //------------------------------------------------------------------------------
     
-   /// MARK : - LocationRangeSliderDelegate Methods
     func sliderValueChanged(step: Int) {
+    
         currentRangeIndex = step
         updateMapRange()
     }
     
-    /// MARK : - GooglePlaceID Methods
+    //------------------------------------------------------------------------------
+    // MARK: - GooglePlaces Methods
+    //------------------------------------------------------------------------------
+    
     func getDetailsWithPlaceID(placeId:String) {
         placesClient.lookUpPlaceID(placeId) { (place, error) in
             if error != nil {
@@ -367,14 +373,17 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     }
     
     func updateMap(place:CLLocationCoordinate2D) {
+        
         currentLocation = place
         updateMapRange()
     }
     
-
-    /// MARK : - UIScrollViewDelegate Methods
+    //------------------------------------------------------------------------------
+    // MARK: - UIScrollViewDelegate Methods
+    //------------------------------------------------------------------------------s
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
         scrollView.bounces = scrollView.contentOffset.y > 20
         
         if searchDisplayController?.searchBar.isFirstResponder == false {
@@ -386,7 +395,10 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         }
     }
     
-    ///MARK : - Keyboard Notification Methods
+    //------------------------------------------------------------------------------
+    // MARK: - KeyboardNotifications Methods
+    //------------------------------------------------------------------------------
+    
     func registerForKeyboardNotifications() {
         NotificationCenter.default.addObserver(self,
                                                selector:#selector(keyboardWillShow),
@@ -420,7 +432,6 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         
         let info:[String:AnyObject] = notification.userInfo as! [String : AnyObject]
         
-        //print("USER INFO? \(info), NOTIFICATION? \(notification)")
         var keyboardFrame:CGRect = (info[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
         keyboardFrame = self.view.convert(keyboardFrame, from: nil)
         
@@ -443,7 +454,10 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         scrollView.setContentOffset(CGPoint.zero, animated: true)
     }
     
-    /// MARK: - MGLMapViewDelegate Methods
+    //------------------------------------------------------------------------------
+    // MARK: - MGLMapViewDelegate Methods
+    //------------------------------------------------------------------------------
+    
     func mapView(_ mapView: MGLMapView, alphaForShapeAnnotation annotation: MGLShape) -> CGFloat {
         return 0.2
     }
@@ -477,7 +491,9 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         }
     }
 
-    ///MARK : - UITextFieldDelegate Methods
+    //------------------------------------------------------------------------------
+    // MARK: - UITextFieldDelegate Methods
+    //------------------------------------------------------------------------------
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -485,8 +501,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        print("TEXT FIELD DID BEGIN EDITING \(locationName, locationName.frame)")
-        //clear error
+        
         locationNameError.text?.removeAll()
         
         if locationName.text == K.String.Feed.FeedNameDefault.localized {
@@ -501,7 +516,9 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         }
     }
     
-    ///MARK : - UITableViewDataSource Methods
+    //------------------------------------------------------------------------------
+    // MARK: - UITableViewDataSource Methods
+    //------------------------------------------------------------------------------
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -518,6 +535,10 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return K.NumberConstant.Feed.FeedOptionHeight
     }
+    
+    //------------------------------------------------------------------------------
+    // MARK: - UITableViewDelegate Methods
+    //------------------------------------------------------------------------------
    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == feedOptionsTable {
@@ -561,13 +582,18 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         }
     }
     
-    ///MARK : - GMSPlacesDelegate Methods
+    //------------------------------------------------------------------------------
+    // MARK: - GMSPlacesDelegate Methods
+    //------------------------------------------------------------------------------
     
     func placeAtIndexPath(indexPath:IndexPath) -> GMSAutocompletePrediction {
         return searchResults.object(at: indexPath.row) as! GMSAutocompletePrediction
     }
     
-    ///MARK : - UISearchDisplayDelegate Methods
+    //------------------------------------------------------------------------------
+    // MARK: - UISearchDisplayDelegate Methods
+    //------------------------------------------------------------------------------
+    
     func searchDisplayController(_ controller: UISearchDisplayController, shouldReloadTableForSearch searchString: String?) -> Bool {
         placesClient.autocompleteQuery(searchString!, bounds: bounds, filter: filter) { (results, error) in
             
@@ -592,25 +618,5 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
             self.searchDisplayController?.searchBar.setShowsCancelButton(false, animated: true)
             self.searchDisplayController?.searchBar.resignFirstResponder()
         }
-    }
-    
-    //Utility
-    func getScrollContentHeight() -> CGFloat {
-        
-        var contentHeight:CGFloat = 0.0
-        contentHeight += (searchDisplayController?.searchBar.frame.size.height)!
-        contentHeight += map.frame.size.height
-        contentHeight += slider.frame.size.height
-        contentHeight += locationNameContainer.frame.size.height
-        contentHeight += imageUploadView.frame.size.height
-        contentHeight += scrollButtonContainer.frame.size.height
-        contentHeight += K.NumberConstant.Feed.FeedBottomPadding
-        
-        return contentHeight
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
