@@ -71,13 +71,12 @@ class FeedMenuTableViewController: UITableViewController, LocalityHeaderViewDele
         navigationController?.pushViewController(newVC, animated: true)
     }
     
-    func iconTapped(btn: HeaderIconButton) {
+    func editFeedTapped(model: FeedLocation) {
+        let newVC:FeedSettingsViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.FeedSettings) as! FeedSettingsViewController
         
-        if btn.iconType == .settings {
-            let newVC:FeedSettingsViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.FeedSettings) as! FeedSettingsViewController
-            
-            navigationController?.pushViewController(newVC, animated: true)
-        }
+        newVC.editFeed = model
+        
+        navigationController?.pushViewController(newVC, animated: true)
     }
     
     // MARK: - UITableViewDataSource Methods

@@ -303,14 +303,14 @@
                         <viewControllerLayoutGuide type="bottom" id="gR8-qi-f2Y"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0rR-by-5sV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="967"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q4j-KC-8oW">
-                                <rect key="frame" x="0.0" y="39" width="375" height="628"/>
+                                <rect key="frame" x="0.0" y="59" width="375" height="908"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bp1-iH-eci" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="862"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="926"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Qn-i5-o4R" userLabel="Mapbox View" customClass="MGLMapView">
                                                 <rect key="frame" x="0.0" y="24" width="375" height="375"/>
@@ -374,55 +374,62 @@
                                                     <constraint firstAttribute="height" constant="44" id="wCg-GN-lX3"/>
                                                 </constraints>
                                             </tableView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WEz-9j-oye" userLabel="Scroll Foot Button">
-                                                <rect key="frame" x="0.0" y="782" width="375" height="80"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0s-dc-zaR">
-                                                        <rect key="frame" x="20" y="0.0" width="335" height="58"/>
-                                                        <color key="backgroundColor" red="0.182759434" green="0.20492686330000001" blue="0.2253681719" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="58" id="dVZ-w4-bLe"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="16"/>
-                                                        <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                        <state key="normal" title="SAVE LOCATION" image="ButtonAddLocationIcon">
-                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0s-dc-zaR">
+                                                <rect key="frame" x="20" y="782" width="335" height="58"/>
+                                                <color key="backgroundColor" red="0.182759434" green="0.20492686330000001" blue="0.2253681719" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="N0s-dc-zaR" secondAttribute="trailing" constant="20" id="2SD-Lb-76A"/>
-                                                    <constraint firstItem="N0s-dc-zaR" firstAttribute="top" secondItem="WEz-9j-oye" secondAttribute="top" id="DL8-ck-Kay"/>
-                                                    <constraint firstAttribute="height" constant="80" id="a5v-mo-jlw"/>
-                                                    <constraint firstItem="N0s-dc-zaR" firstAttribute="leading" secondItem="WEz-9j-oye" secondAttribute="leading" constant="20" id="fzP-gp-z8j"/>
+                                                    <constraint firstAttribute="height" constant="58" id="dVZ-w4-bLe"/>
                                                 </constraints>
-                                            </view>
+                                                <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="16"/>
+                                                <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="SAVE LOCATION" image="ButtonAddLocationIcon">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsJ-NT-d1j">
+                                                <rect key="frame" x="20" y="850" width="335" height="58"/>
+                                                <color key="backgroundColor" red="0.2253681719" green="0.081425259722037471" blue="0.07396308802097093" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="58" id="Khk-Zq-8xB"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="16"/>
+                                                <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="DELETE LOCATION" image="ButtonDeleteLocationIcon">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="WEz-9j-oye" firstAttribute="leading" secondItem="bp1-iH-eci" secondAttribute="leading" id="7hz-Km-59D"/>
+                                            <constraint firstAttribute="trailing" secondItem="N0s-dc-zaR" secondAttribute="trailing" constant="20" id="2IW-R9-AQb"/>
                                             <constraint firstItem="w3B-hP-YkE" firstAttribute="leading" secondItem="bp1-iH-eci" secondAttribute="leading" id="9Te-e4-oC6"/>
                                             <constraint firstItem="07n-oE-OrW" firstAttribute="leading" secondItem="bp1-iH-eci" secondAttribute="leading" id="APN-Td-mOw"/>
                                             <constraint firstAttribute="trailing" secondItem="07n-oE-OrW" secondAttribute="trailing" id="B5K-dm-CVC"/>
+                                            <constraint firstAttribute="trailing" secondItem="vsJ-NT-d1j" secondAttribute="trailing" constant="20" id="DCa-66-pTx"/>
+                                            <constraint firstItem="N0s-dc-zaR" firstAttribute="top" secondItem="siN-gQ-WOs" secondAttribute="bottom" constant="18" id="JJK-eP-iOx"/>
                                             <constraint firstItem="1Qn-i5-o4R" firstAttribute="leading" secondItem="bp1-iH-eci" secondAttribute="leading" id="Moh-sA-7oy"/>
-                                            <constraint firstItem="WEz-9j-oye" firstAttribute="top" secondItem="siN-gQ-WOs" secondAttribute="bottom" constant="18" id="OY3-c8-NrX"/>
                                             <constraint firstItem="siN-gQ-WOs" firstAttribute="top" secondItem="sOl-VT-ncw" secondAttribute="bottom" constant="16" id="Rr9-Es-yHc"/>
                                             <constraint firstAttribute="trailing" secondItem="sOl-VT-ncw" secondAttribute="trailing" id="SfV-a2-6cC"/>
                                             <constraint firstAttribute="trailing" secondItem="w3B-hP-YkE" secondAttribute="trailing" id="TJG-8z-Ksb"/>
-                                            <constraint firstAttribute="bottom" secondItem="WEz-9j-oye" secondAttribute="bottom" id="TRU-Ny-nB2"/>
                                             <constraint firstAttribute="trailing" secondItem="1Qn-i5-o4R" secondAttribute="trailing" id="Uln-lR-IpE"/>
                                             <constraint firstItem="sOl-VT-ncw" firstAttribute="leading" secondItem="bp1-iH-eci" secondAttribute="leading" id="e5K-sp-rF2"/>
                                             <constraint firstItem="sOl-VT-ncw" firstAttribute="top" secondItem="07n-oE-OrW" secondAttribute="bottom" constant="10" id="fqz-5n-e3F"/>
                                             <constraint firstItem="07n-oE-OrW" firstAttribute="top" secondItem="w3B-hP-YkE" secondAttribute="bottom" id="g1S-Ee-FdV"/>
+                                            <constraint firstItem="vsJ-NT-d1j" firstAttribute="top" secondItem="N0s-dc-zaR" secondAttribute="bottom" constant="10" id="gJ3-DZ-gGc"/>
+                                            <constraint firstAttribute="bottom" secondItem="vsJ-NT-d1j" secondAttribute="bottom" constant="18" id="iqI-kb-kKa"/>
                                             <constraint firstAttribute="trailing" secondItem="siN-gQ-WOs" secondAttribute="trailing" id="jE4-e0-RHH"/>
                                             <constraint firstItem="1Qn-i5-o4R" firstAttribute="top" secondItem="bp1-iH-eci" secondAttribute="top" constant="24" id="kM5-l0-kBE"/>
+                                            <constraint firstItem="N0s-dc-zaR" firstAttribute="leading" secondItem="bp1-iH-eci" secondAttribute="leading" constant="20" id="lhh-6a-uNu"/>
                                             <constraint firstItem="siN-gQ-WOs" firstAttribute="leading" secondItem="bp1-iH-eci" secondAttribute="leading" id="rER-6A-854"/>
-                                            <constraint firstAttribute="trailing" secondItem="WEz-9j-oye" secondAttribute="trailing" id="rUq-U1-ocw"/>
+                                            <constraint firstItem="vsJ-NT-d1j" firstAttribute="leading" secondItem="bp1-iH-eci" secondAttribute="leading" constant="20" id="wFg-2c-6vv"/>
                                             <constraint firstItem="w3B-hP-YkE" firstAttribute="top" secondItem="1Qn-i5-o4R" secondAttribute="bottom" id="wI0-1l-h8Q"/>
                                         </constraints>
                                     </view>
@@ -451,7 +458,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="q4j-KC-8oW" secondAttribute="trailing" id="1Ei-p1-qCA"/>
                             <constraint firstItem="dZs-2o-u2t" firstAttribute="top" secondItem="RIZ-V4-iYL" secondAttribute="bottom" constant="39" id="GDt-fm-gmm"/>
-                            <constraint firstItem="q4j-KC-8oW" firstAttribute="top" secondItem="0rR-by-5sV" secondAttribute="top" constant="39" id="LWx-Nb-Mk3"/>
+                            <constraint firstItem="q4j-KC-8oW" firstAttribute="top" secondItem="0rR-by-5sV" secondAttribute="top" constant="59" id="LWx-Nb-Mk3"/>
                             <constraint firstItem="q4j-KC-8oW" firstAttribute="leading" secondItem="0rR-by-5sV" secondAttribute="leading" id="RLN-Of-QkG"/>
                             <constraint firstItem="dZs-2o-u2t" firstAttribute="leading" secondItem="0rR-by-5sV" secondAttribute="leading" id="Vgl-Se-sg7"/>
                             <constraint firstItem="gR8-qi-f2Y" firstAttribute="top" secondItem="q4j-KC-8oW" secondAttribute="bottom" id="XeC-u3-pcJ"/>
@@ -459,6 +466,8 @@
                             <constraint firstItem="bp1-iH-eci" firstAttribute="width" secondItem="0rR-by-5sV" secondAttribute="width" id="uEq-Iq-a0a"/>
                         </constraints>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="967"/>
                     <connections>
                         <outlet property="feedOptionsHeight" destination="wCg-GN-lX3" id="kym-Cv-m5l"/>
                         <outlet property="feedOptionsTable" destination="siN-gQ-WOs" id="mmy-ab-gAK"/>
@@ -466,6 +475,8 @@
                         <outlet property="locationName" destination="zuB-Og-Y7A" id="NUA-6E-bGr"/>
                         <outlet property="locationNameError" destination="zwX-3N-fHi" id="Kcj-jh-f27"/>
                         <outlet property="map" destination="1Qn-i5-o4R" id="nLJ-la-oik"/>
+                        <outlet property="scrollDeleteButton" destination="vsJ-NT-d1j" id="BT3-vH-cMq"/>
+                        <outlet property="scrollDeleteButtonHeight" destination="Khk-Zq-8xB" id="QH6-Yv-XeU"/>
                         <outlet property="scrollSaveButton" destination="N0s-dc-zaR" id="1M9-B8-mfc"/>
                         <outlet property="scrollView" destination="q4j-KC-8oW" id="Ejp-MQ-36k"/>
                         <outlet property="searchDisplayController" destination="zEK-Fx-AJQ" id="Plq-mz-XWt"/>
@@ -1290,7 +1301,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Qd3-wx-0My" customClass="SlideNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2qF-2R-zkD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2qF-2R-zkD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.15877681969999999" green="0.2493949234" blue="0.31995546819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1480,6 +1491,7 @@
         <image name="ButtonAboutGP" width="35" height="35"/>
         <image name="ButtonAboutTW" width="35" height="35"/>
         <image name="ButtonAddLocationIcon" width="9" height="11"/>
+        <image name="ButtonDeleteLocationIcon" width="11" height="11"/>
         <image name="ButtonPostBG" width="69" height="69"/>
         <image name="IconCamera" width="12" height="10"/>
         <image name="IconLeftMenuLikes" width="24" height="24"/>

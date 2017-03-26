@@ -8,11 +8,13 @@
 
 import UIKit
 
-protocol ImageUploadViewDelegate {
+@objc protocol ImageUploadViewDelegate {
     func takePhotoTapped()
     func uploadPhotoTapped()
+    @objc optional func selectedPhotoHasBeenRemoved()
 }
-class ImageUploadView: UIView {
+
+class ImageUploadView: UIView, SelectedPhotoDelegate {
     
     @IBOutlet weak var view:UIView!
     
@@ -38,7 +40,7 @@ class ImageUploadView: UIView {
         takePhotoButton.addTarget(self, action: #selector(takePhotoDidTouch), for: .touchUpInside)
         uploadPhotoButton.addTarget(self, action: #selector(uploadPhotoDidTouch), for: .touchUpInside)
         
-        selectedPhoto.set(hidden:true)
+        selectedPhoto.isHidden = true
     }
 
     func setLocationImage(image:UIImage) {
@@ -60,6 +62,11 @@ class ImageUploadView: UIView {
     
     func uploadPhotoDidTouch(sender:UIButton) {
         delegate?.uploadPhotoTapped()
+    }
+    
+    //SelectedPhotoDelegate Methods
+    func photoHasBeenRemoved() {
+        delegate?.selectedPhotoHasBeenRemoved!()
     }
     
     /*

@@ -11,6 +11,8 @@ import Mapbox
 
 class FeedLocation: NSObject {
 
+    var locationId:String
+    
     var name:String
     var location:String
     var feedImgUrl:String
@@ -27,6 +29,8 @@ class FeedLocation: NSObject {
     
     init(coord:CLLocationCoordinate2D, name:String) {
         
+        self.locationId = Util.generateUUID()
+        
         self.lat = coord.latitude
         self.lon = coord.longitude
         self.name = name
@@ -41,6 +45,13 @@ class FeedLocation: NSObject {
         
         self.name = firebaseDictionary[K.DB.Var.Name] as! String
         self.location = firebaseDictionary[K.DB.Var.Location] as! String
+        
+        if firebaseDictionary[K.DB.Var.LocationId] != nil {
+            self.locationId = firebaseDictionary[K.DB.Var.LocationId] as! String
+        } else {
+            self.locationId = Util.generateUUID()
+        }
+        
         self.feedImgUrl = firebaseDictionary[K.DB.Var.FeedImgURL] as! String
         self.lat = firebaseDictionary[K.DB.Var.Lat] as! Double
         self.lon = firebaseDictionary[K.DB.Var.Lon] as! Double
@@ -62,6 +73,7 @@ class FeedLocation: NSObject {
         
         return [K.DB.Var.Name : name,
                 K.DB.Var.Location : location,
+                K.DB.Var.LocationId : locationId,
                 K.DB.Var.FeedImgURL : feedImgUrl,
                 K.DB.Var.Lat : lat,
                 K.DB.Var.Lon : lon,

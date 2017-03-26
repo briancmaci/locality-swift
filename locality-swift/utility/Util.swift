@@ -210,6 +210,11 @@ class Util: NSObject {
         }
     }
     
+    class func pointsEqual(_ pointA:CLLocationCoordinate2D, _ pointB:CLLocationCoordinate2D) -> Bool {
+        
+        return pointA.latitude == pointB.latitude && pointA.longitude == pointB.longitude
+    }
+    
     class func generateUUID() -> String {
         return UUID().uuidString
     }

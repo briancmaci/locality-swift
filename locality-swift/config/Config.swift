@@ -50,6 +50,7 @@ struct K {
             static let Pinned = "pinned"
             
             //Location
+            static let LocationId = "lid"
             static let Name = "name"
             static let Location = "location"
             static let FeedImgURL = "feedImgUrl"
@@ -260,6 +261,8 @@ struct K {
         struct Feed {
             static let AddFeedLabel = "add-feed-label"
             static let SaveFeedLabel = "save-feed-label"
+            static let UpdateFeedLabel = "update-feed-label"
+            static let DeleteFeedLabel = "delete-feed-label"
             static let FeedNameDefault = "feed-name-default"
             static let FeedNameError = "feed-name-error"
             

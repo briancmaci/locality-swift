@@ -8,12 +8,20 @@
 
 import UIKit
 
+protocol SelectedPhotoDelegate {
+    func photoHasBeenRemoved()
+}
+
 class SelectedPhotoView: UIView {
 
     @IBOutlet weak var imgView:UIImageView!
     @IBAction func closeButtonDidTouch(sender:UIButton) {
         set(hidden:true)
+        
+        delegate?.photoHasBeenRemoved()
     }
+    
+    var delegate:SelectedPhotoDelegate?
     
     func populateImage(img:UIImage) {
         imgView.image = img

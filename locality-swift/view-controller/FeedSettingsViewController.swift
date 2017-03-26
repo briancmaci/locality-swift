@@ -10,6 +10,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 import Mapbox
+import SDWebImage
 
 class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationManagerDelegate, LocationSliderDelegate, ImageUploadViewDelegate, UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate, UIGestureRecognizerDelegate, UITextFieldDelegate, UIScrollViewDelegate, MGLMapViewDelegate {
     
@@ -20,6 +21,8 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     @IBOutlet weak var slider:LocationSlider!
     @IBOutlet weak var imageUploadView:ImageUploadView!
     @IBOutlet weak var scrollSaveButton:UIButton!
+    @IBOutlet weak var scrollDeleteButton:UIButton!
+    @IBOutlet weak var scrollDeleteButtonHeight:NSLayoutConstraint!
     @IBOutlet weak var feedOptionsTable:UITableView!
     @IBOutlet weak var feedOptionsHeight:NSLayoutConstraint!
     
@@ -45,7 +48,9 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     var shouldBeginEditing:Bool!
     
     //ViewController Mode
-    var isNewFeed:Bool! = true
+    var isEditingFeed:Bool! = false
+    var editFeed:FeedLocation?
+    var photoHasBeenEdited:Bool = false
     
     //------------------------------------------------------------------------------
     // MARK: - View Lifecycle
@@ -54,7 +59,10 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        initViewControllerMode()
         initialSetup()
+        
+        //populate with feed if editing
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,6 +79,10 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     // MARK: - Initial Setup
     //------------------------------------------------------------------------------
     
+    func initViewControllerMode() {
+        isEditingFeed = !(editFeed == nil)
+    }
+    
     func initialSetup() {
         
         initButtons()
@@ -86,13 +98,31 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     
     func initButtons() {
     
-        scrollSaveButton.setTitle(K.String.Feed.SaveFeedLabel.localized, for: .normal)
-        scrollSaveButton.addTarget(self, action: #selector(saveLocationDidTouch), for: .touchUpInside)
+        if isEditingFeed == true {
+            scrollSaveButton.setTitle(K.String.Feed.UpdateFeedLabel.localized, for: .normal)
+            scrollSaveButton.addTarget(self, action: #selector(updateLocationDidTouch), for: .touchUpInside)
+            
+            scrollDeleteButton.setTitle(K.String.Feed.DeleteFeedLabel.localized, for: .normal)
+            scrollDeleteButton.addTarget(self, action: #selector(deleteLocationDidTouch), for: .touchUpInside)
+        }
+        
+        else {
+            scrollSaveButton.setTitle(K.String.Feed.SaveFeedLabel.localized, for: .normal)
+            scrollSaveButton.addTarget(self, action: #selector(saveLocationDidTouch), for: .touchUpInside)
+            
+            scrollDeleteButtonHeight.constant = 0
+            scrollSaveButton.setNeedsUpdateConstraints()
+        }
     }
     
     func initLocationName() {
         
-        locationName.placeholder = K.String.Feed.FeedNameDefault.localized
+        if !isEditingFeed {
+            locationName.placeholder = K.String.Feed.FeedNameDefault.localized
+        } else {
+            locationName.text = editFeed?.name
+        }
+        
         locationName.delegate = self
         locationNameError.text?.removeAll()
     }
@@ -100,7 +130,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     func initHeaderView() {
         
         header.initHeaderViewStage()
-        header.initAttributes(title: K.String.Header.AddNewLocationHeader.localized,
+        header.initAttributes(title: isEditingFeed == true ? K.String.Header.EditLocationHeader.localized : K.String.Header.AddNewLocationHeader.localized,
                               leftType: .back,
                               rightType: .none)
         
@@ -134,7 +164,12 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     
     func initScrollView() {
 
-        scrollView.contentInset = UIEdgeInsetsMake(0, 0, 40, 0)
+        if isEditingFeed == true {
+            scrollView.contentInset = UIEdgeInsetsMake(0, 0, 10, 0)
+        } else {
+            scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        }
+        
         scrollView.delegate = self
     }
     
@@ -143,20 +178,14 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         sliderSteps = slider.initSlider()
         slider.delegate = self
         
+        if isEditingFeed == true {
+            let editRange = (editFeed?.range)!
+            slider.setStep(range:CGFloat(editRange))
+        }
         currentRangeIndex = slider.currentStep
     }
     
     func initMap() {
-        
-        //Start polling
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.startUpdatingLocation()
-        }
         
         map.showsUserLocation = false
         map.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -164,6 +193,33 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         let localityStyleURL = K.Mapbox.MapStyle
         map.styleURL = URL(string:localityStyleURL)
         map.delegate = self
+        
+        if isEditingFeed == true {
+            
+            currentLocation = CLLocationCoordinate2D(latitude: (editFeed?.lat)!,
+                                                     longitude: (editFeed?.lon)!)
+            
+            if hasMapped == false {
+                map.setCenter(currentLocation, animated:false)
+                updateMapRange()
+                hasMapped = true
+            }
+            
+            sliderValueChanged(step: currentRangeIndex)
+        }
+        
+        else {
+            
+            //Start polling
+            locationManager = CLLocationManager()
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestWhenInUseAuthorization()
+            
+            if CLLocationManager.locationServicesEnabled() {
+                locationManager.startUpdatingLocation()
+            }
+        }
         
         bindMapGestures()
     }
@@ -176,6 +232,20 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     }
     
     func initImageUploadView() {
+        if isEditingFeed == true {
+            //load image
+            if editFeed?.feedImgUrl != K.Image.DefaultFeedHero {
+                let iv:UIImageView = UIImageView(frame:CGRect(origin:CGPoint.zero, size:imageUploadView.frame.size))
+                iv.sd_setImage(with: URL(string:(editFeed?.feedImgUrl)!), completed: { (img, error, type, url) in
+                    
+                    if img != nil {
+                        self.imageUploadView.setLocationImage(image: img!)
+                    }
+                })
+                
+            }
+        }
+        
         imageUploadView.delegate = self
     }
     
@@ -189,6 +259,21 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
                                                      range: Float(sliderSteps[currentRangeIndex].distance),
                                                      current: false)
         
+        thisLocation.feedImgUrl = url
+        
+        for op in self.feedOptionsTable.visibleCells {
+            
+            let c = op as! FeedSettingsToggleCell
+            
+            if c.data["var"] as! String == K.String.Feed.Setting.PushEnabled {
+                thisLocation.pushEnabled = c.settingsSwitch.isOn
+            }
+                
+            else if c.data["var"] as! String == K.String.Feed.Setting.PromotionsEnabled {
+                thisLocation.promotionsEnabled = c.settingsSwitch.isOn
+            }
+        }
+        
         GoogleMapsManager.reverseGeocode(coord: currentLocation) { (address, error) in
             
             if error != nil {
@@ -198,21 +283,6 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
             else
             {
                 thisLocation.location = Util.locationLabel(address: address!)
-            }
-            
-            thisLocation.feedImgUrl = url
-            
-            for op in self.feedOptionsTable.visibleCells {
-                
-                let c = op as! FeedSettingsToggleCell
-                
-                if c.data["var"] as! String == K.String.Feed.Setting.PushEnabled {
-                    thisLocation.pushEnabled = c.settingsSwitch.isOn
-                }
-                    
-                else if c.data["var"] as! String == K.String.Feed.Setting.PromotionsEnabled {
-                    thisLocation.promotionsEnabled = c.settingsSwitch.isOn
-                }
             }
             
             //save to current
@@ -231,6 +301,107 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         }
     }
     
+    func updateLocation(url:String) {
+        
+        //Update edit feed
+        editFeed?.lat = self.currentLocation.latitude
+        editFeed?.lon = self.currentLocation.longitude
+        editFeed?.name = locationName.text!
+        editFeed?.range = Float(sliderSteps[currentRangeIndex].distance)
+        editFeed?.feedImgUrl = url
+        
+        for op in self.feedOptionsTable.visibleCells {
+            
+            let c = op as! FeedSettingsToggleCell
+            
+            if c.data["var"] as! String == K.String.Feed.Setting.PushEnabled {
+                editFeed?.pushEnabled = c.settingsSwitch.isOn
+            }
+                
+            else if c.data["var"] as! String == K.String.Feed.Setting.PromotionsEnabled {
+                editFeed?.promotionsEnabled = c.settingsSwitch.isOn
+            }
+        }
+        
+        //check if the map has been changed
+        if Util.pointsEqual(currentLocation, CLLocationCoordinate2D(latitude:(editFeed?.lat)!, longitude:(editFeed?.lon)!)) {
+            
+            //We do not need to call reverseGeocode
+            //save to current
+            
+            for i in 0...CurrentUser.shared.pinnedLocations.count - 1 {
+                if CurrentUser.shared.pinnedLocations[i].locationId == editFeed?.locationId {
+                    CurrentUser.shared.pinnedLocations[i] = editFeed!
+                }
+            }
+            
+            FirebaseManager.write(pinnedLocations:CurrentUser.shared.pinnedLocations, completionHandler: { (success, error) in
+                if error != nil {
+                    print("Locations Write Error: \(error?.localizedDescription)")
+                }
+                    
+                else {
+                    print("Location written")
+                    SlideNavigationController.sharedInstance().popViewController(animated: true)
+                }
+            })
+        }
+        
+        else {
+            GoogleMapsManager.reverseGeocode(coord: currentLocation) { (address, error) in
+                
+                if error != nil {
+                    self.editFeed?.location = "Location Unknown"
+                }
+                    
+                else
+                {
+                    self.editFeed?.location = Util.locationLabel(address: address!)
+                }
+                
+                //save to current
+                for i in 0...CurrentUser.shared.pinnedLocations.count - 1 {
+                    if CurrentUser.shared.pinnedLocations[i].locationId == self.editFeed?.locationId {
+                        CurrentUser.shared.pinnedLocations[i] = self.editFeed!
+                    }
+                }
+                
+                FirebaseManager.write(pinnedLocations:CurrentUser.shared.pinnedLocations, completionHandler: { (success, error) in
+                    if error != nil {
+                        print("Locations Update Error: \(error?.localizedDescription)")
+                    }
+                        
+                    else {
+                        print("Location updated")
+                        SlideNavigationController.sharedInstance().popViewController(animated: true)
+                    }
+                })
+            }
+        }
+    }
+    
+    func deleteLocation(_ loc:FeedLocation) {
+    
+        for i in 0...CurrentUser.shared.pinnedLocations.count - 1 {
+            if CurrentUser.shared.pinnedLocations[i].locationId == loc.locationId {
+                CurrentUser.shared.pinnedLocations.remove(at: i)
+            }
+        }
+        
+        print("DELETE LOCATION IMAGE!!!!!")
+        
+        FirebaseManager.write(pinnedLocations:CurrentUser.shared.pinnedLocations, completionHandler: { (success, error) in
+            if error != nil {
+                print("Locations Delete Error: \(error?.localizedDescription)")
+            }
+                
+            else {
+                print("Location deleted")
+                SlideNavigationController.sharedInstance().popViewController(animated: true)
+            }
+        })
+    }
+    
     func writePhotoToStorage() {
         PhotoUploadManager.uploadPhoto(image: imageUploadView.getImage(), type: .location, uid: CurrentUser.shared.uid) { (metadata, error) in
             
@@ -240,7 +411,12 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
                 
             else {
                 let downloadURL = metadata!.downloadURL()!.absoluteString
-                self.writeLocation(url:downloadURL)
+                
+                if self.isEditingFeed == true {
+                    self.updateLocation(url: downloadURL)
+                } else {
+                    self.writeLocation(url:downloadURL)
+                }
             }
         }
     }
@@ -263,6 +439,32 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         else {
             writePhotoToStorage()
         }
+    }
+    
+    func updateLocationDidTouch(sender:UIButton) {
+        
+        if (locationName.text?.isEmpty)! {
+            locationNameError.text = K.String.Feed.FeedNameError.localized
+            return
+        }
+        
+        if !imageUploadView.hasImage() {
+            updateLocation(url: K.Image.DefaultFeedHero)
+        }
+            
+        else {
+            if photoHasBeenEdited == true || editFeed?.feedImgUrl == K.Image.DefaultFeedHero {
+                writePhotoToStorage()
+            }
+            
+            else {
+                updateLocation(url: (editFeed?.feedImgUrl)!)
+            }
+        }
+    }
+    
+    func deleteLocationDidTouch(sender:UIButton) {
+        deleteLocation(editFeed!)
     }
     
     func handleMapSingleTap(tap:UITapGestureRecognizer) {
@@ -333,6 +535,13 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     
     func uploadPhotoTapped() {
         selectPhoto()
+    }
+    
+    func selectedPhotoHasBeenRemoved() {
+        
+        if isEditingFeed == true {
+            photoHasBeenEdited = true
+        }
     }
     
     override func imageCropViewController(_ controller: RSKImageCropViewController, didCropImage croppedImage: UIImage, usingCropRect cropRect: CGRect, rotationAngle: CGFloat) {
@@ -546,14 +755,15 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
             
             toggleCell.populate(data: feedOptions[indexPath.row])
 
-            ////THIS WILL COME WHEN WE EDIT SETTINGS. WE SET THEM NOW WHEN SAVING FEED
-//            if toggleCell.data["var"] as! String == K.String.Feed.Setting.PushEnabled {
-//                thisLocation.pushEnabled = c.settingsSwitch.isOn
-//            }
-//                
-//            else if toggleCell.data["var"] as! String == K.String.Feed.Setting.PromotionsEnabled {
-//                thisLocation.promotionsEnabled = c.settingsSwitch.isOn
-//            }
+            if isEditingFeed == true {
+                if toggleCell.data["var"] as! String == K.String.Feed.Setting.PushEnabled {
+                    toggleCell.settingsSwitch.setOn((editFeed?.pushEnabled)!, animated: false)
+                }
+                    
+                else if toggleCell.data["var"] as! String == K.String.Feed.Setting.PromotionsEnabled {
+                    toggleCell.settingsSwitch.setOn((editFeed?.promotionsEnabled)!, animated: false)
+                }
+            }
             
             return toggleCell
         }

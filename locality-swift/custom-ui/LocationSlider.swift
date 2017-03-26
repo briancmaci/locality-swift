@@ -19,7 +19,7 @@ class LocationSlider: UIView {
     @IBOutlet weak var stepLabel:UILabel!
     @IBOutlet weak var tickView:UIView!
     
-    var sliderRange:[RangeStep]!
+    var sliderRange:[RangeStep] = [RangeStep]()
     var stepsCount:Int!
     var currentStep:Int!
     
@@ -35,23 +35,21 @@ class LocationSlider: UIView {
     
     func initSlider() -> [RangeStep] {
         let stepsArray = Util.getPList(name: K.PList.RangeValuesFeet)["Steps"] as! [AnyObject]
-        var steps:[RangeStep] = [RangeStep]()
         
         for i in 0...stepsArray.count-1 {
             let step:RangeStep = RangeStep(distance: stepsArray[i]["distance"] as! CGFloat,
                                            label:stepsArray[i]["label"] as! String,
                                            unit:stepsArray[i]["unit"] as! String)
-            steps.append(step)
+            sliderRange.append(step)
         }
         
-        populate(range: steps)
+        populate()
         
-        return steps
+        return sliderRange
     }
     
-    func populate(range:[RangeStep]) {
+    func populate() {
         
-        sliderRange = range
         stepsCount = sliderRange.count - 1
         currentStep = stepsCount/2
         
@@ -91,5 +89,19 @@ class LocationSlider: UIView {
         
         delegate?.sliderValueChanged(step: Int(sender.value))
     }
-
+    
+    func setStep(range:CGFloat) {
+        var thisIndex = 0
+        
+        for i in 0...sliderRange.count-1 {
+            let thisDistance = sliderRange[i].distance
+            if thisDistance == range {
+                thisIndex = i
+            }
+        }
+        
+        currentStep = thisIndex
+        slider.value = Float(currentStep)
+        updateRangeLabel()
+    }
 }

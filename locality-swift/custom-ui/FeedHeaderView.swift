@@ -10,6 +10,7 @@ import UIKit
 
 @objc protocol LocalityHeaderViewDelegate {
     @objc optional func iconTapped(btn:HeaderIconButton)
+    @objc optional func editFeedTapped(model:FeedLocation)
     @objc optional func openFeedTapped(model:FeedLocation, index:Int)
 }
 
@@ -114,10 +115,12 @@ class FeedHeaderView: UIView {
     }
     
     func bindEvent(btn:HeaderIconButton) {
+        
         btn.addTarget(self, action: #selector(iconDidTouch), for: .touchUpInside)
     }
     
     func iconDidTouch(sender:HeaderIconButton) {
+        
         delegate?.iconTapped!(btn: sender)
     }
 }

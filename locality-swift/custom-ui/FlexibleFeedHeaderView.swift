@@ -142,6 +142,17 @@ class FlexibleFeedHeaderView: FeedHeaderView {
         delegate?.openFeedTapped?(model: feedModel, index: feedIndex)
     }
     
+    override func iconDidTouch(sender:HeaderIconButton) {
+        
+        if sender.iconType == .settings {
+            delegate?.editFeedTapped!(model:feedModel )
+        }
+        
+        else {
+            delegate?.iconTapped!(btn: sender)
+        }
+    }
+    
     func updateHeaderHeight(newHeight:CGFloat) {
         headerHeight.constant = newHeight
         locationContainer.alpha = (newHeight - K.NumberConstant.Header.HeroCollapseHeight)/deltaHeight

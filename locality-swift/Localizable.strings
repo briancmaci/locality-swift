@@ -22,6 +22,8 @@ current-map-header = "YOU ARE CURRENTLY IN";
 //Feed
 add-feed-label = "ADD NEW LOCATION";
 save-feed-label = "SAVE LOCATION";
+update-feed-label = "UPDATE LOCATION";
+delete-feed-label = "DELETE LOCATION";
 
 //UserStatus
 new-user = "User";
