@@ -150,22 +150,16 @@ class LocalityPhotoBaseViewController: LocalityBaseViewController, UIActionSheet
         
         UIApplication.topViewController()?.present(picker, animated: true, completion: nil)
     }
-    
-//    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-//        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-//            self.showImageCropper(image: image)
-//        } else{
-//            print("LocalityPhotoBaseVC:imagePickerController:didFinishPicking Error")
-//        }
-//        
-//        self.dismiss(animated: true, completion: nil)
-//    }
-
-    
+        
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         picker.dismiss(animated: true) {
             if let image:UIImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
                 self.showImageCropper(image: image)
+                
+                //save taken photo
+                if picker.sourceType == .camera {
+                   UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
+                }
             }
             
             else {
