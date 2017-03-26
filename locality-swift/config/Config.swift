@@ -227,6 +227,8 @@ struct K {
         static let AddCommentCell = "AddCommentCell"
         
         static let SortButtonWithPopup = "SortButtonWithPopup"
+        
+        static let ForgotPasswordViewController = "ForgotPasswordViewController"
     }
     
     //UITableViewCell reuseIdentifiers

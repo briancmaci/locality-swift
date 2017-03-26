@@ -16,6 +16,8 @@
 		722ABA451E74761100A3F1DA /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 722ABA3F1E74761100A3F1DA /* SlideNavigationController.m */; };
 		7244AC6A1E8610E00091715E /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7244AC691E8610E00091715E /* LoadingButton.swift */; };
 		7244AC721E86C2890091715E /* PostFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7244AC701E86C2890091715E /* PostFeedCell.xib */; };
+		7244AC781E8874340091715E /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7244AC761E8874340091715E /* ForgotPasswordViewController.swift */; };
+		7244AC791E8874340091715E /* ForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7244AC771E8874340091715E /* ForgotPasswordViewController.xib */; };
 		72B881A11E65EE5000EB3B2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B881A01E65EE5000EB3B2E /* AppDelegate.swift */; };
 		72B881A61E65EE5000EB3B2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72B881A41E65EE5000EB3B2E /* Main.storyboard */; };
 		72B881A91E65EE5000EB3B2E /* locality_swift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 72B881A71E65EE5000EB3B2E /* locality_swift.xcdatamodeld */; };
@@ -158,6 +160,8 @@
 		722ABA3F1E74761100A3F1DA /* SlideNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlideNavigationController.m; path = "custom-ui/SlideNavigationController/SlideNavigationController.m"; sourceTree = "<group>"; };
 		7244AC691E8610E00091715E /* LoadingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingButton.swift; path = "custom-ui/LoadingButton.swift"; sourceTree = "<group>"; };
 		7244AC701E86C2890091715E /* PostFeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PostFeedCell.xib; path = "custom-ui/PostFeedCell.xib"; sourceTree = "<group>"; };
+		7244AC761E8874340091715E /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForgotPasswordViewController.swift; path = "view-controller/ForgotPasswordViewController.swift"; sourceTree = "<group>"; };
+		7244AC771E8874340091715E /* ForgotPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForgotPasswordViewController.xib; path = "view-controller/ForgotPasswordViewController.xib"; sourceTree = "<group>"; };
 		72B8819D1E65EE5000EB3B2E /* locality-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "locality-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		72B881A01E65EE5000EB3B2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		72B881A51E65EE5000EB3B2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -317,6 +321,15 @@
 				7244AC691E8610E00091715E /* LoadingButton.swift */,
 			);
 			name = "loading-button";
+			sourceTree = "<group>";
+		};
+		7244AC751E8873EE0091715E /* forgot-password */ = {
+			isa = PBXGroup;
+			children = (
+				7244AC761E8874340091715E /* ForgotPasswordViewController.swift */,
+				7244AC771E8874340091715E /* ForgotPasswordViewController.xib */,
+			);
+			name = "forgot-password";
 			sourceTree = "<group>";
 		};
 		72B881941E65EE5000EB3B2E = {
@@ -527,6 +540,7 @@
 		72B882171E6A8BB700EB3B2E /* join-login */ = {
 			isa = PBXGroup;
 			children = (
+				7244AC751E8873EE0091715E /* forgot-password */,
 				72B8820B1E68B8D100EB3B2E /* JoinViewController.swift */,
 				72B882151E69434000EB3B2E /* JoinUsernameViewController.swift */,
 				72B882131E693C0500EB3B2E /* JoinValidateViewController.swift */,
@@ -932,6 +946,7 @@
 				72F24BC21E71AB1900CA7702 /* PostUserInfoView.xib in Resources */,
 				72F24BA81E70D7F800CA7702 /* MenuOptions.plist in Resources */,
 				72F24BE91E72282600CA7702 /* PostFromView.xib in Resources */,
+				7244AC791E8874340091715E /* ForgotPasswordViewController.xib in Resources */,
 				72B8821E1E6AA54800EB3B2E /* Keys.plist in Resources */,
 				7244AC721E86C2890091715E /* PostFeedCell.xib in Resources */,
 				72B881AE1E65EE5000EB3B2E /* LaunchScreen.storyboard in Resources */,
@@ -1087,6 +1102,7 @@
 				72F24BC81E71B93C00CA7702 /* PostFeedCellView.swift in Sources */,
 				72F24BBB1E71A1B300CA7702 /* SortBy.swift in Sources */,
 				72B882081E688AB300EB3B2E /* CurrentUser.swift in Sources */,
+				7244AC781E8874340091715E /* ForgotPasswordViewController.swift in Sources */,
 				72B881F71E67919400EB3B2E /* AngledButtonAttributes.swift in Sources */,
 				72DC487C1E6BCA7700486535 /* DIspatchQueueExtension.swift in Sources */,
 				72EEDF8E1E75B19A009DFA77 /* FeedSettingsViewController.swift in Sources */,

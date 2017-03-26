@@ -168,7 +168,10 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
     }
     
     func passwordForgotDidTouch(sender:UIButton) {
-        print("Load Password Modal")
+        
+        let newVC:ForgotPasswordViewController = ForgotPasswordViewController(nibName: K.NIBName.ForgotPasswordViewController, bundle: nil)
+        
+        navigationController?.present(newVC, animated: true, completion: nil)
     }
     
     func textFieldDidChange(sender:UITextField) {
