@@ -111,8 +111,8 @@ class SortButtonWithPopup: UIView {
             btn.updateStage(on: false)
         }
     }
-    
-//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-//        return true
-//    }
+
+    func updateType() {
+        sortButtonTrigger.updateIcon(type: CurrentUser.shared.sortByType)
+    }
 }

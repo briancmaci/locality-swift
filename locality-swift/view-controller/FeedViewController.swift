@@ -12,29 +12,31 @@ import SWTableViewCell
 
 class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, SortButtonDelegate, SWTableViewCellDelegate, CLLocationManagerDelegate {
 
-    let headerExpandedOffset = K.NumberConstant.Header.HeroExpandHeight - K.NumberConstant.Header.HeroCollapseHeight
-    
     @IBOutlet weak var headerHero:FlexibleFeedHeaderView!
     @IBOutlet weak var postsTable:UITableView!
     @IBOutlet weak var flexHeaderHeight:NSLayoutConstraint!
     @IBOutlet weak var sortButton:SortButtonWithPopup!
     @IBOutlet weak var postButton:UIButton!
-    
     @IBOutlet weak var noPostsLabel:UILabel!
+    
+    let headerExpandedOffset = K.NumberConstant.Header.HeroExpandHeight - K.NumberConstant.Header.HeroCollapseHeight
     
     var thisFeed:FeedLocation!
     var isMyCurrentLocation:Bool = false //We ALWAYS want to update the feed current location
-    var sortType:SortByType!
+    
+    //DataSource
+    var posts:[UserPost] = [UserPost]()
+    
+    //Updating location constantly
+    var locationManager:CLLocationManager!
     
     var sizingCell:PostFeedCell!
     
-    var posts:[UserPost] = [UserPost]()
-    
     var COORDINATE_TEST_VIEW:UILabel!
     
-    ////Updating location constantly
-    var locationManager:CLLocationManager!
-    var currentLocation:CLLocationCoordinate2D!
+    //------------------------------------------------------------------------------
+    // MARK: - View Lifecycle
+    //------------------------------------------------------------------------------
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,23 +48,10 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         //set initial values for currentuser
         CurrentUser.shared.myLastRecordedLocation = CLLocationCoordinate2D(latitude: thisFeed.lat, longitude: thisFeed.lon)
         
-//        CurrentUser.shared.currentFeedLocation = CLLocationCoordinate2D(latitude: thisFeed.lat, longitude: thisFeed.lon)
-//        
         viewDidLoadCalled = true
         loadPosts()
         
-        // Do any additional setup after loading the view.
-        initSizingCell()
-        
-        initLocationManager()
-        
-        initSortByType()
-        initPostButton()
-        initNoPostsLabel()
-        initHeaderView()
-        initTableView()
-        
-        //initLocationTestView()
+        initialSetup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,7 +70,76 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     override func viewWillDisappear(_ animated: Bool) {
         locationManager.stopUpdatingLocation()
     }
+    
+    //------------------------------------------------------------------------------
+    // MARK: - Initial Setup
+    //------------------------------------------------------------------------------
 
+    func initialSetup() {
+        
+        initLocationManager()
+        initHeaderView()
+        initTableView()
+        
+        initSortByType()
+        initPostButton()
+        initNoPostsLabel()
+        
+        //initLocationTestView()
+    }
+    
+    func initLocationManager() {
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.distanceFilter = K.NumberConstant.Map.DistanceFilter
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    func initHeaderView() {
+        headerHero.populate(model: thisFeed, index: 0, inFeedMenu: false)
+        headerHero.delegate = self
+    }
+    
+    func initTableView() {
+        postsTable.delegate = self
+        postsTable.dataSource = self
+        
+        initSizingCell()
+        
+        let topOffset = K.NumberConstant.Header.HeroExpandHeight - K.NumberConstant.Header.HeroCollapseHeight
+        
+        postsTable.contentInset = UIEdgeInsetsMake(topOffset, 0, topOffset, 0)
+        
+        postsTable.register(UINib(nibName: K.NIBName.PostFeedCell, bundle: nil), forCellReuseIdentifier: K.ReuseID.PostFeedCellID)
+        
+        postsTable.separatorStyle = .none
+    }
+    
+    func initSortByType() {
+        sortButton.updateType()
+        sortButton.delegate = self
+    }
+    
+    func initPostButton() {
+        postButton.setTitle(K.String.Button.Post.localized, for: .normal)
+        postButton.addTarget(self, action: #selector(postDidTouch), for: .touchUpInside)
+        
+        view.bringSubview(toFront: postButton)
+    }
+    
+    func initNoPostsLabel() {
+        noPostsLabel.text = K.String.Post.NoPostsLabel.localized
+    }
+    
+    func initSizingCell() {
+        sizingCell = UIView.instanceFromNib(name: K.NIBName.PostFeedCell) as? PostFeedCell
+    }
+    
     func initLocationTestView() {
         
         COORDINATE_TEST_VIEW = UILabel(frame: CGRect(x:20, y:200, width:K.Screen.Width - 40, height:60))
@@ -95,18 +153,9 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         
     }
     
-    func initLocationManager() {
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.distanceFilter = K.NumberConstant.Map.DistanceFilter
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.startUpdatingLocation()
-            //locationManager.startUpdatingHeading()
-        }
-    }
+    //------------------------------------------------------------------------------
+    // MARK: - Data & API
+    //------------------------------------------------------------------------------
     
     func loadPosts() {
         GeoFireManager.getPostLocations(range: thisFeed.range, location: CLLocation(latitude:thisFeed.lat, longitude:thisFeed.lon)) { (matched, error) in
@@ -127,70 +176,64 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         }
     }
     
-    func initSizingCell() {
-        sizingCell = UIView.instanceFromNib(name: K.NIBName.PostFeedCell) as? PostFeedCell
-    }
-    
-    func initNoPostsLabel() {
-        noPostsLabel.text = K.String.Post.NoPostsLabel.localized
-    }
-    
-    func initSortByType() {
-        sortType = .proximity
+    func deletePostFromList(thisPost:UserPost, indexPath:IndexPath) {
         
-        sortButton.delegate = self
-    }
-    
-    func initPostButton() {
-        postButton.setTitle(K.String.Button.Post.localized, for: .normal)
-        postButton.addTarget(self, action: #selector(postDidTouch), for: .touchUpInside)
-        
-        view.bringSubview(toFront: postButton)
-    }
-    
-    func initHeaderView() {
-        headerHero.populate(model: thisFeed, index: 0, inFeedMenu: false)
-        headerHero.delegate = self
-    }
-    
-    func initTableView() {
-        postsTable.delegate = self
-        postsTable.dataSource = self
-        
-        let topOffset = K.NumberConstant.Header.HeroExpandHeight - K.NumberConstant.Header.HeroCollapseHeight
-        
-        postsTable.contentInset = UIEdgeInsetsMake(topOffset, 0, topOffset, 0)
-        
-        postsTable.register(UINib(nibName: K.NIBName.PostFeedCell, bundle: nil), forCellReuseIdentifier: K.ReuseID.PostFeedCellID)
-        
-        postsTable.separatorStyle = .none
-    }
-    
-    // MARK: - CLLocationManagerDelegate
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        currentLocation = locations[0].coordinate
-        
-        if isMyCurrentLocation == true {
-            CurrentUser.shared.currentLocationFeed.lat = locations[0].coordinate.latitude
-            CurrentUser.shared.currentLocationFeed.lon = locations[0].coordinate.longitude
+        FirebaseManager.delete(post: thisPost) { (error) in
+            if error == nil {
+                self.posts.remove(at: indexPath.row)
+                self.postsTable.deleteRows(at: [indexPath], with: .automatic)
+            }
         }
-        
-        CurrentUser.shared.myLastRecordedLocation = locations[0].coordinate
-        
-        //showTestLocation()
     }
     
-    func showTestLocation() {
-        COORDINATE_TEST_VIEW.text = "\(currentLocation.latitude, currentLocation.longitude)"
-        
+    func blockPostFromList(thisPost:UserPost, indexPath:IndexPath) {
+        FirebaseManager.blockPost(pid: thisPost.postId) { (blockedPosts, error) in
+            
+            if error == nil {
+                thisPost.blockedBy = blockedPosts!
+                self.posts.remove(at: indexPath.row)
+                self.postsTable.deleteRows(at: [indexPath], with: .automatic)
+                
+                if blockedPosts?.count == K.NumberConstant.BlockedByLimit {
+                    FirebaseManager.delete(post: thisPost) { (error) in
+                        if error == nil {
+                            print("Post deleted from too many blocks!")
+                        }
+                    }
+                }
+            }
+        }
     }
+    
+    //------------------------------------------------------------------------------
+    // MARK: - CTA Methods
+    //------------------------------------------------------------------------------
     
     func postDidTouch(sender:UIButton) {
         let newVC:PostCreateViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.PostCreate) as! PostCreateViewController
         
         navigationController?.pushViewController(newVC, animated: true)
     }
+    
+    //------------------------------------------------------------------------------
+    // MARK: - CLLocationManagerDelegate Methods
+    //------------------------------------------------------------------------------
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        CurrentUser.shared.myLastRecordedLocation = locations[0].coordinate
+        
+        if isMyCurrentLocation == true {
+            CurrentUser.shared.currentLocationFeed.lat = locations[0].coordinate.latitude
+            CurrentUser.shared.currentLocationFeed.lon = locations[0].coordinate.longitude
+        }
+        
+        //showTestLocation(locations[0].coordinate)
+    }
+    
+    //------------------------------------------------------------------------------
+    // MARK: - UITableViewDataSource Methods
+    //------------------------------------------------------------------------------
     
     func heightForCellAtIndexPath(indexPath:IndexPath) -> CGFloat {
        
@@ -204,29 +247,22 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         return sizingCell!.postContent.getViewHeight(caption: p.caption) + imgHeight
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //for ease of reading
-        let collapseH = K.NumberConstant.Header.HeroCollapseHeight
-        let expandH = K.NumberConstant.Header.HeroExpandHeight - 20
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        flexHeaderHeight.constant = max( collapseH, collapseH + (expandH - collapseH + 20) * -(postsTable.contentOffset.y/headerExpandedOffset) - 20)
-        
-        headerHero.setNeedsUpdateConstraints()
-        headerHero.updateHeaderHeight(newHeight: flexHeaderHeight.constant)
-        
+        return posts.count
     }
     
-    //MARK: - SortButtonDelegate Methods
-    func sortByTypeDidUpdate(type: SortByType) {
-        CurrentUser.shared.sortByType = type
+    func numberOfSections(in tableView: UITableView) -> Int {
         
-        //reload posts and table
-        loadPosts()
+        return 1
     }
     
-    //MARK: - UITableViewDelegate Methods
+    //------------------------------------------------------------------------------
+    // MARK: - UITableViewDelegate Methods
+    //------------------------------------------------------------------------------
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
+        
         let cell:PostFeedCell = tableView.dequeueReusableCell(withIdentifier: K.ReuseID.PostFeedCellID, for: indexPath) as! PostFeedCell
         
         cell.populate(model: posts[indexPath.row])
@@ -235,7 +271,7 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
             cell.setRightUtilityButtons(rightButtonsMe() as [Any]!, withButtonWidth: K.NumberConstant.SwipeableButtonWidth)
             cell.delegate = self
         }
-        
+            
         else {
             cell.setRightUtilityButtons(rightButtons() as [Any]!, withButtonWidth: K.NumberConstant.SwipeableButtonWidth)
             cell.delegate = self
@@ -251,7 +287,6 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         newVC.thisPost = posts[indexPath.row]
         navigationController?.pushViewController(newVC, animated: true)
         
-        //deselect
         tableView.deselectRow(at: indexPath, animated: false)
     }
     
@@ -260,29 +295,35 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         return heightForCellAtIndexPath(indexPath: indexPath)
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+    //------------------------------------------------------------------------------
+    // MARK: - UIScrollViewDelegate Methods
+    //------------------------------------------------------------------------------
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let collapseH = K.NumberConstant.Header.HeroCollapseHeight
+        let expandH = K.NumberConstant.Header.HeroExpandHeight - 20
+        
+        flexHeaderHeight.constant = max( collapseH, collapseH + (expandH - collapseH + 20) * -(postsTable.contentOffset.y/headerExpandedOffset) - 20)
+        
+        headerHero.setNeedsUpdateConstraints()
+        headerHero.updateHeaderHeight(newHeight: flexHeaderHeight.constant)
+        
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    //------------------------------------------------------------------------------
+    // MARK: - SortButtonDelegate Methods
+    //------------------------------------------------------------------------------
+    
+    func sortByTypeDidUpdate(type: SortByType) {
+        
+        CurrentUser.shared.sortByType = type
+        loadPosts()
     }
     
-    //MARK: - SWTableViewCellDelegate Methods
-    func rightButtonsMe() -> [Any] {
-        let rightUtilityButtons = NSMutableArray()
-        
-        rightUtilityButtons.sw_addUtilityButton(with: K.Color.swipeDeletRow, icon:UIImage(named:K.Image.DeleteRow))
-        
-        return rightUtilityButtons.copy() as! [Any]
-    }
-    
-    func rightButtons() -> [Any] {
-        let rightUtilityButtons = NSMutableArray()
-        rightUtilityButtons.sw_addUtilityButton(with: K.Color.swipeReportRow, icon:UIImage(named:K.Image.ReportRow))
-        
-        return rightUtilityButtons.copy() as! [Any]
-    }
+    //------------------------------------------------------------------------------
+    // MARK: - SWTableViewCellDelegate Methods
+    //------------------------------------------------------------------------------
     
     func swipeableTableViewCell(_ cell: SWTableViewCell!, didTriggerRightUtilityButtonWith index: Int) {
         
@@ -306,37 +347,32 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         return true
     }
     
-    func deletePostFromList(thisPost:UserPost, indexPath:IndexPath) {
+    //------------------------------------------------------------------------------
+    // MARK: - SWTableViewCell Helpers
+    //------------------------------------------------------------------------------
+    
+    func rightButtonsMe() -> [Any] {
+        let rightUtilityButtons = NSMutableArray()
         
-        //Update arrays
-        FirebaseManager.delete(post: thisPost) { (error) in
-            if error == nil {
-                print("Post Deleted!")
-                self.posts.remove(at: indexPath.row)
-                self.postsTable.deleteRows(at: [indexPath], with: .automatic)
-            }
-        }
+        rightUtilityButtons.sw_addUtilityButton(with: K.Color.swipeDeletRow, icon:UIImage(named:K.Image.DeleteRow))
+        
+        return rightUtilityButtons.copy() as! [Any]
     }
     
-    func blockPostFromList(thisPost:UserPost, indexPath:IndexPath) {
-        FirebaseManager.blockPost(pid: thisPost.postId) { (blockedPosts, error) in
-            
-            if error == nil {
-                print("Post Blocked!")
-                thisPost.blockedBy = blockedPosts!
-                self.posts.remove(at: indexPath.row)
-                self.postsTable.deleteRows(at: [indexPath], with: .automatic)
-                
-                if blockedPosts?.count == K.NumberConstant.BlockedByLimit {
-                    //remove post
-                    FirebaseManager.delete(post: thisPost) { (error) in
-                        if error == nil {
-                            print("Post deleted from too many blocks!")
-                        }
-                    }
-                }
-            }
-        }
+    func rightButtons() -> [Any] {
+        let rightUtilityButtons = NSMutableArray()
+        rightUtilityButtons.sw_addUtilityButton(with: K.Color.swipeReportRow, icon:UIImage(named:K.Image.ReportRow))
+        
+        return rightUtilityButtons.copy() as! [Any]
+    }
+    
+    //------------------------------------------------------------------------------
+    // MARK: - Helpers
+    //------------------------------------------------------------------------------
+    
+    func showTestLocation(_ loc:CLLocationCoordinate2D) {
+        COORDINATE_TEST_VIEW.text = "\(loc.latitude, loc.longitude)"
+        
     }
 
 }
