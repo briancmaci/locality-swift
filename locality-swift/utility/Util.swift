@@ -195,6 +195,18 @@ class Util: NSObject {
         return here.distance(from: origin)
     }
     
+    class func radiusInMeters(range:Float) -> Double {
+        
+        var radius:Double = Double(range/2)
+        
+        //convert to meters if necessary
+        if CurrentUser.shared.isMetric != true {
+            radius = Double(Util.feetToMeters(feet: CGFloat(radius)))
+        }
+        
+        return radius
+    }
+    
     class func displayUsername(post:UserPost) -> String {
         
         if post.isAnonymous == true {

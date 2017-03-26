@@ -19,6 +19,14 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     @IBOutlet weak var postButton:UIButton!
     @IBOutlet weak var noPostsLabel:UILabel!
     
+    //For Post toggle
+    @IBOutlet weak var postButtonWidth:NSLayoutConstraint!
+    @IBOutlet weak var postButtonHeight:NSLayoutConstraint!
+    @IBOutlet weak var sortButtonCenterOffset:NSLayoutConstraint!
+    
+    var postButtonWidth0:CGFloat!
+    var sortButtonOffset0:CGFloat!
+    
     let headerExpandedOffset = K.NumberConstant.Header.HeroExpandHeight - K.NumberConstant.Header.HeroCollapseHeight
     
     var thisFeed:FeedLocation!
@@ -77,12 +85,14 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
 
     func initialSetup() {
         
+        //This goes first to get initial button size
+        initPostButton()
+        
         initLocationManager()
         initHeaderView()
         initTableView()
         
         initSortByType()
-        initPostButton()
         initNoPostsLabel()
         
         //initLocationTestView()
@@ -128,8 +138,11 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     func initPostButton() {
         postButton.setTitle(K.String.Button.Post.localized, for: .normal)
         postButton.addTarget(self, action: #selector(postDidTouch), for: .touchUpInside)
-        
         view.bringSubview(toFront: postButton)
+        
+        //set constraints
+        postButtonWidth0 = postButtonWidth.constant
+        sortButtonOffset0 = sortButtonCenterOffset.constant
     }
     
     func initNoPostsLabel() {
@@ -228,7 +241,33 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
             CurrentUser.shared.currentLocationFeed.lon = locations[0].coordinate.longitude
         }
         
+        checkProximity()
         //showTestLocation(locations[0].coordinate)
+    }
+    
+    func checkProximity() {
+        
+        //Test if we are in range
+        if Util.distanceFrom(lat: thisFeed.lat, lon: thisFeed.lon) < Util.radiusInMeters(range: thisFeed.range) {
+            updatePostSortButtons(inRange: true)
+        } else {
+            updatePostSortButtons(inRange: false)
+        }
+    }
+    
+    func updatePostSortButtons(inRange:Bool) {
+    
+        if inRange == true {
+            postButtonWidth.constant = postButtonWidth0
+            postButtonHeight.constant = postButtonWidth0
+            sortButtonCenterOffset.constant = sortButtonOffset0
+        } else {
+            postButtonWidth.constant = 0
+            postButtonHeight.constant = 0
+            sortButtonCenterOffset.constant = 0
+        }
+        
+        view.setNeedsUpdateConstraints()
     }
     
     //------------------------------------------------------------------------------

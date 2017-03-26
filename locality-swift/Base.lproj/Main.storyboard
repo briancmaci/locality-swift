@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -252,12 +253,12 @@
                             <constraint firstItem="bJ8-3z-U79" firstAttribute="leading" secondItem="c67-D5-8de" secondAttribute="leading" id="4P4-MM-iWq"/>
                             <constraint firstItem="B5n-W7-TST" firstAttribute="top" secondItem="aOw-sB-DWu" secondAttribute="bottom" id="C1Z-qq-O1O"/>
                             <constraint firstItem="nwy-fq-gdS" firstAttribute="centerX" secondItem="c67-D5-8de" secondAttribute="centerX" id="FMm-zS-jud"/>
-                            <constraint firstItem="opb-fK-nfh" firstAttribute="leading" secondItem="nwy-fq-gdS" secondAttribute="trailing" constant="-16" id="Fch-ZF-Y7c"/>
                             <constraint firstItem="Ly3-Sv-uFy" firstAttribute="leading" secondItem="c67-D5-8de" secondAttribute="leading" constant="20" id="O0Y-g5-qY8"/>
-                            <constraint firstItem="B5n-W7-TST" firstAttribute="top" secondItem="nwy-fq-gdS" secondAttribute="bottom" constant="20" id="Ozg-9a-iaN"/>
+                            <constraint firstItem="opb-fK-nfh" firstAttribute="centerY" secondItem="nwy-fq-gdS" secondAttribute="centerY" id="csL-J5-Cn3"/>
                             <constraint firstItem="bJ8-3z-U79" firstAttribute="top" secondItem="c67-D5-8de" secondAttribute="top" id="d0J-XW-QoH"/>
+                            <constraint firstItem="nwy-fq-gdS" firstAttribute="centerY" secondItem="aOw-sB-DWu" secondAttribute="bottom" constant="-55" id="eSW-Nv-fE3"/>
                             <constraint firstItem="Ly3-Sv-uFy" firstAttribute="centerY" secondItem="aOw-sB-DWu" secondAttribute="centerY" id="hdF-tj-rXi"/>
-                            <constraint firstItem="nwy-fq-gdS" firstAttribute="top" secondItem="opb-fK-nfh" secondAttribute="bottom" constant="-64" id="oIU-xz-iUw"/>
+                            <constraint firstItem="opb-fK-nfh" firstAttribute="centerX" secondItem="c67-D5-8de" secondAttribute="centerX" constant="49" id="r8G-4q-Fxg"/>
                             <constraint firstItem="aOw-sB-DWu" firstAttribute="top" secondItem="U3O-7b-dt3" secondAttribute="bottom" constant="19" id="wwo-o3-eZT"/>
                             <constraint firstItem="aOw-sB-DWu" firstAttribute="leading" secondItem="c67-D5-8de" secondAttribute="leading" id="x0h-o8-5Bn"/>
                             <constraint firstAttribute="trailing" secondItem="bJ8-3z-U79" secondAttribute="trailing" id="y1i-uX-dfc"/>
@@ -268,8 +269,11 @@
                         <outlet property="headerHero" destination="bJ8-3z-U79" id="1MY-op-myX"/>
                         <outlet property="noPostsLabel" destination="Ly3-Sv-uFy" id="MwY-34-BCQ"/>
                         <outlet property="postButton" destination="nwy-fq-gdS" id="DmG-Sz-HeG"/>
+                        <outlet property="postButtonHeight" destination="03d-sO-G8G" id="YLQ-EB-wwS"/>
+                        <outlet property="postButtonWidth" destination="CqF-1f-Zva" id="rjR-Kd-r5o"/>
                         <outlet property="postsTable" destination="aOw-sB-DWu" id="Oru-K9-woH"/>
                         <outlet property="sortButton" destination="opb-fK-nfh" id="ugB-kw-Ovg"/>
+                        <outlet property="sortButtonCenterOffset" destination="r8G-4q-Fxg" id="hyh-iu-mGI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CzA-wr-h7k" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -303,11 +307,11 @@
                         <viewControllerLayoutGuide type="bottom" id="gR8-qi-f2Y"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0rR-by-5sV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="967"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q4j-KC-8oW">
-                                <rect key="frame" x="0.0" y="59" width="375" height="908"/>
+                                <rect key="frame" x="0.0" y="59" width="375" height="608"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bp1-iH-eci" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="926"/>
@@ -466,8 +470,6 @@
                             <constraint firstItem="bp1-iH-eci" firstAttribute="width" secondItem="0rR-by-5sV" secondAttribute="width" id="uEq-Iq-a0a"/>
                         </constraints>
                     </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="967"/>
                     <connections>
                         <outlet property="feedOptionsHeight" destination="wCg-GN-lX3" id="kym-Cv-m5l"/>
                         <outlet property="feedOptionsTable" destination="siN-gQ-WOs" id="mmy-ab-gAK"/>
@@ -1301,7 +1303,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Qd3-wx-0My" customClass="SlideNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2qF-2R-zkD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2qF-2R-zkD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.15877681969999999" green="0.2493949234" blue="0.31995546819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

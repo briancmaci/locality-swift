@@ -88,7 +88,7 @@ class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapVie
         }
         
         map.centerCoordinate = currentLocation
-        let currentRadius:Double = Double(sliderSteps[currentRangeIndex].distance/2)
+        let currentRadius:Double = Util.radiusInMeters(range: Float(sliderSteps[currentRangeIndex].distance))
         
         let rangePointSW:CLLocationCoordinate2D = MapboxManager.metersToDegrees(coord: map.centerCoordinate, metersLat: -currentRadius, metersLong: -currentRadius)
         

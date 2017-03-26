@@ -160,9 +160,7 @@ class LocalityPhotoBaseViewController: LocalityBaseViewController, UIActionSheet
                 if picker.sourceType == .camera {
                    UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
                 }
-            }
-            
-            else {
+            } else {
                 print("ImagePicker:didFinishPicking error")
             }
         }
