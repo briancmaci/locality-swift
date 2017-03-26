@@ -37,40 +37,63 @@ class LandingViewController: LocalityBaseViewController, AngledButtonPairDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
-            // 2
-            if user != nil {
-                // 3
-                //print("Landing:WE ARE AUTHENTICATED!")
-                FirebaseManager.getCurrentUserRef().child(K.DB.Var.IsFirstVisit).observeSingleEvent(of: .value, with: { (snapshot) in
-                    if let isFirstVisit = snapshot.value as? Bool {
-                        print("Landing:IsFirstVisit= \(isFirstVisit)")
-                    }
-                    
-                    else {
-                        //print("Landing:ViewDidLoad():isFirstVisit null")
-                    }
-                })
-            }
-        }
-        
         initButtons()
         initButtonAnimation()
-        initParallax()
         
+        
+        // Do any additional setup after loading the view.
+        FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
+            
+            if user != nil {
+                //check if this is our first visit
+                
+                FirebaseManager.loadCurrentUserModel { (success, error) in
+                    
+                    if success == true {
+                        self.moveToNextView()
+                    }
+                }
+            }
+            
+            else {
+                self.initParallax()
+                self.animateButtonsIn()
+            }
+        }        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        animateButtonsIn()
+        //animateButtonsIn()
         
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func moveToNextView() {
+        if CurrentUser.shared.isFirstVisit == true {
+            let newVC:CurrentFeedInitializeViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.CurrentFeedInit) as! CurrentFeedInitializeViewController
+            
+            navigationController?.pushViewController(newVC, animated: true)
+        }
+            
+        else {
+            
+            // ADD Feed Menu First!!
+            let feedMenuVC:FeedMenuTableViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.FeedMenu) as! FeedMenuTableViewController
+            
+            SlideNavigationController.sharedInstance().popAllAndSwitch(to: feedMenuVC, withCompletion: nil)
+            
+            let newVC:FeedViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.Feed) as! FeedViewController
+            
+            newVC.thisFeed = CurrentUser.shared.currentLocationFeed
+            SlideNavigationController.sharedInstance().pushViewController(newVC, animated: false)
+            
+        }
     }
     
     func initParallax(){

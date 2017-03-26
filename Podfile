@@ -11,6 +11,7 @@ pod 'SWTableViewCell', '~> 0.3'
 
 #Fabric
 pod 'Fabric'
+pod 'Crashlytics'
 pod 'TwitterKit'
 pod 'TwitterCore'
 pod 'Mapbox-iOS-SDK'

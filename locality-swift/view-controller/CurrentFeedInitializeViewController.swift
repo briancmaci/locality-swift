@@ -144,7 +144,7 @@ class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapVie
                                    current: true)
         
         current.location = self.locationLabel.text!
-        CurrentUser.shared.currentLocation = current
+        CurrentUser.shared.currentLocationFeed = current
         
         //write to Firebase
         
@@ -166,7 +166,7 @@ class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapVie
         
         let newVC:FeedViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.Feed) as! FeedViewController
         
-        newVC.thisFeed = CurrentUser.shared.currentLocation
+        newVC.thisFeed = CurrentUser.shared.currentLocationFeed
         SlideNavigationController.sharedInstance().pushViewController(newVC, animated: false)
     }
     

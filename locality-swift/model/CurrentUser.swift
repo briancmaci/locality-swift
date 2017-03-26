@@ -22,14 +22,14 @@ class CurrentUser: BaseUser {
     
     var isFirstVisit:Bool = true
     
-    var currentLocation:FeedLocation!
+    var currentLocationFeed:FeedLocation!
     var pinnedLocations:[FeedLocation] = [FeedLocation]()
     
     //sort
     var sortByType:SortByType = .proximity
     
     //feed location
-    var currentFeedLocation:CLLocationCoordinate2D! = nil
+    var myLastRecordedLocation:CLLocationCoordinate2D! = nil
     
     func extraAttributesToFirebase() -> [String:Any] {
         

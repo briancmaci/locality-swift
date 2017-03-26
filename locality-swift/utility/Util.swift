@@ -188,8 +188,8 @@ class Util: NSObject {
     }
     
     class func distanceFrom(lat:Double, lon:Double) -> Double {
-        let origin:CLLocation = CLLocation(latitude: CurrentUser.shared.currentFeedLocation.latitude,
-                                           longitude: CurrentUser.shared.currentFeedLocation.longitude)
+        let origin:CLLocation = CLLocation(latitude: CurrentUser.shared.myLastRecordedLocation.latitude,
+                                           longitude: CurrentUser.shared.myLastRecordedLocation.longitude)
         
         let here:CLLocation = CLLocation(latitude:lat, longitude:lon)
         return here.distance(from: origin)

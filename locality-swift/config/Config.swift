@@ -202,6 +202,7 @@ struct K {
     struct NIBName {
         static let LocationSlider = "LocationSlider"
         static let FlexibleFeedHeaderView = "FlexibleFeedHeaderView"
+        static let PostFeedCell = "PostFeedCell"
         static let PostFeedCellView = "PostFeedCellView"
         static let PostUserInfoView = "PostUserInfoView"
         static let ImageUploadView = "ImageUploadView"
@@ -367,6 +368,7 @@ struct K {
         struct Map {
             static let EarthRadius = 6371000.0
             static let DefaultRange = 500.0
+            static let DistanceFilter = 5.0
         }
         
         struct Menu {

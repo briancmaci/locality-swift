@@ -10,6 +10,8 @@ import UIKit
 
 class PostFeedCellView: UIView {
 
+    @IBOutlet weak var view:UIView!
+    
     @IBOutlet weak var postUser:PostUserInfoView!
     @IBOutlet weak var captionLabel:UILabel!
     @IBOutlet weak var likeButton:LikePostButton!
@@ -18,6 +20,15 @@ class PostFeedCellView: UIView {
     @IBOutlet weak var pinline:UIView!
     
     var thisPost:UserPost!
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        Bundle.main.loadNibNamed(K.NIBName.PostFeedCellView, owner: self, options: nil)
+        self.addSubview(view)
+        view.frame = self.bounds
+    }
+    
     
     func populate(model:UserPost) {
         thisPost = model
@@ -87,6 +98,7 @@ class PostFeedCellView: UIView {
     }
     
     func getViewHeight(caption:String) -> CGFloat {
+        captionLabel.text = caption
         return K.NumberConstant.Post.DefaultViewHeight - K.NumberConstant.Post.DefaultCaptionHeight + captionLabel.requiredHeight()
     }
     

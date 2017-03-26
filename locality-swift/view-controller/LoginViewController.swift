@@ -121,6 +121,10 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
             if success == true {
                 self.moveToNextView()
             }
+            
+            else {
+                print("LOGIN ERROR?? \(error?.localizedDescription)")
+            }
         }
         
         
@@ -142,7 +146,7 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
             
             let newVC:FeedViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.Feed) as! FeedViewController
             
-            newVC.thisFeed = CurrentUser.shared.currentLocation
+            newVC.thisFeed = CurrentUser.shared.currentLocationFeed
             SlideNavigationController.sharedInstance().pushViewController(newVC, animated: false)
             
         }

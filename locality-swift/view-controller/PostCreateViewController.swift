@@ -9,7 +9,7 @@
 import UIKit
 import Mapbox
 
-class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadViewDelegate, CLLocationManagerDelegate, UITextViewDelegate {
+class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadViewDelegate,UITextViewDelegate {
 
     @IBOutlet weak var captionField:UITextView!
     @IBOutlet weak var captionError:UILabel!
@@ -18,9 +18,6 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
     @IBOutlet weak var postFromView:PostFromView!
     
     @IBOutlet weak var publishPostButton:UIButton!
-    
-    var currentLocation:CLLocationCoordinate2D!
-    var locationManager:CLLocationManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +33,7 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
         
         //reload photo
         postFromView.updateProfilePhoto()
-        startLocationServices()
+        //startLocationServices()
     }
     
     func initHeaderView() {
@@ -64,14 +61,14 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
         captionError.text?.removeAll()
     }
     
-    func startLocationServices() {
-        if locationManager == nil {
-            locationManager = CLLocationManager()
-        }
-        
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-    }
+//    func startLocationServices() {
+//        if locationManager == nil {
+//            locationManager = CLLocationManager()
+//        }
+//        
+//        locationManager.delegate = self
+//        locationManager.requestWhenInUseAuthorization()
+//    }
     
     //CTA
     func publishDidTouch(sender:UIButton) {
@@ -105,8 +102,7 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
     }
     
     func createPostToWrite(url:String, pid:String) {
-        let thisPost:UserPost = UserPost(coord: self.currentLocation,
-                                         caption: self.captionField.text,
+        let thisPost:UserPost = UserPost(coord: CurrentUser.shared.myLastRecordedLocation,                                         caption: self.captionField.text,
                                          imgUrl: url,
                                          user: CurrentUser.shared)
         
@@ -151,18 +147,18 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
     }
     
     //MARK:- CLLocationManager Delegate Methods
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse {
-            locationManager.startUpdatingLocation()
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location:CLLocation = locations[0]
-        currentLocation = location.coordinate
-        
-        locationManager.stopUpdatingLocation()
-    }
+//    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+//        if status == .authorizedWhenInUse {
+//            locationManager.startUpdatingLocation()
+//        }
+//    }
+//    
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        let location:CLLocation = locations[0]
+//        currentLocation = location.coordinate
+//        
+//        locationManager.stopUpdatingLocation()
+//    }
     
     //MARK:- RSKImageCropper Delegate Override
     override func imageCropViewController(_ controller: RSKImageCropViewController, didCropImage croppedImage: UIImage, usingCropRect cropRect: CGRect, rotationAngle: CGFloat) {

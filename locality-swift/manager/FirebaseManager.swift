@@ -32,7 +32,7 @@ class FirebaseManager: NSObject {
                 
                 
                 if let currentLocation = userDic?[K.DB.Var.CurrentLocation] {
-                    CurrentUser.shared.currentLocation = FeedLocation(firebaseDictionary:currentLocation as! [String : AnyObject])
+                    CurrentUser.shared.currentLocationFeed = FeedLocation(firebaseDictionary:currentLocation as! [String : AnyObject])
                 }
                 
                 if let pinned = userDic?[K.DB.Var.Pinned] as? [[String : AnyObject]]{
@@ -208,6 +208,7 @@ class FirebaseManager: NSObject {
     
     class func write(post:UserPost, completionHandler: @escaping (Bool?, Error?) -> ()) -> () {
         
+        print("This post to write? \(post)")
         getPostsRef().child(post.postId).updateChildValues(post.toFirebaseObject()) { (error, ref) in
             if error != nil {
                 completionHandler(false, error)

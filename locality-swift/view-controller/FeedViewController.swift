@@ -10,7 +10,7 @@ import UIKit
 import Mapbox
 import SWTableViewCell
 
-class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, SortButtonDelegate, SWTableViewCellDelegate {
+class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, SortButtonDelegate, SWTableViewCellDelegate, CLLocationManagerDelegate {
 
     let headerExpandedOffset = K.NumberConstant.Header.HeroExpandHeight - K.NumberConstant.Header.HeroCollapseHeight
     
@@ -23,24 +23,46 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     @IBOutlet weak var noPostsLabel:UILabel!
     
     var thisFeed:FeedLocation!
+    var isMyCurrentLocation:Bool = false //We ALWAYS want to update the feed current location
     var sortType:SortByType!
     
+    var sizingCell:PostFeedCell!
+    
     var posts:[UserPost] = [UserPost]()
+    
+    var COORDINATE_TEST_VIEW:UILabel!
+    
+    ////Updating location constantly
+    var locationManager:CLLocationManager!
+    var currentLocation:CLLocationCoordinate2D!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        CurrentUser.shared.currentFeedLocation = CLLocationCoordinate2D(latitude: thisFeed.lat, longitude: thisFeed.lon)
+        if thisFeed == CurrentUser.shared.currentLocationFeed {
+                isMyCurrentLocation = true
+        }
         
+        //set initial values for currentuser
+        CurrentUser.shared.myLastRecordedLocation = CLLocationCoordinate2D(latitude: thisFeed.lat, longitude: thisFeed.lon)
+        
+//        CurrentUser.shared.currentFeedLocation = CLLocationCoordinate2D(latitude: thisFeed.lat, longitude: thisFeed.lon)
+//        
         viewDidLoadCalled = true
         loadPosts()
         
         // Do any additional setup after loading the view.
+        initSizingCell()
+        
+        initLocationManager()
+        
         initSortByType()
         initPostButton()
         initNoPostsLabel()
         initHeaderView()
         initTableView()
+        
+        //initLocationTestView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,10 +77,35 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         
         leftMenu.populateMenuWithUser()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        locationManager.stopUpdatingLocation()
+    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func initLocationTestView() {
+        
+        COORDINATE_TEST_VIEW = UILabel(frame: CGRect(x:20, y:200, width:K.Screen.Width - 40, height:60))
+        COORDINATE_TEST_VIEW.backgroundColor = K.Color.localityMapAccent
+        COORDINATE_TEST_VIEW.textColor = .white
+        COORDINATE_TEST_VIEW.numberOfLines = 2
+        COORDINATE_TEST_VIEW.lineBreakMode = .byWordWrapping
+        COORDINATE_TEST_VIEW.textAlignment = .center
+        
+        view.addSubview(COORDINATE_TEST_VIEW)
+        
+    }
+    
+    func initLocationManager() {
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.distanceFilter = K.NumberConstant.Map.DistanceFilter
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.startUpdatingLocation()
+            //locationManager.startUpdatingHeading()
+        }
     }
     
     func loadPosts() {
@@ -78,6 +125,10 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
             }
             
         }
+    }
+    
+    func initSizingCell() {
+        sizingCell = UIView.instanceFromNib(name: K.NIBName.PostFeedCell) as? PostFeedCell
     }
     
     func initNoPostsLabel() {
@@ -110,9 +161,29 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         
         postsTable.contentInset = UIEdgeInsetsMake(topOffset, 0, topOffset, 0)
         
-        postsTable.register(PostFeedCell.self, forCellReuseIdentifier: K.ReuseID.PostFeedCellID)
+        postsTable.register(UINib(nibName: K.NIBName.PostFeedCell, bundle: nil), forCellReuseIdentifier: K.ReuseID.PostFeedCellID)
         
         postsTable.separatorStyle = .none
+    }
+    
+    // MARK: - CLLocationManagerDelegate
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        currentLocation = locations[0].coordinate
+        
+        if isMyCurrentLocation == true {
+            CurrentUser.shared.currentLocationFeed.lat = locations[0].coordinate.latitude
+            CurrentUser.shared.currentLocationFeed.lon = locations[0].coordinate.longitude
+        }
+        
+        CurrentUser.shared.myLastRecordedLocation = locations[0].coordinate
+        
+        //showTestLocation()
+    }
+    
+    func showTestLocation() {
+        COORDINATE_TEST_VIEW.text = "\(currentLocation.latitude, currentLocation.longitude)"
+        
     }
     
     func postDidTouch(sender:UIButton) {
@@ -122,10 +193,11 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     }
     
     func heightForCellAtIndexPath(indexPath:IndexPath) -> CGFloat {
-        var sizingCell:PostFeedCell? = nil
-        //DispatchQueue.once {
-            sizingCell = PostFeedCell(model: posts[indexPath.row])
-        //}
+       
+        if sizingCell == nil {
+            initSizingCell()
+        }
+        
         let p:UserPost = posts[indexPath.row]
         let imgHeight:CGFloat = p.postImageUrl.isEmpty == true ? 0 : K.Screen.Width * K.NumberConstant.Post.ImageRatio
         
@@ -155,7 +227,9 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     //MARK: - UITableViewDelegate Methods
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-        let cell:PostFeedCell = PostFeedCell(model: posts[indexPath.row])
+        let cell:PostFeedCell = tableView.dequeueReusableCell(withIdentifier: K.ReuseID.PostFeedCellID, for: indexPath) as! PostFeedCell
+        
+        cell.populate(model: posts[indexPath.row])
         
         if cell.thisModel.userHandle == CurrentUser.shared.uid {
             cell.setRightUtilityButtons(rightButtonsMe() as [Any]!, withButtonWidth: K.NumberConstant.SwipeableButtonWidth)

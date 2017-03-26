@@ -23,8 +23,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2g-rf-QyA">
-                        <rect key="frame" x="9" y="11" width="224" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="a2g-rf-QyA">
+                        <rect key="frame" x="20" y="11" width="231" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="ouW-6q-ARe"/>
                         </constraints>
@@ -42,8 +42,8 @@
                     </switch>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="s8O-YI-hDl" firstAttribute="leading" secondItem="a2g-rf-QyA" secondAttribute="trailing" constant="18" id="16x-mb-hBu"/>
-                    <constraint firstItem="a2g-rf-QyA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="9" id="4fN-zG-QHm"/>
+                    <constraint firstItem="s8O-YI-hDl" firstAttribute="leading" secondItem="a2g-rf-QyA" secondAttribute="trailing" id="16x-mb-hBu"/>
+                    <constraint firstItem="a2g-rf-QyA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="4fN-zG-QHm"/>
                     <constraint firstAttribute="trailing" secondItem="s8O-YI-hDl" secondAttribute="trailing" constant="20" id="Xsk-mK-xd7"/>
                     <constraint firstItem="s8O-YI-hDl" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="d0c-Et-wCQ"/>
                     <constraint firstItem="a2g-rf-QyA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="lfR-L6-vI7"/>

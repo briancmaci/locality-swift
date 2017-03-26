@@ -30,7 +30,7 @@ class FeedMenuTableViewController: UITableViewController, LocalityHeaderViewDele
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        initMenuOptions(current: CurrentUser.shared.currentLocation,
+        initMenuOptions(current: CurrentUser.shared.currentLocationFeed,
                         pinned: CurrentUser.shared.pinnedLocations)
     }
 

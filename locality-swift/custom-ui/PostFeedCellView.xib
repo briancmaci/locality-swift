@@ -14,9 +14,19 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostFeedCellView" customModule="locality_swift" customModuleProvider="target">
+            <connections>
+                <outlet property="captionLabel" destination="WPk-9M-dP3" id="lu5-Mo-nQU"/>
+                <outlet property="commentButton" destination="J1J-Wr-ZRR" id="1Kw-y1-T0m"/>
+                <outlet property="likeButton" destination="Iq8-n6-7m8" id="eTO-0R-hwH"/>
+                <outlet property="pinline" destination="ISI-9H-e5A" id="TIL-or-AnY"/>
+                <outlet property="postUser" destination="1gJ-eK-leV" id="62R-1U-vDi"/>
+                <outlet property="sortView" destination="BZ5-vk-fPx" id="v3a-kW-NeB"/>
+                <outlet property="view" destination="Qil-RT-KN2" id="l04-ZR-apW"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="Qil-RT-KN2" customClass="PostFeedCellView" customModule="locality_swift" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="Qil-RT-KN2">
             <rect key="frame" x="0.0" y="0.0" width="320" height="166"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -123,15 +133,7 @@
                 <constraint firstItem="1gJ-eK-leV" firstAttribute="top" secondItem="Qil-RT-KN2" secondAttribute="top" constant="25" id="zJC-f0-cqN"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="captionLabel" destination="WPk-9M-dP3" id="HHF-uc-pKL"/>
-                <outlet property="commentButton" destination="J1J-Wr-ZRR" id="a6P-wJ-z9u"/>
-                <outlet property="likeButton" destination="Iq8-n6-7m8" id="Vcb-Ik-aBK"/>
-                <outlet property="pinline" destination="ISI-9H-e5A" id="imj-cy-gDq"/>
-                <outlet property="postUser" destination="1gJ-eK-leV" id="PA3-ea-9nU"/>
-                <outlet property="sortView" destination="BZ5-vk-fPx" id="lqd-dJ-QTd"/>
-            </connections>
-            <point key="canvasLocation" x="726" y="343"/>
+            <point key="canvasLocation" x="708" y="338"/>
         </view>
     </objects>
     <resources>

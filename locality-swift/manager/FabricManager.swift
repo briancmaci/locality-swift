@@ -8,12 +8,13 @@
 
 import UIKit
 import Fabric
+import Crashlytics
 import TwitterKit
 import Mapbox
 
 class FabricManager: NSObject {
     
     class func initFabric() {
-        Fabric.with([Twitter.self, MGLAccountManager.self])
+        Fabric.with([Crashlytics.self, Twitter.self, MGLAccountManager.self])
     }
 }

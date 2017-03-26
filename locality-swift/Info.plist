@@ -55,12 +55,20 @@
 				<key>KitName</key>
 				<string>MGLAccountManager</string>
 			</dict>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
 		</array>
 	</dict>
 	<key>FacebookAppID</key>
 	<string>683498775108511</string>
 	<key>FacebookDisplayName</key>
 	<string>Locality</string>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<string>NO</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
@@ -70,8 +78,10 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<false/>
+	<key>NSCameraUsageDescription</key>
+	<string>We are using the camera so you can personalize your experience as much as possible.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>By accessing your location, locality will keep you current with what&apos;s around you.</string>
+	<string>By accessing your location, locality will keep you current with what's around you.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>YES</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -98,9 +108,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
-	<key>FirebaseAppDelegateProxyEnabled</key>
-	<string>NO</string>
-	<key>NSCameraUsageDescription</key>
-	<string>We are using the camera so you can personalize your experience as much as possible.</string>
 </dict>
 </plist>
