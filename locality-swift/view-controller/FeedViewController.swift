@@ -10,7 +10,7 @@ import UIKit
 import Mapbox
 import SWTableViewCell
 
-class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, SortButtonDelegate, SWTableViewCellDelegate, CLLocationManagerDelegate {
+class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, SortButtonDelegate, SWTableViewCellDelegate, CLLocationManagerDelegate, PostFeedCellDelegate {
 
     @IBOutlet weak var headerHero:FlexibleFeedHeaderView!
     @IBOutlet weak var postsTable:UITableView!
@@ -271,6 +271,17 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     }
     
     //------------------------------------------------------------------------------
+    // MARK: - PostFeedCellDelegate Methods
+    //------------------------------------------------------------------------------
+
+    func gotoPost(post: UserPost) {
+        let newVC:PostDetailViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.PostDetail) as! PostDetailViewController
+        
+        newVC.thisPost = post
+        navigationController?.pushViewController(newVC, animated: true)
+    }
+    
+    //------------------------------------------------------------------------------
     // MARK: - UITableViewDataSource Methods
     //------------------------------------------------------------------------------
     
@@ -305,6 +316,7 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         let cell:PostFeedCell = tableView.dequeueReusableCell(withIdentifier: K.ReuseID.PostFeedCellID, for: indexPath) as! PostFeedCell
         
         cell.populate(model: posts[indexPath.row])
+        cell.postDelegate = self
         
         if cell.thisModel.userHandle == CurrentUser.shared.uid {
             cell.setRightUtilityButtons(rightButtonsMe() as [Any]!, withButtonWidth: K.NumberConstant.SwipeableButtonWidth)

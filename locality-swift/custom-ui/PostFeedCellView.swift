@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol CommentButtonDelegate {
+    func commentButtonTouched()
+}
+
 class PostFeedCellView: UIView {
 
     @IBOutlet weak var view:UIView!
@@ -20,6 +24,7 @@ class PostFeedCellView: UIView {
     @IBOutlet weak var pinline:UIView!
     
     var thisPost:UserPost!
+    var delegate:CommentButtonDelegate?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -41,7 +46,15 @@ class PostFeedCellView: UIView {
         likeButton.addTarget(self, action: #selector(likeDidTouch), for: .touchUpInside)
         likeButton.isSelected = thisPost.isLikedByMe
         
-        commentButton.setTitle(thisPost.commentCount.description, for: .normal)
+        commentButton.addTarget(self, action: #selector(commentDidTouch), for: .touchUpInside)
+        
+        if thisPost.commentCount > 0 {
+            commentButton.setTitle(thisPost.commentCount.description, for: .normal)
+            commentButton.hasComments(true)
+        } else {
+            commentButton.setTitle("", for: .normal)
+            commentButton.hasComments(false)
+        }
     }
     
     //CTA
@@ -57,6 +70,10 @@ class PostFeedCellView: UIView {
             likeButton.isSelected = !likeButton.isSelected
             likePost()
         }
+    }
+    
+    func commentDidTouch(sender:CommentButton) {
+        delegate?.commentButtonTouched()
     }
     
     //Like Methods
@@ -101,9 +118,4 @@ class PostFeedCellView: UIView {
         captionLabel.text = caption
         return K.NumberConstant.Post.DefaultViewHeight - K.NumberConstant.Post.DefaultCaptionHeight + captionLabel.requiredHeight()
     }
-    
-    
-    
-    
-    
 }

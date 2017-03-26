@@ -10,8 +10,11 @@ import UIKit
 import Mapbox
 import SWTableViewCell
 
+protocol PostFeedCellDelegate {
+    func gotoPost(post:UserPost)
+}
 
-class PostFeedCell: SWTableViewCell {
+class PostFeedCell: SWTableViewCell, CommentButtonDelegate {
 
     @IBOutlet weak var postImage:UIImageView!
     @IBOutlet weak var postContent:PostFeedCellView!
@@ -19,6 +22,7 @@ class PostFeedCell: SWTableViewCell {
     
     var thisModel:UserPost!
     var hasImage:Bool = false
+    var postDelegate:PostFeedCellDelegate?
     
     func populate(model:UserPost) {
         thisModel = model
@@ -60,6 +64,8 @@ class PostFeedCell: SWTableViewCell {
             self.thisModel.user = thisUser!
             self.populateUserInfo()
         }
+        
+        postContent.delegate = self
     }
     
     func populateUserInfo() {
@@ -67,6 +73,9 @@ class PostFeedCell: SWTableViewCell {
         postContent.postUser.populate(imgUrl: thisModel.isAnonymous ? K.Image.DefaultAvatarProfilePost : thisModel.user.profileImageUrl,
                                       username: Util.displayUsername(post: thisModel),
                                       status: UserStatus.stringFrom(type: thisModel.user.status))
-
+    }
+    
+    func commentButtonTouched() {
+        postDelegate?.gotoPost(post: thisModel)
     }
 }

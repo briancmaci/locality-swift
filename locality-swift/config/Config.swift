@@ -108,6 +108,8 @@ struct K {
         static let leftNavLight = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
         static let leftNavDark = UIColor(red: 75/255, green: 81/255, blue: 85/255, alpha: 1)
         
+        static let postCommentGray = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1)
+        
         static let commentBackground = UIColor(red: 238/255, green: 238/255, blue:238/255, alpha:1)
         
         //sort
@@ -135,6 +137,11 @@ struct K {
             static let Hamburger = "IconHamburger"
             static let Settings = "IconSettings"
             static let FeedMenu = "IconFeedMenu"
+        }
+        
+        struct Post {
+            static let PostCommentIconGray = "IconPostComment"
+            static let PostCommentIconWhite = "IconPaperclipWhite"
         }
         
         struct Sort {

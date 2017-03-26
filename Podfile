@@ -21,6 +21,7 @@ pod 'Firebase'
 pod 'FirebaseAuth'
 pod 'Firebase/Database'
 pod 'Firebase/Storage'
+pod 'Firebase/Messaging'
 
 #GeoFire
 pod 'GeoFire', :git => 'https://github.com/firebase/geofire-objc.git'
