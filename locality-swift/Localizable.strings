@@ -15,6 +15,7 @@ login-button-label = "LOGIN";
 
 //Login
 forgot-password-label = "Forgot?";
+email-sent-label = "Email sent!";
 
 
 //Current Location
@@ -69,6 +70,7 @@ in-use-email = "This email is already in use. Try authenticating via Facebook.";
 in-use-facebook = "This email is already in use. Try authenticating via email.";
 email-invalid = "This email is invalid.";
 email-empty = "You must enter an email.";
+no-such-email = "There is no user account corresponding to this email.";
 password-mismatch = "These passwords do not match.";
 password-empty = "You must enter a password.";
 password-too-short = "Your password must be six characters long.";

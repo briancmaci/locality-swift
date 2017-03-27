@@ -174,6 +174,7 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
         navigationController?.present(newVC, animated: true, completion: nil)
     }
     
+    // MARK: - UITextFieldDelegate
     func textFieldDidChange(sender:UITextField) {
         if sender == emailField {
             emailError.text?.removeAll()
@@ -182,13 +183,12 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
         else if sender == passwordField {
             passwordError.text?.removeAll()
         }
-        
+            
         else {
             facebookError.text?.removeAll()
         }
     }
     
-    // MARK: - UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         

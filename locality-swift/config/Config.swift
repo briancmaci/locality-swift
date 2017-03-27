@@ -334,6 +334,7 @@ struct K {
             static let EmailInUseEmail = "in-use-email"
             static let EmailInUseFacebook = "in-use-facebook"
             static let EmailInvalid = "email-invalid"
+            static let NoSuchEmail = "no-such-email"
             static let EmailEmpty = "email-empty"
             static let PasswordMismatch = "password-mismatch"
             static let PasswordEmpty = "password-empty"
@@ -365,6 +366,7 @@ struct K {
         
         struct Login {
             static let ForgotPasswordLabel = "forgot-password-label"
+            static let EmailSentLabel = "email-sent-label"
         }
     }
     
