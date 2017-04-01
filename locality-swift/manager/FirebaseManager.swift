@@ -84,7 +84,6 @@ class FirebaseManager: NSObject {
                         posts.append(p.key)
                     }
                 }
-                
                 completionHandler(posts, nil)
             })
             

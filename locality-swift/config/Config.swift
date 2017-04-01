@@ -101,6 +101,9 @@ struct K {
         static let localityLightBlue = UIColor(red: 199/255, green: 221/255, blue: 237/255, alpha: 1)
         static let localityMapAccent = UIColor(red: 1, green: 125/255, blue: 108/255, alpha: 1)
         
+        static let pullToRefreshColor = UIColor(red: 41/255, green: 64/255, blue: 82/255, alpha: 0.4)
+        static let pullToRefreshSpinnerColor = UIColor(red: 41/255, green: 64/255, blue: 82/255, alpha: 0.3)
+        
         static let toggleRed = UIColor(red: 180/255, green: 0, blue: 38/255, alpha: 1)
         static let toggleGray = UIColor(red: 205/255, green: 215/255, blue: 219/255, alpha: 1)
         

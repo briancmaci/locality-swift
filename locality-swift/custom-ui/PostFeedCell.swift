@@ -25,6 +25,10 @@ class PostFeedCell: SWTableViewCell, CommentButtonDelegate {
     var postDelegate:PostFeedCellDelegate?
     
     func populate(model:UserPost) {
+        
+        //remove image always
+        postImage.image = nil
+        
         thisModel = model
         hasImage = !thisModel.postImageUrl.isEmpty
         

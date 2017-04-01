@@ -24,6 +24,8 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     @IBOutlet weak var postButtonHeight:NSLayoutConstraint!
     @IBOutlet weak var sortButtonCenterOffset:NSLayoutConstraint!
     
+    var refresh:LocalityRefreshControl!
+    
     var postButtonWidth0:CGFloat!
     var sortButtonOffset0:CGFloat!
     
@@ -77,6 +79,7 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     
     override func viewWillDisappear(_ animated: Bool) {
         locationManager.stopUpdatingLocation()
+        refresh.animate(false)
     }
     
     //------------------------------------------------------------------------------
@@ -84,6 +87,9 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     //------------------------------------------------------------------------------
 
     func initialSetup() {
+        
+        //Pull To Refresh
+        initRefreshControl()
         
         //This goes first to get initial button size
         initPostButton()
@@ -96,6 +102,20 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         initNoPostsLabel()
         
         //initLocationTestView()
+    }
+    
+    func initRefreshControl() {
+        refresh = LocalityRefreshControl(frame: UIRefreshControl().bounds)
+        refresh.create()
+        
+        postsTable.refreshControl = refresh
+        
+        refresh.addTarget(self, action: #selector(onRefresh), for: .valueChanged)
+    }
+    
+    func onRefresh(sender:UIRefreshControl) {
+        refresh.beginRefreshing()
+        loadPosts()
     }
     
     func initLocationManager() {
@@ -174,18 +194,19 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         GeoFireManager.getPostLocations(range: thisFeed.range, location: CLLocation(latitude:thisFeed.lat, longitude:thisFeed.lon)) { (matched, error) in
             
             if error == nil {
-                FirebaseManager.loadFeedPosts(postIDs: matched!,
-                                              orderedBy: CurrentUser.shared.sortByType,
-                                              completionHandler: { (matchedPosts, error) in
-                self.posts.removeAll()
-                self.posts = matchedPosts!
-                self.postsTable.reloadData()
-                
-                self.noPostsLabel.isHidden = !self.posts.isEmpty
-                
+                FirebaseManager.loadFeedPosts(postIDs: matched!, orderedBy: CurrentUser.shared.sortByType, completionHandler: { (matchedPosts, error) in
+                                                
+                    if error == nil {
+                        self.posts.removeAll()
+                        self.posts = matchedPosts!
+                        self.postsTable.reloadData()
+                        
+                        self.noPostsLabel.isHidden = !self.posts.isEmpty
+                    }
+                    
+                    self.refresh.endRefreshing()
                })
             }
-            
         }
     }
     
@@ -357,9 +378,12 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         
         flexHeaderHeight.constant = max( collapseH, collapseH + (expandH - collapseH + 20) * -(postsTable.contentOffset.y/headerExpandedOffset) - 20)
         
+        if flexHeaderHeight.constant > K.NumberConstant.Header.HeroExpandHeight {
+            flexHeaderHeight.constant = K.NumberConstant.Header.HeroExpandHeight
+        }
+        
         headerHero.setNeedsUpdateConstraints()
         headerHero.updateHeaderHeight(newHeight: flexHeaderHeight.constant)
-        
     }
     
     //------------------------------------------------------------------------------
