@@ -83,8 +83,10 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        
         locationManager.stopUpdatingLocation()
         refresh.animate(false)
+        invalidateRefreshTimer()
     }
     
     //------------------------------------------------------------------------------
@@ -95,7 +97,6 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         
         //Pull To Refresh
         initRefreshControl()
-        initRefreshTimer()
         
         //This goes first to get initial button size
         initPostButton()
@@ -120,9 +121,11 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         refresh.addTarget(self, action: #selector(onRefresh), for: .valueChanged)
     }
     
-    func initRefreshTimer() {
+    func scheduleRefreshTimer() {
         
-        
+        refreshTimer = Timer.scheduledTimer(withTimeInterval: CurrentUser.shared.updateInterval, repeats: false, block: { (timer) in
+            self.onRefreshTimerFired(sender: timer)
+        })
     }
     
     func initLocationManager() {
@@ -205,6 +208,8 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     
     func loadPosts() {
         
+        invalidateRefreshTimer()
+        
         GeoFireManager.getPostLocations(range: thisFeed.range, location: CLLocation(latitude: thisFeed.lat, longitude: thisFeed.lon)) { (matched, error) in
             
             if error == nil {
@@ -219,6 +224,9 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
                     }
                     
                     self.refresh.endRefreshing()
+                    
+                    //startTimer
+                    self.scheduleRefreshTimer()
                })
             }
         }
@@ -268,6 +276,12 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     func onRefresh(sender: UIRefreshControl) {
         
         refresh.beginRefreshing()
+        loadPosts()
+    }
+    
+    func onRefreshTimerFired(sender: Timer) {
+        
+        invalidateRefreshTimer()
         loadPosts()
     }
     
@@ -469,6 +483,14 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     //------------------------------------------------------------------------------
     // MARK: - Helpers
     //------------------------------------------------------------------------------
+    
+    func invalidateRefreshTimer() {
+        
+        if refreshTimer != nil {
+            refreshTimer.invalidate()
+            refreshTimer = nil
+        }
+    }
     
     func showTestLocation(_ loc: CLLocationCoordinate2D) {
         
