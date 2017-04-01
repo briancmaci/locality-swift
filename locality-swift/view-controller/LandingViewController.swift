@@ -78,7 +78,7 @@ class LandingViewController: LocalityBaseViewController, AngledButtonPairDelegat
         if CurrentUser.shared.isFirstVisit == true {
             let newVC:CurrentFeedInitializeViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.CurrentFeedInit) as! CurrentFeedInitializeViewController
             
-            navigationController?.pushViewController(newVC, animated: true)
+            SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
         }
             
         else {
@@ -187,12 +187,16 @@ class LandingViewController: LocalityBaseViewController, AngledButtonPairDelegat
     func leftButtonDidTouch() {
         let newVC : JoinViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.Join) as! JoinViewController
         
-        navigationController?.pushViewController(newVC, animated: true)
+        SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
     }
     
     func rightButtonDidTouch() {
         let newVC : LoginViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.Login) as! LoginViewController
         
-        navigationController?.pushViewController(newVC, animated: true)
+        SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
+    }
+    
+    override func slideNavigationControllerShouldDisplayLeftMenu() -> Bool {
+        return false
     }
 }

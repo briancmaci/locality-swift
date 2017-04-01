@@ -67,7 +67,7 @@ class JoinValidateViewController: LocalityBaseViewController {
                             if user?.isEmailVerified == true {
                                 let newVC:CurrentFeedInitializeViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.CurrentFeedInit) as! CurrentFeedInitializeViewController
                                 
-                                self.navigationController?.pushViewController(newVC, animated: true)
+                                SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
                             }
                                 
                             else {
@@ -91,7 +91,7 @@ class JoinValidateViewController: LocalityBaseViewController {
                             if user?.isEmailVerified == true {
                                 let newVC:CurrentFeedInitializeViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.CurrentFeedInit) as! CurrentFeedInitializeViewController
                                 
-                                self.navigationController?.pushViewController(newVC, animated: true)
+                                SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
                             }
                                 
                             else {
@@ -111,11 +111,9 @@ class JoinValidateViewController: LocalityBaseViewController {
         }
         
         else {
-            print("SET ISFIRSTTIME SOMEWHERE!!!!!")
-            
             let newVC:CurrentFeedInitializeViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.CurrentFeedInit) as! CurrentFeedInitializeViewController
             
-            navigationController?.pushViewController(newVC, animated: true)
+            SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
         }
     }
     
@@ -125,5 +123,9 @@ class JoinValidateViewController: LocalityBaseViewController {
 
             }
         })
+    }
+    
+    override func slideNavigationControllerShouldDisplayLeftMenu() -> Bool {
+        return false
     }
 }

@@ -68,7 +68,7 @@ class FeedMenuTableViewController: UITableViewController, LocalityHeaderViewDele
         let newVC:FeedViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.Feed) as! FeedViewController
         
         newVC.thisFeed = model
-        navigationController?.pushViewController(newVC, animated: true)
+        SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
     }
     
     func editFeedTapped(model: FeedLocation) {
@@ -76,7 +76,7 @@ class FeedMenuTableViewController: UITableViewController, LocalityHeaderViewDele
         
         newVC.editFeed = model
         
-        navigationController?.pushViewController(newVC, animated: true)
+        SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
     }
     
     // MARK: - UITableViewDataSource Methods

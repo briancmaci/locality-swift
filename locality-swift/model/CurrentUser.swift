@@ -16,20 +16,23 @@ class CurrentUser: BaseUser {
     
     var isMetric:Bool = false
     
-    var email:String = ""
-    var password:String = "" //This is only used for email verification
-    var facebookToken:String = "" //This is only used for email verification
+    var email = ""
+    var password = "" //This is only used for email verification
+    var facebookToken = "" //This is only used for email verification
     
-    var isFirstVisit:Bool = true
+    var isFirstVisit = true
     
-    var currentLocationFeed:FeedLocation!
-    var pinnedLocations:[FeedLocation] = [FeedLocation]()
+    var currentLocationFeed: FeedLocation!
+    var pinnedLocations: [FeedLocation] = [FeedLocation]()
     
     //sort
-    var sortByType:SortByType = .proximity
+    var sortByType: SortByType = .proximity
     
     //feed location
-    var myLastRecordedLocation:CLLocationCoordinate2D! = nil
+    var myLastRecordedLocation: CLLocationCoordinate2D! = nil
+    
+    //update rate
+    var updateInterval: TimeInterval = 30
     
     func extraAttributesToFirebase() -> [String:Any] {
         

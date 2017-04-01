@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseAuth
 
-class LocalityBaseViewController: UIViewController, LocalityHeaderViewDelegate {
+class LocalityBaseViewController: UIViewController, LocalityHeaderViewDelegate, SlideNavigationControllerDelegate {
     
     var header:FeedHeaderView!
     
@@ -26,7 +26,6 @@ class LocalityBaseViewController: UIViewController, LocalityHeaderViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         hideKeyboardOnTouchedOut()
         loadHeaderView()
     }
@@ -108,6 +107,14 @@ class LocalityBaseViewController: UIViewController, LocalityHeaderViewDelegate {
     func updateLeftMenuPostsAndLikes() {
         let leftMenu = SlideNavigationController.sharedInstance().leftMenu as! LeftMenuViewController
         leftMenu.loadTotals()
+    }
+    
+    func slideNavigationControllerShouldDisplayLeftMenu() -> Bool {
+        return true
+    }
+    
+    func slideNavigationControllerShouldDisplayRightMenu() -> Bool {
+        return false
     }
 
     /*

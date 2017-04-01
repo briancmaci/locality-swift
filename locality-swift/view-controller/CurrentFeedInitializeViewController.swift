@@ -215,6 +215,10 @@ class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapVie
         currentRangeIndex = step
         updateMapRange()
     }
+    
+    override func slideNavigationControllerShouldDisplayLeftMenu() -> Bool {
+        return false
+    }
 
     /*
     // MARK: - Navigation

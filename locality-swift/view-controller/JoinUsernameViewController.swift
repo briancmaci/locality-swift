@@ -70,7 +70,7 @@ class JoinUsernameViewController: LocalityBaseViewController, UITextFieldDelegat
                 
                 let newVC:JoinValidateViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.JoinValidate) as! JoinValidateViewController
                 
-                self.navigationController?.pushViewController(newVC, animated: true)
+                SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
             }
             
             else {
@@ -120,5 +120,9 @@ class JoinUsernameViewController: LocalityBaseViewController, UITextFieldDelegat
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         return true
+    }
+    
+    override func slideNavigationControllerShouldDisplayLeftMenu() -> Bool {
+        return false
     }
 }

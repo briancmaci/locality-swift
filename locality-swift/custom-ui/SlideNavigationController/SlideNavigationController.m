@@ -705,7 +705,7 @@ static SlideNavigationController *singletonInstance;
 
 - (void)panDetected:(UIPanGestureRecognizer *)aPanRecognizer
 {
-	CGPoint translation = [aPanRecognizer translationInView:aPanRecognizer.view];
+    CGPoint translation = [aPanRecognizer translationInView:aPanRecognizer.view];
     CGPoint velocity = [aPanRecognizer velocityInView:aPanRecognizer.view];
 	NSInteger movement = translation.x - self.draggingPoint.x;
 	
@@ -823,7 +823,7 @@ static SlideNavigationController *singletonInstance;
 {
 	if (!_panRecognizer)
 	{
-		_panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panDetected:)];
+        _panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panDetected:)];
 		_panRecognizer.delegate = self;
         [_panRecognizer setCancelsTouchesInView:NO];
 	}

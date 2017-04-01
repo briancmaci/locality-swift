@@ -12,37 +12,38 @@ import SWTableViewCell
 
 class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, SortButtonDelegate, SWTableViewCellDelegate, CLLocationManagerDelegate, PostFeedCellDelegate {
 
-    @IBOutlet weak var headerHero:FlexibleFeedHeaderView!
-    @IBOutlet weak var postsTable:UITableView!
-    @IBOutlet weak var flexHeaderHeight:NSLayoutConstraint!
-    @IBOutlet weak var sortButton:SortButtonWithPopup!
-    @IBOutlet weak var postButton:UIButton!
-    @IBOutlet weak var noPostsLabel:UILabel!
+    @IBOutlet weak var headerHero: FlexibleFeedHeaderView!
+    @IBOutlet weak var postsTable: UITableView!
+    @IBOutlet weak var flexHeaderHeight: NSLayoutConstraint!
+    @IBOutlet weak var sortButton: SortButtonWithPopup!
+    @IBOutlet weak var postButton: UIButton!
+    @IBOutlet weak var noPostsLabel: UILabel!
     
     //For Post toggle
-    @IBOutlet weak var postButtonWidth:NSLayoutConstraint!
-    @IBOutlet weak var postButtonHeight:NSLayoutConstraint!
-    @IBOutlet weak var sortButtonCenterOffset:NSLayoutConstraint!
-    
-    var refresh:LocalityRefreshControl!
-    
-    var postButtonWidth0:CGFloat!
-    var sortButtonOffset0:CGFloat!
+    @IBOutlet weak var postButtonWidth: NSLayoutConstraint!
+    @IBOutlet weak var postButtonHeight: NSLayoutConstraint!
+    @IBOutlet weak var sortButtonCenterOffset: NSLayoutConstraint!
     
     let headerExpandedOffset = K.NumberConstant.Header.HeroExpandHeight - K.NumberConstant.Header.HeroCollapseHeight
     
-    var thisFeed:FeedLocation!
-    var isMyCurrentLocation:Bool = false //We ALWAYS want to update the feed current location
+    var refresh: LocalityRefreshControl!
+    var refreshTimer: Timer!
+    
+    var postButtonWidth0: CGFloat!
+    var sortButtonOffset0: CGFloat!
+    
+    var thisFeed: FeedLocation!
+    var isMyCurrentLocation = false //We ALWAYS want to update the feed current location
     
     //DataSource
-    var posts:[UserPost] = [UserPost]()
+    var posts: [UserPost] = []
     
     //Updating location constantly
-    var locationManager:CLLocationManager!
+    var locationManager: CLLocationManager!
     
-    var sizingCell:PostFeedCell!
+    var sizingCell: PostFeedCell!
     
-    var COORDINATE_TEST_VIEW:UILabel!
+    var COORDINATE_TEST_VIEW: UILabel!
     
     //------------------------------------------------------------------------------
     // MARK: - View Lifecycle
@@ -72,7 +73,11 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
             loadPosts()
         }
         
-        let leftMenu:LeftMenuViewController = SlideNavigationController.sharedInstance().leftMenu as! LeftMenuViewController
+        if refresh != nil {
+            refresh.animate(true)
+        }
+        
+        let leftMenu: LeftMenuViewController = SlideNavigationController.sharedInstance().leftMenu as! LeftMenuViewController
         
         leftMenu.populateMenuWithUser()
     }
@@ -90,6 +95,7 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         
         //Pull To Refresh
         initRefreshControl()
+        initRefreshTimer()
         
         //This goes first to get initial button size
         initPostButton()
@@ -105,6 +111,7 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     }
     
     func initRefreshControl() {
+        
         refresh = LocalityRefreshControl(frame: UIRefreshControl().bounds)
         refresh.create()
         
@@ -113,12 +120,13 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         refresh.addTarget(self, action: #selector(onRefresh), for: .valueChanged)
     }
     
-    func onRefresh(sender:UIRefreshControl) {
-        refresh.beginRefreshing()
-        loadPosts()
+    func initRefreshTimer() {
+        
+        
     }
     
     func initLocationManager() {
+        
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -131,11 +139,13 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     }
     
     func initHeaderView() {
+        
         headerHero.populate(model: thisFeed, index: 0, inFeedMenu: false)
         headerHero.delegate = self
     }
     
     func initTableView() {
+        
         postsTable.delegate = self
         postsTable.dataSource = self
         
@@ -151,11 +161,13 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     }
     
     func initSortByType() {
+        
         sortButton.updateType()
         sortButton.delegate = self
     }
     
     func initPostButton() {
+        
         postButton.setTitle(K.String.Button.Post.localized, for: .normal)
         postButton.addTarget(self, action: #selector(postDidTouch), for: .touchUpInside)
         view.bringSubview(toFront: postButton)
@@ -166,10 +178,12 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     }
     
     func initNoPostsLabel() {
+        
         noPostsLabel.text = K.String.Post.NoPostsLabel.localized
     }
     
     func initSizingCell() {
+        
         sizingCell = UIView.instanceFromNib(name: K.NIBName.PostFeedCell) as? PostFeedCell
     }
     
@@ -183,7 +197,6 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         COORDINATE_TEST_VIEW.textAlignment = .center
         
         view.addSubview(COORDINATE_TEST_VIEW)
-        
     }
     
     //------------------------------------------------------------------------------
@@ -191,7 +204,8 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     //------------------------------------------------------------------------------
     
     func loadPosts() {
-        GeoFireManager.getPostLocations(range: thisFeed.range, location: CLLocation(latitude:thisFeed.lat, longitude:thisFeed.lon)) { (matched, error) in
+        
+        GeoFireManager.getPostLocations(range: thisFeed.range, location: CLLocation(latitude: thisFeed.lat, longitude: thisFeed.lon)) { (matched, error) in
             
             if error == nil {
                 FirebaseManager.loadFeedPosts(postIDs: matched!, orderedBy: CurrentUser.shared.sortByType, completionHandler: { (matchedPosts, error) in
@@ -210,7 +224,7 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         }
     }
     
-    func deletePostFromList(thisPost:UserPost, indexPath:IndexPath) {
+    func deletePostFromList(thisPost: UserPost, indexPath: IndexPath) {
         
         FirebaseManager.delete(post: thisPost) { (error) in
             if error == nil {
@@ -220,7 +234,8 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         }
     }
     
-    func blockPostFromList(thisPost:UserPost, indexPath:IndexPath) {
+    func blockPostFromList(thisPost: UserPost, indexPath: IndexPath) {
+        
         FirebaseManager.blockPost(pid: thisPost.postId) { (blockedPosts, error) in
             
             if error == nil {
@@ -243,10 +258,17 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     // MARK: - CTA Methods
     //------------------------------------------------------------------------------
     
-    func postDidTouch(sender:UIButton) {
-        let newVC:PostCreateViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.PostCreate) as! PostCreateViewController
+    func postDidTouch(sender: UIButton) {
         
-        navigationController?.pushViewController(newVC, animated: true)
+        let newVC: PostCreateViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.PostCreate) as! PostCreateViewController
+        
+        SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
+    }
+    
+    func onRefresh(sender: UIRefreshControl) {
+        
+        refresh.beginRefreshing()
+        loadPosts()
     }
     
     //------------------------------------------------------------------------------
@@ -276,7 +298,7 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         }
     }
     
-    func updatePostSortButtons(inRange:Bool) {
+    func updatePostSortButtons(inRange: Bool) {
     
         if inRange == true {
             postButtonWidth.constant = postButtonWidth0
@@ -296,17 +318,18 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     //------------------------------------------------------------------------------
 
     func gotoPost(post: UserPost) {
+        
         let newVC:PostDetailViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.PostDetail) as! PostDetailViewController
         
         newVC.thisPost = post
-        navigationController?.pushViewController(newVC, animated: true)
+        SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
     }
     
     //------------------------------------------------------------------------------
     // MARK: - UITableViewDataSource Methods
     //------------------------------------------------------------------------------
     
-    func heightForCellAtIndexPath(indexPath:IndexPath) -> CGFloat {
+    func heightForCellAtIndexPath(indexPath: IndexPath) -> CGFloat {
        
         if sizingCell == nil {
             initSizingCell()
@@ -357,7 +380,7 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         let newVC:PostDetailViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.PostDetail) as! PostDetailViewController
         
         newVC.thisPost = posts[indexPath.row]
-        navigationController?.pushViewController(newVC, animated: true)
+        SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
         
         tableView.deselectRow(at: indexPath, animated: false)
     }
@@ -376,7 +399,7 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         let collapseH = K.NumberConstant.Header.HeroCollapseHeight
         let expandH = K.NumberConstant.Header.HeroExpandHeight - 20
         
-        flexHeaderHeight.constant = max( collapseH, collapseH + (expandH - collapseH + 20) * -(postsTable.contentOffset.y/headerExpandedOffset) - 20)
+        flexHeaderHeight.constant = max(collapseH, collapseH + (expandH - collapseH + 20) * -(postsTable.contentOffset.y/headerExpandedOffset) - 20)
         
         if flexHeaderHeight.constant > K.NumberConstant.Header.HeroExpandHeight {
             flexHeaderHeight.constant = K.NumberConstant.Header.HeroExpandHeight
@@ -429,14 +452,16 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     func rightButtonsMe() -> [Any] {
         let rightUtilityButtons = NSMutableArray()
         
-        rightUtilityButtons.sw_addUtilityButton(with: K.Color.swipeDeletRow, icon:UIImage(named:K.Image.DeleteRow))
+        rightUtilityButtons.sw_addUtilityButton(with: K.Color.swipeDeletRow,
+                                                icon: UIImage(named:K.Image.DeleteRow))
         
         return rightUtilityButtons.copy() as! [Any]
     }
     
     func rightButtons() -> [Any] {
         let rightUtilityButtons = NSMutableArray()
-        rightUtilityButtons.sw_addUtilityButton(with: K.Color.swipeReportRow, icon:UIImage(named:K.Image.ReportRow))
+        rightUtilityButtons.sw_addUtilityButton(with: K.Color.swipeReportRow,
+                                                icon: UIImage(named:K.Image.ReportRow))
         
         return rightUtilityButtons.copy() as! [Any]
     }
@@ -445,9 +470,9 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     // MARK: - Helpers
     //------------------------------------------------------------------------------
     
-    func showTestLocation(_ loc:CLLocationCoordinate2D) {
-        COORDINATE_TEST_VIEW.text = "\(loc.latitude, loc.longitude)"
+    func showTestLocation(_ loc: CLLocationCoordinate2D) {
         
+        COORDINATE_TEST_VIEW.text = "\(loc.latitude, loc.longitude)"
     }
 
 }

@@ -297,6 +297,9 @@ class PostDetailViewController: LocalityBaseViewController, UITableViewDelegate,
         return height
     }
     
+    override func slideNavigationControllerShouldDisplayLeftMenu() -> Bool {
+        return false
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -200,5 +200,9 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func slideNavigationControllerShouldDisplayLeftMenu() -> Bool {
+        return false
+    }
 
 }

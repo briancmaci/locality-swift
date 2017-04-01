@@ -829,4 +829,8 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
             self.searchDisplayController?.searchBar.resignFirstResponder()
         }
     }
+    
+    override func slideNavigationControllerShouldDisplayLeftMenu() -> Bool {
+        return false
+    }
 }

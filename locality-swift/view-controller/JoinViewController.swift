@@ -85,7 +85,7 @@ class JoinViewController: LocalityBaseViewController, UITextFieldDelegate {
                                         //move to username
                                         let newVC:JoinUsernameViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.JoinUser) as! JoinUsernameViewController
                                         
-                                        self.navigationController?.pushViewController(newVC, animated: true)
+                                        SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
                                     }
                                     
                                     else {
@@ -181,7 +181,7 @@ class JoinViewController: LocalityBaseViewController, UITextFieldDelegate {
                         //move to username
                         let newVC:JoinUsernameViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.JoinUser) as! JoinUsernameViewController
                         
-                        self.navigationController?.pushViewController(newVC, animated: true)
+                        SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
                     }
                 }
             }
@@ -219,5 +219,9 @@ class JoinViewController: LocalityBaseViewController, UITextFieldDelegate {
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         return true
+    }
+    
+    override func slideNavigationControllerShouldDisplayLeftMenu() -> Bool {
+        return false
     }
 }

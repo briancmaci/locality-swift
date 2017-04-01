@@ -116,7 +116,7 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
             
             let newVC:JoinValidateViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.JoinValidate) as! JoinValidateViewController
             
-            navigationController?.pushViewController(newVC, animated: true)
+            SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
             return
         }
         
@@ -139,7 +139,7 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
         if CurrentUser.shared.isFirstVisit == true {
             let newVC:CurrentFeedInitializeViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.CurrentFeedInit) as! CurrentFeedInitializeViewController
             
-            navigationController?.pushViewController(newVC, animated: true)
+            SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
         }
             
         else {
@@ -257,7 +257,7 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
                             if !snapshot.exists() {
                                 let newVC:JoinUsernameViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.JoinUser) as! JoinUsernameViewController
                                 
-                                self.navigationController?.pushViewController(newVC, animated: true)
+                                SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
                             }
                             
                             else {
@@ -307,6 +307,10 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
             default:break
             }
         }
+    }
+    
+    override func slideNavigationControllerShouldDisplayLeftMenu() -> Bool {
+        return false
     }
 }
 
