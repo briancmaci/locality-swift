@@ -52,6 +52,9 @@
 		72B8821E1E6AA54800EB3B2E /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 72B8821D1E6AA54800EB3B2E /* Keys.plist */; };
 		72C7D88B1E902B67003B6E56 /* LocalityRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C7D8891E902B67003B6E56 /* LocalityRefreshControl.swift */; };
 		72C7D88C1E902B67003B6E56 /* LocalityRefreshCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C7D88A1E902B67003B6E56 /* LocalityRefreshCustomView.swift */; };
+		72C7D8911E9144C4003B6E56 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C7D8901E9144C4003B6E56 /* AlertView.swift */; };
+		72C7D8931E9144ED003B6E56 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72C7D8921E9144ED003B6E56 /* AlertView.xib */; };
+		72C7D8971E915C3F003B6E56 /* AlertViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C7D8961E915C3F003B6E56 /* AlertViewButton.swift */; };
 		72C97A361E80CC320061BA1E /* SelectedPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C97A351E80CC320061BA1E /* SelectedPhotoView.swift */; };
 		72DC48781E6B4A7D00486535 /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DC48771E6B4A7D00486535 /* CustomPointAnnotation.swift */; };
 		72DC487C1E6BCA7700486535 /* DIspatchQueueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DC487B1E6BCA7700486535 /* DIspatchQueueExtension.swift */; };
@@ -205,6 +208,9 @@
 		72B8821D1E6AA54800EB3B2E /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		72C7D8891E902B67003B6E56 /* LocalityRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalityRefreshControl.swift; path = "custom-ui/pull-to-refresh/LocalityRefreshControl.swift"; sourceTree = "<group>"; };
 		72C7D88A1E902B67003B6E56 /* LocalityRefreshCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalityRefreshCustomView.swift; path = "custom-ui/pull-to-refresh/LocalityRefreshCustomView.swift"; sourceTree = "<group>"; };
+		72C7D8901E9144C4003B6E56 /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertView.swift; path = "custom-ui/AlertView.swift"; sourceTree = "<group>"; };
+		72C7D8921E9144ED003B6E56 /* AlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AlertView.xib; path = "custom-ui/AlertView.xib"; sourceTree = "<group>"; };
+		72C7D8961E915C3F003B6E56 /* AlertViewButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertViewButton.swift; path = "custom-ui/AlertViewButton.swift"; sourceTree = "<group>"; };
 		72C97A351E80CC320061BA1E /* SelectedPhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectedPhotoView.swift; path = "custom-ui/SelectedPhotoView.swift"; sourceTree = "<group>"; };
 		72DC48771E6B4A7D00486535 /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomPointAnnotation.swift; path = "custom-ui/CustomPointAnnotation.swift"; sourceTree = "<group>"; };
 		72DC487B1E6BCA7700486535 /* DIspatchQueueExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DIspatchQueueExtension.swift; path = extension/DIspatchQueueExtension.swift; sourceTree = "<group>"; };
@@ -467,6 +473,7 @@
 		72B881ED1E67788B00EB3B2E /* custom-ui */ = {
 			isa = PBXGroup;
 			children = (
+				72C7D88F1E9144AD003B6E56 /* alert-view */,
 				72F24BB71E70F80200CA7702 /* buttons */,
 				72F24BF21E725B6700CA7702 /* camera-overlay */,
 				72F24BAC1E70E99900CA7702 /* feed-header */,
@@ -562,6 +569,16 @@
 				72C7D88A1E902B67003B6E56 /* LocalityRefreshCustomView.swift */,
 			);
 			name = "pull-to-refresh";
+			sourceTree = "<group>";
+		};
+		72C7D88F1E9144AD003B6E56 /* alert-view */ = {
+			isa = PBXGroup;
+			children = (
+				72C7D8901E9144C4003B6E56 /* AlertView.swift */,
+				72C7D8921E9144ED003B6E56 /* AlertView.xib */,
+				72C7D8961E915C3F003B6E56 /* AlertViewButton.swift */,
+			);
+			name = "alert-view";
 			sourceTree = "<group>";
 		};
 		72DC48761E6B4A5200486535 /* mapbox */ = {
@@ -969,6 +986,7 @@
 				72F24BDF1E720F7900CA7702 /* PostFeedCellView.xib in Resources */,
 				72EEDF951E75FB1A009DFA77 /* FeedSettingsToggleCell.xib in Resources */,
 				72DC48801E6C9BCE00486535 /* Localizable.strings in Resources */,
+				72C7D8931E9144ED003B6E56 /* AlertView.xib in Resources */,
 				72F24BF41E725B8200CA7702 /* CameraOverlay.xib in Resources */,
 				72EEDF9C1E787974009DFA77 /* PostDetailHeaderView.xib in Resources */,
 				72B881AB1E65EE5000EB3B2E /* Assets.xcassets in Resources */,
@@ -1063,6 +1081,7 @@
 				72EEDF861E7589CD009DFA77 /* FeedAddNewCell.swift in Sources */,
 				722ABA401E74761100A3F1DA /* SlideNavigationContorllerAnimatorFade.m in Sources */,
 				72F24BAE1E70E9C300CA7702 /* FlexibleFeedHeaderView.swift in Sources */,
+				72C7D8971E915C3F003B6E56 /* AlertViewButton.swift in Sources */,
 				72C97A361E80CC320061BA1E /* SelectedPhotoView.swift in Sources */,
 				72C7D88C1E902B67003B6E56 /* LocalityRefreshCustomView.swift in Sources */,
 				72F24BB91E70F84300CA7702 /* HeaderIconButton.swift in Sources */,
@@ -1125,6 +1144,7 @@
 				72F24BB61E70F2E400CA7702 /* HeaderIcon.swift in Sources */,
 				72B881F41E678D2900EB3B2E /* AngledButtonPairView.swift in Sources */,
 				722ABA111E7459FB00A3F1DA /* CGFloatExtension.swift in Sources */,
+				72C7D8911E9144C4003B6E56 /* AlertView.swift in Sources */,
 				72B8820C1E68B8D100EB3B2E /* JoinViewController.swift in Sources */,
 				72EEDFA61E78A3BF009DFA77 /* CommentFeedCell.swift in Sources */,
 				72F24BAB1E70DB1500CA7702 /* FeedViewController.swift in Sources */,

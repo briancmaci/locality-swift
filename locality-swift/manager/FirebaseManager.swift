@@ -17,7 +17,7 @@ class FirebaseManager: NSObject {
         FIRApp.configure()
     }
     
-    class func loadCurrentUserModel(completionHandler: @escaping (Bool?, Error?) -> ()) -> () {
+    class func loadCurrentUserModel(completionHandler: @escaping (Bool?) -> ()) -> () {
         
         FirebaseManager.getCurrentUserRef().observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -47,7 +47,9 @@ class FirebaseManager: NSObject {
                     CurrentUser.shared.pinnedLocations = pins
                 }
                 
-                completionHandler(true, nil)
+                completionHandler(true)
+            } else {
+                completionHandler(false)
             }
         })
     }

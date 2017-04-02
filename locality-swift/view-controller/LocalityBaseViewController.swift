@@ -9,11 +9,12 @@
 import UIKit
 import FirebaseAuth
 
-class LocalityBaseViewController: UIViewController, LocalityHeaderViewDelegate, SlideNavigationControllerDelegate {
+class LocalityBaseViewController: UIViewController, LocalityHeaderViewDelegate, SlideNavigationControllerDelegate, AlertViewDelegate {
     
     var header:FeedHeaderView!
+    var alertView:AlertView!
     
-    var viewDidLoadCalled:Bool = false
+    //var viewDidLoadCalled:Bool = false
     
     override var prefersStatusBarHidden: Bool {
         return false
@@ -22,7 +23,7 @@ class LocalityBaseViewController: UIViewController, LocalityHeaderViewDelegate, 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,30 +43,11 @@ class LocalityBaseViewController: UIViewController, LocalityHeaderViewDelegate, 
     }
     
     func alertEmailValidate() {
-        
-        let alert = UIAlertController(title: K.String.Alert.VerifyTitle.localized,
-                                      message: K.String.Alert.VerifyMessage.localized,
-                                      preferredStyle: UIAlertControllerStyle.alert)
-        
-        let confirmAction = UIAlertAction(title: K.String.Alert.VerifyButton0.localized,
-                                          style: .default) { (action) in
-            
-            FIRAuth.auth()?.currentUser?.sendEmailVerification(completion: { (error) in
-                if error == nil {
-                    //Email validation resent
-                    alert.dismiss(animated: true, completion: nil)
-                }
-            })
-        }
-        
-        
-        let cancelAction = UIAlertAction(title: "OK",
-                                         style: .cancel, handler: nil)
-        
-        alert.addAction(confirmAction)
-        alert.addAction(cancelAction)
-        
-        self.present(alert, animated: true, completion: nil)
+        print("ALERT!!!!")
+        showAlertView(title: K.String.Alert.Title.Verify.localized,
+                      message: K.String.Alert.Message.Verify.localized,
+                      close: K.String.Alert.Close.OK.localized,
+                      action: K.String.Alert.Action.Resend.localized)
     }
     
     // MARK: - LocalityHeaderDelegate
@@ -117,14 +99,22 @@ class LocalityBaseViewController: UIViewController, LocalityHeaderViewDelegate, 
         return false
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func showAlertView(title: String, message: String, close: String, action: String = "") {
+        
+        alertView = UIView.instanceFromNib(name: "AlertView") as! AlertView
+        alertView.setup(title: title, message: message, closeTitle: close, actionTitle: action)
+        alertView.delegate = self
+        
+        view.addSubview(alertView)
     }
-    */
-
+    
+    func tappedAction() {
+        //override
+        FIRAuth.auth()?.currentUser?.sendEmailVerification(completion: { (error) in
+            if error == nil {
+                //Email validation resent
+                self.alertView.closeAlert()
+            }
+        })
+    }
 }

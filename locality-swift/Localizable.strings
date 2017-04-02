@@ -38,11 +38,6 @@ trusted-source = "Trusted Source";
 post-caption-default = "Add your caption";
 feed-name-default = "Name your location";
 
-//Email Verification Alert
-alert-verify-title = "You must verify your email.";
-alert-verify-message = "We sent a verification link upon joining Locality. Please click the link in your email to continue.";
-alert-verify-button0 = "Resend verification";
-
 //Header
 current-location-title = "CURRENT LOCATION";
 
@@ -64,6 +59,22 @@ LogOutLabel = "Log Out";
 ContactUsLabel = "Contact Us";
 DeleteAccountLabel = "Delete Account";
 
+//Alerts
+alert-network-title = "Are you there?";
+alert-timeout-title = "Something's up";
+alert-verify-title = "You must verify your email";
+
+alert-network-message = "You seem to be having connectivity issues. Please check your internet connection and try again.";
+alert-timeout-message = "Hmm. This request seems to be taking longer than usual. Please try again.";
+alert-verify-message = "We sent a verification link upon joining Locality. Please click the link in your email to continue.";
+
+alert-close-okay = "OK";
+alert-close-no = "No";
+
+alert-action-retry = "Retry";
+alert-action-yes = "Yes";
+alert-action-resend = "Resend verification";
+
 //Errors
 email-duplicate = "This email is already registered.";
 in-use-email = "This email is already in use. Try authenticating via Facebook.";
@@ -80,6 +91,7 @@ user-disabled = "I'm sorry, your account is disabled.";
 username-taken = "This username is already taken.";
 post-caption-error = "You must enter a caption to post.";
 feed-name-error = "You must name your location.";
+something-went-wrong = "Something went wrong. Please try again.";
 
 //Feed Menu Options
 push-alerts-label = "Send me push alerts from this location";

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 
 class PostDetailViewController: LocalityBaseViewController, UITableViewDelegate, UITableViewDataSource, AddCommentDelegate {
 
@@ -30,7 +31,7 @@ class PostDetailViewController: LocalityBaseViewController, UITableViewDelegate,
 
         initSizingCell()
         
-        viewDidLoadCalled = true
+        //viewDidLoadCalled = true
         loadComments()
         
         initHeaderView()
@@ -44,9 +45,15 @@ class PostDetailViewController: LocalityBaseViewController, UITableViewDelegate,
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        if viewDidLoadCalled == true {
+        if AFNetworkReachabilityManager.shared().isReachable == true {
             loadComments()
+        } else {
+            showAlertView(title: K.String.Alert.Title.Network.localized,
+                          message: K.String.Alert.Message.Network.localized,
+                          close: K.String.Alert.Close.OK.localized,
+                          action: K.String.Alert.Action.Retry.localized)
         }
+        
     }
     
     func initHeaderView() {
@@ -96,6 +103,14 @@ class PostDetailViewController: LocalityBaseViewController, UITableViewDelegate,
             self.noCommentsLabel.isHidden = !self.postComments.isEmpty
             
         })
+    }
+    
+    // AlertView Delegate Methods
+    
+    override func tappedAction() {
+        
+        loadComments()
+        alertView.closeAlert()
     }
     
     ////MARK : - UITableViewDelegate Methods

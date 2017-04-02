@@ -34,6 +34,8 @@ class LandingViewController: LocalityBaseViewController, AngledButtonPairDelegat
     var exploreY0 : CGFloat!
     var exploreY1 : CGFloat!
     
+    var authListenerHandle:FIRAuthStateDidChangeListenerHandle!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,15 +44,20 @@ class LandingViewController: LocalityBaseViewController, AngledButtonPairDelegat
         
         
         // Do any additional setup after loading the view.
-        FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
+        authListenerHandle = FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
+            print("AUTH STATE CHANGE IN LANDING!")
+            print("User? \(user)")
             
             if user != nil {
-                //check if this is our first visit
-                
-                FirebaseManager.loadCurrentUserModel { (success, error) in
+                FirebaseManager.loadCurrentUserModel { (success) in
                     
                     if success == true {
                         self.moveToNextView()
+                    }
+                    
+                    else {
+                        self.initParallax()
+                        self.animateButtonsIn()
                     }
                 }
             }
@@ -62,11 +69,10 @@ class LandingViewController: LocalityBaseViewController, AngledButtonPairDelegat
         }        
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         
-        //animateButtonsIn()
-        
+        FIRAuth.auth()?.removeStateDidChangeListener(authListenerHandle)
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,24 +81,48 @@ class LandingViewController: LocalityBaseViewController, AngledButtonPairDelegat
     }
     
     func moveToNextView() {
-        if CurrentUser.shared.isFirstVisit == true {
-            let newVC:CurrentFeedInitializeViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.CurrentFeedInit) as! CurrentFeedInitializeViewController
+        
+        print("In moveToNextView")
+        
+        if FIRAuth.auth()?.currentUser?.isEmailVerified == false {
             
-            SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
-        }
-            
-        else {
-            
-            // ADD Feed Menu First!!
-            let feedMenuVC:FeedMenuTableViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.FeedMenu) as! FeedMenuTableViewController
-            
-            SlideNavigationController.sharedInstance().popAllAndSwitch(to: feedMenuVC, withCompletion: nil)
-            
-            let newVC:FeedViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.Feed) as! FeedViewController
-            
-            newVC.thisFeed = CurrentUser.shared.currentLocationFeed
-            SlideNavigationController.sharedInstance().pushViewController(newVC, animated: false)
-            
+            if CurrentUser.shared.password.isEmpty && CurrentUser.shared.facebookToken.isEmpty {
+                do {
+                    try FIRAuth.auth()?.signOut()
+                    
+                    //Now log backed in based on how we logged out
+                    let loginVC:LoginViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.Login) as! LoginViewController
+                    
+                    SlideNavigationController.sharedInstance().pushViewController(loginVC, animated: true)
+                    
+                } catch {
+                    print("Auth.signOut failed")
+                }
+            } else {
+                
+                let joinValidateVC:JoinValidateViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.JoinValidate) as! JoinValidateViewController
+                
+                SlideNavigationController.sharedInstance().pushViewController(joinValidateVC, animated: true)
+            }
+        } else {
+        
+            if CurrentUser.shared.isFirstVisit == true {
+                let newVC:CurrentFeedInitializeViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.CurrentFeedInit) as! CurrentFeedInitializeViewController
+                
+                SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
+                
+            } else {
+                
+                let feedMenuVC:FeedMenuTableViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.FeedMenu) as! FeedMenuTableViewController
+                
+                SlideNavigationController.sharedInstance().popAllAndSwitch(to: feedMenuVC, withCompletion: nil)
+                
+                let newVC:FeedViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.Feed) as! FeedViewController
+                
+                newVC.thisFeed = CurrentUser.shared.currentLocationFeed
+                SlideNavigationController.sharedInstance().pushViewController(newVC, animated: false)
+                
+            }
         }
     }
     

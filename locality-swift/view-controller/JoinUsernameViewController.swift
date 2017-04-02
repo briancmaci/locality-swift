@@ -22,10 +22,18 @@ class JoinUsernameViewController: LocalityBaseViewController, UITextFieldDelegat
         initErrorFields()
         initTextFields()
         initButtons()
+        initHeaderView()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func initHeaderView() {
+        header.initHeaderViewStage()
+        header.initAttributes(title: "", leftType: .back, rightType: .none)
+        header.backgroundColor = .clear
+        view.addSubview(header)
     }
     
     func initErrorFields() {

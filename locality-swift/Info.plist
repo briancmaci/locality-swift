@@ -81,9 +81,9 @@
 	<key>NSCameraUsageDescription</key>
 	<string>We are using the camera so you can personalize your experience as much as possible.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>By accessing your location, locality will keep you current with what's around you.</string>
+	<string>By accessing your location, locality will keep you current with what&apos;s around you.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>YES</string>
+	<string>By accessing your location, locality will keep you current with what&apos;s around you.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This feature will open your photo library to upload a photo to Locality.</string>
 	<key>UIBackgroundModes</key>

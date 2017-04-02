@@ -252,6 +252,32 @@ struct K {
         static let CurrentFeedName = "_current"
         static let HeaderTitleLogo = "logo"
         
+        //Alerts
+        struct Alert {
+            struct Title {
+                static let Network = "alert-network-title"
+                static let Timeout = "alert-timeout-title"
+                static let Verify = "alert-verify-title"
+            }
+            
+            struct Message {
+                static let Network = "alert-network-message"
+                static let Timeout = "alert-timeout-message"
+                static let Verify = "alert-verify-message"
+            }
+            
+            struct Close {
+                static let OK = "alert-close-okay"
+                static let No = "alert-close-no"
+            }
+            
+            struct Action {
+                static let Retry = "alert-action-retry"
+                static let Yes = "alert-action-yes"
+                static let Resend = "alert-action-resend"
+            }
+        }
+        
         //Buttons
         struct Button {
             static let LandingExplore = "explore-button-label"
@@ -326,12 +352,6 @@ struct K {
             static let PostFormat = "%@/post_%@"
         }
         
-        struct Alert {
-            static let VerifyTitle = "alert-verify-title"
-            static let VerifyMessage = "alert-verify-message"
-            static let VerifyButton0 = "alert-verify-button0"
-        }
-        
         struct Error {
             static let EmailDuplicate = "email-duplicate"
             static let EmailInUseEmail = "in-use-email"
@@ -346,6 +366,7 @@ struct K {
             static let PasswordWrong = "password-wrong"
             static let UserDisabled = "user-disabled"
             static let UsernameTaken = "username-taken"
+            static let SomethingWentWrong = "something-went-wrong"
         }
         
         struct Post {
@@ -375,20 +396,21 @@ struct K {
     
     //Constant numerical values
     struct NumberConstant {
-        static let HeaderAndStatusBarsHeight : CGFloat = 64
-        static let StatusBarHeight : CGFloat = 20
+        static let HeaderAndStatusBarsHeight: CGFloat = 64
+        static let StatusBarHeight: CGFloat = 20
         
-        static let SwipeableButtonWidth : CGFloat = 44
+        static let SwipeableButtonWidth: CGFloat = 44
         
-        static let BlockedByLimit : Int = 5
+        static let BlockedByLimit: Int = 5
+        
         //Buttons
-        static let RoundedButtonCornerRadius : CGFloat = 5
-        static let RoundedButtonAngleWidth : CGFloat = 14
+        static let RoundedButtonCornerRadius: CGFloat = 5
+        static let RoundedButtonAngleWidth: CGFloat = 14
         
         struct Feed {
-            static let AddNewCellHeight : CGFloat = 137.0
-            static let FeedOptionHeight : CGFloat = 44.0
-            static let FeedBottomPadding : CGFloat = 80.0
+            static let AddNewCellHeight: CGFloat = 137.0
+            static let FeedOptionHeight: CGFloat = 44.0
+            static let FeedBottomPadding: CGFloat = 80.0
         }
         
         struct Map {
@@ -402,36 +424,36 @@ struct K {
         }
         
         struct Header {
-            static let HeroExpandHeight:CGFloat = 157.0
-            static let HeroCollapseHeight:CGFloat = 59.0
-            static let ButtonPadding:CGFloat = 20.0
-            static let TitleY0:CGFloat = 30.0
-            static let TitleY1:CGFloat = 62.0
-            static let TitleHeight:CGFloat = 20.0
-            static let FontSize:CGFloat = 18.0
-            static let ButtonIndent:CGFloat = 8.0
+            static let HeroExpandHeight: CGFloat = 157.0
+            static let HeroCollapseHeight: CGFloat = 59.0
+            static let ButtonPadding: CGFloat = 20.0
+            static let TitleY0: CGFloat = 30.0
+            static let TitleY1: CGFloat = 62.0
+            static let TitleHeight: CGFloat = 20.0
+            static let FontSize: CGFloat = 18.0
+            static let ButtonIndent: CGFloat = 8.0
         }
         
         struct Post {
-            static let ImageRatio:CGFloat = 0.5
-            static let PointHeight:CGFloat = 5.0
-            static let PointWidth:CGFloat = 10.0
-            static let ShadowOffset:CGFloat = 1.0
-            static let ShadowBlur:CGFloat = 0.6
-            static let DefaultViewHeight:CGFloat = 166.0
-            static let DefaultCaptionHeight:CGFloat = 32.0
-            static let DefaultHeaderViewHeight:CGFloat = 136.0
-            static let DefaultHeaderCaptionHeight:CGFloat = 48.0
-            static let DetailFooterHeight:CGFloat = 84.0
+            static let ImageRatio: CGFloat = 0.5
+            static let PointHeight: CGFloat = 5.0
+            static let PointWidth: CGFloat = 10.0
+            static let ShadowOffset: CGFloat = 1.0
+            static let ShadowBlur: CGFloat = 0.6
+            static let DefaultViewHeight: CGFloat = 166.0
+            static let DefaultCaptionHeight: CGFloat = 32.0
+            static let DefaultHeaderViewHeight: CGFloat = 136.0
+            static let DefaultHeaderCaptionHeight: CGFloat = 48.0
+            static let DetailFooterHeight: CGFloat = 84.0
         }
         
         struct Comment {
-            static let DefaultHeight:CGFloat = 124.0
-            static let DefaultCommentHeight:CGFloat = 44.0
+            static let DefaultHeight: CGFloat = 124.0
+            static let DefaultCommentHeight: CGFloat = 44.0
         }
         
         struct Upload {
-            static let ImageQuality:CGFloat = 0.5
+            static let ImageQuality: CGFloat = 0.5
         }
     }
     

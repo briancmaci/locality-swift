@@ -20,6 +20,7 @@ class JoinValidateViewController: LocalityBaseViewController {
         // Do any additional setup after loading the view.
         initErrorFields()
         initButtons()
+        initHeaderView()
         
         sendEmailVerification()
         
@@ -29,6 +30,13 @@ class JoinValidateViewController: LocalityBaseViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func initHeaderView() {
+        header.initHeaderViewStage()
+        header.initAttributes(title: "", leftType: .back, rightType: .none)
+        header.backgroundColor = .clear
+        view.addSubview(header)
     }
     
 //    func initVerifiedListener() {
@@ -73,6 +81,10 @@ class JoinValidateViewController: LocalityBaseViewController {
                             else {
                                 self.alertEmailValidate()
                             }
+                        }
+                        
+                        else {
+                            print("JoinValidate relogin error: \(error?.localizedDescription)")
                         }
                         
                     })

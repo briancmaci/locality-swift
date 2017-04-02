@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 import Mapbox
 import SWTableViewCell
 
@@ -59,18 +60,19 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         //set initial values for currentuser
         CurrentUser.shared.myLastRecordedLocation = CLLocationCoordinate2D(latitude: thisFeed.lat, longitude: thisFeed.lon)
         
-        viewDidLoadCalled = true
-        loadPosts()
-        
         initialSetup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        //If we have posts available already... reload for new data added
-        if viewDidLoadCalled == true {
+        if AFNetworkReachabilityManager.shared().isReachable == true {
             loadPosts()
+        } else {
+            showAlertView(title: K.String.Alert.Title.Network.localized,
+                          message: K.String.Alert.Message.Network.localized,
+                          close: K.String.Alert.Close.OK.localized,
+                          action: K.String.Alert.Action.Retry.localized)
         }
         
         if refresh != nil {
@@ -283,6 +285,16 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         
         invalidateRefreshTimer()
         loadPosts()
+    }
+    
+    //------------------------------------------------------------------------------
+    // MARK: - AlertViewDelegate Methods
+    //------------------------------------------------------------------------------
+    
+    override func tappedAction() {
+        
+        loadPosts()
+        alertView.closeAlert()
     }
     
     //------------------------------------------------------------------------------

@@ -30,6 +30,7 @@ class JoinViewController: LocalityBaseViewController, UITextFieldDelegate {
         initButtons()
         initErrorFields()
         initTextFields()
+        initHeaderView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,6 +41,13 @@ class JoinViewController: LocalityBaseViewController, UITextFieldDelegate {
     func initButtons() {
         registerEmailButton.addTarget(self, action: #selector(emailDidTouch), for: .touchUpInside)
         registerFacebookButton.addTarget(self, action: #selector(facebookDidTouch), for: .touchUpInside)
+    }
+    
+    func initHeaderView() {
+        header.initHeaderViewStage()
+        header.initAttributes(title: "", leftType: .back, rightType: .none)
+        header.backgroundColor = .clear
+        view.addSubview(header)
     }
     
     func initErrorFields() {

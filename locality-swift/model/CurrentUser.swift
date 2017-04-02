@@ -42,5 +42,25 @@ class CurrentUser: BaseUser {
                 K.DB.Var.ProfileImageURL : profileImageUrl]
     }
     
+    func reset() {
+        
+        uid = ""
+        username = ""
+        profileImageUrl = K.Image.DefaultAvatarProfile
+        status = .newUser
+        
+        email = ""
+        password = ""
+        facebookToken = ""
+        
+        isFirstVisit = true
+        currentLocationFeed = nil
+        pinnedLocations.removeAll()
+        
+        sortByType = .proximity
+        
+        myLastRecordedLocation = nil
+    }
+    
 
 }

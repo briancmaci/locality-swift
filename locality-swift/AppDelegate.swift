@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import AFNetworking
 import FBSDKLoginKit
 import GooglePlaces
 
@@ -24,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
         
         //Initialization
+        initReachability()
         FabricManager.initFabric()
         FacebookManager.initFacebookWith(app: application, options: launchOptions)
         FirebaseManager.initFirebase()
@@ -68,6 +70,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Add any custom logic here.
         return handled
+    }
+    
+    func initReachability() {
+        AFNetworkReachabilityManager.shared().startMonitoring()
     }
     
     func initDefaultUnitSystem() {

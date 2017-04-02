@@ -38,6 +38,7 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
         }
         
         initButtons()
+        initHeaderView()
         initErrorFields()
         initTextFields()
         initLoadingView()
@@ -56,6 +57,13 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
         forgotPasswordButton.setTitle(K.String.Login.ForgotPasswordLabel.localized, for: .normal)
         forgotPasswordButton.addTarget(self, action: #selector(passwordForgotDidTouch), for: .touchUpInside)
 
+    }
+    
+    func initHeaderView() {
+        header.initHeaderViewStage()
+        header.initAttributes(title: "", leftType: .back, rightType: .none)
+        header.backgroundColor = .clear
+        view.addSubview(header)
     }
     
     func initErrorFields() {
@@ -92,6 +100,7 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
                                     
                                     self.loginEmailButton.hideLoading()
                                     self.toggleLoading(false)
+                                    
                                     if error == nil {
                                         
                                         //for email verifiy logout/login
@@ -109,10 +118,23 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
     
     func loadCurrentUserVars() {
         
+        //FInd out if this is the first time
+        FirebaseManager.loadCurrentUserModel { (success) in
+            
+            if success == true {
+                self.moveToNextView()
+            }
+                
+            else {
+                print("Something is fucked up")
+            }
+        }
+    }
+    
+    func moveToNextView() {
+        
         //check email verification
         if FirebaseManager.getCurrentUser().isEmailVerified == false {
-            
-            
             
             let newVC:JoinValidateViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.JoinValidate) as! JoinValidateViewController
             
@@ -120,22 +142,6 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
             return
         }
         
-        //FInd out if this is the first time
-        FirebaseManager.loadCurrentUserModel { (success, error) in
-            
-            if success == true {
-                self.moveToNextView()
-            }
-            
-            else {
-                print("LOGIN ERROR?? \(error?.localizedDescription)")
-            }
-        }
-        
-        
-    }
-    
-    func moveToNextView() {
         if CurrentUser.shared.isFirstVisit == true {
             let newVC:CurrentFeedInitializeViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.CurrentFeedInit) as! CurrentFeedInitializeViewController
             
@@ -304,7 +310,13 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
                     facebookError.text = K.String.Error.EmailInUseFacebook.localized
                 }
                 
-            default:break
+            case .errorCodeUserNotFound:
+                emailError.text = K.String.Error.NoSuchEmail.localized
+                break
+                
+            default:
+                emailError.text = K.String.Error.SomethingWentWrong.localized
+                break
             }
         }
     }

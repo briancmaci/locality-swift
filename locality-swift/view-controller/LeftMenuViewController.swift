@@ -244,6 +244,8 @@ class LeftMenuViewController: LocalityPhotoBaseViewController, UITableViewDelega
         do {
             try FIRAuth.auth()?.signOut()
             
+            CurrentUser.shared.reset()
+            
             let landingVC:LandingViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.Landing) as! LandingViewController
             
             SlideNavigationController.sharedInstance().popAllAndSwitch(to: landingVC, withSlideOutAnimation: false, andCompletion: nil)

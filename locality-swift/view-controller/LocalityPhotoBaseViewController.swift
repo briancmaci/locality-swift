@@ -92,7 +92,7 @@ class LocalityPhotoBaseViewController: LocalityBaseViewController, UIActionSheet
             self.selectPhoto()
         })
         
-        let cancelAction = UIAlertAction(title:cancelTitle, style: .destructive, handler: {action in
+        let cancelAction = UIAlertAction(title:cancelTitle, style: .cancel, handler: {action in
             actionSheet.dismiss(animated:true, completion:nil)
         })
         
@@ -100,6 +100,20 @@ class LocalityPhotoBaseViewController: LocalityBaseViewController, UIActionSheet
         actionSheet.addAction(selectAction)
         actionSheet.addAction(cancelAction)
         UIApplication.topViewController()?.present(actionSheet, animated:true, completion:nil)
+
+        actionSheet.view.tintColor = K.Color.localityBlue
+        
+//        for subview in actionSheet.view.subviews {
+//            print("Subview type? \(type(of: subview))")
+//            if subview.isKind(of: UIButton.self) {
+//                let button = subview as! UIButton
+//                button.titleLabel?.font = UIFont(name: K.FontName.InterstateLightCondensed, size: 16)
+//                button.setTitleColor(K.Color.localityBlue, for: .normal)
+//                
+//                button.setBackgroundImage(UIImage(), for: .normal)
+//                button.backgroundColor = K.Color.toggleGray
+//            }
+//        }
     }
     
     // ActionSheet styling. (ios8 has a work-around).

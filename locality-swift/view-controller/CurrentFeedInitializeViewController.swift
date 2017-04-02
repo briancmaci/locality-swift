@@ -114,13 +114,9 @@ class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapVie
         locationManager.stopUpdatingLocation()
         currentLocation = locations[0].coordinate
         
-//        DispatchQueue.once {
-//            updateMapLocation()
-//            updateMapRange()
-//        }
-        
         if hasMapped == false {
             map.setCenter(currentLocation, animated:false)
+            updateMapLocation()
             updateMapRange()
             hasMapped = true
         }
