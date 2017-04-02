@@ -258,12 +258,14 @@ struct K {
                 static let Network = "alert-network-title"
                 static let Timeout = "alert-timeout-title"
                 static let Verify = "alert-verify-title"
+                static let Logout = "alert-logout-title"
             }
             
             struct Message {
                 static let Network = "alert-network-message"
                 static let Timeout = "alert-timeout-message"
                 static let Verify = "alert-verify-message"
+                static let Logout = "alert-logout-message"
             }
             
             struct Close {

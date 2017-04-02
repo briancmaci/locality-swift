@@ -234,8 +234,27 @@ class LeftMenuViewController: LocalityPhotoBaseViewController, UITableViewDelega
         print("Trigger: \(id)")
         
         if id == "logout" {
-            logout()
+            //logout()
+            showLogoutAlert()
         }
+    }
+    
+    func showLogoutAlert() {
+        
+        SlideNavigationController.sharedInstance().closeMenu { 
+            self.showAlertView(title: K.String.Alert.Title.Logout.localized,
+                               message: K.String.Alert.Message.Logout.localized,
+                               close: K.String.Alert.Close.No.localized,
+                               action: K.String.Alert.Action.Yes.localized)
+        }
+    }
+    
+    //AlertViewDelegate Methods
+    
+    override func tappedAction() {
+        
+        logout()
+        alertView.closeAlert()
     }
     
     //Trigger CTAs

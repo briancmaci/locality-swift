@@ -43,7 +43,6 @@ class LocalityBaseViewController: UIViewController, LocalityHeaderViewDelegate, 
     }
     
     func alertEmailValidate() {
-        print("ALERT!!!!")
         showAlertView(title: K.String.Alert.Title.Verify.localized,
                       message: K.String.Alert.Message.Verify.localized,
                       close: K.String.Alert.Close.OK.localized,
@@ -105,7 +104,7 @@ class LocalityBaseViewController: UIViewController, LocalityHeaderViewDelegate, 
         alertView.setup(title: title, message: message, closeTitle: close, actionTitle: action)
         alertView.delegate = self
         
-        view.addSubview(alertView)
+        SlideNavigationController.sharedInstance().topViewController?.view.addSubview(alertView)
     }
     
     func tappedAction() {

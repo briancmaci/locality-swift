@@ -63,10 +63,12 @@ DeleteAccountLabel = "Delete Account";
 alert-network-title = "Are you there?";
 alert-timeout-title = "Something's up";
 alert-verify-title = "You must verify your email";
+alert-logout-title = "Logout";
 
 alert-network-message = "You seem to be having connectivity issues. Please check your internet connection and try again.";
 alert-timeout-message = "Hmm. This request seems to be taking longer than usual. Please try again.";
 alert-verify-message = "We sent a verification link upon joining Locality. Please click the link in your email to continue.";
+alert-logout-message = "Are you sure you wish to logout?";
 
 alert-close-okay = "OK";
 alert-close-no = "No";
@@ -74,6 +76,7 @@ alert-close-no = "No";
 alert-action-retry = "Retry";
 alert-action-yes = "Yes";
 alert-action-resend = "Resend verification";
+
 
 //Errors
 email-duplicate = "This email is already registered.";
