@@ -44,7 +44,7 @@ extension UIImageView {
         }
         
         sd_setImage(with: URL(string:url)) { (image, error, cacheType, imgURL) in
-            if (cacheType == .disk || cacheType == .none) {
+            if cacheType == .none || cacheType == .disk {
                 self.alpha = 0
                 UIView.animate(withDuration: 0.25, animations: {
                     self.alpha = 1
@@ -60,15 +60,12 @@ extension UIImageView {
     func loadPostImage(url:String) {
         
         sd_setImage(with: URL(string:url)) { (image, error, cacheType, imgURL) in
-            if (cacheType == .disk || cacheType == .none) {
+            
+            if cacheType == .none || cacheType == .disk {
                 self.alpha = 0
-                UIView.animate(withDuration: 0.25, animations: {
+                UIView.animate(withDuration: 0.4, animations: {
                     self.alpha = 1
                 })
-            }
-                
-            else {
-                self.alpha = 1
             }
         }
     }
