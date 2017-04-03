@@ -12,20 +12,16 @@ import GeoFire
 
 class GeoFireManager: NSObject {
 
-    class func write(postLocation:CLLocation, postId:String, completionHandler: @escaping (Bool?, Error?) -> ()) -> () {
+    class func write(postLocation: CLLocation, postId: String, completionHandler: @escaping (Error?) -> ()) -> () {
         
        let geofire = getGeofireLocationsRef()
         
         geofire.setLocation(postLocation, forKey: postId) { (error) in
-            if (error != nil) {
-                completionHandler(false, error)
-            } else {
-                completionHandler(true, nil)
-            }
+            completionHandler(error)
         }
     }
     
-    class func delete(postId:String, completionHandler: @escaping(Error?) -> ()) -> () {
+    class func delete(postId: String, completionHandler: @escaping(Error?) -> ()) -> () {
         let geofire = getGeofireLocationsRef()
         
         geofire.removeKey(postId) { (error) in
@@ -33,11 +29,11 @@ class GeoFireManager: NSObject {
         }
     }
     
-    class func getPostLocations(range:Float, location:CLLocation, completionHandler: @escaping ([String]?, Error?) -> ()) -> () {
-        var matchingPosts:[String] = [String]()
+    class func getPostLocations(range: Float, location: CLLocation, completionHandler: @escaping ([String]?, Error?) -> ()) -> () {
+        var matchingPosts: [String] = [String]()
         
         let geofire = getGeofireLocationsRef()
-        let radiusInKM = (range/2)/1000
+        let radiusInKM = (range / 2) / 1000
         
         let query = geofire.query(at: location, withRadius: Double(radiusInKM))
         
@@ -46,6 +42,7 @@ class GeoFireManager: NSObject {
         })
         
         query?.observeReady({
+            query?.removeAllObservers()
             completionHandler(matchingPosts, nil)
         })
     }
@@ -53,7 +50,7 @@ class GeoFireManager: NSObject {
     class func getGeofireLocationsRef() -> GeoFire {
         
         let dbID = Util.getPList(name: K.PList.Keys)[K.APIKey.Firebase] as! String
-        let firURL = String(format:K.DB.FirebaseURLFormat, dbID)
+        let firURL = String(format: K.DB.FirebaseURLFormat, dbID)
         let geofireRef = FIRDatabase.database().reference(fromURL: firURL)
         
         return GeoFire(firebaseRef: geofireRef.child(K.DB.Table.PostLocations))

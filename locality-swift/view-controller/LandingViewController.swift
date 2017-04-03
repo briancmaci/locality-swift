@@ -45,8 +45,6 @@ class LandingViewController: LocalityBaseViewController, AngledButtonPairDelegat
         
         // Do any additional setup after loading the view.
         authListenerHandle = FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
-            print("AUTH STATE CHANGE IN LANDING!")
-            print("User? \(user)")
             
             if user != nil {
                 FirebaseManager.loadCurrentUserModel { (success) in

@@ -259,6 +259,8 @@ struct K {
                 static let Timeout = "alert-timeout-title"
                 static let Verify = "alert-verify-title"
                 static let Logout = "alert-logout-title"
+                static let DeleteLocation = "alert-delete-location-title"
+                static let DeletePost = "alert-delete-post-title"
             }
             
             struct Message {
@@ -266,6 +268,8 @@ struct K {
                 static let Timeout = "alert-timeout-message"
                 static let Verify = "alert-verify-message"
                 static let Logout = "alert-logout-message"
+                static let DeleteLocation = "alert-delete-location-message"
+                static let DeletePost = "alert-delete-post-message"
             }
             
             struct Close {
@@ -404,6 +408,9 @@ struct K {
         static let SwipeableButtonWidth: CGFloat = 44
         
         static let BlockedByLimit: Int = 5
+        
+        static let TimeoutInterval: TimeInterval = 30
+        static let TimeoutErrorCode: Int = 666999
         
         //Buttons
         static let RoundedButtonCornerRadius: CGFloat = 5

@@ -49,6 +49,12 @@ class LocalityBaseViewController: UIViewController, LocalityHeaderViewDelegate, 
                       action: K.String.Alert.Action.Resend.localized)
     }
     
+    func alertTimeout() {
+        showAlertView(title: K.String.Alert.Title.Timeout.localized,
+                      message: K.String.Alert.Message.Timeout.localized,
+                      close: K.String.Alert.Close.OK.localized)
+    }
+    
     // MARK: - LocalityHeaderDelegate
     func iconTapped(btn: HeaderIconButton) {
         //print("Icon type? \(btn.iconType)")

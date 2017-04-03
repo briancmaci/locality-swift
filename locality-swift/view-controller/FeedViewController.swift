@@ -33,6 +33,8 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     var postButtonWidth0: CGFloat!
     var sortButtonOffset0: CGFloat!
     
+    var deletePostObject: [String:AnyObject] = [:]
+    
     var thisFeed: FeedLocation!
     var isMyCurrentLocation = false //We ALWAYS want to update the feed current location
     
@@ -223,6 +225,12 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
                         self.postsTable.reloadData()
                         
                         self.noPostsLabel.isHidden = !self.posts.isEmpty
+                    } else {
+                        
+                        let e = error as! NSError
+                        if e.code == K.NumberConstant.TimeoutErrorCode {
+                            self.alertTimeout()
+                        }
                     }
                     
                     self.refresh.endRefreshing()
@@ -293,7 +301,13 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     
     override func tappedAction() {
         
-        loadPosts()
+        if alertView.alertId == K.String.Alert.Title.Network.localized {
+            loadPosts()
+        } else if alertView.alertId == K.String.Alert.Title.DeletePost.localized {
+            deletePostFromList(thisPost: deletePostObject["post"] as! UserPost,
+                               indexPath: deletePostObject["path"] as! IndexPath)
+        }
+        
         alertView.closeAlert()
     }
     
@@ -456,7 +470,8 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         
         if thisCell.thisModel.userHandle == CurrentUser.shared.uid {
             //delete
-            deletePostFromList(thisPost: thisCell.thisModel, indexPath: cellIndexPath)
+            alertDelete(post: thisCell.thisModel, path: cellIndexPath)
+            
         }
         
         else {
@@ -469,6 +484,19 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     
     func swipeableTableViewCellShouldHideUtilityButtons(onSwipe cell: SWTableViewCell!) -> Bool {
         return true
+    }
+    
+    func alertDelete(post: UserPost, path: IndexPath) {
+        
+        //set delete object
+        deletePostObject.removeAll()
+        deletePostObject["post"] = post
+        deletePostObject["path"] = path as AnyObject?
+        
+        showAlertView(title: K.String.Alert.Title.DeletePost.localized,
+                      message: K.String.Alert.Message.DeletePost.localized,
+                      close: K.String.Alert.Close.No.localized,
+                      action: K.String.Alert.Action.Yes.localized)
     }
     
     //------------------------------------------------------------------------------

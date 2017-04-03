@@ -240,7 +240,7 @@ class PostDetailViewController: LocalityBaseViewController, UITableViewDelegate,
     func commentToPost(comment: String) {
         let newComment:UserComment = UserComment(comment: comment, postId: thisPost.postId, user: CurrentUser.shared)
         
-        FirebaseManager.write(comment: newComment) { (success, error) in
+        FirebaseManager.write(comment: newComment) { (error) in
             
             if error != nil {
                 print("Write comment error: \(error?.localizedDescription)")

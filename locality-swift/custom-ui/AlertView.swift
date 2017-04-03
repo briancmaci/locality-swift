@@ -31,12 +31,16 @@ class AlertView: UIView {
     let kButtonHeight: CGFloat = 30
     let kButtonPadding: CGFloat = 20
     
-    var closeButton:AlertViewButton!
-    var actionButton:AlertViewButton?
+    var closeButton: AlertViewButton!
+    var actionButton: AlertViewButton?
     
-    var delegate:AlertViewDelegate?
+    var delegate: AlertViewDelegate?
+    
+    var alertId: String! = ""
     
     func setup(title: String, message: String, closeTitle: String, actionTitle: String = "") {
+        
+        alertId = title
         
         setupLabels(title: title, message: message)
         setupButtons(close: closeTitle, action: actionTitle)

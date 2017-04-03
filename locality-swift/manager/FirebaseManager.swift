@@ -13,7 +13,10 @@ import Mapbox
 
 class FirebaseManager: NSObject {
     
+    //static var timeoutTimer:Timer!
+    
     class func initFirebase() {
+        
         FIRApp.configure()
     }
     
@@ -30,17 +33,15 @@ class FirebaseManager: NSObject {
                 CurrentUser.shared.profileImageUrl = userDic?[K.DB.Var.ProfileImageURL] as! String
                 CurrentUser.shared.status = UserStatusType(rawValue:userDic?[K.DB.Var.Status] as! Int)!
                 
-                
                 if let currentLocation = userDic?[K.DB.Var.CurrentLocation] {
                     CurrentUser.shared.currentLocationFeed = FeedLocation(firebaseDictionary:currentLocation as! [String : AnyObject])
                 }
                 
                 if let pinned = userDic?[K.DB.Var.Pinned] as? [[String : AnyObject]]{
-                    
-                    var pins:[FeedLocation] = [FeedLocation]()
+                    var pins: [FeedLocation] = [FeedLocation]()
                     
                     for pin in pinned {
-                        let l:FeedLocation = FeedLocation(firebaseDictionary:pin)
+                        let l: FeedLocation = FeedLocation(firebaseDictionary: pin)
                         pins.append(l)
                     }
                     
@@ -61,10 +62,14 @@ class FirebaseManager: NSObject {
         var posts:[UserPost] = [UserPost]()
         var postsDic:[UserPost:Double] = [UserPost:Double]()
         
+        var postsHandle: UInt = 0
+        
+        var timeoutTimer: Timer!
+        
         switch orderedBy {
         case .proximity:
         
-            getPostsRef().observeSingleEvent(of: .value, with: { snapshot in
+            postsHandle = getPostsRef().observe(.value, with: { snapshot in
                 for child in snapshot.children {
                     let childSnap = child as! FIRDataSnapshot
                     if postIDs.contains(childSnap.key) {
@@ -86,11 +91,14 @@ class FirebaseManager: NSObject {
                         posts.append(p.key)
                     }
                 }
+                getPostsRef().removeObserver(withHandle: postsHandle)
+                timeoutTimer.invalidate()
+                
                 completionHandler(posts, nil)
             })
             
         case .time:
-            getPostsRef().queryOrdered(byChild: K.DB.Var.CreatedDate).observeSingleEvent(of: .value, with: { snapshot in
+            postsHandle = getPostsRef().queryOrdered(byChild: K.DB.Var.CreatedDate).observe(.value, with: { snapshot in
                 for child in snapshot.children {
                     let childSnap = child as! FIRDataSnapshot
                     if postIDs.contains(childSnap.key) {
@@ -103,13 +111,16 @@ class FirebaseManager: NSObject {
                         }
                     }
                 }
+                
+                getPostsRef().removeObserver(withHandle: postsHandle)
+                timeoutTimer.invalidate()
                 
                 //We have to reverse these to make the newest 
                 completionHandler(posts.reversed(), nil)
             })
             
         case .activity:
-            getPostsRef().queryOrdered(byChild: K.DB.Var.CommentCount).observeSingleEvent(of: .value, with: { snapshot in
+            postsHandle = getPostsRef().queryOrdered(byChild: K.DB.Var.CommentCount).observe(.value, with: { snapshot in
                 for child in snapshot.children {
                     let childSnap = child as! FIRDataSnapshot
                     if postIDs.contains(childSnap.key) {
@@ -123,12 +134,28 @@ class FirebaseManager: NSObject {
                     }
                 }
                 
+                getPostsRef().removeObserver(withHandle: postsHandle)
+                timeoutTimer.invalidate()
+                timeoutTimer = nil
+                
                 completionHandler(posts.reversed(), nil)
             })
                 
         }
         
-        
+        //Set timer
+        timeoutTimer = Timer.scheduledTimer(withTimeInterval: K.NumberConstant.TimeoutInterval,
+                             repeats: false, block: { (timer) in
+                                
+                                timeoutTimer.invalidate()
+                                timeoutTimer = nil
+                                
+                                getPostsRef().removeObserver(withHandle: postsHandle)
+                                
+                                let timeoutError = NSError(domain: "", code: K.NumberConstant.TimeoutErrorCode, userInfo: nil)
+                                
+                                completionHandler(nil, timeoutError)
+        })
     }
     
     class func loadFeedComments(postId:String, completionHandler: @escaping ([UserComment]?, Error?) -> ()) -> () {
@@ -207,25 +234,18 @@ class FirebaseManager: NSObject {
         })
     }
     
-    class func write(post:UserPost, completionHandler: @escaping (Bool?, Error?) -> ()) -> () {
+    class func write(post:UserPost, completionHandler: @escaping (Error?) -> ()) -> () {
         
-        print("This post to write? \(post)")
         getPostsRef().child(post.postId).updateChildValues(post.toFirebaseObject()) { (error, ref) in
-            if error != nil {
-                completionHandler(false, error)
-            }
-            
-            else {
-                completionHandler(true, nil)
-            }
+            completionHandler(error)
         }
     }
     
-    class func write(comment:UserComment, completionHandler: @escaping (Bool?, Error?) -> ()) -> () {
+    class func write(comment:UserComment, completionHandler: @escaping (Error?) -> ()) -> () {
         
-        getCommentsRef().child(comment.commentId).updateChildValues(comment.toFirebaseObject()) { (error, ref) in
-            if error != nil {
-                completionHandler(false, error)
+        getCommentsRef().child(comment.commentId).updateChildValues(comment.toFirebaseObject()) { (commentPostError, ref) in
+            if commentPostError != nil {
+                completionHandler(commentPostError)
             }
                 
             else {
@@ -234,7 +254,7 @@ class FirebaseManager: NSObject {
                 let countRef = getPostsRef().child(comment.postId).child(K.DB.Var.CommentCount)
                 countRef.runTransactionBlock({ (countData) -> FIRTransactionResult in
                     
-                    var value:NSNumber!
+                    var value: NSNumber!
                     
                     if countData.value is NSNull {
                         value = 0
@@ -247,12 +267,7 @@ class FirebaseManager: NSObject {
                     return FIRTransactionResult.success(withValue: countData)
                     
                 }, andCompletionBlock: { (error, success, snapshot) in
-                    
-                    if success == true {
-                        //print("Number incremented!")
-                    }
-                    
-                    completionHandler(true, nil)
+                    completionHandler(commentPostError)
                 })
                 
             }
@@ -276,21 +291,13 @@ class FirebaseManager: NSObject {
             
             if !likesArray.contains(CurrentUser.shared.uid) {
                 likesArray.append(CurrentUser.shared.uid)
-            }
-            
-            else {
+            } else {
                 print("We were already liking this post. Look into this.")
             }
             
             getPostsRef().child(pid).updateChildValues([K.DB.Var.LikedBy:likesArray], withCompletionBlock: { (error, ref) in
                 
-                if error != nil {
-                    completionHandler(nil, error)
-                }
-                
-                else {
-                    completionHandler(likesArray, nil)
-                }
+                completionHandler(likesArray, error)
             })
         })
     }
@@ -319,13 +326,7 @@ class FirebaseManager: NSObject {
             
             getPostsRef().child(pid).updateChildValues([K.DB.Var.LikedBy:likesArray], withCompletionBlock: { (error, ref) in
                 
-                if error != nil {
-                    completionHandler(nil, error)
-                }
-                    
-                else {
-                    completionHandler(likesArray, nil)
-                }
+                completionHandler(likesArray, error)
             })
         })
     }
@@ -368,10 +369,10 @@ class FirebaseManager: NSObject {
                 GeoFireManager.delete(postId: post.postId, completionHandler: { (error) in
                     if error == nil {
                         //delete comments
-                        print("location deleted")
+                        print("Location deleted")
                         getCommentsRef().queryOrdered(byChild: K.DB.Var.PostId).queryEqual(toValue: post.postId).observeSingleEvent(of: .value, with: { snapshot in
                             for child in snapshot.children {
-                                print("CHILD? \(child)")
+                                
                                 (child as AnyObject).ref.removeValue(completionBlock: { (error, ref) in
                                     print("Comment deleted")
                                 })
@@ -391,7 +392,7 @@ class FirebaseManager: NSObject {
         }
     }
     
-    class func write(pinnedLocations:[FeedLocation], completionHandler: @escaping (Bool?, Error?) -> ()) -> () {
+    class func write(pinnedLocations:[FeedLocation], completionHandler: @escaping (Error?) -> ()) -> () {
         
         //add location to pinned locations
         var firPinnedArray:[[String:Any]] = [[String:Any]]()
@@ -401,13 +402,7 @@ class FirebaseManager: NSObject {
         }
         
         FirebaseManager.getCurrentUserRef().child(K.DB.Var.Pinned).setValue(firPinnedArray) { (error, ref) in
-            if error != nil {
-                completionHandler(false, error)
-            }
-                
-            else {
-                completionHandler(true, nil)
-            }
+            completionHandler(error)
         }
     }
     

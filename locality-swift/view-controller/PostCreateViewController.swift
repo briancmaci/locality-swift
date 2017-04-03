@@ -113,7 +113,7 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
             thisPost.isAnonymous = true
         }
         
-        FirebaseManager.write(post: thisPost, completionHandler: { (success, error) in
+        FirebaseManager.write(post: thisPost, completionHandler: { (error) in
             if error != nil {
                 print("Post Write Error: \(error?.localizedDescription)")
             }
@@ -122,7 +122,7 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
                 print("Post written!")
                 
                 //Write Location
-                GeoFireManager.write(postLocation: CLLocation(latitude: thisPost.lat, longitude: thisPost.lon), postId: thisPost.postId, completionHandler: { (success, error) in
+                GeoFireManager.write(postLocation: CLLocation(latitude: thisPost.lat, longitude: thisPost.lon), postId: thisPost.postId, completionHandler: { (error) in
                     
                     if error != nil {
                         print("Location save error: \(error?.localizedDescription)")
@@ -145,21 +145,7 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
     func uploadPhotoTapped() {
         selectPhoto()
     }
-    
-    //MARK:- CLLocationManager Delegate Methods
-//    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-//        if status == .authorizedWhenInUse {
-//            locationManager.startUpdatingLocation()
-//        }
-//    }
-//    
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        let location:CLLocation = locations[0]
-//        currentLocation = location.coordinate
-//        
-//        locationManager.stopUpdatingLocation()
-//    }
-    
+        
     //MARK:- RSKImageCropper Delegate Override
     override func imageCropViewController(_ controller: RSKImageCropViewController, didCropImage croppedImage: UIImage, usingCropRect cropRect: CGRect, rotationAngle: CGFloat) {
         imageUploadView.setLocationImage(image: croppedImage)

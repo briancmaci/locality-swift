@@ -288,7 +288,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
             //save to current
             CurrentUser.shared.pinnedLocations.append(thisLocation)
             
-            FirebaseManager.write(pinnedLocations:CurrentUser.shared.pinnedLocations, completionHandler: { (success, error) in
+            FirebaseManager.write(pinnedLocations:CurrentUser.shared.pinnedLocations, completionHandler: { (error) in
                 if error != nil {
                     print("Locations Write Error: \(error?.localizedDescription)")
                 }
@@ -335,7 +335,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
                 }
             }
             
-            FirebaseManager.write(pinnedLocations:CurrentUser.shared.pinnedLocations, completionHandler: { (success, error) in
+            FirebaseManager.write(pinnedLocations:CurrentUser.shared.pinnedLocations, completionHandler: { (error) in
                 if error != nil {
                     print("Locations Write Error: \(error?.localizedDescription)")
                 }
@@ -366,7 +366,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
                     }
                 }
                 
-                FirebaseManager.write(pinnedLocations:CurrentUser.shared.pinnedLocations, completionHandler: { (success, error) in
+                FirebaseManager.write(pinnedLocations:CurrentUser.shared.pinnedLocations, completionHandler: { (error) in
                     if error != nil {
                         print("Locations Update Error: \(error?.localizedDescription)")
                     }
@@ -382,15 +382,13 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     
     func deleteLocation(_ loc:FeedLocation) {
     
-        for i in 0...CurrentUser.shared.pinnedLocations.count - 1 {
-            if CurrentUser.shared.pinnedLocations[i].locationId == loc.locationId {
+        for (i, pinned) in CurrentUser.shared.pinnedLocations.enumerated() {
+            if pinned.locationId == loc.locationId {
                 CurrentUser.shared.pinnedLocations.remove(at: i)
             }
         }
         
-        print("DELETE LOCATION IMAGE!!!!!")
-        
-        FirebaseManager.write(pinnedLocations:CurrentUser.shared.pinnedLocations, completionHandler: { (success, error) in
+        FirebaseManager.write(pinnedLocations:CurrentUser.shared.pinnedLocations, completionHandler: { (error) in
             if error != nil {
                 print("Locations Delete Error: \(error?.localizedDescription)")
             }
@@ -464,12 +462,31 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     }
     
     func deleteLocationDidTouch(sender:UIButton) {
-        deleteLocation(editFeed!)
+        
+        alertDelete()
     }
     
     func handleMapSingleTap(tap:UITapGestureRecognizer) {
         currentLocation = map.convert(tap.location(in: map), toCoordinateFrom: map)
         updateMapRange()
+    }
+    
+    //------------------------------------------------------------------------------
+    // MARK: - AlertView Methods
+    //------------------------------------------------------------------------------
+    
+    func alertDelete() {
+    
+        showAlertView(title: K.String.Alert.Title.DeleteLocation.localized,
+                      message: K.String.Alert.Message.DeleteLocation.localized,
+                      close: K.String.Alert.Close.No.localized,
+                      action: K.String.Alert.Action.Yes.localized)
+    }
+    
+    override func tappedAction() {
+    
+        deleteLocation(editFeed!)
+        alertView.closeAlert()
     }
     
     //------------------------------------------------------------------------------
