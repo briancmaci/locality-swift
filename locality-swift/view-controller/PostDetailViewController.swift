@@ -275,7 +275,7 @@ class PostDetailViewController: LocalityBaseViewController, UITableViewDelegate,
             self.postComments.append(comment)
             let newCommentPath:IndexPath = IndexPath(row: self.postComments.count - 1, section: 0)
             
-            self.commentsTable.insertRows(at: [newCommentPath], with: .left)
+            self.commentsTable.insertRows(at: [newCommentPath], with: .right)
             
 //            let c:CommentFeedCell = self.commentsTable.cellForRow(at: newCommentPath) as! CommentFeedCell
 //            c.popBackground()
@@ -295,7 +295,7 @@ class PostDetailViewController: LocalityBaseViewController, UITableViewDelegate,
         let scrollRectY:CGFloat = tableHeight() + (addNew == true ? addCommentCell.bounds.size.height : 0) - commentsTable.bounds.size.height
         
         commentsTable.scrollRectToVisible(CGRect(x:0,
-                                                 y:scrollRectY,
+                                                 y:max(scrollRectY, -20),
                                                  width:commentsTable.bounds.size.width,
                                                  height:commentsTable.bounds.size.height ), animated: animated)
     }
