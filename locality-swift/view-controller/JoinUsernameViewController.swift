@@ -109,7 +109,7 @@ class JoinUsernameViewController: LocalityBaseViewController, UITextFieldDelegat
         
         FirebaseManager.getCurrentUserRef().updateChildValues(CurrentUser.shared.extraAttributesToFirebase()) { (error, ref) in
             if error != nil {
-                print("Extra Attributes update failed: \(error?.localizedDescription)")
+                print("Extra Attributes update failed: \(String(describing: error?.localizedDescription))")
             } else {
                 print("Extra Attributes updated")
             }

@@ -236,7 +236,7 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
             
             
             if (error != nil || (result?.isCancelled)!) {
-                print("Facebook Login Error \(error?.localizedDescription)")
+                print("Facebook Login Error \(String(describing: error?.localizedDescription))")
                 self.loginFacebookButton.hideLoading()
                 self.toggleLoading(false)
             } else {
@@ -249,7 +249,7 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
                     self.toggleLoading(false)
                     
                     if (error != nil) {
-                        print("Facebook Firebase Login Error \(error?.localizedDescription)")
+                        print("Facebook Firebase Login Error \(String(describing: error?.localizedDescription))")
                     }
                     
                     else {

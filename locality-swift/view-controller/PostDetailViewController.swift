@@ -243,7 +243,7 @@ class PostDetailViewController: LocalityBaseViewController, UITableViewDelegate,
         FirebaseManager.write(comment: newComment) { (error) in
             
             if error != nil {
-                print("Write comment error: \(error?.localizedDescription)")
+                print("Write comment error: \(String(describing: error?.localizedDescription))")
             }
             
             else {

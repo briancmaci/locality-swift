@@ -70,7 +70,7 @@ class JoinValidateViewController: LocalityBaseViewController {
                 
                     FIRAuth.auth()?.signIn(withEmail: CurrentUser.shared.email, password: CurrentUser.shared.password, completion: { (user, error) in
                         if error == nil {
-                            print("IsEmailVerified POST Login? \(user?.isEmailVerified)")
+                            print("IsEmailVerified POST Login? \(String(describing: user?.isEmailVerified))")
                             
                             if user?.isEmailVerified == true {
                                 let newVC:CurrentFeedInitializeViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.CurrentFeedInit) as! CurrentFeedInitializeViewController
@@ -84,7 +84,7 @@ class JoinValidateViewController: LocalityBaseViewController {
                         }
                         
                         else {
-                            print("JoinValidate relogin error: \(error?.localizedDescription)")
+                            print("JoinValidate relogin error: \(String(describing: error?.localizedDescription))")
                         }
                         
                     })
@@ -96,7 +96,7 @@ class JoinValidateViewController: LocalityBaseViewController {
                     FIRAuth.auth()?.signIn(with: credential) { (user, error) in
                         
                         if (error != nil) {
-                            print("Facebook Firebase Login Error \(error?.localizedDescription)")
+                            print("Facebook Firebase Login Error \(String(describing: error?.localizedDescription))")
                         }
                             
                         else {

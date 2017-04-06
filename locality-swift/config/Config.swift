@@ -84,9 +84,12 @@ struct K {
         }
     }
     
-    //Back End Params
-    struct Param {
+    struct Push {
+        static let TopicBase = "/topics/"
         
+        struct Topic {
+            static let AllDevices = "all-devices"
+        }
     }
     
     struct Screen {

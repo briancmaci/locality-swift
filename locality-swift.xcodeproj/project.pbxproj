@@ -18,6 +18,7 @@
 		7244AC721E86C2890091715E /* PostFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7244AC701E86C2890091715E /* PostFeedCell.xib */; };
 		7244AC781E8874340091715E /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7244AC761E8874340091715E /* ForgotPasswordViewController.swift */; };
 		7244AC791E8874340091715E /* ForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7244AC771E8874340091715E /* ForgotPasswordViewController.xib */; };
+		7265DEA91E95DF4F00AF51EC /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7265DEA81E95DF4F00AF51EC /* PushNotificationManager.swift */; };
 		72B881A11E65EE5000EB3B2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B881A01E65EE5000EB3B2E /* AppDelegate.swift */; };
 		72B881A61E65EE5000EB3B2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72B881A41E65EE5000EB3B2E /* Main.storyboard */; };
 		72B881A91E65EE5000EB3B2E /* locality_swift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 72B881A71E65EE5000EB3B2E /* locality_swift.xcdatamodeld */; };
@@ -167,6 +168,7 @@
 		7244AC701E86C2890091715E /* PostFeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PostFeedCell.xib; path = "custom-ui/PostFeedCell.xib"; sourceTree = "<group>"; };
 		7244AC761E8874340091715E /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForgotPasswordViewController.swift; path = "view-controller/ForgotPasswordViewController.swift"; sourceTree = "<group>"; };
 		7244AC771E8874340091715E /* ForgotPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForgotPasswordViewController.xib; path = "view-controller/ForgotPasswordViewController.xib"; sourceTree = "<group>"; };
+		7265DEA81E95DF4F00AF51EC /* PushNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PushNotificationManager.swift; path = manager/PushNotificationManager.swift; sourceTree = "<group>"; };
 		72B8819D1E65EE5000EB3B2E /* locality-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "locality-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		72B881A01E65EE5000EB3B2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		72B881A51E65EE5000EB3B2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 		72F24BF51E725BCB00CA7702 /* CameraOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraOverlay.swift; path = "custom-ui/CameraOverlay.swift"; sourceTree = "<group>"; };
 		72F24BF71E730C5A00CA7702 /* PhotoUploadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoUploadManager.swift; path = manager/PhotoUploadManager.swift; sourceTree = "<group>"; };
 		72F24BFA1E735BF700CA7702 /* GeoFireManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeoFireManager.swift; path = manager/GeoFireManager.swift; sourceTree = "<group>"; };
+		72F71EAF1E9476F400D9885A /* locality-swift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "locality-swift.entitlements"; sourceTree = "<group>"; };
 		72FE07FA1E747E2600F87A7F /* SlideMenuAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlideMenuAttributes.swift; path = model/SlideMenuAttributes.swift; sourceTree = "<group>"; };
 		72FE07FC1E74919400F87A7F /* LeftMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeftMenuCell.swift; path = "custom-ui/LeftMenuCell.swift"; sourceTree = "<group>"; };
 		72FE07FD1E74919400F87A7F /* LeftMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LeftMenuCell.xib; path = "custom-ui/LeftMenuCell.xib"; sourceTree = "<group>"; };
@@ -367,6 +370,7 @@
 		72B8819F1E65EE5000EB3B2E /* locality-swift */ = {
 			isa = PBXGroup;
 			children = (
+				72F71EAF1E9476F400D9885A /* locality-swift.entitlements */,
 				72B881A01E65EE5000EB3B2E /* AppDelegate.swift */,
 				72B881A41E65EE5000EB3B2E /* Main.storyboard */,
 				72B881AA1E65EE5000EB3B2E /* Assets.xcassets */,
@@ -416,6 +420,7 @@
 				72EEDF971E76F319009DFA77 /* GoogleMapsManager.swift */,
 				72B8821B1E6AA4C200EB3B2E /* MapboxManager.swift */,
 				72F24BF71E730C5A00CA7702 /* PhotoUploadManager.swift */,
+				7265DEA81E95DF4F00AF51EC /* PushNotificationManager.swift */,
 			);
 			name = manager;
 			sourceTree = "<group>";
@@ -925,6 +930,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = MF94FJYR24;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					72B881B31E65EE5000EB3B2E = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1124,6 +1134,7 @@
 				72DC48781E6B4A7D00486535 /* CustomPointAnnotation.swift in Sources */,
 				72B881F91E67961E00EB3B2E /* AngledPairButton.swift in Sources */,
 				72F24BF11E72494B00CA7702 /* LocalityPhotoBaseViewController.swift in Sources */,
+				7265DEA91E95DF4F00AF51EC /* PushNotificationManager.swift in Sources */,
 				72FE07FE1E74919400F87A7F /* LeftMenuCell.swift in Sources */,
 				72F24BC61E71AD3D00CA7702 /* UIImageViewExtension.swift in Sources */,
 				72B882191E6A8BE800EB3B2E /* CurrentFeedInitializeViewController.swift in Sources */,
@@ -1321,6 +1332,9 @@
 			baseConfigurationReference = B0C073B846F1D9C61B783347 /* Pods-locality-swift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "locality-swift/locality-swift.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = MF94FJYR24;
@@ -1420,6 +1434,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.briancmaci.locality-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "locality-swift/Locality-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1430,6 +1446,9 @@
 			baseConfigurationReference = 84886BD7BF3AE7DEF44AC1B8 /* Pods-locality-swift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "locality-swift/locality-swift.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = MF94FJYR24;
@@ -1529,6 +1548,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.briancmaci.locality-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "locality-swift/Locality-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

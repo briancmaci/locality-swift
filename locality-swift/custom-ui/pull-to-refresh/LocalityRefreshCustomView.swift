@@ -53,7 +53,7 @@ class LocalityRefreshCustomView: UIView {
             let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation")
     
             rotationAnimation.fromValue = 0.0
-            rotationAnimation.toValue = Float(M_PI * 2.0)
+            rotationAnimation.toValue = Double.pi * 2
             rotationAnimation.duration = duration
             rotationAnimation.repeatCount = Float.infinity
     
@@ -148,7 +148,7 @@ class LocalityRefreshCustomView: UIView {
         slicePath.move(to: CGPoint(x: radarSpinner.center.x, y: radarSpinner.center.y))
         slicePath.addLine(to: CGPoint(x: radarSpinner.bounds.width, y: radarSpinner.center.y))
         slicePath.addArc(withCenter: CGPoint(x: radarSpinner.center.x, y: radarSpinner.center.y),
-                         radius: radarSpinner.bounds.width/2, startAngle: 0.0, endAngle: -45.0 * CGFloat(M_PI / 180), clockwise: false)
+                         radius: radarSpinner.bounds.width/2, startAngle: 0.0, endAngle: -45.0 * CGFloat(Double.pi / 180), clockwise: false)
         slicePath.addLine(to: CGPoint(x: radarSpinner.center.x, y: radarSpinner.center.y))
         
         slicePath.close()

@@ -21,21 +21,21 @@ class MapboxManager: NSObject {
         let pointSeparation:CGFloat = 8
         let pointCount:Int = Int(floor(360 / pointSeparation))
         let distanceRad = meterRadius / K.NumberConstant.Map.EarthRadius
-        let centerRadLat:Double = coordinate.latitude * M_PI / 180
-        let centerRadLong:Double = coordinate.longitude * M_PI / 180
+        let centerRadLat:Double = coordinate.latitude * Double.pi / 180
+        let centerRadLong:Double = coordinate.longitude * Double.pi / 180
         
         var coordinates:[CLLocationCoordinate2D] = []
         
         for i in 0...pointCount {
             let degrees:Double = Double(Int(pointSeparation) * i)
-            let degreeRad:Double = degrees * M_PI / 180
+            let degreeRad:Double = degrees * Double.pi / 180
             
             let pointRadLat:Double = asin( sin(centerRadLat) * cos(distanceRad) + cos(centerRadLat) * sin(distanceRad) * cos(degreeRad))
             let pointRadLong:Double = centerRadLong + atan2( sin(degreeRad) * sin(distanceRad) * cos(centerRadLat),
                                                              cos(distanceRad) - sin(centerRadLat) * sin(pointRadLat))
             
-            let pointLat:Double = pointRadLat * 180 / M_PI
-            let pointLong:Double = pointRadLong * 180 / M_PI
+            let pointLat:Double = pointRadLat * 180 / Double.pi
+            let pointLong:Double = pointRadLong * 180 / Double.pi
             
             let point:CLLocationCoordinate2D = CLLocationCoordinate2DMake(pointLat, pointLong)
             coordinates.append(point)
@@ -51,8 +51,8 @@ class MapboxManager: NSObject {
         let deltaLat:Double = metersLat/K.NumberConstant.Map.EarthRadius
         let deltaLong:Double = metersLong/K.NumberConstant.Map.EarthRadius
         
-        let newLat:Double = coord.latitude + deltaLat * 180/M_PI
-        let newLong:Double = coord.longitude + deltaLong * 180/M_PI
+        let newLat:Double = coord.latitude + deltaLat * 180 / Double.pi
+        let newLong:Double = coord.longitude + deltaLong * 180 / Double.pi
         
         return CLLocationCoordinate2D(latitude: newLat, longitude: newLong)
     }

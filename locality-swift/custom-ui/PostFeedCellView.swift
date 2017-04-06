@@ -88,7 +88,7 @@ class PostFeedCellView: UIView {
             }
             
             else {
-                print("Error liking: \(error?.localizedDescription)")
+                print("Error liking: \(String(describing: error?.localizedDescription))")
                 self.likeButton.isSelected = false
             }
         }
@@ -104,7 +104,7 @@ class PostFeedCellView: UIView {
             }
             
             else {
-                print("Error unliking: \(error?.localizedDescription)")
+                print("Error unliking: \(String(describing: error?.localizedDescription))")
                 self.likeButton.isSelected  = true
             }
         }

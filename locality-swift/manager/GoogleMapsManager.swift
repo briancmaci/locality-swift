@@ -26,7 +26,7 @@ class GoogleMapsManager: NSObject {
             let address:GMSAddress = (response?.firstResult())!
             
             if error != nil {
-                print("GMSReverseGeocode Error: \(error?.localizedDescription)")
+                print("GMSReverseGeocode Error: \(String(describing: error?.localizedDescription))")
                 completionHandler(nil, error)
             }
             

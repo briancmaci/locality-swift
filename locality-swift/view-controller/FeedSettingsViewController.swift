@@ -290,7 +290,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
             
             FirebaseManager.write(pinnedLocations:CurrentUser.shared.pinnedLocations, completionHandler: { (error) in
                 if error != nil {
-                    print("Locations Write Error: \(error?.localizedDescription)")
+                    print("Locations Write Error: \(String(describing: error?.localizedDescription))")
                 }
                     
                 else {
@@ -337,7 +337,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
             
             FirebaseManager.write(pinnedLocations:CurrentUser.shared.pinnedLocations, completionHandler: { (error) in
                 if error != nil {
-                    print("Locations Write Error: \(error?.localizedDescription)")
+                    print("Locations Write Error: \(String(describing: error?.localizedDescription))")
                 }
                     
                 else {
@@ -368,7 +368,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
                 
                 FirebaseManager.write(pinnedLocations:CurrentUser.shared.pinnedLocations, completionHandler: { (error) in
                     if error != nil {
-                        print("Locations Update Error: \(error?.localizedDescription)")
+                        print("Locations Update Error: \(String(describing: error?.localizedDescription))")
                     }
                         
                     else {
@@ -390,7 +390,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         
         FirebaseManager.write(pinnedLocations:CurrentUser.shared.pinnedLocations, completionHandler: { (error) in
             if error != nil {
-                print("Locations Delete Error: \(error?.localizedDescription)")
+                print("Locations Delete Error: \(String(describing: error?.localizedDescription))")
             }
                 
             else {
@@ -404,7 +404,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         PhotoUploadManager.uploadPhoto(image: imageUploadView.getImage(), type: .location, uid: CurrentUser.shared.uid) { (metadata, error) in
             
             if error != nil {
-                print("Upload Error: \(error?.localizedDescription)")
+                print("Upload Error: \(String(describing: error?.localizedDescription))")
             }
                 
             else {
@@ -585,7 +585,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     func getDetailsWithPlaceID(placeId:String) {
         placesClient.lookUpPlaceID(placeId) { (place, error) in
             if error != nil {
-                print("Place Details Error: \(error?.localizedDescription)")
+                print("Place Details Error: \(String(describing: error?.localizedDescription))")
             }
             
             if place != nil {
@@ -825,7 +825,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         placesClient.autocompleteQuery(searchString!, bounds: bounds, filter: filter) { (results, error) in
             
             if error != nil {
-                print("Autocomplete error: \(error?.localizedDescription)")
+                print("Autocomplete error: \(String(describing: error?.localizedDescription))")
                 return
             }
             

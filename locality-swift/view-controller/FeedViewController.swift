@@ -227,7 +227,7 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
                         self.noPostsLabel.isHidden = !self.posts.isEmpty
                     } else {
                         
-                        let e = error as! NSError
+                        let e = error! as NSError
                         if e.code == K.NumberConstant.TimeoutErrorCode {
                             self.alertTimeout()
                         }

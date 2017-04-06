@@ -89,7 +89,7 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
             PhotoUploadManager.uploadPhoto(image: imageUploadView.getImage(), type: .post, uid: CurrentUser.shared.uid, pid:thisPostId) { (metadata, error) in
                 
                 if error != nil {
-                    print("Upload Error: \(error?.localizedDescription)")
+                    print("Upload Error: \(String(describing: error?.localizedDescription))")
                 }
                 
                 else {
@@ -115,7 +115,7 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
         
         FirebaseManager.write(post: thisPost, completionHandler: { (error) in
             if error != nil {
-                print("Post Write Error: \(error?.localizedDescription)")
+                print("Post Write Error: \(String(describing: error?.localizedDescription))")
             }
                 
             else {
@@ -125,7 +125,7 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
                 GeoFireManager.write(postLocation: CLLocation(latitude: thisPost.lat, longitude: thisPost.lon), postId: thisPost.postId, completionHandler: { (error) in
                     
                     if error != nil {
-                        print("Location save error: \(error?.localizedDescription)")
+                        print("Location save error: \(String(describing: error?.localizedDescription))")
                     }
                     
                     else {

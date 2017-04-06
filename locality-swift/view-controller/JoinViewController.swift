@@ -106,7 +106,7 @@ class JoinViewController: LocalityBaseViewController, UITextFieldDelegate {
             else {
                 //Print error message from Firebase
                 self.displayFirebaseError(error: error!)
-                print("Error Code: \(error?._code)")
+                print("Error Code: \(String(describing: error?._code))")
             }
         })
     }
@@ -168,7 +168,7 @@ class JoinViewController: LocalityBaseViewController, UITextFieldDelegate {
             
             
             if (error != nil || (result?.isCancelled)!) {
-                print("Facebook Login Error \(error?.localizedDescription)")
+                print("Facebook Login Error \(String(describing: error?.localizedDescription))")
             } else {
                 
                 // Log in to Firebase via Facebook
@@ -181,7 +181,7 @@ class JoinViewController: LocalityBaseViewController, UITextFieldDelegate {
                     }
                         
                     else {
-                        print("Logged in FB user: \(user)")
+                        print("Logged in FB user: \(String(describing: user))")
                         
                         //save password for emailVerify
                         CurrentUser.shared.facebookToken = (result?.token.tokenString)!
