@@ -40,9 +40,6 @@ class PushNotificationManager: NSObject {
                                                selector: #selector(tokenRefreshNotification),
                                                name: .firInstanceIDTokenRefresh,
                                                object: nil)
-        
-        //register to all devices
-        FIRMessaging.messaging().subscribe(toTopic: K.Push.TopicBase + K.Push.Topic.AllDevices)
     }
     
     func tokenRefreshNotification(_ notification: Notification) {
@@ -68,6 +65,17 @@ class PushNotificationManager: NSObject {
                 print("Unable to connect with FCM. \(error?.localizedDescription ?? "")")
             } else {
                 print("Connected to FCM with token: \(String(describing: FIRInstanceID.instanceID().token()))")
+                
+                //connect to all-devices once
+                DispatchQueue.once(block: { () in
+                    //register to all devices
+                    FIRMessaging.messaging().subscribe(toTopic: K.Push.TopicBase + K.Push.Topic.AllDevices)
+                    
+                    //TODO: MOVE THESE TO ONCE WE HAVE FIRST LOGGED IN!!!!
+                    print("Subscribed to topic \(K.Push.TopicBase + K.Push.Topic.AllDevices)")
+                    FIRMessaging.messaging().subscribe(toTopic: K.Push.TopicBase + String(format: K.Push.Topic.UserIdFormat, CurrentUser.shared.uid))
+                    print("Subscribed to topic \(K.Push.TopicBase + String(format: K.Push.Topic.UserIdFormat, CurrentUser.shared.uid))")
+                })
             }
         }
     }

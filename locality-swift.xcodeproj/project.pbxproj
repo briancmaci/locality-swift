@@ -19,6 +19,7 @@
 		7244AC781E8874340091715E /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7244AC761E8874340091715E /* ForgotPasswordViewController.swift */; };
 		7244AC791E8874340091715E /* ForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7244AC771E8874340091715E /* ForgotPasswordViewController.xib */; };
 		7265DEA91E95DF4F00AF51EC /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7265DEA81E95DF4F00AF51EC /* PushNotificationManager.swift */; };
+		7265DEAC1E95F82100AF51EC /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7265DEAB1E95F82100AF51EC /* SettingsViewController.swift */; };
 		72B881A11E65EE5000EB3B2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B881A01E65EE5000EB3B2E /* AppDelegate.swift */; };
 		72B881A61E65EE5000EB3B2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72B881A41E65EE5000EB3B2E /* Main.storyboard */; };
 		72B881A91E65EE5000EB3B2E /* locality_swift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 72B881A71E65EE5000EB3B2E /* locality_swift.xcdatamodeld */; };
@@ -169,6 +170,7 @@
 		7244AC761E8874340091715E /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForgotPasswordViewController.swift; path = "view-controller/ForgotPasswordViewController.swift"; sourceTree = "<group>"; };
 		7244AC771E8874340091715E /* ForgotPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForgotPasswordViewController.xib; path = "view-controller/ForgotPasswordViewController.xib"; sourceTree = "<group>"; };
 		7265DEA81E95DF4F00AF51EC /* PushNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PushNotificationManager.swift; path = manager/PushNotificationManager.swift; sourceTree = "<group>"; };
+		7265DEAB1E95F82100AF51EC /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = "view-controller/SettingsViewController.swift"; sourceTree = "<group>"; };
 		72B8819D1E65EE5000EB3B2E /* locality-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "locality-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		72B881A01E65EE5000EB3B2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		72B881A51E65EE5000EB3B2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -345,6 +347,14 @@
 			name = "forgot-password";
 			sourceTree = "<group>";
 		};
+		7265DEAA1E95F7D600AF51EC /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				7265DEAB1E95F82100AF51EC /* SettingsViewController.swift */,
+			);
+			name = settings;
+			sourceTree = "<group>";
+		};
 		72B881941E65EE5000EB3B2E = {
 			isa = PBXGroup;
 			children = (
@@ -463,6 +473,7 @@
 				72B882171E6A8BB700EB3B2E /* join-login */,
 				72F24BA41E70BC4700CA7702 /* left-menu */,
 				72F24BDB1E71F04300CA7702 /* post */,
+				7265DEAA1E95F7D600AF51EC /* settings */,
 			);
 			name = "view-controller";
 			sourceTree = "<group>";
@@ -1108,6 +1119,7 @@
 				72F24BCA1E71BAA700CA7702 /* LikePostButton.swift in Sources */,
 				72FE08051E74D72000F87A7F /* UIApplicationExtension.swift in Sources */,
 				72F24BE61E721D9300CA7702 /* ImageUploadView.swift in Sources */,
+				7265DEAC1E95F82100AF51EC /* SettingsViewController.swift in Sources */,
 				722ABA411E74761100A3F1DA /* SlideNavigationContorllerAnimatorScale.m in Sources */,
 				72EEDF941E75FB1A009DFA77 /* FeedSettingsToggleCell.swift in Sources */,
 				72F24BB21E70ECDF00CA7702 /* FeedHeaderView.swift in Sources */,

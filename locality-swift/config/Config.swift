@@ -89,6 +89,7 @@ struct K {
         
         struct Topic {
             static let AllDevices = "all-devices"
+            static let UserIdFormat = "uid_%@"
         }
     }
     
@@ -201,6 +202,7 @@ struct K {
             static let PostDetail = "postDetailVC"
             
             static let About = "aboutVC"
+            static let Settings = "settingsVC"
         }
     }
     
