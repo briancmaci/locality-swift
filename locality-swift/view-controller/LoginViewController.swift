@@ -171,7 +171,7 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
     
     func passwordForgotDidTouch(sender:UIButton) {
         
-        let newVC:ForgotPasswordViewController = ForgotPasswordViewController(nibName: K.NIBName.ForgotPasswordViewController, bundle: nil)
+        let newVC:ForgotPasswordViewController = ForgotPasswordViewController(nibName: K.NIBName.VC.ForgotPassword, bundle: nil)
         
         navigationController?.present(newVC, animated: true, completion: nil)
     }

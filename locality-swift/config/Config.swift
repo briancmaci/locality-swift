@@ -239,6 +239,8 @@ struct K {
             
             static let LeftMenu = "LeftMenuViewController"
             
+            static let ForgotPassword = "ForgotPasswordViewController"
+            
         }
         
         static let LocationSlider = "LocationSlider"
@@ -260,8 +262,6 @@ struct K {
         static let AddCommentCell = "AddCommentCell"
         
         static let SortButtonWithPopup = "SortButtonWithPopup"
-        
-        static let ForgotPasswordViewController = "ForgotPasswordViewController"
     }
     
     //UITableViewCell reuseIdentifiers
