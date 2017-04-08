@@ -39,14 +39,6 @@ class JoinValidateViewController: LocalityBaseViewController {
         view.addSubview(header)
     }
     
-//    func initVerifiedListener() {
-//        FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
-//            if user != nil {
-//                print("isVerified? , \(user?.isEmailVerified)")
-//            }
-//        }
-//    }
-    
     func initErrorFields() {
         loginError.text?.removeAll()
     }
@@ -73,43 +65,28 @@ class JoinValidateViewController: LocalityBaseViewController {
                             print("IsEmailVerified POST Login? \(String(describing: user?.isEmailVerified))")
                             
                             if user?.isEmailVerified == true {
-                                let newVC:CurrentFeedInitializeViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.CurrentFeedInit) as! CurrentFeedInitializeViewController
-                                
-                                SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
-                            }
-                                
-                            else {
+                                self.goToFeedInitialize()
+                            } else {
                                 self.alertEmailValidate()
                             }
-                        }
-                        
-                        else {
+                        } else {
                             print("JoinValidate relogin error: \(String(describing: error?.localizedDescription))")
                         }
                         
                     })
-                }
-                
-                else {
+                } else {
                     
                     let credential = FIRFacebookAuthProvider.credential(withAccessToken: CurrentUser.shared.facebookToken)
                     FIRAuth.auth()?.signIn(with: credential) { (user, error) in
                         
                         if (error != nil) {
                             print("Facebook Firebase Login Error \(String(describing: error?.localizedDescription))")
-                        }
-                            
-                        else {
+                        } else {
                             if user?.isEmailVerified == true {
-                                let newVC:CurrentFeedInitializeViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.CurrentFeedInit) as! CurrentFeedInitializeViewController
-                                
-                                SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
-                            }
-                                
-                            else {
+                                self.goToFeedInitialize()
+                            } else {
                                 self.alertEmailValidate()
                             }
-                            
                         }
                     }
                 }
@@ -120,12 +97,8 @@ class JoinValidateViewController: LocalityBaseViewController {
             //alertEmailValidate()
             return
             
-        }
-        
-        else {
-            let newVC:CurrentFeedInitializeViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.CurrentFeedInit) as! CurrentFeedInitializeViewController
-            
-            SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
+        } else {
+            goToFeedInitialize()
         }
     }
     
@@ -135,6 +108,13 @@ class JoinValidateViewController: LocalityBaseViewController {
 
             }
         })
+    }
+    
+    func goToFeedInitialize() {
+    
+        let newVC:CurrentFeedInitializeViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.CurrentFeedInit) as! CurrentFeedInitializeViewController
+        
+        SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
     }
     
     override func slideNavigationControllerShouldDisplayLeftMenu() -> Bool {

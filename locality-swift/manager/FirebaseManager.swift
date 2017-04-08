@@ -274,6 +274,13 @@ class FirebaseManager: NSObject {
         }
     }
     
+    class func write(token:String, completionHandler: @escaping (Error?) -> ()) -> () {
+        
+        getCurrentUserRef().updateChildValues([K.DB.Var.NotificationToken : token]) { (error, ref) in
+            completionHandler(error)
+        }
+    }
+    
     //Once we've successfully liked we return the likesArray to save to current user
     class func likePost(pid:String, completionHandler: @escaping ([String]?, Error?) -> ()) -> () {
         

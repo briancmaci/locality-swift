@@ -14,7 +14,7 @@ class PushNotificationManager: NSObject {
     
     static let shared = PushNotificationManager()
     
-    class func registerForRemoteNotifications(_ application: UIApplication) {
+    class func registerForRemoteNotifications() {
         
         if #available(iOS 10.0, *) {
             // For iOS 10 display notification (sent via APNS)
@@ -31,10 +31,10 @@ class PushNotificationManager: NSObject {
         } else {
             let settings: UIUserNotificationSettings =
                 UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-            application.registerUserNotificationSettings(settings)
+            UIApplication.shared.registerUserNotificationSettings(settings)
         }
         
-        application.registerForRemoteNotifications()
+        UIApplication.shared.registerForRemoteNotifications()
         
         NotificationCenter.default.addObserver(shared,
                                                selector: #selector(tokenRefreshNotification),
@@ -66,15 +66,28 @@ class PushNotificationManager: NSObject {
             } else {
                 print("Connected to FCM with token: \(String(describing: FIRInstanceID.instanceID().token()))")
                 
+                
+                //TODO: We will need logic here for not doing this a billion times
+                //Save token
+                DispatchQueue.once(block: { () in
+                    
+                    FirebaseManager.write(token: FIRInstanceID.instanceID().token()!, completionHandler: { (error) in
+                        if error != nil {
+                            print("Token push error: \(String(describing: error?.localizedDescription))")
+                        } else {
+                            CurrentUser.shared.notificationToken = FIRInstanceID.instanceID().token()!
+                            print("TOKEN SAVED!")
+                        }
+                    })
+                })
+                
+                
                 //connect to all-devices once
                 DispatchQueue.once(block: { () in
-                    //register to all devices
-                    FIRMessaging.messaging().subscribe(toTopic: K.Push.TopicBase + K.Push.Topic.AllDevices)
                     
                     //TODO: MOVE THESE TO ONCE WE HAVE FIRST LOGGED IN!!!!
                     print("Subscribed to topic \(K.Push.TopicBase + K.Push.Topic.AllDevices)")
                     FIRMessaging.messaging().subscribe(toTopic: K.Push.TopicBase + String(format: K.Push.Topic.UserIdFormat, CurrentUser.shared.uid))
-                    print("Subscribed to topic \(K.Push.TopicBase + String(format: K.Push.Topic.UserIdFormat, CurrentUser.shared.uid))")
                 })
             }
         }

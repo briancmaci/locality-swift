@@ -31,6 +31,9 @@ class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapVie
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Let's register for push
+        PushNotificationManager.registerForRemoteNotifications()
+        
         // Do any additional setup after loading the view.
         initButtons()
         initRangeSlider()

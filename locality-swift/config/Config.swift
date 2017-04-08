@@ -48,6 +48,7 @@ struct K {
             static let Username = "username"
             static let CurrentLocation = "currentLocation"
             static let Pinned = "pinned"
+            static let NotificationToken = "notificationToken"
             
             //Location
             static let LocationId = "lid"

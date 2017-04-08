@@ -22,6 +22,8 @@ class CurrentUser: BaseUser {
     
     var isFirstVisit = true
     
+    var notificationToken = "" //This is pushed to the dB to get notifications
+    
     var currentLocationFeed: FeedLocation!
     var pinnedLocations: [FeedLocation] = [FeedLocation]()
     
@@ -54,6 +56,9 @@ class CurrentUser: BaseUser {
         facebookToken = ""
         
         isFirstVisit = true
+        
+        notificationToken = ""
+        
         currentLocationFeed = nil
         pinnedLocations.removeAll()
         

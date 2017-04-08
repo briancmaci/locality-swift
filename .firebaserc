@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "locality-ef7f9"
+    "default": "locality-ef7f9",
+    "dev": "locality-ef7f9"
   }
 }

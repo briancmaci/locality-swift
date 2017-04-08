@@ -31,7 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FabricManager.initFabric()
         FacebookManager.initFacebookWith(app: application, options: launchOptions)
         FirebaseManager.initFirebase()
-        PushNotificationManager.registerForRemoteNotifications(application)
         GoogleMapsManager.initGoogleMaps()
         MapboxManager.initMapbox()
         
