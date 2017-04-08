@@ -89,36 +89,32 @@ class LandingViewController: LocalityBaseViewController, AngledButtonPairDelegat
                     try FIRAuth.auth()?.signOut()
                     
                     //Now log backed in based on how we logged out
-                    let loginVC:LoginViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.Login) as! LoginViewController
-                    
-                    SlideNavigationController.sharedInstance().pushViewController(loginVC, animated: true)
+                    let vc = LoginViewController(nibName: K.NIBName.VC.Login, bundle: nil)
+                    SlideNavigationController.sharedInstance().pushViewController(vc, animated: true)
                     
                 } catch {
                     print("Auth.signOut failed")
                 }
             } else {
                 
-                let joinValidateVC:JoinValidateViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.JoinValidate) as! JoinValidateViewController
-                
-                SlideNavigationController.sharedInstance().pushViewController(joinValidateVC, animated: true)
+                let vc = JoinValidateViewController(nibName: K.NIBName.VC.JoinValidate, bundle: nil)
+                SlideNavigationController.sharedInstance().pushViewController(vc, animated: true)
             }
         } else {
         
             if CurrentUser.shared.isFirstVisit == true {
-                let newVC:CurrentFeedInitializeViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.CurrentFeedInit) as! CurrentFeedInitializeViewController
-                
-                SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
+                let vc = CurrentFeedInitializeViewController(nibName: K.NIBName.VC.CurrentFeedInit, bundle: nil)
+                SlideNavigationController.sharedInstance().pushViewController(vc, animated: true)
                 
             } else {
                 
-                let feedMenuVC:FeedMenuTableViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.FeedMenu) as! FeedMenuTableViewController
+                let menuVc = FeedMenuTableViewController(nibName: K.NIBName.VC.FeedMenu, bundle: nil)
                 
-                SlideNavigationController.sharedInstance().popAllAndSwitch(to: feedMenuVC, withCompletion: nil)
+                SlideNavigationController.sharedInstance().popAllAndSwitch(to: menuVc, withCompletion: nil)
                 
-                let newVC:FeedViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.Feed) as! FeedViewController
-                
-                newVC.thisFeed = CurrentUser.shared.currentLocationFeed
-                SlideNavigationController.sharedInstance().pushViewController(newVC, animated: false)
+                let vc = FeedViewController(nibName: K.NIBName.VC.Feed, bundle: nil)
+                vc.thisFeed = CurrentUser.shared.currentLocationFeed
+                SlideNavigationController.sharedInstance().pushViewController(vc, animated: false)
                 
             }
         }
@@ -213,15 +209,13 @@ class LandingViewController: LocalityBaseViewController, AngledButtonPairDelegat
     
     //MARK: - AngledButtonPairDelegate
     func leftButtonDidTouch() {
-        let newVC : JoinViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.Join) as! JoinViewController
-        
-        SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
+        let vc = JoinViewController(nibName: K.NIBName.VC.Join, bundle: nil)
+        SlideNavigationController.sharedInstance().pushViewController(vc, animated: true)
     }
     
     func rightButtonDidTouch() {
-        let newVC : LoginViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.Login) as! LoginViewController
-        
-        SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
+        let vc = LoginViewController(nibName: K.NIBName.VC.Login, bundle: nil)
+        SlideNavigationController.sharedInstance().pushViewController(vc, animated: true)
     }
     
     override func slideNavigationControllerShouldDisplayLeftMenu() -> Bool {

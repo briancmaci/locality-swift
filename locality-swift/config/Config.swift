@@ -217,6 +217,30 @@ struct K {
     
     //NIB Names
     struct NIBName {
+        
+        struct VC {
+            static let Landing = "LandingViewController"
+            
+            static let Join = "JoinViewController"
+            static let JoinUser = "JoinUserViewController"
+            static let JoinValidate = "JoinValidateViewController"
+            static let Login = "LoginViewController"
+            
+            static let CurrentFeedInit = "CurrentFeedInitializeViewController"
+            static let Feed = "FeedViewController"
+            static let FeedMenu = "FeedMenuTableViewController"
+            static let FeedSettings = "FeedSettingsViewController"
+            
+            static let About = "AboutViewController"
+            static let Settings = "SettingsViewController"
+            
+            static let PostCreate = "PostCreateViewController"
+            static let PostDetail = "PostDetailViewController"
+            
+            static let LeftMenu = "LeftMenuViewController"
+            
+        }
+        
         static let LocationSlider = "LocationSlider"
         static let FlexibleFeedHeaderView = "FlexibleFeedHeaderView"
         static let PostFeedCell = "PostFeedCell"

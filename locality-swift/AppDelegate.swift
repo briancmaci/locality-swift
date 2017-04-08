@@ -39,6 +39,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Init SlideMenu
         initSlideMenuController()
+        
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = SlideNavigationController.sharedInstance()
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 
@@ -121,7 +126,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func initSlideMenuController() {
-        let leftMenu:LeftMenuViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.LeftMenu) as! LeftMenuViewController
+        
+        let leftMenu = LeftMenuViewController(nibName: K.NIBName.VC.LeftMenu, bundle: nil)
+        let landingVc = LandingViewController(nibName: K.NIBName.VC.Landing, bundle: nil)
+        let navVc = SlideNavigationController(rootViewController: landingVc)
+        navVc.isNavigationBarHidden = true
         
         SlideNavigationController.sharedInstance().leftMenu = leftMenu
         SlideNavigationController.sharedInstance().portraitSlideOffset = 120.0
@@ -129,7 +138,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SlideNavigationController.sharedInstance().enableSwipeGesture = true
         SlideNavigationController.sharedInstance().panGestureSideOffset = 0
         SlideNavigationController.sharedInstance().enableShadow = true
- 
+        
         let revealAnimator = SlideNavigationContorllerAnimatorSlideAndFade()
         SlideNavigationController.sharedInstance().menuRevealAnimator = revealAnimator
     }

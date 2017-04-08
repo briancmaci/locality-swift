@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Interstate-LightCondensed.ttf">
+            <string>Interstate-LightCondensed</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JoinViewController" customModule="locality_swift" customModuleProvider="target">
+            <connections>
+                <outlet property="confirmField" destination="PZq-jt-AFs" id="JPB-l4-Wnx"/>
+                <outlet property="emailError" destination="GkK-ZT-6FZ" id="NeN-J4-WC1"/>
+                <outlet property="emailField" destination="aEi-In-ff7" id="jOe-wZ-kJJ"/>
+                <outlet property="facebookError" destination="peA-1o-xUw" id="swl-72-0cy"/>
+                <outlet property="passwordError" destination="DoB-B0-TRc" id="USM-QY-kIC"/>
+                <outlet property="passwordField" destination="7nE-DT-M9h" id="Wco-p8-srp"/>
+                <outlet property="registerEmailButton" destination="hOA-8R-hJZ" id="YEs-bW-Iab"/>
+                <outlet property="registerFacebookButton" destination="ZVx-Pq-MtT" id="S2e-0n-Z23"/>
+                <outlet property="view" destination="l7h-Wy-G06" id="7Ye-05-RC4"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="l7h-Wy-G06">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tm5-Fk-H8V" userLabel="RegisterView">
+                    <rect key="frame" x="48" y="137" width="280" height="354"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Email" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="aEi-In-ff7">
+                            <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="oat-WE-fo7"/>
+                            </constraints>
+                            <color key="textColor" red="0.15877681969999999" green="0.2493949234" blue="0.31995546819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" keyboardAppearance="light" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Password" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="7nE-DT-M9h">
+                            <rect key="frame" x="0.0" y="54" width="280" height="30"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="OK8-Ms-ha8"/>
+                            </constraints>
+                            <color key="textColor" red="0.15877681969999999" green="0.2493949234" blue="0.31995546819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="light" returnKeyType="next" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="PZq-jt-AFs">
+                            <rect key="frame" x="0.0" y="86" width="280" height="30"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="Y9O-qm-lpd"/>
+                            </constraints>
+                            <color key="textColor" red="0.15877681969999999" green="0.2493949234" blue="0.31995546819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="light" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOA-8R-hJZ">
+                            <rect key="frame" x="0.0" y="140" width="280" height="54"/>
+                            <color key="backgroundColor" red="0.15877681969999999" green="0.2493949234" blue="0.31995546819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="54" id="ztS-tN-ifL"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="16"/>
+                            <state key="normal" title="REGISTER VIA EMAIL">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- OR -" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THO-hr-KoL">
+                            <rect key="frame" x="119" y="229" width="42" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="DAr-j7-KIu"/>
+                                <constraint firstAttribute="width" constant="42" id="s4l-G9-RlG"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="16"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVx-Pq-MtT">
+                            <rect key="frame" x="0.0" y="290" width="280" height="54"/>
+                            <color key="backgroundColor" red="0.16078431369999999" green="0.25098039220000001" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="54" id="yOe-iz-TSp"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="16"/>
+                            <state key="normal" title="REGISTER VIA FACEBOOK">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GkK-ZT-6FZ">
+                            <rect key="frame" x="2" y="32" width="276" height="14"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="14" id="H7j-Az-4In"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="12"/>
+                            <color key="textColor" red="0.71522049489999995" green="0.01339015205" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DoB-B0-TRc">
+                            <rect key="frame" x="2" y="118" width="276" height="14"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="14" id="5ts-RD-ZWN"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="12"/>
+                            <color key="textColor" red="0.71522049489999995" green="0.01339015205" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="peA-1o-xUw">
+                            <rect key="frame" x="2" y="345" width="276" height="14"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="14" id="ABd-a4-Iyk"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="12"/>
+                            <color key="textColor" red="0.71522049489999995" green="0.01339015205" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="PZq-jt-AFs" firstAttribute="top" secondItem="7nE-DT-M9h" secondAttribute="bottom" constant="2" id="0N4-oA-yNC"/>
+                        <constraint firstItem="peA-1o-xUw" firstAttribute="leading" secondItem="tm5-Fk-H8V" secondAttribute="leading" constant="2" id="1xj-0E-4sq"/>
+                        <constraint firstItem="7nE-DT-M9h" firstAttribute="top" secondItem="aEi-In-ff7" secondAttribute="bottom" constant="24" id="2ds-E2-JHd"/>
+                        <constraint firstItem="aEi-In-ff7" firstAttribute="top" secondItem="tm5-Fk-H8V" secondAttribute="top" id="5K8-xK-3vr"/>
+                        <constraint firstItem="DoB-B0-TRc" firstAttribute="top" secondItem="PZq-jt-AFs" secondAttribute="bottom" constant="2" id="6Kz-va-i3J"/>
+                        <constraint firstItem="hOA-8R-hJZ" firstAttribute="top" secondItem="PZq-jt-AFs" secondAttribute="bottom" constant="24" id="6bL-8D-UxU"/>
+                        <constraint firstItem="hOA-8R-hJZ" firstAttribute="leading" secondItem="tm5-Fk-H8V" secondAttribute="leading" id="EkK-xu-hOk"/>
+                        <constraint firstAttribute="trailing" secondItem="aEi-In-ff7" secondAttribute="trailing" id="FHP-4b-Bk3"/>
+                        <constraint firstItem="aEi-In-ff7" firstAttribute="leading" secondItem="tm5-Fk-H8V" secondAttribute="leading" id="Hin-bV-fiV"/>
+                        <constraint firstItem="ZVx-Pq-MtT" firstAttribute="top" secondItem="THO-hr-KoL" secondAttribute="bottom" constant="40" id="HvK-WM-w3Q"/>
+                        <constraint firstItem="DoB-B0-TRc" firstAttribute="leading" secondItem="tm5-Fk-H8V" secondAttribute="leading" constant="2" id="KgG-mE-v3H"/>
+                        <constraint firstAttribute="trailing" secondItem="GkK-ZT-6FZ" secondAttribute="trailing" constant="2" id="TKy-L2-CYx"/>
+                        <constraint firstItem="THO-hr-KoL" firstAttribute="top" secondItem="hOA-8R-hJZ" secondAttribute="bottom" constant="35" id="TXc-J6-X3y"/>
+                        <constraint firstAttribute="trailing" secondItem="hOA-8R-hJZ" secondAttribute="trailing" id="Tkh-DC-6vr"/>
+                        <constraint firstItem="peA-1o-xUw" firstAttribute="top" secondItem="ZVx-Pq-MtT" secondAttribute="bottom" constant="1" id="aHO-rf-EWB"/>
+                        <constraint firstAttribute="trailing" secondItem="7nE-DT-M9h" secondAttribute="trailing" id="bH1-eO-Cvg"/>
+                        <constraint firstItem="PZq-jt-AFs" firstAttribute="leading" secondItem="tm5-Fk-H8V" secondAttribute="leading" id="ckO-vK-wP8"/>
+                        <constraint firstAttribute="height" constant="354" id="g7K-Uw-uQN"/>
+                        <constraint firstAttribute="width" constant="280" id="htd-fu-PAN"/>
+                        <constraint firstAttribute="trailing" secondItem="peA-1o-xUw" secondAttribute="trailing" constant="2" id="kBA-dV-U7n"/>
+                        <constraint firstItem="GkK-ZT-6FZ" firstAttribute="top" secondItem="aEi-In-ff7" secondAttribute="bottom" constant="2" id="o2t-o3-Uly"/>
+                        <constraint firstItem="THO-hr-KoL" firstAttribute="centerX" secondItem="tm5-Fk-H8V" secondAttribute="centerX" id="oVc-HF-SBo"/>
+                        <constraint firstAttribute="trailing" secondItem="DoB-B0-TRc" secondAttribute="trailing" constant="2" id="qWe-O9-Ga4"/>
+                        <constraint firstItem="ZVx-Pq-MtT" firstAttribute="leading" secondItem="tm5-Fk-H8V" secondAttribute="leading" id="run-UO-ORx"/>
+                        <constraint firstAttribute="trailing" secondItem="ZVx-Pq-MtT" secondAttribute="trailing" id="tPj-O6-um1"/>
+                        <constraint firstAttribute="trailing" secondItem="PZq-jt-AFs" secondAttribute="trailing" id="uFx-Up-iOI"/>
+                        <constraint firstItem="7nE-DT-M9h" firstAttribute="leading" secondItem="tm5-Fk-H8V" secondAttribute="leading" id="yN6-5q-o9T"/>
+                        <constraint firstItem="GkK-ZT-6FZ" firstAttribute="leading" secondItem="tm5-Fk-H8V" secondAttribute="leading" constant="2" id="zVY-vJ-8nK"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JOIN LOCALITY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Cd-9l-jNX">
+                    <rect key="frame" x="60" y="45" width="255" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="XLm-pl-VHF"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="24"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.55633491280000003" green="0.54850691559999998" blue="0.58769077059999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="2Cd-9l-jNX" firstAttribute="leading" secondItem="l7h-Wy-G06" secondAttribute="leading" constant="60" id="50m-mK-7k4"/>
+                <constraint firstItem="2Cd-9l-jNX" firstAttribute="top" secondItem="l7h-Wy-G06" secondAttribute="top" constant="45" id="Odj-Uw-vEF"/>
+                <constraint firstItem="tm5-Fk-H8V" firstAttribute="centerX" secondItem="l7h-Wy-G06" secondAttribute="centerX" id="YbR-hu-ISd"/>
+                <constraint firstAttribute="trailing" secondItem="2Cd-9l-jNX" secondAttribute="trailing" constant="60" id="e0o-yl-ghu"/>
+                <constraint firstItem="tm5-Fk-H8V" firstAttribute="top" secondItem="2Cd-9l-jNX" secondAttribute="bottom" constant="68" id="j2s-BF-8TW"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

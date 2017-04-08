@@ -76,9 +76,8 @@ class JoinUsernameViewController: LocalityBaseViewController, UITextFieldDelegat
                 
                 self.onboardCurrentUserModel()
                 
-                let newVC:JoinValidateViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.JoinValidate) as! JoinValidateViewController
-                
-                SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
+                let vc = JoinValidateViewController(nibName: K.NIBName.VC.JoinValidate, bundle: nil)
+                SlideNavigationController.sharedInstance().pushViewController(vc, animated: true)
             }
             
             else {

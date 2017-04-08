@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Interstate-LightCondensed.ttf">
+            <string>Interstate-LightCondensed</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JoinUsernameViewController" customModule="locality_swift" customModuleProvider="target">
+            <connections>
+                <outlet property="continueButton" destination="T9s-uO-QNr" id="RaV-3w-JXD"/>
+                <outlet property="usernameError" destination="b8W-eB-0e5" id="eOx-20-6PT"/>
+                <outlet property="usernameField" destination="hHJ-Vq-wQz" id="YeB-zv-VSJ"/>
+                <outlet property="view" destination="goy-y7-ri4" id="sFL-qe-5jW"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="goy-y7-ri4">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALMOST THERE!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwC-aB-XnF">
+                    <rect key="frame" x="60" y="45" width="255" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="bAq-6d-MaJ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="24"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T9s-uO-QNr">
+                    <rect key="frame" x="48" y="429" width="280" height="54"/>
+                    <color key="backgroundColor" red="0.16078431369999999" green="0.25098039220000001" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="54" id="bv8-eZ-hK7"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="16"/>
+                    <state key="normal" title="CONTINUE">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8W-eB-0e5">
+                    <rect key="frame" x="33" y="228" width="310" height="14"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="14" id="jnT-zY-7fj"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="12"/>
+                    <color key="textColor" red="0.71522049489999995" green="0.01339015205" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please choose a username." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bfg-Xz-LEK">
+                    <rect key="frame" x="40" y="104" width="295" height="85"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="85" id="uJn-Dk-uWA"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="18"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Username" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="hHJ-Vq-wQz">
+                    <rect key="frame" x="32" y="197" width="311" height="30"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="LeA-xq-QAM"/>
+                    </constraints>
+                    <color key="textColor" red="0.15877681969999999" green="0.2493949234" blue="0.31995546819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="light" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" red="0.55633491280000003" green="0.54850691559999998" blue="0.58769077059999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="qwC-aB-XnF" firstAttribute="top" secondItem="goy-y7-ri4" secondAttribute="top" constant="45" id="0xe-o0-Bbx"/>
+                <constraint firstItem="hHJ-Vq-wQz" firstAttribute="top" secondItem="Bfg-Xz-LEK" secondAttribute="bottom" constant="8" id="4n5-nK-fRJ"/>
+                <constraint firstAttribute="trailing" secondItem="b8W-eB-0e5" secondAttribute="trailing" constant="32" id="D2S-Yh-NjO"/>
+                <constraint firstItem="T9s-uO-QNr" firstAttribute="leading" secondItem="goy-y7-ri4" secondAttribute="leading" constant="48" id="FlS-zI-Zvo"/>
+                <constraint firstItem="b8W-eB-0e5" firstAttribute="top" secondItem="hHJ-Vq-wQz" secondAttribute="bottom" constant="1" id="LyB-EZ-mJl"/>
+                <constraint firstItem="hHJ-Vq-wQz" firstAttribute="leading" secondItem="goy-y7-ri4" secondAttribute="leading" constant="32" id="QRS-ic-0B9"/>
+                <constraint firstItem="Bfg-Xz-LEK" firstAttribute="top" secondItem="qwC-aB-XnF" secondAttribute="bottom" constant="35" id="Y62-Ho-e52"/>
+                <constraint firstItem="Bfg-Xz-LEK" firstAttribute="leading" secondItem="goy-y7-ri4" secondAttribute="leading" constant="40" id="a7M-W7-Pqz"/>
+                <constraint firstAttribute="trailing" secondItem="hHJ-Vq-wQz" secondAttribute="trailing" constant="32" id="e7U-iS-SNU"/>
+                <constraint firstItem="qwC-aB-XnF" firstAttribute="leading" secondItem="goy-y7-ri4" secondAttribute="leading" constant="60" id="gnd-N5-ymj"/>
+                <constraint firstAttribute="trailing" secondItem="T9s-uO-QNr" secondAttribute="trailing" constant="47" id="hic-H2-Xzl"/>
+                <constraint firstItem="b8W-eB-0e5" firstAttribute="leading" secondItem="goy-y7-ri4" secondAttribute="leading" constant="33" id="jIp-ra-wwA"/>
+                <constraint firstAttribute="bottom" secondItem="T9s-uO-QNr" secondAttribute="bottom" constant="184" id="jZu-Ws-BJu"/>
+                <constraint firstAttribute="trailing" secondItem="qwC-aB-XnF" secondAttribute="trailing" constant="60" id="k9D-Uj-FIH"/>
+                <constraint firstAttribute="trailing" secondItem="Bfg-Xz-LEK" secondAttribute="trailing" constant="40" id="pDu-c7-ajT"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

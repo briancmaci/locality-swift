@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Interstate-LightCondensed.ttf">
+            <string>Interstate-LightCondensed</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedViewController" customModule="locality_swift" customModuleProvider="target">
+            <connections>
+                <outlet property="flexHeaderHeight" destination="dS8-bc-zgS" id="PL7-Wr-sWV"/>
+                <outlet property="headerHero" destination="0EQ-P3-Hev" id="Rug-ZE-ddD"/>
+                <outlet property="noPostsLabel" destination="3CS-Zf-dcR" id="4Z1-vJ-6DW"/>
+                <outlet property="postButton" destination="fhG-HF-vhy" id="Cjw-Bt-vwB"/>
+                <outlet property="postButtonHeight" destination="6AI-oX-Qgn" id="UoT-Kg-pOW"/>
+                <outlet property="postButtonWidth" destination="g0K-K8-orW" id="4Zs-0E-TCv"/>
+                <outlet property="postsTable" destination="56q-Ed-5qB" id="RSm-BC-zQ3"/>
+                <outlet property="sortButton" destination="h6g-o0-gr0" id="ty4-yx-LKQ"/>
+                <outlet property="sortButtonCenterOffset" destination="cVV-36-9bf" id="Kfm-Vn-Hi9"/>
+                <outlet property="view" destination="TIq-Kb-szn" id="P2G-d1-4R5"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="TIq-Kb-szn">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="56q-Ed-5qB">
+                    <rect key="frame" x="0.0" y="39" width="375" height="628"/>
+                    <color key="backgroundColor" red="0.91664922240000002" green="0.91662180419999995" blue="0.91663730139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3CS-Zf-dcR">
+                    <rect key="frame" x="20" y="343" width="335" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="s7L-72-yaJ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="10"/>
+                    <color key="textColor" red="0.23662534360000001" green="0.27041301130000001" blue="0.30341908340000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0EQ-P3-Hev" userLabel="HeaderContainer" customClass="FlexibleFeedHeaderView" customModule="locality_swift" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="157"/>
+                    <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="157" id="dS8-bc-zgS"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h6g-o0-gr0" customClass="SortButtonWithPopup" customModule="locality_swift" customModuleProvider="target">
+                    <rect key="frame" x="207" y="582" width="59" height="59"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="59" id="8KR-0H-aYK"/>
+                        <constraint firstAttribute="width" constant="59" id="VWo-EI-Yx9"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhG-HF-vhy">
+                    <rect key="frame" x="153" y="577" width="70" height="70"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="70" id="6AI-oX-Qgn"/>
+                        <constraint firstAttribute="width" constant="70" id="g0K-K8-orW"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="16"/>
+                    <state key="normal" title="LABEL" backgroundImage="ButtonPostBG"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.91664922240000002" green="0.91662180419999995" blue="0.91663730139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="3CS-Zf-dcR" firstAttribute="centerY" secondItem="56q-Ed-5qB" secondAttribute="centerY" id="0lU-dk-Rdf"/>
+                <constraint firstAttribute="trailing" secondItem="3CS-Zf-dcR" secondAttribute="trailing" constant="20" id="4Wb-e0-zWh"/>
+                <constraint firstAttribute="bottom" secondItem="56q-Ed-5qB" secondAttribute="bottom" id="4rd-m2-inD"/>
+                <constraint firstItem="56q-Ed-5qB" firstAttribute="leading" secondItem="TIq-Kb-szn" secondAttribute="leading" id="C4R-ue-4nS"/>
+                <constraint firstItem="h6g-o0-gr0" firstAttribute="centerY" secondItem="fhG-HF-vhy" secondAttribute="centerY" id="C6J-9E-eKc"/>
+                <constraint firstItem="56q-Ed-5qB" firstAttribute="top" secondItem="TIq-Kb-szn" secondAttribute="top" constant="39" id="P5L-j4-2xl"/>
+                <constraint firstItem="0EQ-P3-Hev" firstAttribute="leading" secondItem="TIq-Kb-szn" secondAttribute="leading" id="VHE-os-cLw"/>
+                <constraint firstItem="fhG-HF-vhy" firstAttribute="centerX" secondItem="TIq-Kb-szn" secondAttribute="centerX" id="YiQ-RU-6Cx"/>
+                <constraint firstItem="fhG-HF-vhy" firstAttribute="centerY" secondItem="56q-Ed-5qB" secondAttribute="bottom" constant="-55" id="Zz3-5A-uQo"/>
+                <constraint firstItem="h6g-o0-gr0" firstAttribute="centerX" secondItem="TIq-Kb-szn" secondAttribute="centerX" constant="49" id="cVV-36-9bf"/>
+                <constraint firstAttribute="trailing" secondItem="56q-Ed-5qB" secondAttribute="trailing" id="fjw-4M-ZJM"/>
+                <constraint firstItem="3CS-Zf-dcR" firstAttribute="leading" secondItem="TIq-Kb-szn" secondAttribute="leading" constant="20" id="j1J-jY-18B"/>
+                <constraint firstAttribute="trailing" secondItem="0EQ-P3-Hev" secondAttribute="trailing" id="ldI-IK-1R3"/>
+                <constraint firstItem="0EQ-P3-Hev" firstAttribute="top" secondItem="TIq-Kb-szn" secondAttribute="top" id="pG6-9v-Pr8"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="ButtonPostBG" width="69" height="69"/>
+    </resources>
+</document>

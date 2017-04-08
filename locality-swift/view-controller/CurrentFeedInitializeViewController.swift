@@ -159,14 +159,9 @@ class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapVie
     }
     
     func moveIntoApp() {
-        let feedMenuVC:FeedMenuTableViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.FeedMenu) as! FeedMenuTableViewController
-        
-        SlideNavigationController.sharedInstance().popAllAndSwitch(to: feedMenuVC, withCompletion: nil)
-        
-        let newVC:FeedViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.Feed) as! FeedViewController
-        
-        newVC.thisFeed = CurrentUser.shared.currentLocationFeed
-        SlideNavigationController.sharedInstance().pushViewController(newVC, animated: false)
+        let vc = FeedViewController(nibName: K.NIBName.VC.Feed, bundle: nil)
+        vc.thisFeed = CurrentUser.shared.currentLocationFeed
+        SlideNavigationController.sharedInstance().pushViewController(vc, animated: false)
     }
     
     //CTA

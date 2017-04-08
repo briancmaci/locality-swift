@@ -20,8 +20,21 @@
 		7244AC791E8874340091715E /* ForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7244AC771E8874340091715E /* ForgotPasswordViewController.xib */; };
 		7265DEA91E95DF4F00AF51EC /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7265DEA81E95DF4F00AF51EC /* PushNotificationManager.swift */; };
 		7265DEAC1E95F82100AF51EC /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7265DEAB1E95F82100AF51EC /* SettingsViewController.swift */; };
+		72701FA91E99242600084426 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72701FA81E99242600084426 /* SettingsViewController.xib */; };
+		72701FAB1E99299600084426 /* FeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72701FAA1E99299600084426 /* FeedViewController.xib */; };
+		72701FAD1E992E8800084426 /* JoinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72701FAC1E992E8800084426 /* JoinViewController.xib */; };
+		72701FAF1E992FD500084426 /* JoinUsernameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72701FAE1E992FD500084426 /* JoinUsernameViewController.xib */; };
+		72701FB11E9930C900084426 /* JoinValidateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72701FB01E9930C900084426 /* JoinValidateViewController.xib */; };
+		72701FB31E9931ED00084426 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72701FB21E9931ED00084426 /* AboutViewController.xib */; };
+		72701FB51E99343000084426 /* FeedSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72701FB41E99343000084426 /* FeedSettingsViewController.xib */; };
+		72701FB71E99412700084426 /* FeedMenuTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72701FB61E99412700084426 /* FeedMenuTableViewController.xib */; };
+		72701FBD1E994AC700084426 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72701FBC1E994AC700084426 /* LoginViewController.xib */; };
+		72701FBF1E994BA100084426 /* CurrentFeedInitializeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72701FBE1E994BA100084426 /* CurrentFeedInitializeViewController.xib */; };
+		72701FC11E994CD500084426 /* PostCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72701FC01E994CD500084426 /* PostCreateViewController.xib */; };
+		72701FC31E994DB100084426 /* PostDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72701FC21E994DB100084426 /* PostDetailViewController.xib */; };
+		72701FC51E99503E00084426 /* LeftMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72701FC41E99503E00084426 /* LeftMenuViewController.xib */; };
+		72701FC71E99534500084426 /* LandingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72701FC61E99534500084426 /* LandingViewController.xib */; };
 		72B881A11E65EE5000EB3B2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B881A01E65EE5000EB3B2E /* AppDelegate.swift */; };
-		72B881A61E65EE5000EB3B2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72B881A41E65EE5000EB3B2E /* Main.storyboard */; };
 		72B881A91E65EE5000EB3B2E /* locality_swift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 72B881A71E65EE5000EB3B2E /* locality_swift.xcdatamodeld */; };
 		72B881AB1E65EE5000EB3B2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72B881AA1E65EE5000EB3B2E /* Assets.xcassets */; };
 		72B881AE1E65EE5000EB3B2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72B881AC1E65EE5000EB3B2E /* LaunchScreen.storyboard */; };
@@ -171,9 +184,22 @@
 		7244AC771E8874340091715E /* ForgotPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForgotPasswordViewController.xib; path = "view-controller/ForgotPasswordViewController.xib"; sourceTree = "<group>"; };
 		7265DEA81E95DF4F00AF51EC /* PushNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PushNotificationManager.swift; path = manager/PushNotificationManager.swift; sourceTree = "<group>"; };
 		7265DEAB1E95F82100AF51EC /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = "view-controller/SettingsViewController.swift"; sourceTree = "<group>"; };
+		72701FA81E99242600084426 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = "view-controller/SettingsViewController.xib"; sourceTree = "<group>"; };
+		72701FAA1E99299600084426 /* FeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FeedViewController.xib; path = "view-controller/FeedViewController.xib"; sourceTree = "<group>"; };
+		72701FAC1E992E8800084426 /* JoinViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JoinViewController.xib; path = "view-controller/JoinViewController.xib"; sourceTree = "<group>"; };
+		72701FAE1E992FD500084426 /* JoinUsernameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JoinUsernameViewController.xib; path = "view-controller/JoinUsernameViewController.xib"; sourceTree = "<group>"; };
+		72701FB01E9930C900084426 /* JoinValidateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JoinValidateViewController.xib; path = "view-controller/JoinValidateViewController.xib"; sourceTree = "<group>"; };
+		72701FB21E9931ED00084426 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutViewController.xib; path = "view-controller/AboutViewController.xib"; sourceTree = "<group>"; };
+		72701FB41E99343000084426 /* FeedSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FeedSettingsViewController.xib; path = "view-controller/FeedSettingsViewController.xib"; sourceTree = "<group>"; };
+		72701FB61E99412700084426 /* FeedMenuTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FeedMenuTableViewController.xib; path = "view-controller/FeedMenuTableViewController.xib"; sourceTree = "<group>"; };
+		72701FBC1E994AC700084426 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = "view-controller/LoginViewController.xib"; sourceTree = "<group>"; };
+		72701FBE1E994BA100084426 /* CurrentFeedInitializeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CurrentFeedInitializeViewController.xib; path = "view-controller/CurrentFeedInitializeViewController.xib"; sourceTree = "<group>"; };
+		72701FC01E994CD500084426 /* PostCreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PostCreateViewController.xib; path = "view-controller/PostCreateViewController.xib"; sourceTree = "<group>"; };
+		72701FC21E994DB100084426 /* PostDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PostDetailViewController.xib; path = "view-controller/PostDetailViewController.xib"; sourceTree = "<group>"; };
+		72701FC41E99503E00084426 /* LeftMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LeftMenuViewController.xib; path = "view-controller/LeftMenuViewController.xib"; sourceTree = "<group>"; };
+		72701FC61E99534500084426 /* LandingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LandingViewController.xib; path = "view-controller/LandingViewController.xib"; sourceTree = "<group>"; };
 		72B8819D1E65EE5000EB3B2E /* locality-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "locality-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		72B881A01E65EE5000EB3B2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		72B881A51E65EE5000EB3B2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		72B881A81E65EE5000EB3B2E /* locality_swift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = locality_swift.xcdatamodel; sourceTree = "<group>"; };
 		72B881AA1E65EE5000EB3B2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		72B881AD1E65EE5000EB3B2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -351,6 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				7265DEAB1E95F82100AF51EC /* SettingsViewController.swift */,
+				72701FA81E99242600084426 /* SettingsViewController.xib */,
 			);
 			name = settings;
 			sourceTree = "<group>";
@@ -382,7 +409,6 @@
 			children = (
 				72F71EAF1E9476F400D9885A /* locality-swift.entitlements */,
 				72B881A01E65EE5000EB3B2E /* AppDelegate.swift */,
-				72B881A41E65EE5000EB3B2E /* Main.storyboard */,
 				72B881AA1E65EE5000EB3B2E /* Assets.xcassets */,
 				72B881AC1E65EE5000EB3B2E /* LaunchScreen.storyboard */,
 				72DC487F1E6C9BCE00486535 /* Localizable.strings */,
@@ -570,10 +596,15 @@
 			children = (
 				7244AC751E8873EE0091715E /* forgot-password */,
 				72B8820B1E68B8D100EB3B2E /* JoinViewController.swift */,
+				72701FAC1E992E8800084426 /* JoinViewController.xib */,
 				72B882151E69434000EB3B2E /* JoinUsernameViewController.swift */,
+				72701FAE1E992FD500084426 /* JoinUsernameViewController.xib */,
 				72B882131E693C0500EB3B2E /* JoinValidateViewController.swift */,
+				72701FB01E9930C900084426 /* JoinValidateViewController.xib */,
 				72B881EB1E676D8A00EB3B2E /* LandingViewController.swift */,
+				72701FC61E99534500084426 /* LandingViewController.xib */,
 				72B882001E67E79700EB3B2E /* LoginViewController.swift */,
+				72701FBC1E994AC700084426 /* LoginViewController.xib */,
 			);
 			name = "join-login";
 			sourceTree = "<group>";
@@ -659,6 +690,7 @@
 			isa = PBXGroup;
 			children = (
 				72EEDFB01E7C33EE009DFA77 /* AboutViewController.swift */,
+				72701FB21E9931ED00084426 /* AboutViewController.xib */,
 			);
 			name = about;
 			sourceTree = "<group>";
@@ -679,6 +711,7 @@
 			isa = PBXGroup;
 			children = (
 				72F24BA51E70BC7600CA7702 /* LeftMenuViewController.swift */,
+				72701FC41E99503E00084426 /* LeftMenuViewController.xib */,
 			);
 			name = "left-menu";
 			sourceTree = "<group>";
@@ -687,9 +720,13 @@
 			isa = PBXGroup;
 			children = (
 				72B882181E6A8BE800EB3B2E /* CurrentFeedInitializeViewController.swift */,
+				72701FBE1E994BA100084426 /* CurrentFeedInitializeViewController.xib */,
 				72EEDF8D1E75B19A009DFA77 /* FeedSettingsViewController.swift */,
+				72701FB41E99343000084426 /* FeedSettingsViewController.xib */,
 				72EEDF821E7586A6009DFA77 /* FeedMenuTableViewController.swift */,
+				72701FB61E99412700084426 /* FeedMenuTableViewController.xib */,
 				72F24BAA1E70DB1500CA7702 /* FeedViewController.swift */,
+				72701FAA1E99299600084426 /* FeedViewController.xib */,
 			);
 			name = feed;
 			sourceTree = "<group>";
@@ -789,7 +826,9 @@
 			isa = PBXGroup;
 			children = (
 				72F24BE01E7214FC00CA7702 /* PostCreateViewController.swift */,
+				72701FC01E994CD500084426 /* PostCreateViewController.xib */,
 				72F24BDC1E71F06A00CA7702 /* PostDetailViewController.swift */,
+				72701FC21E994DB100084426 /* PostDetailViewController.xib */,
 			);
 			name = post;
 			sourceTree = "<group>";
@@ -996,24 +1035,37 @@
 				72DC48841E6CC8BC00486535 /* RangeValuesFeet.plist in Resources */,
 				72DC488B1E6DA11000486535 /* LocationSlider.xib in Resources */,
 				72F24BC21E71AB1900CA7702 /* PostUserInfoView.xib in Resources */,
+				72701FC11E994CD500084426 /* PostCreateViewController.xib in Resources */,
+				72701FBF1E994BA100084426 /* CurrentFeedInitializeViewController.xib in Resources */,
 				72F24BA81E70D7F800CA7702 /* MenuOptions.plist in Resources */,
 				72F24BE91E72282600CA7702 /* PostFromView.xib in Resources */,
 				7244AC791E8874340091715E /* ForgotPasswordViewController.xib in Resources */,
+				72701FAD1E992E8800084426 /* JoinViewController.xib in Resources */,
+				72701FB31E9931ED00084426 /* AboutViewController.xib in Resources */,
 				72B8821E1E6AA54800EB3B2E /* Keys.plist in Resources */,
+				72701FB11E9930C900084426 /* JoinValidateViewController.xib in Resources */,
 				7244AC721E86C2890091715E /* PostFeedCell.xib in Resources */,
 				72B881AE1E65EE5000EB3B2E /* LaunchScreen.storyboard in Resources */,
+				72701FC51E99503E00084426 /* LeftMenuViewController.xib in Resources */,
+				72701FAB1E99299600084426 /* FeedViewController.xib in Resources */,
 				72EEDF871E7589CD009DFA77 /* FeedAddNewCell.xib in Resources */,
 				72B881E01E66AFEF00EB3B2E /* GoogleService-Info.plist in Resources */,
 				72F24BDF1E720F7900CA7702 /* PostFeedCellView.xib in Resources */,
 				72EEDF951E75FB1A009DFA77 /* FeedSettingsToggleCell.xib in Resources */,
 				72DC48801E6C9BCE00486535 /* Localizable.strings in Resources */,
+				72701FBD1E994AC700084426 /* LoginViewController.xib in Resources */,
 				72C7D8931E9144ED003B6E56 /* AlertView.xib in Resources */,
 				72F24BF41E725B8200CA7702 /* CameraOverlay.xib in Resources */,
 				72EEDF9C1E787974009DFA77 /* PostDetailHeaderView.xib in Resources */,
+				72701FB71E99412700084426 /* FeedMenuTableViewController.xib in Resources */,
 				72B881AB1E65EE5000EB3B2E /* Assets.xcassets in Resources */,
-				72B881A61E65EE5000EB3B2E /* Main.storyboard in Resources */,
+				72701FB51E99343000084426 /* FeedSettingsViewController.xib in Resources */,
+				72701FC71E99534500084426 /* LandingViewController.xib in Resources */,
 				72B8820E1E68D10700EB3B2E /* Interstate-LightCondensed.ttf in Resources */,
 				72EEDFAB1E78A3DF009DFA77 /* AddCommentCell.xib in Resources */,
+				72701FC31E994DB100084426 /* PostDetailViewController.xib in Resources */,
+				72701FAF1E992FD500084426 /* JoinUsernameViewController.xib in Resources */,
+				72701FA91E99242600084426 /* SettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1227,14 +1279,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		72B881A41E65EE5000EB3B2E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				72B881A51E65EE5000EB3B2E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		72B881AC1E65EE5000EB3B2E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

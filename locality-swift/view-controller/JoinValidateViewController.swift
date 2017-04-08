@@ -112,9 +112,8 @@ class JoinValidateViewController: LocalityBaseViewController {
     
     func goToFeedInitialize() {
     
-        let newVC:CurrentFeedInitializeViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.CurrentFeedInit) as! CurrentFeedInitializeViewController
-        
-        SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
+        let vc = CurrentFeedInitializeViewController(nibName: K.NIBName.VC.CurrentFeedInit, bundle: nil)
+        SlideNavigationController.sharedInstance().pushViewController(vc, animated: true)
     }
     
     override func slideNavigationControllerShouldDisplayLeftMenu() -> Bool {

@@ -10,6 +10,8 @@ import UIKit
 
 class SettingsViewController: LocalityBaseViewController {
 
+    @IBOutlet weak var settingsLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

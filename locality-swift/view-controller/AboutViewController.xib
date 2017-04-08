@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Interstate-LightCondensed.ttf">
+            <string>Interstate-LightCondensed</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutViewController" customModule="locality_swift" customModuleProvider="target">
+            <connections>
+                <outlet property="aboutLabel" destination="aNX-Mx-7iR" id="mbT-VU-Sxz"/>
+                <outlet property="facebookButton" destination="XY6-ir-q2b" id="DXZ-MD-w74"/>
+                <outlet property="googlePlusButton" destination="jYa-yy-OAk" id="faL-C4-3AF"/>
+                <outlet property="shareLabel" destination="z8k-kW-YEP" id="LlS-C8-RMe"/>
+                <outlet property="twitterButton" destination="OSF-CZ-aws" id="4Px-QT-LxG"/>
+                <outlet property="view" destination="flo-sL-YRa" id="bwE-IG-p1e"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="flo-sL-YRa">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoAbout" translatesAutoresizingMaskIntoConstraints="NO" id="yLf-B7-sor">
+                    <rect key="frame" x="128" y="168" width="120" height="65"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="120" id="01b-PM-a6p"/>
+                        <constraint firstAttribute="height" constant="65" id="YV1-sh-pxT"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gh0-sl-ud4">
+                    <rect key="frame" x="104" y="423" width="167" height="75"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XY6-ir-q2b">
+                            <rect key="frame" x="20" y="36" width="35" height="35"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="ButtonAboutFB">
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OSF-CZ-aws">
+                            <rect key="frame" x="66" y="36" width="35" height="35"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="ButtonAboutTW">
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jYa-yy-OAk">
+                            <rect key="frame" x="112" y="36" width="35" height="35"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="ButtonAboutGP">
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lbl" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="z8k-kW-YEP">
+                            <rect key="frame" x="0.0" y="0.0" width="167" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="12"/>
+                            <color key="textColor" red="0.75559091570000003" green="0.75556838510000002" blue="0.75558114050000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="75" id="nGd-gA-XIj"/>
+                        <constraint firstAttribute="width" constant="167" id="zcM-yB-SaX"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNX-Mx-7iR">
+                    <rect key="frame" x="20" y="273" width="335" height="120"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="NCw-px-aCq"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="12"/>
+                    <color key="textColor" red="0.75559091570000003" green="0.75556838510000002" blue="0.75558114050000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.1007222012" green="0.1089343131" blue="0.11467297379999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Gh0-sl-ud4" firstAttribute="top" secondItem="yLf-B7-sor" secondAttribute="bottom" constant="190" id="9cb-Tc-soN"/>
+                <constraint firstAttribute="trailing" secondItem="aNX-Mx-7iR" secondAttribute="trailing" constant="20" id="Bkw-A0-r8k"/>
+                <constraint firstItem="Gh0-sl-ud4" firstAttribute="centerX" secondItem="flo-sL-YRa" secondAttribute="centerX" id="Dq3-XB-UqR"/>
+                <constraint firstItem="aNX-Mx-7iR" firstAttribute="leading" secondItem="flo-sL-YRa" secondAttribute="leading" constant="20" id="UAI-rt-9sa"/>
+                <constraint firstItem="aNX-Mx-7iR" firstAttribute="top" secondItem="yLf-B7-sor" secondAttribute="bottom" constant="40" id="c19-cM-uz6"/>
+                <constraint firstItem="yLf-B7-sor" firstAttribute="top" secondItem="flo-sL-YRa" secondAttribute="top" constant="168" id="j5q-xg-hCS"/>
+                <constraint firstItem="yLf-B7-sor" firstAttribute="centerX" secondItem="flo-sL-YRa" secondAttribute="centerX" id="zYa-c8-op8"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="ButtonAboutFB" width="35" height="35"/>
+        <image name="ButtonAboutGP" width="35" height="35"/>
+        <image name="ButtonAboutTW" width="35" height="35"/>
+        <image name="LogoAbout" width="119" height="65"/>
+    </resources>
+</document>

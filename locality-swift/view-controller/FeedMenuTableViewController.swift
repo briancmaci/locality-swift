@@ -65,18 +65,15 @@ class FeedMenuTableViewController: UITableViewController, LocalityHeaderViewDele
 
     // MARK: - LocalityHeaderViewDelegate
     func openFeedTapped(model: FeedLocation, index: Int) {
-        let newVC:FeedViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.Feed) as! FeedViewController
-        
-        newVC.thisFeed = model
-        SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
+        let vc = FeedViewController(nibName: K.NIBName.VC.Feed, bundle: nil)
+        vc.thisFeed = model
+        SlideNavigationController.sharedInstance().pushViewController(vc, animated: true)
     }
     
     func editFeedTapped(model: FeedLocation) {
-        let newVC:FeedSettingsViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.FeedSettings) as! FeedSettingsViewController
-        
-        newVC.editFeed = model
-        
-        SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
+        let vc = FeedSettingsViewController(nibName: K.NIBName.VC.FeedSettings, bundle: nil)
+        vc.editFeed = model
+        SlideNavigationController.sharedInstance().pushViewController(vc, animated: true)
     }
     
     // MARK: - UITableViewDataSource Methods
@@ -129,9 +126,8 @@ class FeedMenuTableViewController: UITableViewController, LocalityHeaderViewDele
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == 1 {
-            let newVC:FeedSettingsViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.FeedSettings) as! FeedSettingsViewController
-            
-            SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
+            let vc = FeedSettingsViewController(nibName: K.NIBName.VC.FeedSettings, bundle: nil)
+            SlideNavigationController.sharedInstance().pushViewController(vc, animated: true)
         }
     }
 }

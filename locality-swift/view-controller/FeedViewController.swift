@@ -284,9 +284,8 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     
     func postDidTouch(sender: UIButton) {
         
-        let newVC: PostCreateViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.PostCreate) as! PostCreateViewController
-        
-        SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
+        let vc = PostCreateViewController(nibName: K.NIBName.VC.PostCreate, bundle: nil)
+        SlideNavigationController.sharedInstance().pushViewController(vc, animated: true)
     }
     
     func onRefresh(sender: UIRefreshControl) {
@@ -365,10 +364,9 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
 
     func gotoPost(post: UserPost) {
         
-        let newVC:PostDetailViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.PostDetail) as! PostDetailViewController
-        
-        newVC.thisPost = post
-        SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
+        let vc = PostDetailViewController(nibName: K.NIBName.VC.PostDetail, bundle: nil)
+        vc.thisPost = post
+        SlideNavigationController.sharedInstance().pushViewController(vc, animated: true)
     }
     
     //------------------------------------------------------------------------------
@@ -423,10 +421,9 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let newVC:PostDetailViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.PostDetail) as! PostDetailViewController
-        
-        newVC.thisPost = posts[indexPath.row]
-        SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
+        let vc = PostDetailViewController(nibName: K.NIBName.VC.PostDetail, bundle: nil)
+        vc.thisPost = posts[indexPath.row]
+        SlideNavigationController.sharedInstance().pushViewController(vc, animated: true)
         
         tableView.deselectRow(at: indexPath, animated: false)
     }

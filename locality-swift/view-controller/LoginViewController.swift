@@ -136,29 +136,25 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
         //check email verification
         if FirebaseManager.getCurrentUser().isEmailVerified == false {
             
-            let newVC:JoinValidateViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.JoinValidate) as! JoinValidateViewController
-            
-            SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
+            let vc = JoinValidateViewController(nibName: K.NIBName.VC.JoinValidate, bundle: nil)
+            SlideNavigationController.sharedInstance().pushViewController(vc, animated: true)
             return
         }
         
         if CurrentUser.shared.isFirstVisit == true {
-            let newVC:CurrentFeedInitializeViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.CurrentFeedInit) as! CurrentFeedInitializeViewController
-            
-            SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
+            let vc = CurrentFeedInitializeViewController(nibName: K.NIBName.VC.CurrentFeedInit, bundle: nil)
+            SlideNavigationController.sharedInstance().pushViewController(vc, animated: true)
         }
             
         else {
             
             // ADD Feed Menu First!!
-            let feedMenuVC:FeedMenuTableViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.FeedMenu) as! FeedMenuTableViewController
+            let menuVc = FeedMenuTableViewController(nibName: K.NIBName.VC.FeedMenu, bundle: nil)
+            SlideNavigationController.sharedInstance().popAllAndSwitch(to: menuVc, withCompletion: nil)
             
-            SlideNavigationController.sharedInstance().popAllAndSwitch(to: feedMenuVC, withCompletion: nil)
-            
-            let newVC:FeedViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.Feed) as! FeedViewController
-            
-            newVC.thisFeed = CurrentUser.shared.currentLocationFeed
-            SlideNavigationController.sharedInstance().pushViewController(newVC, animated: false)
+            let vc = FeedViewController(nibName: K.NIBName.VC.Feed, bundle: nil)
+            vc.thisFeed = CurrentUser.shared.currentLocationFeed
+            SlideNavigationController.sharedInstance().pushViewController(vc, animated: false)
             
         }
     }
@@ -261,9 +257,9 @@ class LoginViewController: LocalityBaseViewController, /*FBSDKLoginButtonDelegat
                             
                             //let thisUsername = snapshot.value as! String
                             if !snapshot.exists() {
-                                let newVC:JoinUsernameViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.JoinUser) as! JoinUsernameViewController
-                                
-                                SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
+                                //move to username
+                                let vc = JoinUsernameViewController(nibName: K.NIBName.VC.JoinUser, bundle: nil)
+                                SlideNavigationController.sharedInstance().pushViewController(vc, animated: true)
                             }
                             
                             else {

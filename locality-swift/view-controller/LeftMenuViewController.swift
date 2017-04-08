@@ -217,6 +217,18 @@ class LeftMenuViewController: LocalityPhotoBaseViewController, UITableViewDelega
     //Menu Action Methods
     func gotoViewControllerWithId(id:String) {
         
+        if id == K.Storyboard.ID.Settings {
+            
+            let vc = SettingsViewController(nibName: K.NIBName.VC.Settings, bundle: nil)
+            SlideNavigationController.sharedInstance().popToRootAndSwitch(to: vc, withSlideOutAnimation:false, andCompletion: nil)
+            return
+        } else if id == K.Storyboard.ID.About {
+            
+            let vc = AboutViewController(nibName: K.NIBName.VC.About, bundle: nil)
+            SlideNavigationController.sharedInstance().popToRootAndSwitch(to: vc, withSlideOutAnimation:false, andCompletion: nil)
+            return
+        }
+        
         if id != K.Storyboard.ID.FeedMenu {
             let newVC:LocalityBaseViewController = Util.controllerFromStoryboard(id: id) as! LocalityBaseViewController
             
@@ -224,9 +236,8 @@ class LeftMenuViewController: LocalityPhotoBaseViewController, UITableViewDelega
         }
         
         else {
-            let menuVC:UITableViewController = Util.controllerFromStoryboard(id: id) as! UITableViewController
-            
-            SlideNavigationController.sharedInstance().popToRootAndSwitch(to: menuVC, withSlideOutAnimation: false, andCompletion: nil)
+            let menuVc = FeedMenuTableViewController(nibName: K.NIBName.VC.FeedMenu, bundle: nil)
+            SlideNavigationController.sharedInstance().popToRootAndSwitch(to: menuVc, withSlideOutAnimation: false, andCompletion: nil)
         }
     }
     
@@ -265,9 +276,8 @@ class LeftMenuViewController: LocalityPhotoBaseViewController, UITableViewDelega
             
             CurrentUser.shared.reset()
             
-            let landingVC:LandingViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.Landing) as! LandingViewController
-            
-            SlideNavigationController.sharedInstance().popAllAndSwitch(to: landingVC, withSlideOutAnimation: false, andCompletion: nil)
+            let vc = LandingViewController(nibName: K.NIBName.VC.Landing, bundle: nil)
+            SlideNavigationController.sharedInstance().popAllAndSwitch(to: vc, withSlideOutAnimation: false, andCompletion: nil)
         } catch {
             print("Logout error")
         }

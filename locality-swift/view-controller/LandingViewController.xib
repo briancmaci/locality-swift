@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Interstate-LightCondensed.ttf">
+            <string>Interstate-LightCondensed</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LandingViewController" customModule="locality_swift" customModuleProvider="target">
+            <connections>
+                <outlet property="bottomParallaxStretch" destination="CGG-vD-KPg" id="pyf-JK-A5R"/>
+                <outlet property="contourLines" destination="SCc-ug-G5L" id="vXz-jp-67x"/>
+                <outlet property="exploreBottom" destination="AbO-52-nnb" id="iTQ-pU-ssf"/>
+                <outlet property="exploreButton" destination="El3-qP-KYt" id="vbb-Pe-BDm"/>
+                <outlet property="joinLoginBottom" destination="GjM-6E-AvW" id="1ey-eo-hlI"/>
+                <outlet property="joinLoginButtonPairView" destination="IzI-X3-kHs" id="FxU-UM-Z7u"/>
+                <outlet property="leftParallaxStretch" destination="ElG-5q-7Q1" id="RZm-kT-La5"/>
+                <outlet property="rightParallaxStretch" destination="vZR-qI-P1H" id="qs8-mQ-WPo"/>
+                <outlet property="topParallaxStretch" destination="Kbq-kW-kFp" id="Jhd-Iu-z6T"/>
+                <outlet property="view" destination="bCb-4y-Qmn" id="tfd-uJ-6w4"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="bCb-4y-Qmn">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchBackground" translatesAutoresizingMaskIntoConstraints="NO" id="SYh-cF-TWY">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchContourLines" translatesAutoresizingMaskIntoConstraints="NO" id="SCc-ug-G5L">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LandingLogo" translatesAutoresizingMaskIntoConstraints="NO" id="RUU-rI-RXt">
+                    <rect key="frame" x="104" y="256" width="167" height="76"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="167" id="XEb-qR-5q9"/>
+                        <constraint firstAttribute="height" constant="76" id="mi7-xD-En6"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="El3-qP-KYt" customClass="RoundedRectangleButton" customModule="locality_swift" customModuleProvider="target">
+                    <rect key="frame" x="47" y="534" width="280" height="54"/>
+                    <color key="backgroundColor" red="0.0020686525409999998" green="1" blue="0.0582493938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="280" id="JPP-3g-luB"/>
+                        <constraint firstAttribute="height" constant="54" id="a4F-2D-xEo"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Interstate-LightCondensed" family="Interstate" pointSize="16"/>
+                    <state key="normal" title="Button"/>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IzI-X3-kHs" customClass="AngledButtonPairView" customModule="locality_swift" customModuleProvider="target">
+                    <rect key="frame" x="47" y="598" width="280" height="54"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="54" id="Me7-es-ohz"/>
+                        <constraint firstAttribute="width" constant="280" id="no8-4X-u6a"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="SYh-cF-TWY" firstAttribute="leading" secondItem="bCb-4y-Qmn" secondAttribute="leading" id="1SH-vZ-PeQ"/>
+                <constraint firstAttribute="bottom" secondItem="El3-qP-KYt" secondAttribute="bottom" constant="79" id="AbO-52-nnb"/>
+                <constraint firstItem="El3-qP-KYt" firstAttribute="centerX" secondItem="SCc-ug-G5L" secondAttribute="centerX" id="Aen-AD-uvg"/>
+                <constraint firstItem="SYh-cF-TWY" firstAttribute="bottom" secondItem="SCc-ug-G5L" secondAttribute="bottom" id="CAH-T9-2hH"/>
+                <constraint firstAttribute="bottom" secondItem="SCc-ug-G5L" secondAttribute="bottom" id="CGG-vD-KPg"/>
+                <constraint firstItem="SCc-ug-G5L" firstAttribute="leading" secondItem="bCb-4y-Qmn" secondAttribute="leading" id="ElG-5q-7Q1"/>
+                <constraint firstAttribute="bottom" secondItem="IzI-X3-kHs" secondAttribute="bottom" constant="15" id="GjM-6E-AvW"/>
+                <constraint firstItem="RUU-rI-RXt" firstAttribute="centerY" secondItem="SCc-ug-G5L" secondAttribute="centerY" constant="-40" id="HND-eF-tFS"/>
+                <constraint firstItem="SCc-ug-G5L" firstAttribute="top" secondItem="bCb-4y-Qmn" secondAttribute="top" id="Kbq-kW-kFp"/>
+                <constraint firstItem="RUU-rI-RXt" firstAttribute="centerX" secondItem="SCc-ug-G5L" secondAttribute="centerX" id="XZC-IO-NeD"/>
+                <constraint firstItem="SYh-cF-TWY" firstAttribute="top" secondItem="SCc-ug-G5L" secondAttribute="top" id="aaR-rW-9hM"/>
+                <constraint firstItem="IzI-X3-kHs" firstAttribute="centerX" secondItem="SCc-ug-G5L" secondAttribute="centerX" id="iMO-cV-nSZ"/>
+                <constraint firstAttribute="trailing" secondItem="SCc-ug-G5L" secondAttribute="trailing" id="vZR-qI-P1H"/>
+                <constraint firstAttribute="trailing" secondItem="SYh-cF-TWY" secondAttribute="trailing" id="vjQ-4F-b3g"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="LandingLogo" width="167" height="76"/>
+        <image name="LaunchBackground" width="320" height="568"/>
+        <image name="LaunchContourLines" width="320" height="568"/>
+    </resources>
+</document>

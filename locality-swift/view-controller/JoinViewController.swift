@@ -91,9 +91,8 @@ class JoinViewController: LocalityBaseViewController, UITextFieldDelegate {
                                         CurrentUser.shared.password = self.passwordField.text!
                                         
                                         //move to username
-                                        let newVC:JoinUsernameViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.JoinUser) as! JoinUsernameViewController
-                                        
-                                        SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
+                                        let vc = JoinUsernameViewController(nibName: K.NIBName.VC.JoinUser, bundle: nil)
+                                        SlideNavigationController.sharedInstance().pushViewController(vc, animated: true)
                                     }
                                     
                                     else {
@@ -187,9 +186,8 @@ class JoinViewController: LocalityBaseViewController, UITextFieldDelegate {
                         CurrentUser.shared.facebookToken = (result?.token.tokenString)!
                         
                         //move to username
-                        let newVC:JoinUsernameViewController = Util.controllerFromStoryboard(id: K.Storyboard.ID.JoinUser) as! JoinUsernameViewController
-                        
-                        SlideNavigationController.sharedInstance().pushViewController(newVC, animated: true)
+                        let vc = JoinUsernameViewController(nibName: K.NIBName.VC.JoinUser, bundle: nil)
+                        SlideNavigationController.sharedInstance().pushViewController(vc, animated: true)
                     }
                 }
             }
