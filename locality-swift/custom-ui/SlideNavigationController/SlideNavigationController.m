@@ -505,7 +505,7 @@ static SlideNavigationController *singletonInstance;
 - (void)moveHorizontallyToLocation:(CGFloat)location
 {
 	CGRect rect = self.view.frame;
-	UIInterfaceOrientation orientation = self.interfaceOrientation;
+	UIInterfaceOrientation orientation = UIApplication.sharedApplication.statusBarOrientation;
 	Menu menu = (self.horizontalLocation >= 0 && location >= 0) ? MenuLeft : MenuRight;
     
     if ((location > 0 && self.horizontalLocation <= 0) || (location < 0 && self.horizontalLocation >= 0)) {
@@ -555,16 +555,16 @@ static SlideNavigationController *singletonInstance;
         return rect;
     }
 	
-	if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation))
+	if (UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication.statusBarOrientation))
 	{
         // For some reasons in landscape below the status bar is considered y=0, but in portrait it's considered y=20
-        rect.origin.x = (self.interfaceOrientation == UIInterfaceOrientationLandscapeRight) ? 0 : STATUS_BAR_HEIGHT;
+        rect.origin.x = (UIApplication.sharedApplication.statusBarOrientation == UIInterfaceOrientationLandscapeRight) ? 0 : STATUS_BAR_HEIGHT;
         rect.size.width = self.view.frame.size.width-STATUS_BAR_HEIGHT;
 	}
 	else
 	{
         // For some reasons in landscape below the status bar is considered y=0, but in portrait it's considered y=20
-        rect.origin.y = (self.interfaceOrientation == UIInterfaceOrientationPortrait) ? STATUS_BAR_HEIGHT : 0;
+        rect.origin.y = (UIApplication.sharedApplication.statusBarOrientation == UIInterfaceOrientationPortrait) ? STATUS_BAR_HEIGHT : 0;
         rect.size.height = self.view.frame.size.height-STATUS_BAR_HEIGHT;
 	}
 	
@@ -593,7 +593,7 @@ static SlideNavigationController *singletonInstance;
 - (CGFloat)horizontalLocation
 {
 	CGRect rect = self.view.frame;
-	UIInterfaceOrientation orientation = self.interfaceOrientation;
+	UIInterfaceOrientation orientation = UIApplication.sharedApplication.statusBarOrientation;
 	
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0"))
     {
@@ -619,7 +619,7 @@ static SlideNavigationController *singletonInstance;
 - (CGFloat)horizontalSize
 {
 	CGRect rect = self.view.frame;
-	UIInterfaceOrientation orientation = self.interfaceOrientation;
+	UIInterfaceOrientation orientation = UIApplication.sharedApplication.statusBarOrientation;
 	
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0"))
     {
@@ -660,7 +660,7 @@ static SlideNavigationController *singletonInstance;
 
 - (CGFloat)slideOffset
 {
-	return (UIInterfaceOrientationIsLandscape(self.interfaceOrientation))
+	return (UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication.statusBarOrientation))
 		? self.landscapeSlideOffset
 		: self.portraitSlideOffset;
 }

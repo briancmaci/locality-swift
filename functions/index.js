@@ -18,6 +18,7 @@ exports.sendCommentNotification = functions.database.ref(`/comments/{cid}`).onWr
   const delta = event.data.val();
   console.log('DeltaSnapshot contents:', delta);
   const postId = delta.postId;
+  const commentingUserId = delta.uid;
   console.log('Please dear god postID?', postId);
   
   const getPostUserIdPromise = admin.database().ref(`/posts/${postId}/uid`).once('value');
@@ -28,23 +29,25 @@ exports.sendCommentNotification = functions.database.ref(`/comments/{cid}`).onWr
   	console.log("postUserId? " + postUserId);
 
   	const getPostUserPromise = admin.database().ref(`/users/${postUserId}`).once('value');
+  	const getCommentingUserPromise = admin.database().ref(`/users/${commentingUserId}`).once('value');
+  	return Promise.all([getPostUserPromise, getCommentingUserPromise]).then(results => {
 
-  	return Promise.all([getPostUserPromise]).then(results => {
+  		const posterSnapshot = results[0];
+  		const poster = posterSnapshot.val();
 
-  		const userSnapshot = results[0];
-  		const user = userSnapshot.val();
+  		const commenterSnapshot = results[1];
+  		const commenter = commenterSnapshot.val();
 
-  		console.log('PostUser???', user);
   		// Notification details.
 	    const payload = {
 	      notification: {
-	        title: `New comment!`,
-	        body: `${user.username} commented on your post.`,
-	        icon: user.profileImageUrl
+	        title: `${poster.username}!!! New comment!`,
+	        body: `${commenter.username} commented on your post.`,
+	        icon: poster.profileImageUrl
 	      }
 	    };
 
-	    return admin.messaging().sendToDevice(user.notificationToken, payload).then(response => {
+	    return admin.messaging().sendToDevice(poster.notificationToken, payload).then(response => {
       // For each message check if there was an error.
       const tokensToRemove = [];
       response.results.forEach((result, index) => {

@@ -58,7 +58,7 @@
         ? [SlideNavigationController sharedInstance].leftMenu
         : [SlideNavigationController sharedInstance].rightMenu;
 	
-	UIInterfaceOrientation orientation= [SlideNavigationController sharedInstance].interfaceOrientation;
+	UIInterfaceOrientation orientation= UIApplication.sharedApplication.statusBarOrientation;
 	CGRect rect = menuViewController.view.frame;
 	
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0"))
@@ -100,7 +100,7 @@
         ? [SlideNavigationController sharedInstance].leftMenu
         : [SlideNavigationController sharedInstance].rightMenu;
     
-    UIInterfaceOrientation orientation = [SlideNavigationController sharedInstance].interfaceOrientation;
+    UIInterfaceOrientation orientation = UIApplication.sharedApplication.statusBarOrientation;
     
     NSInteger location = (menu == MenuLeft)
         ? (self.slideMovement * -1) + (self.slideMovement * progress)
@@ -147,7 +147,7 @@
     ? [SlideNavigationController sharedInstance].leftMenu
     : [SlideNavigationController sharedInstance].rightMenu;
     
-    UIInterfaceOrientation orientation= [SlideNavigationController sharedInstance].interfaceOrientation;
+    UIInterfaceOrientation orientation= UIApplication.sharedApplication.statusBarOrientation;
     
     CGRect rect = menuViewController.view.frame;
     

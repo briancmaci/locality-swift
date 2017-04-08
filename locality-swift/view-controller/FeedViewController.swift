@@ -55,6 +55,12 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //start pushing fcm device id
+        
+        if UIApplication.shared.isRegisteredForRemoteNotifications == true {
+            PushNotificationManager.shared.connectToFcm()
+        }
+        
         if thisFeed == CurrentUser.shared.currentLocationFeed {
                 isMyCurrentLocation = true
         }
