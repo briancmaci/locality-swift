@@ -12,20 +12,20 @@ import GooglePlaces
 import Mapbox
 import SDWebImage
 
-class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationManagerDelegate, LocationSliderDelegate, ImageUploadViewDelegate, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, UITextFieldDelegate, MGLMapViewDelegate, UIScrollViewDelegate, GMSAutocompleteViewControllerDelegate, GMSAutocompleteResultsViewControllerDelegate {
+class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationManagerDelegate, LocationSliderFluidDelegate, ImageUploadViewDelegate, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, UITextFieldDelegate, MGLMapViewDelegate, UIScrollViewDelegate, GMSAutocompleteViewControllerDelegate, GMSAutocompleteResultsViewControllerDelegate {
     
-    @IBOutlet weak var scrollView:UIScrollView!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var searchBarContainer: UIView!
-    @IBOutlet weak var map:MGLMapView!
-    @IBOutlet weak var locationName:UITextField!
-    @IBOutlet weak var locationNameError:UILabel!
-    @IBOutlet weak var slider:LocationSlider!
-    @IBOutlet weak var imageUploadView:ImageUploadView!
-    @IBOutlet weak var scrollSaveButton:UIButton!
-    @IBOutlet weak var scrollDeleteButton:UIButton!
-    @IBOutlet weak var scrollDeleteButtonHeight:NSLayoutConstraint!
-    @IBOutlet weak var feedOptionsTable:UITableView!
-    @IBOutlet weak var feedOptionsHeight:NSLayoutConstraint!
+    @IBOutlet weak var map: MGLMapView!
+    @IBOutlet weak var locationName: UITextField!
+    @IBOutlet weak var locationNameError: UILabel!
+    @IBOutlet weak var slider: LocationSliderFluid!
+    @IBOutlet weak var imageUploadView: ImageUploadView!
+    @IBOutlet weak var scrollSaveButton: UIButton!
+    @IBOutlet weak var scrollDeleteButton: UIButton!
+    @IBOutlet weak var scrollDeleteButtonHeight: NSLayoutConstraint!
+    @IBOutlet weak var feedOptionsTable: UITableView!
+    @IBOutlet weak var feedOptionsHeight: NSLayoutConstraint!
     
     //GeoServices
     var locationManager:CLLocationManager!
@@ -33,10 +33,11 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     var feedOptions:[[String:AnyObject]] = [[String:AnyObject]]()
     
     //Mapbox
-    var sliderSteps:[RangeStep] = [RangeStep]()
-    var currentRangeIndex:Int!
-    var currentLocation:CLLocationCoordinate2D!
-    var hasMapped:Bool = false
+    //var sliderSteps:[RangeStep] = [RangeStep]()
+    //var currentRangeIndex:Int!
+    var currentRange: CGFloat!
+    var currentLocation: CLLocationCoordinate2D!
+    var hasMapped: Bool = false
     
     //GMSAutoComplete
     var resultsViewController: GMSAutocompleteResultsViewController?
@@ -46,9 +47,9 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     var backgroundIsDrawn = false
     
     //ViewController Mode
-    var isEditingFeed:Bool! = false
-    var editFeed:FeedLocation?
-    var photoHasBeenEdited:Bool = false
+    var isEditingFeed: Bool! = false
+    var editFeed: FeedLocation?
+    var photoHasBeenEdited: Bool = false
     
     //------------------------------------------------------------------------------
     // MARK: - View Lifecycle
@@ -176,14 +177,15 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     
     func initRangeSlider() {
 
-        sliderSteps = slider.initSlider()
+        slider.initFluidSlider()
         slider.delegate = self
         
         if isEditingFeed == true {
             let editRange = (editFeed?.range)!
-            slider.setStep(range:CGFloat(editRange))
+            slider.setRange(range: CGFloat(editRange))
+            //slider.setStep(range:CGFloat(editRange))
         }
-        currentRangeIndex = slider.currentStep
+        currentRange = slider.getSliderValue()
     }
     
     func initMap() {
@@ -206,7 +208,8 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
                 hasMapped = true
             }
             
-            sliderValueChanged(step: currentRangeIndex)
+            sliderValueChanged(value: slider.getSliderValue())
+            //sliderValueChanged(step: currentRangeIndex)
         }
         
         else {
@@ -257,7 +260,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     func writeLocation(url:String) {
         let thisLocation:FeedLocation = FeedLocation(coord: self.currentLocation,
                                                      name: locationName.text!,
-                                                     range: Float(sliderSteps[currentRangeIndex].distance),
+                                                     range: Float(slider.getSliderValue()),
                                                      current: false)
         
         thisLocation.feedImgUrl = url
@@ -308,7 +311,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         editFeed?.lat = self.currentLocation.latitude
         editFeed?.lon = self.currentLocation.longitude
         editFeed?.name = locationName.text!
-        editFeed?.range = Float(sliderSteps[currentRangeIndex].distance)
+        editFeed?.range = Float(slider.getSliderValue())
         editFeed?.feedImgUrl = url
         
         for op in self.feedOptionsTable.visibleCells {
@@ -523,7 +526,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         }
         
         map.centerCoordinate = currentLocation
-        let currentRadius:Double = Util.radiusInMeters(range: Float(sliderSteps[currentRangeIndex].distance))
+        let currentRadius:Double = Util.radiusInMeters(range: Float(slider.getSliderValue()))
         
         let rangePointSW:CLLocationCoordinate2D = MapboxManager.metersToDegrees(coord: map.centerCoordinate, metersLat: -currentRadius, metersLong: -currentRadius)
         
@@ -587,14 +590,20 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     }
     
     //------------------------------------------------------------------------------
-    // MARK: - LocationRangeSliderDelegate Methods
+    // MARK: - LocationRangeSliderFluidDelegate Methods
     //------------------------------------------------------------------------------
     
-    func sliderValueChanged(step: Int) {
+    func sliderValueChanged(value: CGFloat) {
     
-        currentRangeIndex = step
+        currentRange = value
         updateMapRange()
     }
+    
+//    func sliderValueChanged(step: Int) {
+//    
+//        currentRangeIndex = step
+//        updateMapRange()
+//    }
     
     func updateMap(place:CLLocationCoordinate2D) {
         

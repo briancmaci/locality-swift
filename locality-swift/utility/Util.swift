@@ -32,11 +32,8 @@ class Util: NSObject {
             let dict = NSDictionary(contentsOfFile: path) as? [String: AnyObject] {
             
             return dict
-        }
-            
-        else {
-            
-            return [:]
+        } else {
+            return [: ]
         }
     }
     
@@ -46,47 +43,36 @@ class Util: NSObject {
             let dict = NSArray(contentsOfFile: path) as? [[String: AnyObject]] {
             
             return dict
-        }
-            
-        else {
-            
-            return [[:]]
+        } else {
+            return [[: ]]
         }
     }
     
-    class func locationLabel(address:GMSAddress) -> String {
-        var address0:String!
-        var address1:String!
+    class func locationLabel(address: GMSAddress) -> String {
+        var address0: String!
+        var address1: String!
 
         if let tryAdd0 = address.locality {
             address0 = tryAdd0
-        }
-        else if let tryAdd0 = address.subLocality {
+        } else if let tryAdd0 = address.subLocality {
             address0 = tryAdd0
-        }
-        else {
+        } else {
             address0 = ""
         }
         
         if let tryAdd1 = address.administrativeArea {
             address1 = tryAdd1
-        }
-        else if let tryAdd1 = address.country {
+        } else if let tryAdd1 = address.country {
             address1 = tryAdd1
-        }
-        else {
+        } else {
             address1 = ""
         }
         
         if address0.isEmpty && address1.isEmpty {
             return "Unknown"
-        }
-        
-        else if !address0.isEmpty && address1.isEmpty {
+        } else if !address0.isEmpty && address1.isEmpty {
             return address0
-        }
-        
-        else if address0.isEmpty && !address1.isEmpty {
+        } else if address0.isEmpty && !address1.isEmpty {
             
             //test what we have here thus far
             if address.administrativeArea != nil {
@@ -94,22 +80,18 @@ class Util: NSObject {
                 address1 = address.country
                 
                 return String(format:"%@, %@", address0, address1)
-            }
-            
-            else {
+            } else {
                 return address1
             }
-        }
-        
-        else {
+        } else {
             return String(format:"%@, %@", address0, address1)
         }
     }
     
     //Location Slider Utility
-    class func attributedRangeString(value:String, unit:String) -> NSMutableAttributedString {
+    class func attributedRangeString(value: CGFloat, unit: String) -> NSMutableAttributedString {
         
-        let rawString = NSString(format: "%@%@", value, unit)
+        let rawString = NSString(format: "%@%@", value.description, unit)
         let attrString:NSMutableAttributedString = NSMutableAttributedString(string: rawString as String)
         
         let font = UIFont(name: K.FontName.InterstateLightCondensed, size: 19)
@@ -118,13 +100,13 @@ class Util: NSObject {
         attrString.beginEditing()
         attrString.addAttribute(NSFontAttributeName,
                                 value: font!,
-                                range: NSMakeRange(0, value.characters.count))
+                                range: NSMakeRange(0, value.description.characters.count))
         attrString.addAttribute(NSFontAttributeName,
                                 value: smallFont!,
-                                range: NSMakeRange(value.characters.count, unit.characters.count))
+                                range: NSMakeRange(value.description.characters.count, unit.characters.count))
         attrString.addAttribute(NSBaselineOffsetAttributeName,
                                 value: 4,
-                                range: NSMakeRange(value.characters.count, unit.characters.count))
+                                range: NSMakeRange(value.description.characters.count, unit.characters.count))
         attrString.endEditing()
         
         return attrString
@@ -166,9 +148,7 @@ class Util: NSObject {
             if convertedDistance > metricThreshold {
                 convertedDistance = convertedDistance / metricThreshold
                 unit = "km"
-            }
-            
-            else {
+            } else {
                 unit = "m"
             }
         }
@@ -177,9 +157,7 @@ class Util: NSObject {
             if convertedDistance > imperialThreshold {
                 convertedDistance = convertedDistance / imperialThreshold
                 unit = "mi"
-            }
-            
-            else {
+            } else {
                 unit = "ft"
             }
         }

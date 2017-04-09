@@ -34,6 +34,7 @@
 		72701FC31E994DB100084426 /* PostDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72701FC21E994DB100084426 /* PostDetailViewController.xib */; };
 		72701FC51E99503E00084426 /* LeftMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72701FC41E99503E00084426 /* LeftMenuViewController.xib */; };
 		72701FC71E99534500084426 /* LandingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72701FC61E99534500084426 /* LandingViewController.xib */; };
+		72701FEB1E9A895800084426 /* LocationSliderFluid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72701FEA1E9A895800084426 /* LocationSliderFluid.swift */; };
 		72B881A11E65EE5000EB3B2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B881A01E65EE5000EB3B2E /* AppDelegate.swift */; };
 		72B881A91E65EE5000EB3B2E /* locality_swift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 72B881A71E65EE5000EB3B2E /* locality_swift.xcdatamodeld */; };
 		72B881AB1E65EE5000EB3B2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72B881AA1E65EE5000EB3B2E /* Assets.xcassets */; };
@@ -77,7 +78,6 @@
 		72DC48801E6C9BCE00486535 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 72DC487F1E6C9BCE00486535 /* Localizable.strings */; };
 		72DC48841E6CC8BC00486535 /* RangeValuesFeet.plist in Resources */ = {isa = PBXBuildFile; fileRef = 72DC48831E6CC8BC00486535 /* RangeValuesFeet.plist */; };
 		72DC48861E6CD0B500486535 /* RangeStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DC48851E6CD0B500486535 /* RangeStep.swift */; };
-		72DC48891E6DA0F000486535 /* LocationSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DC48881E6DA0F000486535 /* LocationSlider.swift */; };
 		72DC488B1E6DA11000486535 /* LocationSlider.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC488A1E6DA11000486535 /* LocationSlider.xib */; };
 		72EEDF831E7586A6009DFA77 /* FeedMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EEDF821E7586A6009DFA77 /* FeedMenuTableViewController.swift */; };
 		72EEDF861E7589CD009DFA77 /* FeedAddNewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EEDF841E7589CD009DFA77 /* FeedAddNewCell.swift */; };
@@ -198,6 +198,7 @@
 		72701FC21E994DB100084426 /* PostDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PostDetailViewController.xib; path = "view-controller/PostDetailViewController.xib"; sourceTree = "<group>"; };
 		72701FC41E99503E00084426 /* LeftMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LeftMenuViewController.xib; path = "view-controller/LeftMenuViewController.xib"; sourceTree = "<group>"; };
 		72701FC61E99534500084426 /* LandingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LandingViewController.xib; path = "view-controller/LandingViewController.xib"; sourceTree = "<group>"; };
+		72701FEA1E9A895800084426 /* LocationSliderFluid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationSliderFluid.swift; path = "custom-ui/LocationSliderFluid.swift"; sourceTree = "<group>"; };
 		72B8819D1E65EE5000EB3B2E /* locality-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "locality-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		72B881A01E65EE5000EB3B2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		72B881A81E65EE5000EB3B2E /* locality_swift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = locality_swift.xcdatamodel; sourceTree = "<group>"; };
@@ -248,7 +249,6 @@
 		72DC487F1E6C9BCE00486535 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		72DC48831E6CC8BC00486535 /* RangeValuesFeet.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RangeValuesFeet.plist; sourceTree = "<group>"; };
 		72DC48851E6CD0B500486535 /* RangeStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RangeStep.swift; path = model/RangeStep.swift; sourceTree = "<group>"; };
-		72DC48881E6DA0F000486535 /* LocationSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationSlider.swift; path = "custom-ui/LocationSlider.swift"; sourceTree = "<group>"; };
 		72DC488A1E6DA11000486535 /* LocationSlider.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LocationSlider.xib; path = "custom-ui/LocationSlider.xib"; sourceTree = "<group>"; };
 		72EEDF821E7586A6009DFA77 /* FeedMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedMenuTableViewController.swift; path = "view-controller/FeedMenuTableViewController.swift"; sourceTree = "<group>"; };
 		72EEDF841E7589CD009DFA77 /* FeedAddNewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedAddNewCell.swift; path = "custom-ui/FeedAddNewCell.swift"; sourceTree = "<group>"; };
@@ -639,7 +639,7 @@
 		72DC48871E6D9C0200486535 /* location-slider */ = {
 			isa = PBXGroup;
 			children = (
-				72DC48881E6DA0F000486535 /* LocationSlider.swift */,
+				72701FEA1E9A895800084426 /* LocationSliderFluid.swift */,
 				72DC488A1E6DA11000486535 /* LocationSlider.xib */,
 			);
 			name = "location-slider";
@@ -1167,6 +1167,7 @@
 				72B881EF1E67797100EB3B2E /* RoundedRectangleButton.swift in Sources */,
 				72F24BD71E71D0F200CA7702 /* PostFeedCell.swift in Sources */,
 				72B8820A1E6894BE00EB3B2E /* UserStatus.swift in Sources */,
+				72701FEB1E9A895800084426 /* LocationSliderFluid.swift in Sources */,
 				72DC487E1E6C502400486535 /* DataParseManager.swift in Sources */,
 				72F24BCA1E71BAA700CA7702 /* LikePostButton.swift in Sources */,
 				72FE08051E74D72000F87A7F /* UIApplicationExtension.swift in Sources */,
@@ -1189,7 +1190,6 @@
 				72F24BC41E71ABEB00CA7702 /* PostUserInfoView.swift in Sources */,
 				72EEE00D1E7D898D009DFA77 /* PopupMenuView.swift in Sources */,
 				72F24BDA1E71E8FD00CA7702 /* UILabelExtension.swift in Sources */,
-				72DC48891E6DA0F000486535 /* LocationSlider.swift in Sources */,
 				722ABA441E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */,
 				72F24BEB1E7228C100CA7702 /* PostFromView.swift in Sources */,
 				72B882141E693C0500EB3B2E /* JoinValidateViewController.swift in Sources */,

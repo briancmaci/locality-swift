@@ -28,7 +28,7 @@
                 <outlet property="scrollSaveButton" destination="67u-o7-Oyr" id="Yrh-5x-4SD"/>
                 <outlet property="scrollView" destination="5nw-qj-zxu" id="VG6-W3-ZzW"/>
                 <outlet property="searchBarContainer" destination="4u9-AD-EKd" id="ACf-dq-76g"/>
-                <outlet property="slider" destination="U5c-3f-fwN" id="xjx-fj-vSe"/>
+                <outlet property="slider" destination="U5c-3f-fwN" id="S1R-IR-3io"/>
                 <outlet property="view" destination="XsC-Qm-Whi" id="Swj-FX-l6t"/>
             </connections>
         </placeholder>
@@ -50,7 +50,7 @@
                                         <constraint firstAttribute="width" secondItem="ExX-WL-dLD" secondAttribute="height" multiplier="1:1" id="3hy-nW-JZk"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5c-3f-fwN" userLabel="Range Slider" customClass="LocationSlider" customModule="locality_swift" customModuleProvider="target">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5c-3f-fwN" userLabel="Range Slider" customClass="LocationSliderFluid" customModule="locality_swift" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="399" width="375" height="77"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
