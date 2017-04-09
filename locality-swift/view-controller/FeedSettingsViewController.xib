@@ -27,7 +27,7 @@
                 <outlet property="scrollDeleteButtonHeight" destination="kmM-iR-56D" id="Y3J-iV-I2z"/>
                 <outlet property="scrollSaveButton" destination="67u-o7-Oyr" id="Yrh-5x-4SD"/>
                 <outlet property="scrollView" destination="5nw-qj-zxu" id="VG6-W3-ZzW"/>
-                <outlet property="searchDisplayController" destination="Y8p-Ne-owv" id="l0O-hT-dIA"/>
+                <outlet property="searchBarContainer" destination="4u9-AD-EKd" id="ACf-dq-76g"/>
                 <outlet property="slider" destination="U5c-3f-fwN" id="xjx-fj-vSe"/>
                 <outlet property="view" destination="XsC-Qm-Whi" id="Swj-FX-l6t"/>
             </connections>
@@ -172,37 +172,26 @@
                         <constraint firstAttribute="trailing" secondItem="am7-WP-7yx" secondAttribute="trailing" id="y0O-zO-wYr"/>
                     </constraints>
                 </scrollView>
-                <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="1Dw-Nf-zQT">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4u9-AD-EKd">
                     <rect key="frame" x="0.0" y="59" width="375" height="44"/>
-                    <color key="backgroundColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="EOm-m2-JZQ"/>
+                        <constraint firstAttribute="height" constant="44" id="FFr-fv-efP"/>
                     </constraints>
-                    <color key="barTintColor" red="0.89866240929999996" green="0.90179006279999996" blue="0.91117302339999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="light"/>
-                </searchBar>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="4u9-AD-EKd" secondAttribute="trailing" id="3kv-wE-Nhe"/>
                 <constraint firstAttribute="bottom" secondItem="5nw-qj-zxu" secondAttribute="bottom" id="7Ry-ge-j5t"/>
+                <constraint firstItem="4u9-AD-EKd" firstAttribute="top" secondItem="XsC-Qm-Whi" secondAttribute="top" constant="59" id="CQK-X9-d58"/>
                 <constraint firstItem="am7-WP-7yx" firstAttribute="width" secondItem="XsC-Qm-Whi" secondAttribute="width" id="IT9-e1-9Om"/>
                 <constraint firstAttribute="trailing" secondItem="5nw-qj-zxu" secondAttribute="trailing" id="SDe-Hm-uDR"/>
-                <constraint firstItem="1Dw-Nf-zQT" firstAttribute="leading" secondItem="XsC-Qm-Whi" secondAttribute="leading" id="U8j-uH-mqL"/>
                 <constraint firstItem="5nw-qj-zxu" firstAttribute="leading" secondItem="XsC-Qm-Whi" secondAttribute="leading" id="Z3L-oL-Vtf"/>
+                <constraint firstItem="4u9-AD-EKd" firstAttribute="leading" secondItem="XsC-Qm-Whi" secondAttribute="leading" id="gfe-6c-isL"/>
                 <constraint firstItem="5nw-qj-zxu" firstAttribute="top" secondItem="XsC-Qm-Whi" secondAttribute="top" constant="59" id="gpb-ni-cYO"/>
-                <constraint firstAttribute="trailing" secondItem="1Dw-Nf-zQT" secondAttribute="trailing" id="l3I-ng-D5a"/>
-                <constraint firstItem="1Dw-Nf-zQT" firstAttribute="top" secondItem="XsC-Qm-Whi" secondAttribute="top" constant="59" id="zWV-Z1-0Aa"/>
             </constraints>
         </view>
-        <searchDisplayController id="Y8p-Ne-owv">
-            <connections>
-                <outlet property="delegate" destination="-1" id="LVD-e7-UME"/>
-                <outlet property="searchBar" destination="1Dw-Nf-zQT" id="EBo-U3-ycQ"/>
-                <outlet property="searchContentsController" destination="-1" id="32a-nS-ajL"/>
-                <outlet property="searchResultsDataSource" destination="-1" id="5g0-yE-gjM"/>
-                <outlet property="searchResultsDelegate" destination="-1" id="xVN-ax-dhU"/>
-            </connections>
-        </searchDisplayController>
     </objects>
     <resources>
         <image name="ButtonAddLocationIcon" width="9" height="11"/>
