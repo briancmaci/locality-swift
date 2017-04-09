@@ -12,9 +12,10 @@ import GooglePlaces
 import Mapbox
 import SDWebImage
 
-class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationManagerDelegate, LocationSliderDelegate, ImageUploadViewDelegate, UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate, UIGestureRecognizerDelegate, UITextFieldDelegate, UIScrollViewDelegate, MGLMapViewDelegate {
+class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationManagerDelegate, LocationSliderDelegate, ImageUploadViewDelegate, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, UITextFieldDelegate, MGLMapViewDelegate, UIScrollViewDelegate, GMSAutocompleteViewControllerDelegate, GMSAutocompleteResultsViewControllerDelegate {
     
     @IBOutlet weak var scrollView:UIScrollView!
+    @IBOutlet weak var searchBarContainer: UIView!
     @IBOutlet weak var map:MGLMapView!
     @IBOutlet weak var locationName:UITextField!
     @IBOutlet weak var locationNameError:UILabel!
@@ -37,15 +38,12 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     var currentLocation:CLLocationCoordinate2D!
     var hasMapped:Bool = false
     
-    //AutoComplete
-    var searchResults:NSArray! = NSArray()
-    var placesClient:GMSPlacesClient!
-    var filter:GMSAutocompleteFilter!
-    var region:GMSVisibleRegion!
-    var bounds:GMSCoordinateBounds!
-    
-    //UISearchBar
-    var shouldBeginEditing:Bool!
+    //GMSAutoComplete
+    var resultsViewController: GMSAutocompleteResultsViewController?
+    var searchController: UISearchController?
+    var resultsBackground: UIImageView!
+    var resultsTableHandle: UITableView!
+    var backgroundIsDrawn = false
     
     //ViewController Mode
     var isEditingFeed:Bool! = false
@@ -85,15 +83,31 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     
     func initialSetup() {
         
+        initGMSAutoCompleteControllers()
+        
         initButtons()
         initLocationName()
         initHeaderView()
-        initAutoCompleteSearch()
         initFeedOptionsTable()
         initScrollView()
         initRangeSlider()
         initMap()
         initImageUploadView()
+    }
+    
+    func initGMSAutoCompleteControllers() {
+        resultsViewController = GMSAutocompleteResultsViewController()
+        resultsViewController?.delegate = self
+        
+        searchController = UISearchController(searchResultsController: resultsViewController)
+        searchController?.searchResultsUpdater = resultsViewController
+        
+        searchBarContainer.addSubview((searchController?.searchBar)!)
+        searchController?.searchBar.frame = CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width, height:(searchController?.searchBar.frame.size.height)!)
+        searchController?.hidesNavigationBarDuringPresentation = false
+        
+        setResultsBackgroundStage()
+        definesPresentationContext = true
     }
     
     func initButtons() {
@@ -137,19 +151,6 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         view.addSubview(header)
     }
     
-    func initAutoCompleteSearch() {
-        
-        let font:UIFont = UIFont(name: K.FontName.InterstateLightCondensed, size: 16.0)!
-        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).font = font
-        
-        placesClient = GMSPlacesClient()
-        let mglBounds:MGLCoordinateBounds = map.visibleCoordinateBounds
-        bounds = GMSCoordinateBounds(coordinate: mglBounds.ne, coordinate: mglBounds.sw)
-        
-        filter = GMSAutocompleteFilter()
-        filter.type = .geocode
-    }
-    
     func initFeedOptionsTable() {
         
         feedOptions = Util.getPListArray(name: K.PList.FeedOptions)
@@ -164,13 +165,13 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     
     func initScrollView() {
 
+        scrollView.delegate = self
+        
         if isEditingFeed == true {
             scrollView.contentInset = UIEdgeInsetsMake(0, 0, 10, 0)
         } else {
             scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
         }
-        
-        scrollView.delegate = self
     }
     
     func initRangeSlider() {
@@ -543,6 +544,23 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     }
     
     //------------------------------------------------------------------------------
+    // MARK: - UIScrollViewDelegate Methods
+    //------------------------------------------------------------------------------s
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        scrollView.bounces = scrollView.contentOffset.y > 20
+        
+        if searchController?.searchBar.isFirstResponder == false {
+            searchController?.searchBar.alpha = ((searchController?.searchBar.frame.size.height)! - scrollView.contentOffset.y)/(searchController?.searchBar.frame.size.height)!
+        }
+        
+        if searchController?.searchBar.isFirstResponder == true {
+            searchController?.searchBar.alpha = 1.0
+        }
+    }
+    
+    //------------------------------------------------------------------------------
     // MARK: - ImageUploadViewDelegate Methods
     //------------------------------------------------------------------------------
     
@@ -578,49 +596,12 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         updateMapRange()
     }
     
-    //------------------------------------------------------------------------------
-    // MARK: - GooglePlaces Methods
-    //------------------------------------------------------------------------------
-    
-    func getDetailsWithPlaceID(placeId:String) {
-        placesClient.lookUpPlaceID(placeId) { (place, error) in
-            if error != nil {
-                print("Place Details Error: \(String(describing: error?.localizedDescription))")
-            }
-            
-            if place != nil {
-                self.updateMap(place:(place?.coordinate)!)
-            }
-            
-            else {
-                print("No places for this placeID")
-            }
-        }
-    }
-    
     func updateMap(place:CLLocationCoordinate2D) {
         
         currentLocation = place
         updateMapRange()
     }
-    
-    //------------------------------------------------------------------------------
-    // MARK: - UIScrollViewDelegate Methods
-    //------------------------------------------------------------------------------s
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        scrollView.bounces = scrollView.contentOffset.y > 20
-        
-        if searchDisplayController?.searchBar.isFirstResponder == false {
-            searchDisplayController?.searchBar.alpha = ((searchDisplayController?.searchBar.frame.size.height)! - scrollView.contentOffset.y)/(searchDisplayController?.searchBar.frame.size.height)!
-        }
-        
-        if searchDisplayController?.searchBar.isFirstResponder == true {
-            searchDisplayController?.searchBar.alpha = 1.0
-        }
-    }
-    
+
     //------------------------------------------------------------------------------
     // MARK: - KeyboardNotifications Methods
     //------------------------------------------------------------------------------
@@ -751,11 +732,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if tableView == feedOptionsTable {
-            return feedOptions.count
-        }
-        return searchResults.count
+        return feedOptions.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -767,85 +744,111 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     //------------------------------------------------------------------------------
    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == feedOptionsTable {
-            let toggleCell:FeedSettingsToggleCell = tableView.dequeueReusableCell(withIdentifier: K.ReuseID.FeedSettingsToggleCellID, for: indexPath) as! FeedSettingsToggleCell
-            
-            toggleCell.populate(data: feedOptions[indexPath.row])
 
-            if isEditingFeed == true {
-                if toggleCell.data["var"] as! String == K.String.Feed.Setting.PushEnabled {
-                    toggleCell.settingsSwitch.setOn((editFeed?.pushEnabled)!, animated: false)
-                }
-                    
-                else if toggleCell.data["var"] as! String == K.String.Feed.Setting.PromotionsEnabled {
-                    toggleCell.settingsSwitch.setOn((editFeed?.promotionsEnabled)!, animated: false)
-                }
+        let toggleCell:FeedSettingsToggleCell = tableView.dequeueReusableCell(withIdentifier: K.ReuseID.FeedSettingsToggleCellID, for: indexPath) as! FeedSettingsToggleCell
+        
+        toggleCell.populate(data: feedOptions[indexPath.row])
+
+        if isEditingFeed == true {
+            if toggleCell.data["var"] as! String == K.String.Feed.Setting.PushEnabled {
+                toggleCell.settingsSwitch.setOn((editFeed?.pushEnabled)!, animated: false)
+            } else if toggleCell.data["var"] as! String == K.String.Feed.Setting.PromotionsEnabled {
+                toggleCell.settingsSwitch.setOn((editFeed?.promotionsEnabled)!, animated: false)
             }
-            
-            return toggleCell
         }
         
-        else {
-            var searchCell:UITableViewCell?
-            
-            searchCell = tableView.dequeueReusableCell(withIdentifier: K.ReuseID.PlacesSearchCellID)
-            
-            if searchCell == nil {
-                searchCell = UITableViewCell(style: .default, reuseIdentifier: K.ReuseID.PlacesSearchCellID)
-            }
-            
-            searchCell?.textLabel?.font = UIFont(name: K.FontName.InterstateLightCondensed, size: 16.0)
-            searchCell?.textLabel?.text = placeAtIndexPath(indexPath: indexPath).attributedFullText.string
-            return searchCell!
-        }
+        return toggleCell
+    }
+   
+    //------------------------------------------------------------------------------
+    // MARK: - GMSAutoCompleteViewControllerDelegate Methods
+    //------------------------------------------------------------------------------
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        dismiss(animated: true, completion: nil)
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView != feedOptionsTable {
-            getDetailsWithPlaceID(placeId: placeAtIndexPath(indexPath: indexPath).placeID!)
-            dismissSearchControllerWhileStayingActive()
-            shouldBeginEditing = false
-            searchDisplayController?.isActive = false
-        }
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+        // TODO: handle the error.
+        print("GMSAutoCompleteViewController Error: ", error.localizedDescription)
+    }
+    
+    // User canceled the operation.
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // Turn the network activity indicator on and off again.
+    func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }
+    
+    func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
     
     //------------------------------------------------------------------------------
-    // MARK: - GMSPlacesDelegate Methods
+    // MARK: - GMSAutoCompleteResultsViewControllerDelegate Methods
     //------------------------------------------------------------------------------
     
-    func placeAtIndexPath(indexPath:IndexPath) -> GMSAutocompletePrediction {
-        return searchResults.object(at: indexPath.row) as! GMSAutocompletePrediction
+    func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
+                           didAutocompleteWith place: GMSPlace) {
+        searchController?.isActive = false
+        
+        self.updateMap(place: place.coordinate)
+        self.locationName.text = place.name
+        
+        backgroundIsDrawn = false
     }
     
-    //------------------------------------------------------------------------------
-    // MARK: - UISearchDisplayDelegate Methods
-    //------------------------------------------------------------------------------
+    func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
+                           didFailAutocompleteWithError error: Error){
+        // TODO: handle the error.
+        print("Error: ", error.localizedDescription)
+    }
     
-    func searchDisplayController(_ controller: UISearchDisplayController, shouldReloadTableForSearch searchString: String?) -> Bool {
-        placesClient.autocompleteQuery(searchString!, bounds: bounds, filter: filter) { (results, error) in
-            
-            if error != nil {
-                print("Autocomplete error: \(String(describing: error?.localizedDescription))")
-                return
-            }
-            
-            self.searchResults = results as NSArray!
-            self.searchDisplayController?.searchResultsTableView.reloadData()
+    // Turn the network activity indicator on and off again.
+    func didRequestAutocompletePredictions(forResultsController resultsController: GMSAutocompleteResultsViewController) {
+        
+        if backgroundIsDrawn == false {
+            drawResultsBackground()
         }
         
-        return true
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
     
-    func dismissSearchControllerWhileStayingActive() {
-        let dur:TimeInterval = 0.3
+    func didUpdateAutocompletePredictions(forResultsController resultsController: GMSAutocompleteResultsViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
+    
+    func setResultsBackgroundStage() {
         
-        UIView.animate(withDuration: dur, animations: { 
-            self.searchDisplayController?.searchResultsTableView.alpha = 0
-        }) { (success) in
-            self.searchDisplayController?.searchBar.setShowsCancelButton(false, animated: true)
-            self.searchDisplayController?.searchBar.resignFirstResponder()
+        for sub in (resultsViewController?.view.subviews)! {
+            if type(of: sub) == UITableView.self {
+                resultsTableHandle = sub as! UITableView
+            }
         }
     }
+    
+    func drawResultsBackground() {
+    
+        let layer = UIApplication.shared.keyWindow!.layer
+        let scale = UIScreen.main.scale
+        UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale);
+        
+        layer.render(in: UIGraphicsGetCurrentContext()!)
+        let screenshot = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        resultsBackground = UIImageView(image: screenshot)
+        resultsTableHandle.backgroundView = resultsBackground
+        backgroundIsDrawn = true
+    }
+    
+    
+    //------------------------------------------------------------------------------
+    // MARK: - SlideNavigationControllerDelegate Methods
+    //------------------------------------------------------------------------------
     
     override func slideNavigationControllerShouldDisplayLeftMenu() -> Bool {
         return false
