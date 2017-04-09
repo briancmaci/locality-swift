@@ -76,7 +76,6 @@
 		72DC487C1E6BCA7700486535 /* DIspatchQueueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DC487B1E6BCA7700486535 /* DIspatchQueueExtension.swift */; };
 		72DC487E1E6C502400486535 /* DataParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DC487D1E6C502400486535 /* DataParseManager.swift */; };
 		72DC48801E6C9BCE00486535 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 72DC487F1E6C9BCE00486535 /* Localizable.strings */; };
-		72DC48841E6CC8BC00486535 /* RangeValuesFeet.plist in Resources */ = {isa = PBXBuildFile; fileRef = 72DC48831E6CC8BC00486535 /* RangeValuesFeet.plist */; };
 		72DC48861E6CD0B500486535 /* RangeStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DC48851E6CD0B500486535 /* RangeStep.swift */; };
 		72DC488B1E6DA11000486535 /* LocationSlider.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC488A1E6DA11000486535 /* LocationSlider.xib */; };
 		72EEDF831E7586A6009DFA77 /* FeedMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EEDF821E7586A6009DFA77 /* FeedMenuTableViewController.swift */; };
@@ -247,7 +246,6 @@
 		72DC487B1E6BCA7700486535 /* DIspatchQueueExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DIspatchQueueExtension.swift; path = extension/DIspatchQueueExtension.swift; sourceTree = "<group>"; };
 		72DC487D1E6C502400486535 /* DataParseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataParseManager.swift; path = manager/DataParseManager.swift; sourceTree = "<group>"; };
 		72DC487F1E6C9BCE00486535 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		72DC48831E6CC8BC00486535 /* RangeValuesFeet.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RangeValuesFeet.plist; sourceTree = "<group>"; };
 		72DC48851E6CD0B500486535 /* RangeStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RangeStep.swift; path = model/RangeStep.swift; sourceTree = "<group>"; };
 		72DC488A1E6DA11000486535 /* LocationSlider.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LocationSlider.xib; path = "custom-ui/LocationSlider.xib"; sourceTree = "<group>"; };
 		72EEDF821E7586A6009DFA77 /* FeedMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedMenuTableViewController.swift; path = "view-controller/FeedMenuTableViewController.swift"; sourceTree = "<group>"; };
@@ -468,7 +466,6 @@
 				72B881AF1E65EE5000EB3B2E /* Info.plist */,
 				72B8821D1E6AA54800EB3B2E /* Keys.plist */,
 				72F24BA71E70D7F800CA7702 /* MenuOptions.plist */,
-				72DC48831E6CC8BC00486535 /* RangeValuesFeet.plist */,
 				72EEDF8F1E75D6C0009DFA77 /* FeedOptions.plist */,
 			);
 			name = plist;
@@ -1032,7 +1029,6 @@
 				72F24BE31E721B3700CA7702 /* ImageUploadView.xib in Resources */,
 				72EEDF901E75D6C0009DFA77 /* FeedOptions.plist in Resources */,
 				72EEDF8C1E7591F9009DFA77 /* FeedMenuCell.xib in Resources */,
-				72DC48841E6CC8BC00486535 /* RangeValuesFeet.plist in Resources */,
 				72DC488B1E6DA11000486535 /* LocationSlider.xib in Resources */,
 				72F24BC21E71AB1900CA7702 /* PostUserInfoView.xib in Resources */,
 				72701FC11E994CD500084426 /* PostCreateViewController.xib in Resources */,

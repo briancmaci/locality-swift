@@ -232,7 +232,12 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         
         let singleTap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleMapSingleTap))
         singleTap.delegate = self
+        
+        let pan:UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handleMapPan))
+        pan.delegate = self
+        
         map.addGestureRecognizer(singleTap)
+        map.addGestureRecognizer(pan)
     }
     
     func initImageUploadView() {
@@ -332,7 +337,6 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
             
             //We do not need to call reverseGeocode
             //save to current
-            
             if (editFeed?.isCurrentLocation)! == false {
                 for i in 0...CurrentUser.shared.pinnedLocations.count - 1 {
                     if CurrentUser.shared.pinnedLocations[i].locationId == editFeed?.locationId {
@@ -474,6 +478,11 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     
     func handleMapSingleTap(tap:UITapGestureRecognizer) {
         currentLocation = map.convert(tap.location(in: map), toCoordinateFrom: map)
+        updateMapRange()
+    }
+    
+    func handleMapPan(pan:UIPanGestureRecognizer) {
+        currentLocation = map.convert(pan.location(in: map), toCoordinateFrom: map)
         updateMapRange()
     }
     
