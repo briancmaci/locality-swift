@@ -21,9 +21,8 @@ class FirebaseManager: NSObject {
     }
     
     class func loadCurrentUserModel(completionHandler: @escaping (Bool?) -> ()) -> () {
-        
         FirebaseManager.getCurrentUserRef().observeSingleEvent(of: .value, with: { (snapshot) in
-            
+            print("Load Current returned")
             if snapshot.exists() {
                 let userDic = snapshot.value as? NSDictionary
                 CurrentUser.shared.uid = (FIRAuth.auth()?.currentUser?.uid)!
@@ -47,7 +46,6 @@ class FirebaseManager: NSObject {
                     
                     CurrentUser.shared.pinnedLocations = pins
                 }
-                
                 completionHandler(true)
             } else {
                 completionHandler(false)

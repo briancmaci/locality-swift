@@ -42,13 +42,11 @@ class LandingViewController: LocalityBaseViewController, AngledButtonPairDelegat
         initButtons()
         initButtonAnimation()
         
-        
         // Do any additional setup after loading the view.
         authListenerHandle = FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
             
             if user != nil {
                 FirebaseManager.loadCurrentUserModel { (success) in
-                    
                     if success == true {
                         self.moveToNextView()
                     }

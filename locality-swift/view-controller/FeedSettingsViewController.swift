@@ -188,11 +188,13 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         currentRange = slider.getSliderValue()
     }
     
+    func map
+    
     func initMap() {
         
         map.showsUserLocation = false
         map.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
+        map.decelerationRate = 0
         let localityStyleURL = K.Mapbox.MapStyle
         map.styleURL = URL(string:localityStyleURL)
         map.delegate = self
@@ -482,8 +484,21 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     }
     
     func handleMapPan(pan:UIPanGestureRecognizer) {
-        currentLocation = map.convert(pan.location(in: map), toCoordinateFrom: map)
-        updateMapRange()
+        
+        //if pan.state == .changed {
+        
+        //}
+        
+        if pan.state == .ended {
+            
+            //currentLocation = map.convert(pan.location(in: map), toCoordinateFrom: map)
+            currentLocation = map.centerCoordinate
+            updateMapRange()
+        }
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
     //------------------------------------------------------------------------------
