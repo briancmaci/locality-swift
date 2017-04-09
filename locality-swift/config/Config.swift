@@ -222,7 +222,7 @@ struct K {
             static let Landing = "LandingViewController"
             
             static let Join = "JoinViewController"
-            static let JoinUser = "JoinUserViewController"
+            static let JoinUser = "JoinUsernameViewController"
             static let JoinValidate = "JoinValidateViewController"
             static let Login = "LoginViewController"
             
@@ -434,6 +434,8 @@ struct K {
     struct NumberConstant {
         static let HeaderAndStatusBarsHeight: CGFloat = 64
         static let StatusBarHeight: CGFloat = 20
+        
+        static let RangeMaximumInMeters: CGFloat = 16093.4
         
         static let SwipeableButtonWidth: CGFloat = 44
         

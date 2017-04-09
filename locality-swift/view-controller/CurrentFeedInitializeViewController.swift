@@ -9,22 +9,19 @@
 import UIKit
 import Mapbox
 
-class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapViewDelegate, CLLocationManagerDelegate, LocationSliderDelegate {
+class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapViewDelegate, CLLocationManagerDelegate, LocationSliderFluidDelegate {
 
     @IBOutlet weak var map : MGLMapView!
     @IBOutlet weak var locationHeaderLabel : UILabel!
     @IBOutlet weak var locationLabel : UILabel!
     @IBOutlet weak var setRangeButton : UIButton!
     
-    @IBOutlet weak var slider : LocationSlider!
-    
-    //var slider:LocationSlider!
+    @IBOutlet weak var slider : LocationSliderFluid!
     
     var locationManager:CLLocationManager!
     var currentLocation:CLLocationCoordinate2D!
     
-    var currentRangeIndex:Int!
-    var sliderSteps:[RangeStep]!
+    var currentRange: CGFloat!
     
     var hasMapped:Bool = false
     
@@ -51,11 +48,10 @@ class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapVie
     
     func initRangeSlider() {
         
-        sliderSteps = slider.initSlider()
+        slider.initFluidSlider()
         slider.delegate = self
         
-        //set currentIndex to default of slider
-        currentRangeIndex = slider.currentStep
+        currentRange = slider.getSliderValue()
     }
     
     func initMap() {
@@ -91,7 +87,7 @@ class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapVie
         }
         
         map.centerCoordinate = currentLocation
-        let currentRadius:Double = Util.radiusInMeters(range: Float(sliderSteps[currentRangeIndex].distance))
+        let currentRadius:Double = Util.radiusInMeters(range: Float(slider.getSliderValue()))
         
         let rangePointSW:CLLocationCoordinate2D = MapboxManager.metersToDegrees(coord: map.centerCoordinate, metersLat: -currentRadius, metersLong: -currentRadius)
         
@@ -139,7 +135,7 @@ class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapVie
     func onboardCurrentLocation() {
         let current = FeedLocation(coord: currentLocation,
                                    name: K.String.CurrentFeedName,
-                                   range: Float(sliderSteps[currentRangeIndex].distance),
+                                   range: Float(slider.getSliderValue()),
                                    current: true)
         
         current.location = self.locationLabel.text!
@@ -205,8 +201,8 @@ class CurrentFeedInitializeViewController: LocalityBaseViewController, MGLMapVie
     }
     
     //MARK: - LocationSliderDelegate
-    func sliderValueChanged(step: Int) {
-        currentRangeIndex = step
+    func sliderValueChanged(value: CGFloat) {
+        currentRange = value
         updateMapRange()
     }
     
