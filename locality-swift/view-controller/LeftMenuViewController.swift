@@ -9,8 +9,9 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
+import MessageUI
 
-class LeftMenuViewController: LocalityPhotoBaseViewController, UITableViewDelegate, UITableViewDataSource {
+class LeftMenuViewController: LocalityPhotoBaseViewController, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var profileImage:UIImageView!
     @IBOutlet weak var nameLabel:UILabel!
@@ -242,11 +243,19 @@ class LeftMenuViewController: LocalityPhotoBaseViewController, UITableViewDelega
     }
     
     func triggerActionWithId(id:String) {
-        print("Trigger: \(id)")
         
-        if id == "logout" {
-            //logout()
-            showLogoutAlert()
+        switch id {
+            case "logout":
+                showLogoutAlert()
+                
+            case "contactus":
+                emailApp()
+                
+            case "deleteaccount":
+                showDeleteAccountAlert()
+            
+            default:
+                assertionFailure("Menu Option action not accounted for: \(id)")
         }
     }
     
@@ -260,15 +269,37 @@ class LeftMenuViewController: LocalityPhotoBaseViewController, UITableViewDelega
         }
     }
     
+    func showDeleteAccountAlert() {
+        
+        SlideNavigationController.sharedInstance().closeMenu {
+            self.showAlertView(title: K.String.Alert.Title.DeleteAccount.localized,
+                               message: K.String.Alert.Message.DeleteAccount.localized,
+                               close: K.String.Alert.Close.No.localized,
+                               action: K.String.Alert.Action.Yes.localized)
+        }
+    }
+    
     //AlertViewDelegate Methods
     
     override func tappedAction() {
         
-        logout()
+        switch alertView.alertId {
+            
+            case K.String.Alert.Title.Logout.localized:
+                logout()
+            
+            case K.String.Alert.Title.DeleteAccount.localized:
+                deleteAccount()
+            
+            default:
+                assertionFailure("Tapped action not accounted for: \(alertView.alertId)")
+        }
+        
         alertView.closeAlert()
     }
     
     //Trigger CTAs
+    
     func logout() {
         
         do {
@@ -280,6 +311,58 @@ class LeftMenuViewController: LocalityPhotoBaseViewController, UITableViewDelega
             SlideNavigationController.sharedInstance().popAllAndSwitch(to: vc, withSlideOutAnimation: false, andCompletion: nil)
         } catch {
             print("Logout error")
+        }
+    }
+    
+    func deleteAccount() {
+        
+        //TODO:
+        print("Delete Account")
+    }
+    
+    func emailApp() {
+        
+        if MFMailComposeViewController.canSendMail() {
+            presentEmailComposeView()
+        } else {
+            presentUnsupportedMailAlert()
+        }
+    }
+    
+    //------------------------------------------------------------------------------
+    // MARK: - MFMailComposeViewControllerDelegate Methods
+    //------------------------------------------------------------------------------
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    //------------------------------------------------------------------------------
+    // MARK: - Helpers
+    //------------------------------------------------------------------------------
+    
+    func presentEmailComposeView() {
+        
+        let to = K.String.ContactEmailAddress
+        let subject = String(format: "Contact -- User: %@", CurrentUser.shared.uid)
+        
+        let composeVC = MFMailComposeViewController()
+        composeVC.mailComposeDelegate = self
+        composeVC.setToRecipients([to])
+        composeVC.setSubject(subject)
+        
+        SlideNavigationController.sharedInstance().closeMenu { 
+            UIApplication.topViewController()?.present(composeVC, animated: true)
+        }
+    }
+    
+    func presentUnsupportedMailAlert() {
+    
+        SlideNavigationController.sharedInstance().closeMenu {
+            self.showAlertView(title: K.String.Alert.Title.Contact.localized,
+                               message: String(format: K.String.Alert.Message.Contact.localized, K.String.ContactEmailAddress),
+                               close: K.String.Alert.Close.OK.localized)
         }
     }
     

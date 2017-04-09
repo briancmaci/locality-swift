@@ -64,6 +64,8 @@ alert-network-title = "Are you there?";
 alert-timeout-title = "Something's up";
 alert-verify-title = "You must verify your email";
 alert-logout-title = "Logout";
+alert-contact-title = "Contact Locality";
+alert-delete-account-title = "Delete Account";
 alert-delete-location-title = "Delete Location";
 alert-delete-post-title = "Delete Post";
 
@@ -71,6 +73,8 @@ alert-network-message = "You seem to be having connectivity issues. Please check
 alert-timeout-message = "Hmm. This request seems to be taking longer than usual. Please try again.";
 alert-verify-message = "We sent a verification link upon joining Locality. Please click the link in your email to continue.";
 alert-logout-message = "Are you sure you wish to logout?";
+alert-contact-message = "Please send an email to %@ stating your questions. Thank you!";
+alert-delete-account-message = "Are you sure you with to delete your Locality account?";
 alert-delete-location-message = "Are you sure you wish to delete this pinned location?";
 alert-delete-post-message = "Are you sure you wish to delete your post?";
 

@@ -82,7 +82,7 @@ class AlertView: UIView {
             buttonsView.addSubview(closeButton)
         } else {
             var closeFrame = closeButton.frame
-            closeFrame.origin.x = (buttonsView.frame.size.width - buttonWidth) / 2
+            closeFrame.origin.x = (buttonsView.frame.size.width - buttonWidth/2) / 2
             closeButton.frame = closeFrame
             
             buttonsView.addSubview(closeButton)

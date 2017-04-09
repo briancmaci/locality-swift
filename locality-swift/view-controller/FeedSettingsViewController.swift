@@ -188,8 +188,6 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         currentRange = slider.getSliderValue()
     }
     
-    func map
-    
     func initMap() {
         
         map.showsUserLocation = false

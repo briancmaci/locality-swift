@@ -282,6 +282,8 @@ struct K {
         static let CurrentFeedName = "_current"
         static let HeaderTitleLogo = "logo"
         
+        static let ContactEmailAddress = "support@locality.com"
+        
         //Alerts
         struct Alert {
             struct Title {
@@ -289,6 +291,8 @@ struct K {
                 static let Timeout = "alert-timeout-title"
                 static let Verify = "alert-verify-title"
                 static let Logout = "alert-logout-title"
+                static let Contact = "alert-contact-title"
+                static let DeleteAccount = "alert-delete-account-title"
                 static let DeleteLocation = "alert-delete-location-title"
                 static let DeletePost = "alert-delete-post-title"
             }
@@ -298,6 +302,8 @@ struct K {
                 static let Timeout = "alert-timeout-message"
                 static let Verify = "alert-verify-message"
                 static let Logout = "alert-logout-message"
+                static let Contact = "alert-contact-message"
+                static let DeleteAccount = "alert-delete-account-title"
                 static let DeleteLocation = "alert-delete-location-message"
                 static let DeletePost = "alert-delete-post-message"
             }
