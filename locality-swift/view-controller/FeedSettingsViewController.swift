@@ -333,9 +333,11 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
             //We do not need to call reverseGeocode
             //save to current
             
-            for i in 0...CurrentUser.shared.pinnedLocations.count - 1 {
-                if CurrentUser.shared.pinnedLocations[i].locationId == editFeed?.locationId {
-                    CurrentUser.shared.pinnedLocations[i] = editFeed!
+            if (editFeed?.isCurrentLocation)! == false {
+                for i in 0...CurrentUser.shared.pinnedLocations.count - 1 {
+                    if CurrentUser.shared.pinnedLocations[i].locationId == editFeed?.locationId {
+                        CurrentUser.shared.pinnedLocations[i] = editFeed!
+                    }
                 }
             }
             
