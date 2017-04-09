@@ -27,9 +27,9 @@ class AlertView: UIView {
     @IBOutlet weak var alertHeight: NSLayoutConstraint!
     @IBOutlet weak var messageHeight: NSLayoutConstraint!
     
-    let kButtonWidth: CGFloat = 120
     let kButtonHeight: CGFloat = 30
     let kButtonPadding: CGFloat = 20
+    var buttonWidth: CGFloat!
     
     var closeButton: AlertViewButton!
     var actionButton: AlertViewButton?
@@ -57,6 +57,7 @@ class AlertView: UIView {
     
     func setupButtons(close: String, action: String) {
         
+        buttonWidth = buttonsView.frame.size.width - kButtonPadding / 2
         closeButton = AlertViewButton(frame: makeButtonFrame(), title: close)
         closeButton.addTarget(self, action: #selector(tappedCloseButton), for: .touchUpInside)
         
@@ -69,7 +70,7 @@ class AlertView: UIView {
         //place buttons
         if actionButton != nil {
             var actionFrame = actionButton?.frame
-            actionFrame?.origin.x = (buttonsView.frame.size.width - kButtonPadding) / 2 - kButtonWidth
+            actionFrame?.origin.x = (buttonsView.frame.size.width - kButtonPadding) / 2 - buttonWidth/2
             actionButton?.frame = actionFrame!
             
             buttonsView.addSubview(actionButton!)
@@ -81,7 +82,7 @@ class AlertView: UIView {
             buttonsView.addSubview(closeButton)
         } else {
             var closeFrame = closeButton.frame
-            closeFrame.origin.x = (buttonsView.frame.size.width - kButtonWidth) / 2
+            closeFrame.origin.x = (buttonsView.frame.size.width - buttonWidth) / 2
             closeButton.frame = closeFrame
             
             buttonsView.addSubview(closeButton)
@@ -119,7 +120,7 @@ class AlertView: UIView {
     //Helpers
     func makeButtonFrame() -> CGRect {
         return CGRect(origin: CGPoint.zero,
-                      size: CGSize(width: kButtonWidth, height: kButtonHeight))
+                      size: CGSize(width: buttonWidth/2, height: kButtonHeight))
     }
     
     func removeTargets() {

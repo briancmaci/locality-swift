@@ -18,13 +18,13 @@ class PopupMenuView: UIView {
         self.btns = btn
         
         self.frame = CGRect(origin: CGPoint.zero,
-                       size: CGSize(width:kButtonWidth * CGFloat(btns.count),
+                       size: CGSize(width:kPopButtonWidth * CGFloat(btns.count),
                                     height:kButtonHeight))
         
         var btnFrame:CGRect!
         
         for i in 0...btn.count-1 {
-            btnFrame = CGRect(x:kButtonWidth*CGFloat(i), y:0, width:kButtonWidth, height:kButtonHeight)
+            btnFrame = CGRect(x:kPopButtonWidth*CGFloat(i), y:0, width:kPopButtonWidth, height:kButtonHeight)
             btns[i].frame = btnFrame
             
             self.addSubview(btns[i])
@@ -39,7 +39,7 @@ class PopupMenuView: UIView {
     }
     
     func createPinlineAt(index:Int) -> UIView {
-        let pinline = UIView(frame:CGRect(x:kButtonWidth * CGFloat(index), y:0, width:1, height:kButtonHeight - kPointHeight))
+        let pinline = UIView(frame:CGRect(x:kPopButtonWidth * CGFloat(index), y:0, width:1, height:kButtonHeight - kPointHeight))
         pinline.backgroundColor = K.Color.sortPin
         
         return pinline
@@ -73,9 +73,9 @@ class PopupMenuView: UIView {
                       controlPoint2:CGPoint(x:width  - cornerRadius/2,
                                             y:height-kPointHeight))
         
-        path.addLine(to: CGPoint(x:kButtonWidth/2 + kPointHeight, y:height-kPointHeight))
-        path.addLine(to: CGPoint(x:kButtonWidth/2, y:height))
-        path.addLine(to: CGPoint(x:kButtonWidth/2 - kPointHeight, y:height-kPointHeight))
+        path.addLine(to: CGPoint(x:kPopButtonWidth/2 + kPointHeight, y:height-kPointHeight))
+        path.addLine(to: CGPoint(x:kPopButtonWidth/2, y:height))
+        path.addLine(to: CGPoint(x:kPopButtonWidth/2 - kPointHeight, y:height-kPointHeight))
         path.addLine(to: CGPoint(x:cornerRadius , y:height-kPointHeight))
         path.addCurve(to: CGPoint(x:0,
                                   y:height-kPointHeight - cornerRadius),

@@ -54,7 +54,7 @@ class SortButtonWithPopup: UIView {
         popup = PopupMenuView(btn:[proximityButton, timeButton, activityButton])
         
         var popupFrame = popup.frame
-        popupFrame.origin.x = sortButtonTrigger.center.x - kButtonWidth/2
+        popupFrame.origin.x = sortButtonTrigger.center.x - kPopButtonWidth/2
         popupFrame.origin.y = -popup.frame.size.height
         popup.frame = popupFrame
         

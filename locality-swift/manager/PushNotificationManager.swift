@@ -69,8 +69,9 @@ class PushNotificationManager: NSObject {
                 
                 //TODO: We will need logic here for not doing this a billion times
                 //Save token
-                DispatchQueue.once(block: { () in
-                    
+                //DispatchQueue.once(block: { () in
+                
+                if FIRAuth.auth()?.currentUser != nil {
                     FirebaseManager.write(token: FIRInstanceID.instanceID().token()!, completionHandler: { (error) in
                         if error != nil {
                             print("Token push error: \(String(describing: error?.localizedDescription))")
@@ -79,7 +80,8 @@ class PushNotificationManager: NSObject {
                             print("TOKEN SAVED!")
                         }
                     })
-                })
+                }
+                //})
                 
                 
                 //connect to all-devices once

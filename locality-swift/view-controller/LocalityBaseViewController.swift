@@ -107,6 +107,7 @@ class LocalityBaseViewController: UIViewController, LocalityHeaderViewDelegate, 
     func showAlertView(title: String, message: String, close: String, action: String = "") {
         
         alertView = UIView.instanceFromNib(name: "AlertView") as! AlertView
+        alertView.frame = CGRect(origin: CGPoint.zero, size: UIScreen.main.bounds.size)
         alertView.setup(title: title, message: message, closeTitle: close, actionTitle: action)
         alertView.delegate = self
         

@@ -9,8 +9,8 @@
 import UIKit
 
 let kPointHeight:CGFloat = 8.0
-let kButtonWidth:CGFloat = 46.0
-let kButtonHeight:CGFloat = kButtonWidth + kPointHeight
+let kPopButtonWidth:CGFloat = 46.0
+let kButtonHeight:CGFloat = kPopButtonWidth + kPointHeight
 let kImageWidth:CGFloat = 22.0
 let kImageHeight:CGFloat = 22.0
 
@@ -30,7 +30,7 @@ class PopupButtonView: UIView {
         self.init(frame:CGRect.zero)
         
         self.type = type
-        self.frame = CGRect(origin:CGPoint.zero, size:CGSize(width: kButtonWidth, height: kButtonHeight))
+        self.frame = CGRect(origin:CGPoint.zero, size:CGSize(width: kPopButtonWidth, height: kButtonHeight))
         
         self.bg = UIView(frame: self.frame)
         self.addSubview(self.bg)
@@ -68,46 +68,4 @@ class PopupButtonView: UIView {
             icon.image = iconOffImage
         }
     }
-    
-//    func bindEvents() {
-//        hitArea.addTarget(self, action: #selector(longTapMove(button:event:)), for: .touchDragInside)
-//        hitArea.addTarget(self, action: #selector(longTapMove(button:event:)), for: .touchDragOutside)
-//    }
-//   
-//    func longTapMove(button:UIButton, event:UIEvent) {
-//        let touches:Set<UITouch> = event.allTouches!
-//        
-//        let touch = Array(touches).first
-//        
-//        if touch != nil {
-//            let point = touch?.location(in: self)
-//            
-//            if self.frame.contains(point!) {
-//                setState(on:true)
-//            }
-//            
-//            else {
-//                setState(on:false)
-//            }
-//        }
-//    }
-//    
-//    
-//    func onDragEnter(sender:UIButton) {
-//        print("ON DRAG ENTER")
-//        setState(on:true)
-//    }
-//    
-//    func onDragExit(sender:UIButton) {
-//        setState(on:false)
-//    }
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
 }
