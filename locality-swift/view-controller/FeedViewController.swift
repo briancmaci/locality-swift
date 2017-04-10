@@ -59,6 +59,8 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         
         if UIApplication.shared.isRegisteredForRemoteNotifications == true {
             PushNotificationManager.shared.connectToFcm()
+        } else {
+            PushNotificationManager.registerForRemoteNotifications()
         }
         
         if thisFeed == CurrentUser.shared.currentLocationFeed {

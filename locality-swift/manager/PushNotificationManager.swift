@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import UserNotifications
+import Mapbox
 
 class PushNotificationManager: NSObject {
     
@@ -99,6 +100,36 @@ class PushNotificationManager: NSObject {
         
         FIRMessaging.messaging().disconnect()
         print("Disconnected from FCM")
+    }
+    
+    class func loadPostFromNotification(_ thisData: [AnyHashable: Any]) {
+        
+        let lat = Double(String(describing: thisData["lat"]))
+        let lon = Double(String(describing: thisData["lon"]))
+        let caption = String(describing: thisData["caption"])
+        //let dateInt = Int(String(describing: thisData["date"]))
+        //let createdDate = Util.dateFromInt(dateInt: dateInt!)
+        let postId = String(describing: thisData["postId"])
+        let commentCount = Int(String(describing: thisData["commentCount"]))
+        let uid = String(describing: thisData["uid"])
+        let imgUrl = String(describing: thisData["postImageUrl"])
+        let isAnonymous = String(describing: thisData["isAnon"]).toBool()
+        
+        let baseUser = BaseUser()
+        baseUser.uid = uid
+        
+        let coord = CLLocationCoordinate2D(latitude: lat!, longitude: lon!)
+        let thisPost = UserPost(coord: coord, caption: caption, imgUrl: imgUrl, user: baseUser)
+        
+        thisPost.commentCount = commentCount!
+        thisPost.postId = postId
+        //thisPost.createdDate = createdDate
+        thisPost.postImageUrl = imgUrl
+        thisPost.isAnonymous = isAnonymous!
+        
+        let vc = PostDetailViewController(nibName: K.NIBName.VC.PostDetail, bundle: nil)
+        vc.thisPost = thisPost
+        SlideNavigationController.sharedInstance().pushViewController(vc, animated: true)
     }
 
 }

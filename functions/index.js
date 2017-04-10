@@ -13,11 +13,12 @@ exports.sendCommentNotification = functions.database.ref(`/comments/{cid}`).onWr
   	const postId = delta.postId;
   	const commentingUserId = delta.uid;
   	
-  	const getPostUserIdPromise = admin.database().ref(`/posts/${postId}/uid`).once('value');
+  	const getPostUserIdPromise = admin.database().ref(`/posts/${postId}`).once('value');
   
   	return Promise.all([getPostUserIdPromise]).then(results=> {
   		const postUserSnapshot = results[0];
-  		const postUserId = postUserSnapshot.val();
+  		const postData = postUserSnapshot.val()
+  		const postUserId = postData.uid;
   		
   		const getPostUserPromise = admin.database().ref(`/users/${postUserId}`).once('value');
   		const getCommentingUserPromise = admin.database().ref(`/users/${commentingUserId}`).once('value');
@@ -32,9 +33,20 @@ exports.sendCommentNotification = functions.database.ref(`/comments/{cid}`).onWr
   			// Notification details.
 	    	const payload = {
 	      		notification: {
-	        		title: `${poster.username}!!! New comment!`,
-	        		body: `${commenter.username} commented on your post.`,
+	        		title: `${commenter.username} commented.`,
+	        		body: `"${delta.comment}"`,
 	        		icon: poster.profileImageUrl
+	      		},
+	      		data: {
+	      			"lat": `${postData.lat}`,
+	      			"lon": `${postData.lon}`,
+	      			"caption": `${postData.caption}`,
+	      			"isAnon": `${postData.isAnonymous}`,
+	      			"date": `${postData.createdDate}`,
+	      			"commentCount": `${postData.commentCount}`,
+	      			"postImageUrl": `${postData.postImageUrl}`,
+	      			"postId": `${postData.postId}`,
+	      			"uid": `${postData.uid}` 
 	      		}
 	    	};
 

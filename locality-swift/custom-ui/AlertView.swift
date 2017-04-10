@@ -25,7 +25,7 @@ class AlertView: UIView {
     
     @IBOutlet weak var alertMargin: NSLayoutConstraint!
     @IBOutlet weak var alertHeight: NSLayoutConstraint!
-    @IBOutlet weak var messageHeight: NSLayoutConstraint!
+    //@IBOutlet weak var messageHeight: NSLayoutConstraint!
     
     let kButtonHeight: CGFloat = 30
     let kButtonPadding: CGFloat = 20
@@ -51,7 +51,7 @@ class AlertView: UIView {
         
         titleLabel.text = title.uppercased()
         messageLabel.text = message
-        messageHeight.constant = messageLabel.requiredHeight()
+        //messageHeight.constant = messageLabel.requiredHeight()
         layoutIfNeeded()
     }
     

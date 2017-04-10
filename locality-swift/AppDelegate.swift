@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
+    let gcmDataIDKey = "thisPost"
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -111,7 +112,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // Print full message.
-        print(userInfo)
+        
+        //FIXME: Uncomment to test move into app.
+        //if application.applicationState != .active {
+        
+        PushNotificationManager.loadPostFromNotification(userInfo)
+        //}
         
         completionHandler(UIBackgroundFetchResult.newData)
     }
