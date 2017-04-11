@@ -104,26 +104,26 @@ class PushNotificationManager: NSObject {
     
     class func loadPostFromNotification(_ thisData: [AnyHashable: Any]) {
         
-        let lat = Double(String(describing: thisData["lat"]))
-        let lon = Double(String(describing: thisData["lon"]))
-        let caption = String(describing: thisData["caption"])
-        //let dateInt = Int(String(describing: thisData["date"]))
-        //let createdDate = Util.dateFromInt(dateInt: dateInt!)
-        let postId = String(describing: thisData["postId"])
-        let commentCount = Int(String(describing: thisData["commentCount"]))
-        let uid = String(describing: thisData["uid"])
-        let imgUrl = String(describing: thisData["postImageUrl"])
-        let isAnonymous = String(describing: thisData["isAnon"]).toBool()
+        let lat = (thisData["lat"] as! NSString).doubleValue
+        let lon = (thisData["lon"] as! NSString).doubleValue
+        let caption = thisData["caption"] as! String
+        let dateInt = (thisData["date"] as! NSString).intValue
+        let createdDate = Util.dateFromInt(dateInt: Int(dateInt))
+        let postId = thisData["postId"] as! String
+        let commentCount = (thisData["commentCount"] as! NSString).intValue
+        let uid = thisData["uid"] as! String
+        let imgUrl = thisData["postImageUrl"] as! String
+        let isAnonymous = (thisData["isAnon"] as! String).toBool()
         
         let baseUser = BaseUser()
         baseUser.uid = uid
         
-        let coord = CLLocationCoordinate2D(latitude: lat!, longitude: lon!)
+        let coord = CLLocationCoordinate2D(latitude: lat, longitude: lon)
         let thisPost = UserPost(coord: coord, caption: caption, imgUrl: imgUrl, user: baseUser)
         
-        thisPost.commentCount = commentCount!
+        thisPost.commentCount = Int(commentCount)
         thisPost.postId = postId
-        //thisPost.createdDate = createdDate
+        thisPost.createdDate = createdDate
         thisPost.postImageUrl = imgUrl
         thisPost.isAnonymous = isAnonymous!
         

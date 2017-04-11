@@ -113,11 +113,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Print full message.
         
-        //FIXME: Uncomment to test move into app.
-        //if application.applicationState != .active {
-        
-        PushNotificationManager.loadPostFromNotification(userInfo)
-        //}
+        if application.applicationState != .active {
+            PushNotificationManager.loadPostFromNotification(userInfo)
+        }
         
         completionHandler(UIBackgroundFetchResult.newData)
     }
