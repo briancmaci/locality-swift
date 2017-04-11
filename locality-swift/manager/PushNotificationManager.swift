@@ -115,21 +115,27 @@ class PushNotificationManager: NSObject {
         let imgUrl = thisData["postImageUrl"] as! String
         let isAnonymous = (thisData["isAnon"] as! String).toBool()
         
-        let baseUser = BaseUser()
-        baseUser.uid = uid
-        
-        let coord = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-        let thisPost = UserPost(coord: coord, caption: caption, imgUrl: imgUrl, user: baseUser)
-        
-        thisPost.commentCount = Int(commentCount)
-        thisPost.postId = postId
-        thisPost.createdDate = createdDate
-        thisPost.postImageUrl = imgUrl
-        thisPost.isAnonymous = isAnonymous!
-        
-        let vc = PostDetailViewController(nibName: K.NIBName.VC.PostDetail, bundle: nil)
-        vc.thisPost = thisPost
-        SlideNavigationController.sharedInstance().pushViewController(vc, animated: true)
+        FirebaseManager.getUserFromHandle(uid: uid) { (thisUser) in
+            
+            if thisUser == nil {
+                print("User no longer exists")
+                return
+            }
+            
+            let coord = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+            let thisPost = UserPost(coord: coord, caption: caption, imgUrl: imgUrl, user: thisUser!)
+            
+            thisPost.commentCount = Int(commentCount)
+            thisPost.postId = postId
+            thisPost.createdDate = createdDate
+            thisPost.postImageUrl = imgUrl
+            thisPost.isAnonymous = isAnonymous!
+            
+            let vc = PostDetailViewController(nibName: K.NIBName.VC.PostDetail, bundle: nil)
+            vc.thisPost = thisPost
+            SlideNavigationController.sharedInstance().pushViewController(vc, animated: true)
+            
+        }
     }
 
 }
