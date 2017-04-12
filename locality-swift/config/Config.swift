@@ -82,6 +82,9 @@ struct K {
             //CreatedDate
             static let CommentId = "cid"
             static let CommentText = "comment"
+            
+            //Average Color
+            static let AverageColorHex = "avg-img-hex"
         }
     }
     
@@ -130,6 +133,9 @@ struct K {
         //swipe
         static let swipeDeletRow:UIColor = UIColor(red: 74/255, green:45/255, blue:45/255, alpha: 1)
         static let swipeReportRow:UIColor = UIColor(red: 72/255, green:74/255, blue:45/255, alpha: 1)
+        
+        //averageHex
+        static let defaultHex = "CCCCCC"
     }
     
     struct FontName {

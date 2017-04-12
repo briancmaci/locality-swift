@@ -16,9 +16,10 @@ protocol PostFeedCellDelegate {
 
 class PostFeedCell: SWTableViewCell, CommentButtonDelegate {
 
-    @IBOutlet weak var postImage:UIImageView!
-    @IBOutlet weak var postContent:PostFeedCellView!
-    @IBOutlet weak var postImageHeight:NSLayoutConstraint!
+    @IBOutlet weak var postImage: UIImageView!
+    @IBOutlet weak var postImageBackground: UIView!
+    @IBOutlet weak var postContent: PostFeedCellView!
+    @IBOutlet weak var postImageHeight: NSLayoutConstraint!
     
     var thisModel:UserPost!
     var hasImage:Bool = false
@@ -44,13 +45,14 @@ class PostFeedCell: SWTableViewCell, CommentButtonDelegate {
         
         if hasImage == false {
             postImageHeight.constant = 0.0
+            postImageBackground.backgroundColor = .white
             postImage.backgroundColor = .white
             postImage.layoutIfNeeded()
             return
         }
         
         postImageHeight.constant = K.Screen.Width * K.NumberConstant.Post.ImageRatio
-        postImage.backgroundColor = K.Color.toggleGray
+        postImageBackground.backgroundColor = UIColor(hex: thisModel.averageColorHex)
         postImage.layoutIfNeeded()
         postImage.loadPostImage(url: thisModel.postImageUrl)
     }

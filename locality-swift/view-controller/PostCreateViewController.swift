@@ -82,7 +82,7 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
         let thisPostId = Util.generateUUID()
         
         if !imageUploadView.hasImage() {
-            createPostToWrite(url: "", pid:thisPostId)
+            createPostToWrite(pid: thisPostId)
         }
         
         else {
@@ -94,20 +94,20 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
                 
                 else {
                     let downloadURL = metadata!.downloadURL()!.absoluteString
-                    self.createPostToWrite(url:downloadURL, pid:thisPostId)
+                    self.createPostToWrite(pid: thisPostId, url: downloadURL, avg: self.imageUploadView.getAverageColorHex())
                     
                 }
             }
         }
     }
     
-    func createPostToWrite(url:String, pid:String) {
+    func createPostToWrite(pid: String, url: String = "", avg: String = K.Color.defaultHex) {
         let thisPost:UserPost = UserPost(coord: CurrentUser.shared.myLastRecordedLocation,                                         caption: self.captionField.text,
-                                         imgUrl: url,
-                                         user: CurrentUser.shared)
+            imgUrl: url,
+            user: CurrentUser.shared)
         
         thisPost.postId = pid
-        
+        thisPost.averageColorHex = avg
         //check anonymous
         if self.postFromView.isAnonymous == true {
             thisPost.isAnonymous = true
@@ -151,7 +151,6 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
         imageUploadView.setLocationImage(image: croppedImage)
         dismiss(animated: true, completion: nil)
     }
-    
     
     //MARK:- UITextView Delegate Methods
     
