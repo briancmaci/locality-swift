@@ -16,5 +16,4 @@
 #import "SlideNavigationContorllerAnimatorSlideAndFade.h"
 #import "SWTableViewCell/SWTableViewCell.h"
 
-
 #endif /* Locality_Bridging_Header_h */

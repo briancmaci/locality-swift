@@ -63,7 +63,7 @@ extension UIImageView {
             
             if cacheType == .none || cacheType == .disk {
                 self.alpha = 0
-                UIView.animate(withDuration: 0.4, animations: {
+                UIView.animate(withDuration: 0.5, animations: {
                     self.alpha = 1
                 })
             }

@@ -21,7 +21,10 @@ class UserPost: NSObject {
     var lat:Double = 0.0
     var lon:Double = 0.0
     var caption:String = ""
+    
+    //image and average color
     var postImageUrl:String = ""
+    var averageColorHex:String = K.Color.defaultHex
     
     var commentCount:Int = 0
     var likedBy:[String] = [String]()
@@ -65,6 +68,11 @@ class UserPost: NSObject {
         
         self.commentCount = dic?[K.DB.Var.CommentCount] as! Int
         self.postImageUrl = dic?[K.DB.Var.PostImageURL] as! String
+        
+        if (dic?[K.DB.Var.AverageColorHex]) != nil {
+            self.averageColorHex = dic?[K.DB.Var.AverageColorHex] as! String
+        }
+        
         self.userHandle = dic?[K.DB.Var.UserId] as! String
         
         if (dic?[K.DB.Var.IsAnonymous]) != nil {
@@ -90,6 +98,7 @@ class UserPost: NSObject {
                K.DB.Var.Lon:lon,
                K.DB.Var.Caption:caption,
                K.DB.Var.PostImageURL:postImageUrl,
+               K.DB.Var.AverageColorHex:averageColorHex,
                K.DB.Var.CommentCount:commentCount,
                K.DB.Var.IsAnonymous:isAnonymous,
                K.DB.Var.BlockedBy:blockedBy,

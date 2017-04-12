@@ -45,4 +45,29 @@ extension UIImage {
             return nil
         }
     }
+    
+    func averageColor() -> UIColor {
+        
+        let pixel = CGSize(width: 1, height: 1)
+        UIGraphicsBeginImageContext(pixel)
+        
+        let ctx: CGContext = UIGraphicsGetCurrentContext()!
+        ctx.interpolationQuality = .medium
+        
+        draw(in: CGRect(origin: CGPoint.zero, size: pixel), blendMode: .copy, alpha: 1)
+        
+        let red = CGFloat((ctx.data?.load(fromByteOffset: 2, as: UInt8.self))!)
+        let green = CGFloat((ctx.data?.load(fromByteOffset: 1, as: UInt8.self))!)
+        let blue = CGFloat((ctx.data?.load(fromByteOffset: 0, as: UInt8.self))!)
+    
+        let avgColor = UIColor(red: red / 255, green: green / 255, blue: blue / 255, alpha: 1)
+        
+        print("Red, Green, Blue: \(red, green, blue)")
+        print("Hex: \(avgColor.toHexString)")
+        
+        UIGraphicsEndImageContext()
+        
+        return avgColor
+        
+    }
 }

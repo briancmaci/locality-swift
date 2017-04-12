@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,9 +15,13 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="326"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="325"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="325.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ueh-sR-8rT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z9h-ry-m1d">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -31,18 +35,23 @@
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="Ueh-sR-8rT" firstAttribute="height" secondItem="z9h-ry-m1d" secondAttribute="height" id="0v5-ZL-7hL"/>
                     <constraint firstItem="5BI-9V-k6c" firstAttribute="top" secondItem="z9h-ry-m1d" secondAttribute="bottom" id="5bs-xM-EDz"/>
                     <constraint firstAttribute="bottom" secondItem="5BI-9V-k6c" secondAttribute="bottom" id="9MD-bx-SpC"/>
+                    <constraint firstItem="Ueh-sR-8rT" firstAttribute="width" secondItem="z9h-ry-m1d" secondAttribute="width" id="HQ3-HX-aZU"/>
                     <constraint firstAttribute="trailing" secondItem="z9h-ry-m1d" secondAttribute="trailing" id="Imm-h1-z0L"/>
                     <constraint firstItem="z9h-ry-m1d" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="WEu-C7-CEs"/>
                     <constraint firstItem="5BI-9V-k6c" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="kHc-W7-Z5Q"/>
                     <constraint firstAttribute="trailing" secondItem="5BI-9V-k6c" secondAttribute="trailing" id="kKL-Bg-Aqt"/>
                     <constraint firstItem="z9h-ry-m1d" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="mXW-8H-oVT"/>
+                    <constraint firstItem="Ueh-sR-8rT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="q9u-lI-8wR"/>
+                    <constraint firstItem="Ueh-sR-8rT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="wb0-Jo-emz"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="postContent" destination="5BI-9V-k6c" id="N5U-49-ZTw"/>
                 <outlet property="postImage" destination="z9h-ry-m1d" id="iDH-69-EcS"/>
+                <outlet property="postImageBackground" destination="Ueh-sR-8rT" id="6sk-94-ysb"/>
                 <outlet property="postImageHeight" destination="rDC-uP-alt" id="zhr-7l-3bJ"/>
             </connections>
         </tableViewCell>

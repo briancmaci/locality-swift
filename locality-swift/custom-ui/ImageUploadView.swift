@@ -45,6 +45,17 @@ class ImageUploadView: UIView, SelectedPhotoDelegate {
 
     func setLocationImage(image:UIImage) {
         selectedPhoto.populateImage(img: image)
+        
+        //FIXME: Remove when done testing
+        //showAverageColor()
+    }
+    
+    func showAverageColor() {
+        
+        let avgView = UIView(frame: selectedPhoto.frame)
+        
+        avgView.backgroundColor = selectedPhoto.imgView.image?.averageColor()
+        addSubview(avgView)
     }
     
     func hasImage() -> Bool {
@@ -67,6 +78,10 @@ class ImageUploadView: UIView, SelectedPhotoDelegate {
     //SelectedPhotoDelegate Methods
     func photoHasBeenRemoved() {
         delegate?.selectedPhotoHasBeenRemoved!()
+    }
+    
+    func getAverageColorHex() -> String {
+        return (selectedPhoto.imgView.image?.averageColor().toHexString)!
     }
     
     /*
