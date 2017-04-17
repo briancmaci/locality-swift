@@ -225,8 +225,13 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
         GeoFireManager.getPostLocations(range: thisFeed.range, location: CLLocation(latitude: thisFeed.lat, longitude: thisFeed.lon)) { (matched, error) in
             
             if error == nil {
-                FirebaseManager.loadFeedPosts(postIDs: matched!, orderedBy: CurrentUser.shared.sortByType, completionHandler: { (matchedPosts, error) in
-                                                
+                
+                //TODO: - LOOK INTO THIS MORE LOOK INTO THIS MORE!!!!
+                
+//                FirebaseManager.loadFeedPosts(postIDs: matched!, orderedBy: CurrentUser.shared.sortByType, completionHandler: { (matchedPosts, error) in
+                
+                FirebaseManager.loadFirebaseMatchedPosts(postIDs: matched!, orderedBy: CurrentUser.shared.sortByType, completionHandler: { (matchedPosts, error) in
+                    
                     if error == nil {
                         self.posts.removeAll()
                         self.posts = matchedPosts!
@@ -362,7 +367,7 @@ class FeedViewController: LocalityBaseViewController, UITableViewDelegate, UITab
     
     //------------------------------------------------------------------------------
     // MARK: - PostFeedCellDelegate Methods
-    //------------------------------------------------------------------------------
+    //---------------------------------------------------------------x---------------
 
     func gotoPost(post: UserPost) {
         

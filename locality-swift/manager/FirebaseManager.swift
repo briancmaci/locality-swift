@@ -53,6 +53,34 @@ class FirebaseManager: NSObject {
         })
     }
     
+    class func loadFirebaseMatchedPosts(postIDs:[String],
+                             orderedBy:SortByType,
+                             completionHandler: @escaping ([UserPost]?, Error?) -> ()) -> () {
+        
+        var posts:[UserPost] = [UserPost]()
+        var postsDic:[UserPost: Double] = [UserPost: Double]()
+        
+        for i in 0...postIDs.count - 1 {
+            
+            getPostsRef().child(postIDs[i]).observe(.value, with: { (snapshot) in
+                
+                if snapshot.exists() {
+                    let p = UserPost(snapshot: snapshot)
+                    posts.append(p)
+                    print("POST ADDED! \(p.caption)")
+                }
+                
+                if i == postIDs.count - 1 {
+                    
+                    print("DONE!!!!")
+                    completionHandler(posts, nil)
+                }
+            })
+        }
+        
+        
+    }
+    
     class func loadFeedPosts(postIDs:[String],
                              orderedBy:SortByType,
                              completionHandler: @escaping ([UserPost]?, Error?) -> ()) -> () {
