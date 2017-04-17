@@ -11,6 +11,7 @@ import GoogleMaps
 import GooglePlaces
 import Mapbox
 import SDWebImage
+import FBSDKLoginKit
 
 class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationManagerDelegate, LocationSliderFluidDelegate, ImageUploadViewDelegate, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, UITextFieldDelegate, MGLMapViewDelegate, UIScrollViewDelegate, GMSAutocompleteViewControllerDelegate, GMSAutocompleteResultsViewControllerDelegate {
     
@@ -62,6 +63,7 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
         initialSetup()
         
         //populate with feed if editing
+        //TEST_login()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,6 +79,57 @@ class FeedSettingsViewController: LocalityPhotoBaseViewController, CLLocationMan
     //------------------------------------------------------------------------------
     // MARK: - Initial Setup
     //------------------------------------------------------------------------------
+    
+    //TODO: - REMOVE!
+    func TEST_login() {
+        
+        let fbManager = FBSDKLoginManager()
+        
+        fbManager.logIn(withReadPermissions: ["user_photos"], from: nil) { (fbResult, error) in
+            
+            if error != nil || fbResult!.isCancelled {
+                
+                print("ERROR")
+                
+            } else {
+                
+                
+                
+//                if let permission = fbResult?.declinedPermissions {
+//                    
+//                    if permission.contains("user_photos") {
+//                        
+//                        // "user_photos" is denied
+//                        
+//                        FBSDKLoginManager().logOut() // Flush fb session
+//                        
+//                        print("User Photos permission denied")
+//                        
+//                    }
+//                    
+//                } else {
+                
+                    let tokenStr = fbResult!.token?.tokenString
+                    
+                    print("User ID? \(fbResult!.token.userID)")
+                    
+                    //FBSDKAccessToken.setCurrent(fbResult!.token)
+                    
+                    assert(tokenStr != nil, "Expecting a token if fb login wasn't cancelled and did not error")
+                    
+                    let gr = FBSDKGraphRequest(graphPath: "me/photos", parameters: ["fields" : "id,source,picture"])
+                    
+                    _ = gr?.start(completionHandler: { (connection, result, error) in
+                        print("Data? \(String(describing: result))")
+                        print("Error? \(error.debugDescription)")
+                    })
+                    
+//                }
+                
+            }
+    
+        }
+    }
     
     func initViewControllerMode() {
         isEditingFeed = !(editFeed == nil)

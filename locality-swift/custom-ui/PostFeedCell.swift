@@ -52,8 +52,9 @@ class PostFeedCell: SWTableViewCell, CommentButtonDelegate {
         }
         
         postImageHeight.constant = K.Screen.Width * K.NumberConstant.Post.ImageRatio
+        postImage.setNeedsLayout()
+        postImage.backgroundColor = .clear
         postImageBackground.backgroundColor = UIColor(hex: thisModel.averageColorHex)
-        postImage.layoutIfNeeded()
         postImage.loadPostImage(url: thisModel.postImageUrl)
     }
     
