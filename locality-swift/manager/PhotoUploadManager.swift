@@ -26,7 +26,10 @@ class PhotoUploadManager: NSObject {
         let metaData = FIRStorageMetadata()
         metaData.contentType = "image/jpg"
         
-        FirebaseManager.getImageStorageRef().child(filePath).put(imageData, metadata: metaData){(metaData,error) in
+        let imageUploadTask = FirebaseManager.getImageStorageRef().child(filePath).put(imageData, metadata: metaData){(metaData,error) in
+            
+            //remove progress observer
+            
             if let error = error {
                 print("UploadPhoto Error: \(error.localizedDescription)")
                 completionHandler(nil, error)
@@ -35,6 +38,11 @@ class PhotoUploadManager: NSObject {
                 print("UploadPhoto Success!")
                 completionHandler(metaData, nil)
             }
+        }
+        
+        imageUploadTask.observe(.progress) { (snapshot) in
+            
+            print("Progress? \(String(format: "%d%%", Int((snapshot.progress?.fractionCompleted)! * 100)))")
         }
     }
 

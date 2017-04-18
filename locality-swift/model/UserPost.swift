@@ -104,4 +104,12 @@ class UserPost: NSObject {
                K.DB.Var.BlockedBy:blockedBy,
                K.DB.Var.LikedBy:likedBy]
     }
+    
+    func distance() -> Double {
+        let origin:CLLocation = CLLocation(latitude: CurrentUser.shared.myLastRecordedLocation.latitude,
+                                           longitude: CurrentUser.shared.myLastRecordedLocation.longitude)
+        
+        let here:CLLocation = CLLocation(latitude:lat, longitude:lon)
+        return here.distance(from: origin)
+    }
 }
