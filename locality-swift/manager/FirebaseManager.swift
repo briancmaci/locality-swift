@@ -58,7 +58,9 @@ class FirebaseManager: NSObject {
                              completionHandler: @escaping ([UserPost]?, Error?) -> ()) -> () {
         
         var posts:[UserPost] = [UserPost]()
-        var postsDic:[UserPost: Double] = [UserPost: Double]()
+        
+        //var postsHandle: UInt = 0
+        //var timeoutTimer: Timer!
         
         for i in 0...postIDs.count - 1 {
             
@@ -66,19 +68,27 @@ class FirebaseManager: NSObject {
                 
                 if snapshot.exists() {
                     let p = UserPost(snapshot: snapshot)
-                    posts.append(p)
-                    print("POST ADDED! \(p.caption)")
+                    
+                    if !p.blockedBy.contains(CurrentUser.shared.uid) {
+                        posts.append(p)
+                    }
                 }
                 
                 if i == postIDs.count - 1 {
                     
-                    print("DONE!!!!")
-                    completionHandler(posts, nil)
+                    switch orderedBy {
+                    case .proximity:
+                        completionHandler(posts.sorted(by: {$0.distance() < $1.distance()}), nil)
+                        
+                    case .time:
+                        completionHandler(posts.sorted(by: {$0.createdDate > $1.createdDate}), nil)
+                    
+                    case .activity:
+                        completionHandler(posts.sorted(by: {$0.commentCount > $1.commentCount}), nil)
+                    }
                 }
             })
         }
-        
-        
     }
     
     class func loadFeedPosts(postIDs:[String],
