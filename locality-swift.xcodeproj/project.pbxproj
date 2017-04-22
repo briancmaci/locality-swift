@@ -16,6 +16,7 @@
 		722ABA441E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 722ABA3D1E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlideAndFade.m */; };
 		722ABA451E74761100A3F1DA /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 722ABA3F1E74761100A3F1DA /* SlideNavigationController.m */; };
 		723D21C51EABBD1E00716194 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723D21C41EABBD1E00716194 /* LoadingView.swift */; };
+		723D21C91EABC97800716194 /* LoadingViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723D21C81EABC97800716194 /* LoadingViewManager.swift */; };
 		7244AC6A1E8610E00091715E /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7244AC691E8610E00091715E /* LoadingButton.swift */; };
 		7244AC721E86C2890091715E /* PostFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7244AC701E86C2890091715E /* PostFeedCell.xib */; };
 		7244AC781E8874340091715E /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7244AC761E8874340091715E /* ForgotPasswordViewController.swift */; };
@@ -181,6 +182,7 @@
 		722ABA3E1E74761100A3F1DA /* SlideNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlideNavigationController.h; path = "custom-ui/SlideNavigationController/SlideNavigationController.h"; sourceTree = "<group>"; };
 		722ABA3F1E74761100A3F1DA /* SlideNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlideNavigationController.m; path = "custom-ui/SlideNavigationController/SlideNavigationController.m"; sourceTree = "<group>"; };
 		723D21C41EABBD1E00716194 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingView.swift; path = "custom-ui/LoadingView.swift"; sourceTree = "<group>"; };
+		723D21C81EABC97800716194 /* LoadingViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingViewManager.swift; path = manager/LoadingViewManager.swift; sourceTree = "<group>"; };
 		7244AC691E8610E00091715E /* LoadingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingButton.swift; path = "custom-ui/LoadingButton.swift"; sourceTree = "<group>"; };
 		7244AC701E86C2890091715E /* PostFeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PostFeedCell.xib; path = "custom-ui/PostFeedCell.xib"; sourceTree = "<group>"; };
 		7244AC761E8874340091715E /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForgotPasswordViewController.swift; path = "view-controller/ForgotPasswordViewController.swift"; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 				72B881E11E66B02F00EB3B2E /* FirebaseManager.swift */,
 				72F24BFA1E735BF700CA7702 /* GeoFireManager.swift */,
 				72EEDF971E76F319009DFA77 /* GoogleMapsManager.swift */,
+				723D21C81EABC97800716194 /* LoadingViewManager.swift */,
 				72B8821B1E6AA4C200EB3B2E /* MapboxManager.swift */,
 				72F24BF71E730C5A00CA7702 /* PhotoUploadManager.swift */,
 				7265DEA81E95DF4F00AF51EC /* PushNotificationManager.swift */,
@@ -1200,6 +1203,7 @@
 				72F24BC41E71ABEB00CA7702 /* PostUserInfoView.swift in Sources */,
 				7201490A1E9DC4E6005DC1EC /* UIColorExtension.swift in Sources */,
 				72EEE00D1E7D898D009DFA77 /* PopupMenuView.swift in Sources */,
+				723D21C91EABC97800716194 /* LoadingViewManager.swift in Sources */,
 				72F24BDA1E71E8FD00CA7702 /* UILabelExtension.swift in Sources */,
 				722ABA441E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */,
 				72F24BEB1E7228C100CA7702 /* PostFromView.swift in Sources */,

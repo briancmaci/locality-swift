@@ -19,16 +19,16 @@ class PhotoUploadManager: NSObject {
 
     class func uploadPhoto(image:UIImage, type:PhotoType, uid:String, pid:String="", completionHandler: @escaping (FIRStorageMetadata?, Error?) -> ()) -> () {
         
-        let imageData:Data = UIImageJPEGRepresentation(image, K.NumberConstant.Upload.ImageQuality)!
+        let resizedImage = image.resizedTo(width: 1024)
+        let imageData:Data = UIImageJPEGRepresentation(resizedImage, K.NumberConstant.Upload.ImageQuality)!
         
         // set upload path
         let filePath = buildPhotoURL(type: type, uid: uid, pid:pid)
         let metaData = FIRStorageMetadata()
         metaData.contentType = "image/jpg"
         
+        LoadingViewManager.updateLoading(label: "Saving image")
         let imageUploadTask = FirebaseManager.getImageStorageRef().child(filePath).put(imageData, metadata: metaData){(metaData,error) in
-            
-            //remove progress observer
             
             if let error = error {
                 print("UploadPhoto Error: \(error.localizedDescription)")
@@ -40,10 +40,10 @@ class PhotoUploadManager: NSObject {
             }
         }
         
-        imageUploadTask.observe(.progress) { (snapshot) in
-            
-            print("Progress? \(String(format: "%d%%", Int((snapshot.progress?.fractionCompleted)! * 100)))")
-        }
+//        imageUploadTask.observe(.progress) { (snapshot) in
+//            
+//            LoadingViewManager.updateLoading(label: String(format: "Saving image: %0.2f%%", Double((snapshot.progress?.fractionCompleted)!) * 100))
+//        }
     }
 
     class func buildPhotoURL(type:PhotoType, uid:String, pid:String="") -> String {

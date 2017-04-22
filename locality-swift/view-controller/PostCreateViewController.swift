@@ -81,6 +81,8 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
         //CREATE POST_ID NOW!!!!
         let thisPostId = Util.generateUUID()
         
+        LoadingViewManager.showLoading()
+        
         if !imageUploadView.hasImage() {
             createPostToWrite(pid: thisPostId)
         }
@@ -90,6 +92,7 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
                 
                 if error != nil {
                     print("Upload Error: \(String(describing: error?.localizedDescription))")
+                    LoadingViewManager.hideLoading()
                 }
                 
                 else {
@@ -113,6 +116,8 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
             thisPost.isAnonymous = true
         }
         
+        LoadingViewManager.updateLoading(label: "Uploading post")
+        
         FirebaseManager.write(post: thisPost, completionHandler: { (error) in
             if error != nil {
                 print("Post Write Error: \(String(describing: error?.localizedDescription))")
@@ -134,6 +139,8 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
                     }
                 })
             }
+            
+            LoadingViewManager.hideLoading()
         })
     }
     

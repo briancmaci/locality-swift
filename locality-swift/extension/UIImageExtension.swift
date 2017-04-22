@@ -62,12 +62,21 @@ extension UIImage {
     
         let avgColor = UIColor(red: red / 255, green: green / 255, blue: blue / 255, alpha: 1)
         
-        print("Red, Green, Blue: \(red, green, blue)")
-        print("Hex: \(avgColor.toHexString)")
-        
         UIGraphicsEndImageContext()
         
         return avgColor
         
+    }
+    
+    func resizedTo(width: CGFloat) -> UIImage {
+        
+        let scale = width / size.width
+        let height = size.height * scale
+        UIGraphicsBeginImageContext(CGSize(width: width, height: height))
+        draw(in: CGRect(x: 0, y: 0, width: width, height: height))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
     }
 }
