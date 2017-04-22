@@ -18,6 +18,16 @@ class LocalityRefreshCustomView: UIView {
     var radarBackground: UIView!
     var radarSpinner: UIView!
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        create()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     func create() {
         
         initRadarBackground()

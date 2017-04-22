@@ -15,6 +15,7 @@
 		722ABA431E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlide.m in Sources */ = {isa = PBXBuildFile; fileRef = 722ABA3B1E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlide.m */; };
 		722ABA441E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 722ABA3D1E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlideAndFade.m */; };
 		722ABA451E74761100A3F1DA /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 722ABA3F1E74761100A3F1DA /* SlideNavigationController.m */; };
+		723D21C51EABBD1E00716194 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723D21C41EABBD1E00716194 /* LoadingView.swift */; };
 		7244AC6A1E8610E00091715E /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7244AC691E8610E00091715E /* LoadingButton.swift */; };
 		7244AC721E86C2890091715E /* PostFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7244AC701E86C2890091715E /* PostFeedCell.xib */; };
 		7244AC781E8874340091715E /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7244AC761E8874340091715E /* ForgotPasswordViewController.swift */; };
@@ -179,6 +180,7 @@
 		722ABA3D1E74761100A3F1DA /* SlideNavigationContorllerAnimatorSlideAndFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlideNavigationContorllerAnimatorSlideAndFade.m; path = "custom-ui/SlideNavigationController/Animations/SlideNavigationContorllerAnimatorSlideAndFade.m"; sourceTree = "<group>"; };
 		722ABA3E1E74761100A3F1DA /* SlideNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlideNavigationController.h; path = "custom-ui/SlideNavigationController/SlideNavigationController.h"; sourceTree = "<group>"; };
 		722ABA3F1E74761100A3F1DA /* SlideNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlideNavigationController.m; path = "custom-ui/SlideNavigationController/SlideNavigationController.m"; sourceTree = "<group>"; };
+		723D21C41EABBD1E00716194 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingView.swift; path = "custom-ui/LoadingView.swift"; sourceTree = "<group>"; };
 		7244AC691E8610E00091715E /* LoadingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingButton.swift; path = "custom-ui/LoadingButton.swift"; sourceTree = "<group>"; };
 		7244AC701E86C2890091715E /* PostFeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PostFeedCell.xib; path = "custom-ui/PostFeedCell.xib"; sourceTree = "<group>"; };
 		7244AC761E8874340091715E /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForgotPasswordViewController.swift; path = "view-controller/ForgotPasswordViewController.swift"; sourceTree = "<group>"; };
@@ -356,6 +358,14 @@
 			name = "slide-navigation-controller";
 			sourceTree = "<group>";
 		};
+		723D21C31EABBCCF00716194 /* loading-view */ = {
+			isa = PBXGroup;
+			children = (
+				723D21C41EABBD1E00716194 /* LoadingView.swift */,
+			);
+			name = "loading-view";
+			sourceTree = "<group>";
+		};
 		7244AC681E8610BA0091715E /* loading-button */ = {
 			isa = PBXGroup;
 			children = (
@@ -519,6 +529,7 @@
 				72F24BF21E725B6700CA7702 /* camera-overlay */,
 				72F24BAC1E70E99900CA7702 /* feed-header */,
 				72F24BE41E721B4D00CA7702 /* image-upload */,
+				723D21C31EABBCCF00716194 /* loading-view */,
 				72DC48871E6D9C0200486535 /* location-slider */,
 				72DC48761E6B4A5200486535 /* mapbox */,
 				72EEDF9A1E78794A009DFA77 /* post-detail-header */,
@@ -1243,6 +1254,7 @@
 				72B882161E69434000EB3B2E /* JoinUsernameViewController.swift in Sources */,
 				72EEDF8B1E7591F9009DFA77 /* FeedMenuCell.swift in Sources */,
 				72EEDFB11E7C33EE009DFA77 /* AboutViewController.swift in Sources */,
+				723D21C51EABBD1E00716194 /* LoadingView.swift in Sources */,
 				72B881A91E65EE5000EB3B2E /* locality_swift.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
