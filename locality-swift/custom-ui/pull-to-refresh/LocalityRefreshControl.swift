@@ -34,8 +34,6 @@ class LocalityRefreshControl: UIRefreshControl {
                                                              y: (bounds.height - kRadarSize) / 2,
                                                              width: kRadarSize,
                                                              height: kRadarSize))
-        
-        //customView.create()
         addSubview(customView)
     }
     
