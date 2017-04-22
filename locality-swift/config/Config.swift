@@ -506,7 +506,7 @@ struct K {
         }
         
         struct Upload {
-            static let ImageQuality: CGFloat = 0.5
+            static let ImageQuality: CGFloat = 0.3
         }
     }
     

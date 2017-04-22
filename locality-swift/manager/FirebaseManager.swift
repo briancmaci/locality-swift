@@ -58,7 +58,9 @@ class FirebaseManager: NSObject {
                              completionHandler: @escaping ([UserPost]?, Error?) -> ()) -> () {
         
         var posts:[UserPost] = [UserPost]()
-        var postsDic:[UserPost: Double] = [UserPost: Double]()
+        
+        //var postsHandle: UInt = 0
+        //var timeoutTimer: Timer!
         
         for i in 0...postIDs.count - 1 {
             
@@ -66,122 +68,27 @@ class FirebaseManager: NSObject {
                 
                 if snapshot.exists() {
                     let p = UserPost(snapshot: snapshot)
-                    posts.append(p)
-                    print("POST ADDED! \(p.caption)")
+                    
+                    if !p.blockedBy.contains(CurrentUser.shared.uid) {
+                        posts.append(p)
+                    }
                 }
                 
                 if i == postIDs.count - 1 {
                     
-                    print("DONE!!!!")
-                    completionHandler(posts, nil)
-                }
-            })
-        }
-        
-        
-    }
-    
-    class func loadFeedPosts(postIDs:[String],
-                             orderedBy:SortByType,
-                             completionHandler: @escaping ([UserPost]?, Error?) -> ()) -> () {
-        
-        var posts:[UserPost] = [UserPost]()
-        var postsDic:[UserPost:Double] = [UserPost:Double]()
-        
-        var postsHandle: UInt = 0
-        
-        var timeoutTimer: Timer!
-        
-        switch orderedBy {
-        case .proximity:
-        
-            postsHandle = getPostsRef().observe(.value, with: { snapshot in
-                for child in snapshot.children {
-                    let childSnap = child as! FIRDataSnapshot
-                    if postIDs.contains(childSnap.key) {
+                    switch orderedBy {
+                    case .proximity:
+                        completionHandler(posts.sorted(by: {$0.distance() < $1.distance()}), nil)
                         
-                        //push to dictionary before sorting
-                        let p = UserPost(snapshot: childSnap)
-                        postsDic[p] = Util.distanceFrom(lat: p.lat, lon: p.lon)
-                        
-                    }
-                }
-                
-                //let's order the dictionary by key(distance)
-                let sortedKeys = Array(postsDic).sorted(by: {$0.1 < $1.1})
-
-                for p in sortedKeys {
+                    case .time:
+                        completionHandler(posts.sorted(by: {$0.createdDate > $1.createdDate}), nil)
                     
-                    //check for blocks post-sort as objects are easier to deal with
-                    if !p.key.blockedBy.contains(CurrentUser.shared.uid) {
-                        posts.append(p.key)
+                    case .activity:
+                        completionHandler(posts.sorted(by: {$0.commentCount > $1.commentCount}), nil)
                     }
                 }
-                getPostsRef().removeObserver(withHandle: postsHandle)
-                timeoutTimer.invalidate()
-                
-                completionHandler(posts, nil)
             })
-            
-        case .time:
-            postsHandle = getPostsRef().queryOrdered(byChild: K.DB.Var.CreatedDate).observe(.value, with: { snapshot in
-                for child in snapshot.children {
-                    let childSnap = child as! FIRDataSnapshot
-                    if postIDs.contains(childSnap.key) {
-                        
-                        let p = UserPost(snapshot: childSnap)
-                        
-                        //check for blocks post-sort as objects are easier to deal with
-                        if !p.blockedBy.contains(CurrentUser.shared.uid) {
-                            posts.append(p)
-                        }
-                    }
-                }
-                
-                getPostsRef().removeObserver(withHandle: postsHandle)
-                timeoutTimer.invalidate()
-                
-                //We have to reverse these to make the newest 
-                completionHandler(posts.reversed(), nil)
-            })
-            
-        case .activity:
-            postsHandle = getPostsRef().queryOrdered(byChild: K.DB.Var.CommentCount).observe(.value, with: { snapshot in
-                for child in snapshot.children {
-                    let childSnap = child as! FIRDataSnapshot
-                    if postIDs.contains(childSnap.key) {
-                        
-                        let p = UserPost(snapshot: childSnap)
-                        
-                        //check for blocks post-sort as objects are easier to deal with
-                        if !p.blockedBy.contains(CurrentUser.shared.uid) {
-                            posts.append(p)
-                        }
-                    }
-                }
-                
-                getPostsRef().removeObserver(withHandle: postsHandle)
-                timeoutTimer.invalidate()
-                timeoutTimer = nil
-                
-                completionHandler(posts.reversed(), nil)
-            })
-                
         }
-        
-        //Set timer
-        timeoutTimer = Timer.scheduledTimer(withTimeInterval: K.NumberConstant.TimeoutInterval,
-                             repeats: false, block: { (timer) in
-                                
-                                timeoutTimer.invalidate()
-                                timeoutTimer = nil
-                                
-                                getPostsRef().removeObserver(withHandle: postsHandle)
-                                
-                                let timeoutError = NSError(domain: "", code: K.NumberConstant.TimeoutErrorCode, userInfo: nil)
-                                
-                                completionHandler(nil, timeoutError)
-        })
     }
     
     class func loadFeedComments(postId:String, completionHandler: @escaping ([UserComment]?, Error?) -> ()) -> () {
