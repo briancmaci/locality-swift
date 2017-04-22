@@ -69,6 +69,21 @@ class FirebaseManager: NSObject {
                 if snapshot.exists() {
                     let p = UserPost(snapshot: snapshot)
                     
+                    //Check for missing user and delete
+                    getUserFromHandle(uid: p.userHandle) { (thisUser) in
+                        
+                        if thisUser == nil {
+                            delete(post: p, completionHandler: { (error) in
+                                if error != nil {
+                                    print("Delete post when querying error: \(error.debugDescription)")
+                                } else {
+                                    print("deleted post in query \(String(describing: p))")
+                                }
+                            })
+                            return
+                        }
+                    }
+                    
                     if !p.blockedBy.contains(CurrentUser.shared.uid) {
                         posts.append(p)
                     }
