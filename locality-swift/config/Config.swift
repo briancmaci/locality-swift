@@ -414,6 +414,8 @@ struct K {
             static let PasswordWrong = "password-wrong"
             static let UserDisabled = "user-disabled"
             static let UsernameTaken = "username-taken"
+            static let UsernameEmpty = "username-empty"
+            static let UsernameTooShort = "username-too-short"
             static let SomethingWentWrong = "something-went-wrong"
         }
         
@@ -439,6 +441,10 @@ struct K {
         struct Login {
             static let ForgotPasswordLabel = "forgot-password-label"
             static let EmailSentLabel = "email-sent-label"
+        }
+        
+        struct Username {
+            static let UsernameChangedLabel = "username-changed-label"
         }
     }
     
