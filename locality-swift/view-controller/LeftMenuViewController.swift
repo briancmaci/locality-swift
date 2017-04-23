@@ -13,28 +13,29 @@ import MessageUI
 
 class LeftMenuViewController: LocalityPhotoBaseViewController, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate {
     
-    @IBOutlet weak var profileImage:UIImageView!
-    @IBOutlet weak var nameLabel:UILabel!
-    @IBOutlet weak var statusLabel:UILabel!
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var changeUsernameButton: UIButton!
     
-    @IBOutlet weak var likesLabel:UILabel!
-    @IBOutlet weak var postsLabel:UILabel!
+    @IBOutlet weak var likesLabel: UILabel!
+    @IBOutlet weak var postsLabel: UILabel!
     
     //Constraints for likes and posts UILabels
-    @IBOutlet weak var likesWidth:NSLayoutConstraint!
-    @IBOutlet weak var postsWidth:NSLayoutConstraint!
-    @IBOutlet weak var postsIconRight:NSLayoutConstraint!
+    @IBOutlet weak var likesWidth: NSLayoutConstraint!
+    @IBOutlet weak var postsWidth: NSLayoutConstraint!
+    @IBOutlet weak var postsIconRight: NSLayoutConstraint!
     
-    @IBOutlet weak var menuTable:UITableView!
-    @IBOutlet weak var tableHeight:NSLayoutConstraint!
+    @IBOutlet weak var menuTable: UITableView!
+    @IBOutlet weak var tableHeight: NSLayoutConstraint!
     
-    @IBOutlet weak var termsButton:UIButton!
-    @IBOutlet weak var copyrightLabel:UILabel!
+    @IBOutlet weak var termsButton: UIButton!
+    @IBOutlet weak var copyrightLabel: UILabel!
     
-    @IBOutlet weak var updatePhotoButton:UIButton!
+    @IBOutlet weak var updatePhotoButton: UIButton!
     
-    var menuOptions:[[String:AnyObject]] = [[String:AnyObject]]()
-    var viewHasLoaded:Bool = false
+    var menuOptions:[[String: AnyObject]] = [[String: AnyObject]]()
+    var viewHasLoaded: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +68,7 @@ class LeftMenuViewController: LocalityPhotoBaseViewController, UITableViewDelega
         
         initProfileImage()
         initLabels()
+        initChangeUsernameButton()
     }
     
     func initProfileImage() {
@@ -81,6 +83,11 @@ class LeftMenuViewController: LocalityPhotoBaseViewController, UITableViewDelega
     func initLabels() {
         nameLabel.text = CurrentUser.shared.username
         statusLabel.text = UserStatus.stringFrom(type: CurrentUser.shared.status).localized
+    }
+    
+    func initChangeUsernameButton() {
+        
+        changeUsernameButton.addTarget(self, action: #selector(updateUsernameDidTouch), for: .touchUpInside)
     }
     
     func initTermsCopyright() {
@@ -151,10 +158,16 @@ class LeftMenuViewController: LocalityPhotoBaseViewController, UITableViewDelega
     }
     
     //CTA
-    func updatePhotoDidTouch(sender:UIButton) {
+    func updatePhotoDidTouch(sender: UIButton) {
+        
         showPictureOptions()
     }
     
+    func updateUsernameDidTouch(sender: UIButton) {
+        
+        let vc = UpdateUsernameViewController(nibName: "UpdateUsernameViewController", bundle: nil)
+        UIApplication.topViewController()?.present(vc, animated: true, completion: nil)
+    }
 
     
     override func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {

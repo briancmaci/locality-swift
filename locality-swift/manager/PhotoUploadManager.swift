@@ -28,7 +28,7 @@ class PhotoUploadManager: NSObject {
         metaData.contentType = "image/jpg"
         
         LoadingViewManager.updateLoading(label: "Saving image")
-        let imageUploadTask = FirebaseManager.getImageStorageRef().child(filePath).put(imageData, metadata: metaData){(metaData,error) in
+        _ = FirebaseManager.getImageStorageRef().child(filePath).put(imageData, metadata: metaData){(metaData,error) in
             
             if let error = error {
                 print("UploadPhoto Error: \(error.localizedDescription)")

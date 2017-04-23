@@ -17,6 +17,9 @@ login-button-label = "LOGIN";
 forgot-password-label = "Forgot?";
 email-sent-label = "Email sent!";
 
+//Username
+username-changed-label = "Username changed!";
+
 
 //Current Location
 current-map-header = "YOU ARE CURRENTLY IN";
@@ -100,6 +103,8 @@ password-too-weak = "Your password is too weak.";
 password-wrong = "You have entered an incorrect password.";
 user-disabled = "I'm sorry, your account is disabled.";
 username-taken = "This username is already taken.";
+username-empty = "You must enter a username.";
+username-too-short = "This username is too short.";
 post-caption-error = "You must enter a caption to post.";
 feed-name-error = "You must name your location.";
 something-went-wrong = "Something went wrong. Please try again.";

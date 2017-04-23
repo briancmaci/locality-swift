@@ -17,6 +17,8 @@
 		722ABA451E74761100A3F1DA /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 722ABA3F1E74761100A3F1DA /* SlideNavigationController.m */; };
 		723D21C51EABBD1E00716194 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723D21C41EABBD1E00716194 /* LoadingView.swift */; };
 		723D21C91EABC97800716194 /* LoadingViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723D21C81EABC97800716194 /* LoadingViewManager.swift */; };
+		723D21CC1EAC4BD600716194 /* UpdateUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723D21CA1EAC4BD600716194 /* UpdateUsernameViewController.swift */; };
+		723D21CD1EAC4BD600716194 /* UpdateUsernameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723D21CB1EAC4BD600716194 /* UpdateUsernameViewController.xib */; };
 		7244AC6A1E8610E00091715E /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7244AC691E8610E00091715E /* LoadingButton.swift */; };
 		7244AC721E86C2890091715E /* PostFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7244AC701E86C2890091715E /* PostFeedCell.xib */; };
 		7244AC781E8874340091715E /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7244AC761E8874340091715E /* ForgotPasswordViewController.swift */; };
@@ -183,6 +185,8 @@
 		722ABA3F1E74761100A3F1DA /* SlideNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlideNavigationController.m; path = "custom-ui/SlideNavigationController/SlideNavigationController.m"; sourceTree = "<group>"; };
 		723D21C41EABBD1E00716194 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingView.swift; path = "custom-ui/LoadingView.swift"; sourceTree = "<group>"; };
 		723D21C81EABC97800716194 /* LoadingViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingViewManager.swift; path = manager/LoadingViewManager.swift; sourceTree = "<group>"; };
+		723D21CA1EAC4BD600716194 /* UpdateUsernameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpdateUsernameViewController.swift; path = "view-controller/UpdateUsernameViewController.swift"; sourceTree = "<group>"; };
+		723D21CB1EAC4BD600716194 /* UpdateUsernameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UpdateUsernameViewController.xib; path = "view-controller/UpdateUsernameViewController.xib"; sourceTree = "<group>"; };
 		7244AC691E8610E00091715E /* LoadingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingButton.swift; path = "custom-ui/LoadingButton.swift"; sourceTree = "<group>"; };
 		7244AC701E86C2890091715E /* PostFeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PostFeedCell.xib; path = "custom-ui/PostFeedCell.xib"; sourceTree = "<group>"; };
 		7244AC761E8874340091715E /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForgotPasswordViewController.swift; path = "view-controller/ForgotPasswordViewController.swift"; sourceTree = "<group>"; };
@@ -366,6 +370,15 @@
 				723D21C41EABBD1E00716194 /* LoadingView.swift */,
 			);
 			name = "loading-view";
+			sourceTree = "<group>";
+		};
+		723D21CE1EAC4D5200716194 /* update-username */ = {
+			isa = PBXGroup;
+			children = (
+				723D21CA1EAC4BD600716194 /* UpdateUsernameViewController.swift */,
+				723D21CB1EAC4BD600716194 /* UpdateUsernameViewController.xib */,
+			);
+			name = "update-username";
 			sourceTree = "<group>";
 		};
 		7244AC681E8610BA0091715E /* loading-button */ = {
@@ -726,6 +739,7 @@
 			children = (
 				72F24BA51E70BC7600CA7702 /* LeftMenuViewController.swift */,
 				72701FC41E99503E00084426 /* LeftMenuViewController.xib */,
+				723D21CE1EAC4D5200716194 /* update-username */,
 			);
 			name = "left-menu";
 			sourceTree = "<group>";
@@ -1079,6 +1093,7 @@
 				72701FC31E994DB100084426 /* PostDetailViewController.xib in Resources */,
 				72701FAF1E992FD500084426 /* JoinUsernameViewController.xib in Resources */,
 				72701FA91E99242600084426 /* SettingsViewController.xib in Resources */,
+				723D21CD1EAC4BD600716194 /* UpdateUsernameViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1222,6 +1237,7 @@
 				72F24BF81E730C5A00CA7702 /* PhotoUploadManager.swift in Sources */,
 				72B881D91E665F3A00EB3B2E /* Config.swift in Sources */,
 				72F24BD41E71C2E600CA7702 /* PostSortView.swift in Sources */,
+				723D21CC1EAC4BD600716194 /* UpdateUsernameViewController.swift in Sources */,
 				72B882101E68EAE200EB3B2E /* StringExtension.swift in Sources */,
 				72F24BC81E71B93C00CA7702 /* PostFeedCellView.swift in Sources */,
 				72F24BBB1E71A1B300CA7702 /* SortBy.swift in Sources */,
