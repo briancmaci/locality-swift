@@ -11,11 +11,13 @@ import Mapbox
 
 class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadViewDelegate,UITextViewDelegate {
 
-    @IBOutlet weak var captionField:UITextView!
-    @IBOutlet weak var captionError:UILabel!
+    @IBOutlet weak var captionField: UITextView!
+    @IBOutlet weak var captionError: UILabel!
     
-    @IBOutlet weak var imageUploadView:ImageUploadView!
-    @IBOutlet weak var postFromView:PostFromView!
+    @IBOutlet weak var imageUploadView: ImageUploadView!
+    @IBOutlet weak var postFromView: PostFromView!
+    
+    @IBOutlet weak var isImportantSwitch: UISwitch!
     
     @IBOutlet weak var publishPostButton:UIButton!
     
@@ -24,6 +26,7 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
 
         initHeaderView()
         initButtons()
+        initImportantSwitch()
         initImageUploadView()
         initCaption()
     }
@@ -48,6 +51,11 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
     
     func initButtons() {
         publishPostButton.addTarget(self, action: #selector(publishDidTouch), for: .touchUpInside)
+    }
+    
+    func initImportantSwitch() {
+        
+        isImportantSwitch.addTarget(self, action: #selector(isImportantDidSwitch), for: .valueChanged)
     }
     
     func initImageUploadView() {
@@ -104,6 +112,11 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
         }
     }
     
+    func isImportantDidSwitch(sender: UISwitch) {
+        
+        print("Switched! \(isImportantSwitch.isOn)")
+    }
+    
     func createPostToWrite(pid: String, url: String = "", avg: String = K.Color.defaultHex) {
         let thisPost:UserPost = UserPost(coord: CurrentUser.shared.myLastRecordedLocation,                                         caption: self.captionField.text,
             imgUrl: url,
@@ -115,6 +128,8 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
         if self.postFromView.isAnonymous == true {
             thisPost.isAnonymous = true
         }
+        
+        thisPost.isImportant = isImportantSwitch.isOn
         
         LoadingViewManager.updateLoading(label: "Uploading post")
         
