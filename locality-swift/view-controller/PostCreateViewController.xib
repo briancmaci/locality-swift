@@ -30,6 +30,9 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XuV-kd-y9s">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </scrollView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Write a comment" translatesAutoresizingMaskIntoConstraints="NO" id="MO1-C6-mzB">
                     <rect key="frame" x="20" y="69" width="335" height="100"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -69,14 +72,14 @@
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gFS-Hg-ZV7" customClass="ImageUploadView" customModule="locality_swift" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="170" width="375" height="164"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="gFS-Hg-ZV7" secondAttribute="height" multiplier="16:7" id="ZFs-aY-Rx4"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k1Q-yv-hAS" customClass="PostFromView" customModule="locality_swift" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="334" width="375" height="164"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="k1Q-yv-hAS" secondAttribute="height" multiplier="16:7" id="4g5-QZ-rT2"/>
                     </constraints>
@@ -84,22 +87,27 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="XuV-kd-y9s" firstAttribute="top" secondItem="xna-Hd-gRZ" secondAttribute="top" id="1D0-Wp-HhY"/>
                 <constraint firstAttribute="bottom" secondItem="YQ0-q4-taO" secondAttribute="bottom" constant="23" id="1a5-ev-D63"/>
                 <constraint firstAttribute="trailing" secondItem="gFS-Hg-ZV7" secondAttribute="trailing" id="2EM-dH-Okk"/>
                 <constraint firstItem="gFS-Hg-ZV7" firstAttribute="leading" secondItem="xna-Hd-gRZ" secondAttribute="leading" id="HcQ-2r-RUX"/>
                 <constraint firstAttribute="trailing" secondItem="YQ0-q4-taO" secondAttribute="trailing" constant="10" id="KXn-kg-7dT"/>
+                <constraint firstAttribute="trailing" secondItem="XuV-kd-y9s" secondAttribute="trailing" id="Mzn-I4-wNO"/>
                 <constraint firstAttribute="trailing" secondItem="k1Q-yv-hAS" secondAttribute="trailing" id="QYK-p4-1Ec"/>
                 <constraint firstItem="k1Q-yv-hAS" firstAttribute="leading" secondItem="xna-Hd-gRZ" secondAttribute="leading" id="U5R-VI-KBT"/>
                 <constraint firstItem="MO1-C6-mzB" firstAttribute="top" secondItem="xna-Hd-gRZ" secondAttribute="top" constant="69" id="Z1s-NH-tBi"/>
                 <constraint firstItem="xWC-5D-FfJ" firstAttribute="leading" secondItem="xna-Hd-gRZ" secondAttribute="leading" constant="10" id="fhf-F0-9So"/>
                 <constraint firstItem="MO1-C6-mzB" firstAttribute="leading" secondItem="xna-Hd-gRZ" secondAttribute="leading" constant="20" id="lkk-k3-mu9"/>
+                <constraint firstItem="XuV-kd-y9s" firstAttribute="leading" secondItem="xna-Hd-gRZ" secondAttribute="leading" id="p9l-Of-Tyd"/>
                 <constraint firstAttribute="trailing" secondItem="xWC-5D-FfJ" secondAttribute="trailing" constant="10" id="rJ3-tP-YQW"/>
+                <constraint firstAttribute="bottom" secondItem="XuV-kd-y9s" secondAttribute="bottom" id="tCB-gW-d2Y"/>
                 <constraint firstAttribute="trailing" secondItem="MO1-C6-mzB" secondAttribute="trailing" constant="20" id="tY6-mU-nkn"/>
                 <constraint firstItem="gFS-Hg-ZV7" firstAttribute="top" secondItem="MO1-C6-mzB" secondAttribute="bottom" constant="1" id="u11-QP-SgC"/>
                 <constraint firstItem="YQ0-q4-taO" firstAttribute="leading" secondItem="xna-Hd-gRZ" secondAttribute="leading" constant="10" id="uWt-Lq-N3W"/>
                 <constraint firstItem="YQ0-q4-taO" firstAttribute="top" secondItem="xWC-5D-FfJ" secondAttribute="bottom" constant="1" id="uo8-uO-wNj"/>
                 <constraint firstItem="k1Q-yv-hAS" firstAttribute="top" secondItem="gFS-Hg-ZV7" secondAttribute="bottom" id="ylG-uD-N73"/>
             </constraints>
+            <point key="canvasLocation" x="33.5" y="95.5"/>
         </view>
     </objects>
     <resources>
