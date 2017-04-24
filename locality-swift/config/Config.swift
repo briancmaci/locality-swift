@@ -71,7 +71,7 @@ struct K {
             static let CommentCount = "commentCount"
             static let BlockedBy = "blockedBy"
             static let IsAnonymous = "isAnonymous"
-            static let IsImportant = "isImportant"
+            static let IsEmergency = "isEmergency"
             //Lat
             //Long
             static let Caption = "caption"

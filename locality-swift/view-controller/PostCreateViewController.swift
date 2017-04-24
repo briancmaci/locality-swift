@@ -17,7 +17,7 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
     @IBOutlet weak var imageUploadView: ImageUploadView!
     @IBOutlet weak var postFromView: PostFromView!
     
-    @IBOutlet weak var isImportantSwitch: UISwitch!
+    @IBOutlet weak var isEmergencySwitch: UISwitch!
     
     @IBOutlet weak var publishPostButton:UIButton!
     
@@ -26,7 +26,7 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
 
         initHeaderView()
         initButtons()
-        initImportantSwitch()
+        initEmergencySwitch()
         initImageUploadView()
         initCaption()
     }
@@ -53,9 +53,9 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
         publishPostButton.addTarget(self, action: #selector(publishDidTouch), for: .touchUpInside)
     }
     
-    func initImportantSwitch() {
+    func initEmergencySwitch() {
         
-        isImportantSwitch.addTarget(self, action: #selector(isImportantDidSwitch), for: .valueChanged)
+        isEmergencySwitch.addTarget(self, action: #selector(isEmergencyDidSwitch), for: .valueChanged)
     }
     
     func initImageUploadView() {
@@ -112,9 +112,9 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
         }
     }
     
-    func isImportantDidSwitch(sender: UISwitch) {
+    func isEmergencyDidSwitch(sender: UISwitch) {
         
-        print("Switched! \(isImportantSwitch.isOn)")
+        print("Switched! \(isEmergencySwitch.isOn)")
     }
     
     func createPostToWrite(pid: String, url: String = "", avg: String = K.Color.defaultHex) {
@@ -129,7 +129,7 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
             thisPost.isAnonymous = true
         }
         
-        thisPost.isImportant = isImportantSwitch.isOn
+        thisPost.isEmergency = isEmergencySwitch.isOn
         
         LoadingViewManager.updateLoading(label: "Uploading post")
         

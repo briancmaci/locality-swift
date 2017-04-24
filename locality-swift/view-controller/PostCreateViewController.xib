@@ -20,7 +20,7 @@
                 <outlet property="captionError" destination="YQ0-q4-taO" id="EFr-z0-suS"/>
                 <outlet property="captionField" destination="MO1-C6-mzB" id="ip2-9l-nm2"/>
                 <outlet property="imageUploadView" destination="gFS-Hg-ZV7" id="rfT-me-PjF"/>
-                <outlet property="isImportantSwitch" destination="3du-7o-Jqb" id="ebH-iO-iNb"/>
+                <outlet property="isEmergencySwitch" destination="3du-7o-Jqb" id="TWN-SM-Emi"/>
                 <outlet property="postFromView" destination="k1Q-yv-hAS" id="OcB-2h-OwR"/>
                 <outlet property="publishPostButton" destination="xWC-5D-FfJ" id="zYa-eL-2VI"/>
                 <outlet property="view" destination="xna-Hd-gRZ" id="gI7-fz-BX7"/>

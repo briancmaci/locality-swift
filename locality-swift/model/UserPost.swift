@@ -31,7 +31,7 @@ class UserPost: NSObject {
     
     var isLikedByMe:Bool = false
     
-    var isImportant: Bool = false
+    var isEmergency: Bool = false
     
     var blockedBy:[String] = [] //How many people have removed this from their list
     
@@ -75,8 +75,8 @@ class UserPost: NSObject {
             self.averageColorHex = dic?[K.DB.Var.AverageColorHex] as! String
         }
         
-        if (dic?[K.DB.Var.IsImportant]) != nil {
-            self.isImportant = dic?[K.DB.Var.IsImportant] as! Bool
+        if (dic?[K.DB.Var.IsEmergency]) != nil {
+            self.isEmergency = dic?[K.DB.Var.IsEmergency] as! Bool
         }
         
         self.userHandle = dic?[K.DB.Var.UserId] as! String
@@ -107,7 +107,7 @@ class UserPost: NSObject {
                K.DB.Var.AverageColorHex:averageColorHex,
                K.DB.Var.CommentCount:commentCount,
                K.DB.Var.IsAnonymous:isAnonymous,
-               K.DB.Var.IsImportant:isImportant,
+               K.DB.Var.IsEmergency:isEmergency,
                K.DB.Var.BlockedBy:blockedBy,
                K.DB.Var.LikedBy:likedBy]
     }
