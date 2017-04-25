@@ -19,6 +19,7 @@
 		723D21C91EABC97800716194 /* LoadingViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723D21C81EABC97800716194 /* LoadingViewManager.swift */; };
 		723D21CC1EAC4BD600716194 /* UpdateUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723D21CA1EAC4BD600716194 /* UpdateUsernameViewController.swift */; };
 		723D21CD1EAC4BD600716194 /* UpdateUsernameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723D21CB1EAC4BD600716194 /* UpdateUsernameViewController.xib */; };
+		723D21D01EAD6F8D00716194 /* EmergencyIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723D21CF1EAD6F8D00716194 /* EmergencyIcon.swift */; };
 		7244AC6A1E8610E00091715E /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7244AC691E8610E00091715E /* LoadingButton.swift */; };
 		7244AC721E86C2890091715E /* PostFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7244AC701E86C2890091715E /* PostFeedCell.xib */; };
 		7244AC781E8874340091715E /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7244AC761E8874340091715E /* ForgotPasswordViewController.swift */; };
@@ -187,6 +188,7 @@
 		723D21C81EABC97800716194 /* LoadingViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingViewManager.swift; path = manager/LoadingViewManager.swift; sourceTree = "<group>"; };
 		723D21CA1EAC4BD600716194 /* UpdateUsernameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpdateUsernameViewController.swift; path = "view-controller/UpdateUsernameViewController.swift"; sourceTree = "<group>"; };
 		723D21CB1EAC4BD600716194 /* UpdateUsernameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UpdateUsernameViewController.xib; path = "view-controller/UpdateUsernameViewController.xib"; sourceTree = "<group>"; };
+		723D21CF1EAD6F8D00716194 /* EmergencyIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmergencyIcon.swift; path = "custom-ui/EmergencyIcon.swift"; sourceTree = "<group>"; };
 		7244AC691E8610E00091715E /* LoadingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingButton.swift; path = "custom-ui/LoadingButton.swift"; sourceTree = "<group>"; };
 		7244AC701E86C2890091715E /* PostFeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PostFeedCell.xib; path = "custom-ui/PostFeedCell.xib"; sourceTree = "<group>"; };
 		7244AC761E8874340091715E /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForgotPasswordViewController.swift; path = "view-controller/ForgotPasswordViewController.swift"; sourceTree = "<group>"; };
@@ -381,6 +383,14 @@
 			name = "update-username";
 			sourceTree = "<group>";
 		};
+		723D21D11EAD6F9500716194 /* emergency-icon */ = {
+			isa = PBXGroup;
+			children = (
+				723D21CF1EAD6F8D00716194 /* EmergencyIcon.swift */,
+			);
+			name = "emergency-icon";
+			sourceTree = "<group>";
+		};
 		7244AC681E8610BA0091715E /* loading-button */ = {
 			isa = PBXGroup;
 			children = (
@@ -543,6 +553,7 @@
 				72C7D88F1E9144AD003B6E56 /* alert-view */,
 				72F24BB71E70F80200CA7702 /* buttons */,
 				72F24BF21E725B6700CA7702 /* camera-overlay */,
+				723D21D11EAD6F9500716194 /* emergency-icon */,
 				72F24BAC1E70E99900CA7702 /* feed-header */,
 				72F24BE41E721B4D00CA7702 /* image-upload */,
 				723D21C31EABBCCF00716194 /* loading-view */,
@@ -1187,6 +1198,7 @@
 				72C7D88C1E902B67003B6E56 /* LocalityRefreshCustomView.swift in Sources */,
 				72F24BB91E70F84300CA7702 /* HeaderIconButton.swift in Sources */,
 				72B882011E67E79700EB3B2E /* LoginViewController.swift in Sources */,
+				723D21D01EAD6F8D00716194 /* EmergencyIcon.swift in Sources */,
 				72EEDFA21E7893EE009DFA77 /* UserComment.swift in Sources */,
 				72EEDF9E1E78798E009DFA77 /* PostDetailHeaderView.swift in Sources */,
 				72B881FE1E67DFB100EB3B2E /* LocalityBaseViewController.swift in Sources */,
