@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,14 +27,14 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="h79-vq-Vgh">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="140"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="280"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R7P-Jg-HzX" userLabel="TakePhotoView">
-                    <rect key="frame" x="20" y="0.0" width="140" height="140"/>
+                    <rect key="frame" x="20" y="0.0" width="140" height="280"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qPe-Tw-Gcu">
-                            <rect key="frame" x="3" y="37" width="134" height="70"/>
+                            <rect key="frame" x="3" y="107" width="134" height="70"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ButtonAddPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="1z3-Jb-egX">
                                     <rect key="frame" x="42" y="0.0" width="51" height="43"/>
@@ -55,7 +55,7 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcU-OS-7Ac" userLabel="Hit">
-                            <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                            <rect key="frame" x="0.0" y="0.0" width="140" height="280"/>
                             <state key="normal">
                                 <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
@@ -64,7 +64,7 @@
                     <color key="backgroundColor" red="0.61370188000000003" green="0.7003897429" blue="0.75527405739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="centerX" secondItem="qPe-Tw-Gcu" secondAttribute="centerX" id="Gc2-S4-cvH"/>
-                        <constraint firstAttribute="width" secondItem="R7P-Jg-HzX" secondAttribute="height" multiplier="1:1" id="JzS-6u-E5W"/>
+                        <constraint firstAttribute="width" secondItem="R7P-Jg-HzX" secondAttribute="height" multiplier="1:2" id="JzS-6u-E5W"/>
                         <constraint firstAttribute="bottom" secondItem="bcU-OS-7Ac" secondAttribute="bottom" id="cNK-Ri-hmZ"/>
                         <constraint firstItem="bcU-OS-7Ac" firstAttribute="top" secondItem="R7P-Jg-HzX" secondAttribute="top" id="etl-wP-hNV"/>
                         <constraint firstAttribute="trailing" secondItem="bcU-OS-7Ac" secondAttribute="trailing" id="nxS-gq-pYW"/>
@@ -73,10 +73,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J7d-GZ-baE" userLabel="UploadPhotoView">
-                    <rect key="frame" x="160" y="0.0" width="140" height="140"/>
+                    <rect key="frame" x="160" y="0.0" width="140" height="280"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ESg-Ve-w7v">
-                            <rect key="frame" x="3" y="37" width="134" height="70"/>
+                            <rect key="frame" x="3" y="107" width="134" height="70"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ButtonUploadPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="YDI-Zu-Gb5">
                                     <rect key="frame" x="46" y="0.0" width="43" height="43"/>
@@ -97,7 +97,7 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gah-TI-UjB" userLabel="Hit">
-                            <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                            <rect key="frame" x="0.0" y="0.0" width="140" height="280"/>
                             <state key="normal">
                                 <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
@@ -107,7 +107,7 @@
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="gah-TI-UjB" secondAttribute="trailing" id="4oh-VC-2Bv"/>
                         <constraint firstItem="gah-TI-UjB" firstAttribute="top" secondItem="J7d-GZ-baE" secondAttribute="top" id="Fnk-Cl-5WL"/>
-                        <constraint firstAttribute="width" secondItem="J7d-GZ-baE" secondAttribute="height" multiplier="1:1" id="Sxl-fp-5wf"/>
+                        <constraint firstAttribute="width" secondItem="J7d-GZ-baE" secondAttribute="height" multiplier="1:2" id="Sxl-fp-5wf"/>
                         <constraint firstAttribute="bottom" secondItem="gah-TI-UjB" secondAttribute="bottom" id="jlN-W2-BOA"/>
                         <constraint firstItem="gah-TI-UjB" firstAttribute="leading" secondItem="J7d-GZ-baE" secondAttribute="leading" id="nGp-zB-HV6"/>
                         <constraint firstAttribute="centerY" secondItem="ESg-Ve-w7v" secondAttribute="centerY" constant="-2" id="nti-ws-EEE"/>
@@ -115,10 +115,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ue2-F0-Ift" customClass="SelectedPhotoView" customModule="locality_swift" customModuleProvider="target">
-                    <rect key="frame" x="20" y="0.0" width="280" height="140"/>
+                    <rect key="frame" x="20" y="0.0" width="280" height="280"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xGy-j6-KTP">
-                            <rect key="frame" x="0.0" y="0.0" width="280" height="140"/>
+                            <rect key="frame" x="0.0" y="0.0" width="280" height="280"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVJ-6z-3Ne">
                             <rect key="frame" x="244" y="0.0" width="36" height="36"/>
@@ -137,7 +137,7 @@
                         <constraint firstAttribute="trailing" secondItem="nVJ-6z-3Ne" secondAttribute="trailing" id="5pA-bD-n15"/>
                         <constraint firstItem="nVJ-6z-3Ne" firstAttribute="top" secondItem="Ue2-F0-Ift" secondAttribute="top" id="DEa-fJ-sQy"/>
                         <constraint firstItem="xGy-j6-KTP" firstAttribute="top" secondItem="Ue2-F0-Ift" secondAttribute="top" id="NxW-X3-nDI"/>
-                        <constraint firstAttribute="width" secondItem="Ue2-F0-Ift" secondAttribute="height" multiplier="2:1" id="cm0-fl-AUf"/>
+                        <constraint firstAttribute="width" secondItem="Ue2-F0-Ift" secondAttribute="height" multiplier="1:1" id="cm0-fl-AUf"/>
                         <constraint firstAttribute="trailing" secondItem="xGy-j6-KTP" secondAttribute="trailing" id="mrU-q2-mbn"/>
                         <constraint firstItem="xGy-j6-KTP" firstAttribute="leading" secondItem="Ue2-F0-Ift" secondAttribute="leading" id="pBW-Xf-HOn"/>
                         <constraint firstAttribute="bottom" secondItem="xGy-j6-KTP" secondAttribute="bottom" id="uGM-Ac-CCO"/>

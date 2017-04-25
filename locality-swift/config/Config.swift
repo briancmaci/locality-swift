@@ -495,7 +495,7 @@ struct K {
         }
         
         struct Post {
-            static let ImageRatio: CGFloat = 0.5
+            static let ImageRatio: CGFloat = 1
             static let PointHeight: CGFloat = 5.0
             static let PointWidth: CGFloat = 10.0
             static let ShadowOffset: CGFloat = 1.0
