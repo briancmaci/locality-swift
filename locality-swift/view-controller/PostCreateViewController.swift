@@ -139,7 +139,7 @@ class PostCreateViewController: LocalityPhotoBaseViewController, ImageUploadView
             }
                 
             else {
-                print("Post written!")
+                print("Post was written!")
                 
                 //Write Location
                 GeoFireManager.write(postLocation: CLLocation(latitude: thisPost.lat, longitude: thisPost.lon), postId: thisPost.postId, completionHandler: { (error) in
